@@ -5,7 +5,7 @@
     window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* 1) Smooth scroll accessibile */
+  /* 1) Smooth scroll accessible */
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
       const hash = a.getAttribute('href');
