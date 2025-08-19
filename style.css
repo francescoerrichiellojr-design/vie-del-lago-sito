@@ -4,7 +4,6 @@
   --beige: #F3E9DA;
 }
 
-/* ===== BASE ===== */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -17,6 +16,42 @@ h1, h2, h3, h4 {
   color: var(--dark-brown);
 }
 
+/* ===== HERO con video ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10%;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Video a pieno schermo */
+.hero-video {
+  position: absolute;
+  inset: 0;           /* top:0 right:0 bottom:0 left:0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* riempie mantenendo il ritaglio */
+  z-index: -2;
+}
+
+/* Leggera sovrapposizione per migliorare leggibilità del testo */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35));
+  z-index: -1;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
 .btn-primary {
   background: var(--honey-yellow);
   color: #fff;
@@ -26,9 +61,34 @@ h1, h2, h3, h4 {
   font-weight: bold;
   border: none;
   cursor: pointer;
-  transition: transform .06s ease;
 }
-.btn-primary:active { transform: translateY(1px); }
+
+/* ===== CHI SIAMO ===== */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 80px 10%;
+  align-items: center;
+  position: relative;
+}
+
+.about-products h3 {
+  margin-bottom: 20px;
+}
+
+.product-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.product-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
 
 .btn-secondary {
   background: var(--beige);
@@ -42,67 +102,18 @@ h1, h2, h3, h4 {
   cursor: pointer;
 }
 
-/* ===== HOME: HERO VIDEO ===== */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 10%;
-  color: #fff;
-  overflow: hidden;
-}
-.hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-}
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35));
-  z-index: -1;
-}
-.hero-text h1 {
-  font-size: 3rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-/* ===== HOME: SEZIONI ===== */
-.about {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 80px 10%;
-  align-items: center;
-  position: relative;
-}
-.about-products h3 { margin-bottom: 20px; }
-
-.product-card {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-.product-card img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-}
-
+/* ===== CITAZIONE ===== */
 .quote {
   text-align: center;
   padding: 60px 10%;
   background: #fff;
 }
-.quote h2 { margin-bottom: 10px; }
 
+.quote h2 {
+  margin-bottom: 10px;
+}
+
+/* ===== LE NOSTRE API ===== */
 .bees {
   display: flex;
   align-items: center;
@@ -112,111 +123,42 @@ h1, h2, h3, h4 {
   background: #fefaf5;
   position: relative;
 }
-.bees-text { max-width: 500px; }
 
-/* Illustrazioni botaniche HOME (SVG semplici) */
-.botanical { position: absolute; opacity: 0.3; z-index: -1; }
-.botanical-right { right: 5%; top: 50%; max-width: 200px; }
-.botanical-left  { left:  5%; top: 50%; max-width: 200px; }
+.bees-text {
+  max-width: 500px;
+}
 
-/* ===== RESPONSIVE HOME ===== */
+/* Illustrazioni botaniche */
+.botanical {
+  position: absolute;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.botanical-right {
+  right: 5%;
+  top: 50%;
+  max-width: 200px;
+}
+
+.botanical-left {
+  left: 5%;
+  top: 50%;
+  max-width: 200px;
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .about { grid-template-columns: 1fr; }
-  .bees { flex-direction: column; }
-  .botanical { display: none; }
-  .hero-text h1 { font-size: 2.2rem; }
-}
-
-/* =========================================================================
-   PAGINE PRODOTTO (Millefiori/Acacia/Sulla) — sfondo unico, niente riquadri
-   ========================================================================= */
-
-/* HERO PRODOTTO con immagine di sfondo */
-.hero-product {
-  position: relative;
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  padding: 80px 20px;
-  background: url("img/hero-millefiori-bg.jpg") center/cover no-repeat; /* <— sostituisci file per ogni prodotto */
-  overflow: hidden;
-}
-.hero-product::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45); /* overlay per leggibilità */
-  z-index: 0;
-}
-.hero-product .hero-text { position: relative; z-index: 1; max-width: 900px; }
-.hero-product h1 {
-  font-size: clamp(2.2rem, 6vw, 4rem);
-  margin-bottom: 1rem;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  text-shadow: 0 2px 14px rgba(0,0,0,.35);
-}
-.hero-product p {
-  font-size: clamp(1rem, 2.6vw, 1.25rem);
-  margin-bottom: 2rem;
-  font-style: italic;
-}
-
-/* Corpo pagina prodotto */
-.p-main { background: var(--beige); }
-.p-section { padding: 64px 10%; position: relative; }
-
-/* Griglia immagine + testi */
-.p-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-}
-.p-jar {
-  max-width: 480px; width: 100%; height: auto; display: block; margin: 0 auto;
-  filter: drop-shadow(0 10px 25px rgba(0,0,0,.12));
-}
-
-/* Titoli e divisori */
-.p-h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  margin: 0 0 10px;
-  color: var(--dark-brown);
-}
-.p-divider { width: 120px; height: 2px; background: var(--honey-yellow); margin: 18px 0 20px; }
-
-/* Info tecniche */
-.p-info {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px 24px;
-  margin-top: 10px;
-}
-.p-info dt { font-weight: 600; color: var(--dark-brown); }
-.p-info dd { margin: 0; }
-.p-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
-
-/* Fiore PNG decorativo */
-.p-flower {
-  position: absolute;
-  right: 3%;
-  bottom: -20px;
-  width: 280px;   /* cambia qui se vuoi più grande */
-  height: auto;
-  opacity: .55;
-  pointer-events: none;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
-}
-
-/* Responsive prodotto */
-@media (max-width: 980px){
-  .p-grid { grid-template-columns: 1fr; gap: 32px; }
-  .p-flower { display: none; }
+  .about {
+    grid-template-columns: 1fr;
+  }
+  .bees {
+    flex-direction: column;
+  }
+  .botanical {
+    display: none;
+  }
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
 }
