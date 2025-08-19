@@ -29,3 +29,15 @@ body{margin:0;font-family:'Playfair Display',serif;background:#faf7f2;color:#333
   .bees{flex-direction:column}
   .botanical{display:none}
 }
+
+/* Effetto reveal */
+.about, .quote, .bees, .botanical-svg {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.about.in, .quote.in, .bees.in, .botanical-svg.in {
+  opacity: 1;
+  transform: translateY(0);
+}
