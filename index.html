@@ -5,17 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vie del Lago Apicoltura</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Hero con video -->
+  <!-- Hero -->
   <section class="hero">
-    <video autoplay muted loop playsinline class="hero-video" poster="img/hero-fallback.jpg">
-      <source src="img/hero-video.mp4" type="video/mp4">
-      Il tuo browser non supporta i video HTML5.
-    </video>
-    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-text">
       <h1>Il nostro miele,<br>la nostra passione,<br>la nostra famiglia</h1>
       <a href="#chi-siamo" class="btn-primary">Scopri la nostra storia</a>
@@ -26,7 +19,9 @@
   <section id="chi-siamo" class="about">
     <div class="about-text">
       <h2>Chi siamo</h2>
-      <p>Vie del Lago nasce dall’amore per la natura e il rispetto per le api. Siamo una famiglia di apicoltori che lavora in armonia con l’ambiente, portando sulla tua tavola solo miele puro e autentico.</p>
+      <p>Vie del Lago nasce dall’amore per la natura e il rispetto per le api. 
+      Siamo una famiglia di apicoltori che lavora in armonia con l’ambiente, 
+      portando sulla tua tavola solo miele puro e autentico.</p>
     </div>
     <div class="about-products">
       <h3>I nostri prodotti più venduti</h3>
@@ -45,20 +40,18 @@
         </div>
       </div>
       <div class="product-card">
-        <img src="img/castagno.png" alt="Miele Castagno">
+        <img src="img/castagno.png" alt="Miele di Sulla">
         <div>
           <h4>Sulla 500g</h4>
           <a href="#" class="btn-secondary">Scopri di più</a>
         </div>
       </div>
     </div>
-    <!-- Illustrazione botanica -->
+
+    <!-- Illustrazione botanica destra -->
     <div class="botanical botanical-right" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="none" stroke="#7a4e2d" stroke-width="1">
-        <path d="M100 390 C120 320, 80 280, 100 200 C120 120, 80 80, 100 10"/>
-        <circle cx="100" cy="200" r="25" fill="none"/>
-        <circle cx="120" cy="120" r="20" fill="none"/>
-        <circle cx="80" cy="280" r="22" fill="none"/>
+      <svg class="botanical-svg" role="img" aria-label="Illustrazione botanica decorativa">
+        <use href="#botanica"></use>
       </svg>
     </div>
   </section>
@@ -73,19 +66,50 @@
   <section id="api" class="bees">
     <div class="bees-text">
       <h2>Le nostre api</h2>
-      <p>Le api sono il cuore del nostro lavoro. Proteggiamo le loro colonie e lavoriamo in modo che possano prosperare in un ambiente sano e ricco di biodiversità.</p>
+      <p>Le api sono il cuore del nostro lavoro. Proteggiamo le loro colonie e lavoriamo 
+      in modo che possano prosperare in un ambiente sano e ricco di biodiversità.</p>
       <a href="#" class="btn-primary">Scopri di più</a>
     </div>
-    <!-- Illustrazione botanica -->
+
+    <!-- Illustrazione botanica sinistra -->
     <div class="botanical botanical-left" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="none" stroke="#7a4e2d" stroke-width="1">
-        <path d="M100 390 C80 320, 120 280, 100 200 C80 120, 120 80, 100 10"/>
-        <circle cx="100" cy="300" r="25" fill="none"/>
-        <circle cx="80" cy="180" r="20" fill="none"/>
-        <circle cx="120" cy="80" r="22" fill="none"/>
+      <svg class="botanical-svg flip-x" role="img" aria-label="Illustrazione botanica decorativa">
+        <use href="#botanica"></use>
       </svg>
     </div>
   </section>
+
+  <!-- Sprite SVG botanico (invisibile, definizione unica) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="botanica" viewBox="0 0 320 640" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M160 636c8-70-26-118-22-170 4-52 46-94 46-146s-42-78-42-120 30-76 30-118"/>
+      <path d="M150 470c-36-18-60-54-64-86"/>
+      <path d="M176 420c24-14 44-40 50-70"/>
+      <path d="M148 320c-34-22-52-44-56-78"/>
+      <path d="M176 272c28-18 44-40 50-70"/>
+      <path d="M112 454c-14-8-28-8-40 2 8 10 22 14 36 10"/>
+      <path d="M104 356c-16-6-30-4-40 8 10 10 24 12 38 8"/>
+      <path d="M104 246c-18-8-30-6-42 6 10 12 24 14 40 10"/>
+      <path d="M208 446c16-10 30-10 42 2-10 12-24 16-40 12"/>
+      <path d="M208 338c18-10 32-10 44 2-12 12-26 16-42 12"/>
+      <path d="M206 226c16-10 30-10 42 2-12 12-26 16-42 12"/>
+      <g transform="translate(210,520) scale(1.05)">
+        <circle cx="0" cy="0" r="26"/>
+        <path d="M0-26C-10-34-24-36-34-28c-6 6-8 16-4 26 4 10 14 18 26 20M0-26c10-8 24-10 34-2 8 6 10 18 6 28-4 10-12 18-24 20"/>
+        <path d="M0-26 L-4 -44M 0-26 L4 -44M -18 -18 L-32 -32M 18 -18 L32 -32M -26 0 L-44 0M 26 0 L44 0M -18 18 L-32 32M 18 18 L32 32M 0 26 L0 44"/>
+      </g>
+      <g transform="translate(88,340) scale(.9)">
+        <circle cx="0" cy="0" r="20"/>
+        <path d="M0-20 L-3 -34M 0-20 L3 -34M -14 -14 L-28 -24M 14 -14 L28 -24M -20 0 L-34 0M 20 0 L34 0M -14 14 L-28 24M 14 14 L28 24M 0 20 L0 34"/>
+      </g>
+      <g transform="translate(196,210) scale(.8)">
+        <circle cx="0" cy="0" r="16"/>
+        <path d="M0-16 L-3 -26M0-16 L3 -26M -12 -10 L-22 -18M 12 -10 L22 -18M -16 0 L-26 0M 16 0 L26 0M -12 10 L-22 18M 12 10 L22 18M 0 16 L0 26"/>
+      </g>
+      <path d="M128 175c-10-12-22-16-34-10 6 10 18 16 30 14"/>
+      <path d="M188 160c12-10 26-12 36-4-8 10-22 14-34 12"/>
+    </symbol>
+  </svg>
 
   <script src="script.js"></script>
 </body>
