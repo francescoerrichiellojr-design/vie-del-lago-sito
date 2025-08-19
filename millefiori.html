@@ -1,43 +1,126 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Miele Millefiori — Vie del Lago Apicoltura</title>
 
-  <!-- Font + CSS globale -->
+  <!-- Font & Stili globali (già usati nel sito) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Stili della pagina prodotto (solo questa pagina) -->
+  <style>
+    :root{
+      --honey: var(--honey-yellow, #D4A017);
+      --brown: var(--dark-brown, #2F2A26);
+      --beige: var(--beige, #F3E9DA);
+      --flower-size: 280px;  /* cambia qui la dimensione del fiore decorativo */
+    }
+
+    /* HERO prodotto (immagine di sfondo + titolo) */
+    .p-hero{
+      position: relative;
+      min-height: 60vh;
+      padding: 120px 10% 80px;
+      color: #fff;
+      background: url('img/hero-millefiori.jpg') center/cover no-repeat; /* sostituisci con la tua foto hero */
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .p-hero::before{ /* overlay per contrasto testo */
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25));
+      pointer-events: none;
+    }
+    .p-hero .p-hero-inner{ position: relative; z-index: 1; max-width: 900px; }
+    .p-hero h1{
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.12;
+      margin: 0 0 10px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      text-shadow: 0 2px 14px rgba(0,0,0,.35);
+    }
+    .p-sub{
+      margin: 0 0 18px;
+      font-size: clamp(1rem, 2.6vw, 1.25rem);
+      opacity: .95;
+    }
+
+    /* Corpo pagina a sfondo unico (beige del brand) */
+    .p-main{ background: var(--beige); }
+    .p-section{ padding: 64px 10%; position: relative; }
+
+    /* Griglia immagine + contenuti */
+    .p-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .p-jar{ max-width: 480px; width: 100%; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 10px 25px rgba(0,0,0,.12)); }
+
+    /* Testi senza box bianco */
+    .p-h2{
+      font-family: 'Playfair Display', serif;
+      font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
+      color: var(--brown); margin: 0 0 10px;
+    }
+    .p-divider{
+      width: 120px; height: 2px; background: var(--honey);
+      margin: 18px 0 20px;
+    }
+    .p-info{
+      display: grid; grid-template-columns: auto 1fr; gap: 10px 24px;
+      margin-top: 10px;
+    }
+    .p-info dt{ font-weight: 600; color: var(--brown); }
+    .p-info dd{ margin: 0; }
+
+    .p-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 24px; }
+    .btn-primary{ box-shadow: 0 6px 18px rgba(212,160,23,.25); }
+
+    /* Fiore decorativo PNG */
+    .p-flower{
+      position: absolute;
+      right: 3%; bottom: -20px;
+      width: var(--flower-size); height: auto;
+      opacity: .55; pointer-events: none;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .p-grid{ grid-template-columns: 1fr; gap: 32px; }
+      .p-flower{ display: none; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HERO PRODOTTO con immagine di sfondo -->
-  <section class="hero-product" role="banner" aria-label="Presentazione Miele Millefiori">
-    <div class="hero-text">
-      <h1>MIELE MILLEFIORI</h1>
-      <p>Dolcezza intensa che racchiude la biodiversità dei nostri prati</p>
+  <!-- HERO -->
+  <header class="p-hero">
+    <div class="p-hero-inner">
+      <h1>Miele Millefiori</h1>
+      <p class="p-sub">Dolcezza intensa che racchiude la biodiversità dei nostri prati.</p>
       <a class="btn-primary"
          href="mailto:info@viedellago.it?subject=Acquisto%20Miele%20Millefiori%20500g&body=Ciao,%0Avorrei%20acquistare%20o%20ricevere%20informazioni%20sul%20Miele%20Millefiori%20500g.%0AGrazie!">
         Acquista ora
       </a>
     </div>
-  </section>
+  </header>
 
-  <!-- CONTENUTO (sfondo unico, nessun riquadro bianco) -->
+  <!-- CONTENUTO senza riquadri bianchi -->
   <main class="p-main">
     <section class="p-section">
-      <!-- Fiore PNG decorativo -->
+      <!-- fiore PNG decorativo -->
       <img src="img/fiore-botanico.png" alt="" class="p-flower" aria-hidden="true">
 
       <div class="p-grid">
-        <!-- Immagine vasetto -->
+        <!-- immagine vasetto -->
         <div>
-          <img class="p-jar" src="img/millefiori.png"
-               alt="Vasetto di Miele Millefiori Vie del Lago"
-               width="480" height="480" loading="lazy">
+          <img class="p-jar" src="img/millefiori.png" alt="Vasetto di Miele Millefiori Vie del Lago" width="480" height="480" loading="lazy">
         </div>
 
-        <!-- Testi -->
+        <!-- testi -->
         <div>
           <h2 class="p-h2">Descrizione</h2>
           <div class="p-divider"></div>
