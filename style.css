@@ -1,57 +1,132 @@
-// Vie del Lago — script base
-// - Scroll dolce per gli anchor link
-// - Pulsanti "Scopri di più" dei prodotti: compongono una mail precompilata
-// - Piccoli miglioramenti di accessibilità
-
-
-(function(){
-const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-
-// Smooth scroll per link interni (es. #chi-siamo)
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-a.addEventListener('click', e => {
-const hash = a.getAttribute('href');
-if(!hash || hash === '#') return; // link vuoto
-const id = hash.slice(1);
-const target = document.getElementById(id);
-if(target){
-e.preventDefault();
-target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
-// sposta il focus per a11y
-target.setAttribute('tabindex','-1');
-target.focus({ preventScroll:true });
+:root {
+  --honey-yellow: #D4A017;
+  --dark-brown: #2F2A26;
+  --beige: #F3E9DA;
 }
-});
-});
 
-
-// Trasforma i pulsanti dei prodotti in email precompilate
-const EMAIL_DEST = 'info@viedellago.it';
-document.querySelectorAll('.product-card .btn-secondary').forEach(btn => {
-btn.addEventListener('click', e => {
-const card = e.currentTarget.closest('.product-card');
-const name = card?.querySelector('h4')?.textContent?.trim() || 'Prodotto';
-const mailto = new URL('mailto:' + EMAIL_DEST);
-mailto.searchParams.set('subject', `Richiesta informazioni — ${name}`);
-mailto.searchParams.set('body', `Ciao,
-vorrei avere maggiori informazioni su ${name}.
-Grazie!`);
-e.preventDefault();
-window.location.href = mailto.toString();
-});
-});
-
-
-// Effetto "reveal" semplice: aggiunge la classe .in quando l'elemento entra in viewport
-const toReveal = document.querySelectorAll('.about, .quote, .bees');
-if('IntersectionObserver' in window){
-const io = new IntersectionObserver((entries)=>{
-entries.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); } });
-}, { threshold: 0.1 });
-toReveal.forEach(el => io.observe(el));
-} else {
-// fallback
-toReveal.forEach(el => el.classList.add('in'));
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--beige);
+  color: var(--dark-brown);
 }
-})();
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--dark-brown);
+}
+
+.hero {
+  background: url('img/hero-favo.jpg') center/cover no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+  color: #fff;
+  position: relative;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background: var(--honey-yellow);
+  color: #fff;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 80px 10%;
+  align-items: center;
+  position: relative;
+}
+
+.about-products h3 {
+  margin-bottom: 20px;
+}
+
+.product-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.product-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.btn-secondary {
+  background: var(--beige);
+  color: var(--dark-brown);
+  border: 2px solid var(--honey-yellow);
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.quote {
+  text-align: center;
+  padding: 60px 10%;
+  background: #fff;
+}
+
+.quote h2 {
+  margin-bottom: 10px;
+}
+
+.bees {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 80px 10%;
+  background: #fefaf5;
+  position: relative;
+}
+
+.bees-text {
+  max-width: 500px;
+}
+
+.botanical {
+  position: absolute;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.botanical-right {
+  right: 5%;
+  top: 50%;
+  max-width: 200px;
+}
+
+.botanical-left {
+  left: 5%;
+  top: 50%;
+  max-width: 200px;
+}
+
+@media(max-width:768px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+  .bees {
+    flex-direction: column;
+  }
+  .botanical {
+    display: none;
+  }
+}
