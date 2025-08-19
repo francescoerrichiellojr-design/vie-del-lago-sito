@@ -9,8 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Hero -->
+  <!-- Hero con video -->
   <section class="hero">
+    <video autoplay muted loop playsinline class="hero-video" poster="img/hero-fallback.jpg">
+      <source src="img/hero-video.mp4" type="video/mp4">
+      Il tuo browser non supporta i video HTML5.
+    </video>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-text">
       <h1>Il nostro miele,<br>la nostra passione,<br>la nostra famiglia</h1>
       <a href="#chi-siamo" class="btn-primary">Scopri la nostra storia</a>
@@ -48,7 +53,7 @@
       </div>
     </div>
     <!-- Illustrazione botanica -->
-    <div class="botanical botanical-right">
+    <div class="botanical botanical-right" aria-hidden="true">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="none" stroke="#7a4e2d" stroke-width="1">
         <path d="M100 390 C120 320, 80 280, 100 200 C120 120, 80 80, 100 10"/>
         <circle cx="100" cy="200" r="25" fill="none"/>
@@ -72,7 +77,7 @@
       <a href="#" class="btn-primary">Scopri di più</a>
     </div>
     <!-- Illustrazione botanica -->
-    <div class="botanical botanical-left">
+    <div class="botanical botanical-left" aria-hidden="true">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="none" stroke="#7a4e2d" stroke-width="1">
         <path d="M100 390 C80 320, 120 280, 100 200 C80 120, 120 80, 100 10"/>
         <circle cx="100" cy="300" r="25" fill="none"/>
