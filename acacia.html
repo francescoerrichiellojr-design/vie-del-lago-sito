@@ -4,64 +4,114 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Miele di Acacia — Vie del Lago Apicoltura</title>
+
+  <!-- Font & Stili globali -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Stili specifici -->
   <style>
-    .product-hero{background:#fff; padding:60px 10% 20px}
-    .product-hero a.back{display:inline-block;margin-bottom:14px;color:var(--dark-brown);text-decoration:none;font-weight:600}
-    .product-hero h1{margin:0 0 8px}
-    .product-sub{color:#5b534d;margin:0}
-    .product{padding:40px 10%}
-    .product-grid{display:grid;grid-template-columns: 1fr 1fr;gap:40px;align-items:center}
-    .product-img{max-width:420px;width:100%;height:auto;display:block;margin:auto}
-    .product-card{background:#fff;padding:24px;border-radius:10px;border:1px solid rgba(0,0,0,.08)}
-    .product-card h3{margin-top:0}
-    .specs{list-style:none;padding:0;margin:0;display:grid;gap:8px}
-    .specs li{display:flex;gap:8px}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-    @media(max-width:900px){.product-grid{grid-template-columns:1fr}}
+    :root{
+      --flower-size: 280px;
+    }
+
+    .p-hero{
+      position: relative;
+      min-height: 60vh;
+      padding: 120px 10% 80px;
+      color: #fff;
+      background: url('img/hero-acacia.jpg') center/cover no-repeat;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .p-hero::before{
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25));
+    }
+    .p-hero .p-hero-inner{ position: relative; z-index: 1; max-width: 900px; }
+    .p-hero h1{
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      margin: 0 0 10px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 14px rgba(0,0,0,.35);
+    }
+    .p-sub{ font-size: clamp(1rem, 2.6vw, 1.25rem); }
+
+    .p-main{ background: var(--beige); }
+    .p-section{ padding: 64px 10%; position: relative; }
+    .p-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .p-jar{ max-width: 480px; width: 100%; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 10px 25px rgba(0,0,0,.12)); }
+    .p-h2{ font-family: 'Playfair Display', serif; text-transform: uppercase; margin: 0 0 10px; }
+    .p-divider{ width: 120px; height: 2px; background: var(--honey-yellow); margin: 18px 0 20px; }
+    .p-info{ display: grid; grid-template-columns: auto 1fr; gap: 10px 24px; margin-top: 10px; }
+    .p-info dt{ font-weight: 600; }
+    .p-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 24px; }
+
+    .p-flower{
+      position: absolute;
+      right: 3%; bottom: -20px;
+      width: var(--flower-size); opacity: .55;
+      pointer-events: none;
+    }
+
+    @media (max-width: 980px){
+      .p-grid{ grid-template-columns: 1fr; }
+      .p-flower{ display:none; }
+    }
   </style>
 </head>
 <body>
 
-  <section class="product-hero">
-    <a href="index.html#prodotti" class="back">← Torna ai prodotti</a>
-    <h1>Miele di Acacia</h1>
-    <p class="product-sub">Chiaro, delicato, naturalmente liquido. Amato da grandi e piccoli.</p>
-  </section>
+  <header class="p-hero">
+    <div class="p-hero-inner">
+      <h1>Miele di Acacia</h1>
+      <p class="p-sub">Chiaro, delicato e naturalmente dolce: il miele che piace a tutti.</p>
+      <a class="btn-primary"
+         href="mailto:info@viedellago.it?subject=Acquisto%20Miele%20di%20Acacia%20500g&body=Ciao,%0Avorrei%20acquistare%20o%20ricevere%20informazioni%20sul%20Miele%20di%20Acacia%20500g.%0AGrazie!">
+        Acquista ora
+      </a>
+    </div>
+  </header>
 
-  <main class="product">
-    <div class="product-grid">
-      <div>
-        <img class="product-img" src="img/acacia.png" alt="Vasetto di Miele di Acacia Vie del Lago">
-      </div>
-      <div class="product-card">
-        <h3>Descrizione</h3>
-        <p>
-          Dalla fioritura delle robinie nasce un miele chiaro, dolce e soave, con profumi leggeri di vaniglia.
-          Rimane fluido a lungo e dolcifica senza coprire i sapori.
-        </p>
+  <main class="p-main">
+    <section class="p-section">
+      <img src="img/fiore-botanico.png" alt="" class="p-flower" aria-hidden="true">
 
-        <h3>Dettagli</h3>
-        <ul class="specs">
-          <li>• Origine: Italia — Conza della Campania (AV)</li>
-          <li>• Peso: 500 g</li>
-          <li>• Ingredienti: 100% miele italiano</li>
-          <li>• Consigli: perfetto per dolcificare tè, latte, dessert</li>
-        </ul>
+      <div class="p-grid">
+        <div>
+          <img class="p-jar" src="img/acacia.png" alt="Vasetto di Miele di Acacia Vie del Lago" width="480" height="480" loading="lazy">
+        </div>
 
-        <div class="cta-row">
-          <a class="btn-primary" href="mailto:info@viedellago.it?subject=Richiesta%20informazioni%20Miele%20di%20Acacia%20500g&body=Ciao,%0Avorrei%20acquistare%20o%20avere%20maggiori%20informazioni%20sul%20Miele%20di%20Acacia%20500g.%0AGrazie!">Richiedi informazioni</a>
-          <a class="btn-secondary" href="index.html#prodotti">Torna ai prodotti</a>
+        <div>
+          <h2 class="p-h2">Descrizione</h2>
+          <div class="p-divider"></div>
+          <p>
+            Il miele di Acacia è apprezzato per la sua limpidezza, il sapore dolce e delicato
+            e la sua cristallizzazione molto lenta. Perfetto per dolcificare senza alterare il gusto delle bevande.
+          </p>
+
+          <h3 class="p-h2" style="margin-top:26px">Informazioni</h3>
+          <div class="p-divider"></div>
+          <dl class="p-info">
+            <dt>Peso</dt><dd>500 g</dd>
+            <dt>Ingredienti</dt><dd>100% miele italiano</dd>
+            <dt>Conservazione</dt><dd>Tenere in luogo fresco e asciutto</dd>
+            <dt>Consigli</dt><dd>Ottimo in tisane, latte caldo e con formaggi freschi</dd>
+          </dl>
+
+          <div class="p-cta">
+            <a class="btn-primary"
+               href="mailto:info@viedellago.it?subject=Richiesta%20informazioni%20Miele%20di%20Acacia%20500g&body=Ciao,%0Avorrei%20avere%20maggiori%20informazioni%20sul%20Miele%20di%20Acacia%20500g.%0AGrazie!">
+              Richiedi informazioni
+            </a>
+            <a class="btn-secondary" href="index.html#chi-siamo">Torna ai prodotti</a>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
-
-  <section class="quote">
-    <h2>Perché sceglierlo</h2>
-    <p><em>Dolce e leggero: perfetto per chi cerca delicatezza e purezza.</em></p>
-  </section>
 
   <script src="script.js"></script>
 </body>
