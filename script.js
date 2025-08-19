@@ -1,56 +1,60 @@
-// Vie del Lago — script con animazioni eleganti
-(function(){
-  const prefersReduced = window.matchMedia &&
+// Vie del Lago — interazioni eleganti
+
+(function () {
+  const prefersReduced =
+    window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Smooth scroll per link interni
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
+  /* 1) Smooth scroll accessibile */
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
       const hash = a.getAttribute('href');
-      if(!hash || hash === '#') return;
-      const id = hash.slice(1);
-      const target = document.getElementById(id);
-      if(target){
+      if (!hash || hash === '#') return;
+      const target = document.querySelector(hash);
+      if (target) {
         e.preventDefault();
         target.scrollIntoView({
           behavior: prefersReduced ? 'auto' : 'smooth',
-          block: 'start'
+          block: 'start',
         });
-        target.setAttribute('tabindex','-1');
-        target.focus({ preventScroll:true });
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
       }
     });
   });
 
-  // Pulsanti prodotti → aprono mail precompilata
-  const EMAIL_DEST = 'info@viedellago.it';
-  document.querySelectorAll('.product-card .btn-secondary').forEach(btn => {
-    btn.addEventListener('click', e => {
-      const card = e.currentTarget.closest('.product-card');
-      const name = card?.querySelector('h4')?.textContent?.trim() || 'Prodotto';
-      const mailto = new URL('mailto:' + EMAIL_DEST);
-      mailto.searchParams.set('subject', `Richiesta informazioni — ${name}`);
-      mailto.searchParams.set('body', `Ciao,
-vorrei avere maggiori informazioni su ${name}.
-Grazie!`);
-      e.preventDefault();
-      window.location.href = mailto.toString();
-    });
+  /* 2) Reveal on scroll */
+  const toReveal = document.querySelectorAll('.about, .quote, .bees');
+  toReveal.forEach((el) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(14px)';
+    el.style.transition = prefersReduced
+      ? 'none'
+      : 'opacity .6s ease, transform .6s ease';
   });
 
-  // Effetto reveal (fade-in elegante per sezioni e botaniche)
-  const toReveal = document.querySelectorAll('.about, .quote, .bees, .botanical-svg');
-  if('IntersectionObserver' in window){
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(en => {
-        if(en.isIntersecting){
-          en.target.classList.add('in');
-          io.unobserve(en.target); // rivela una volta sola
-        }
-      });
-    }, { threshold: 0.1 });
-    toReveal.forEach(el => io.observe(el));
+  const reveal = (el) => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  };
+
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((en) => en.isIntersecting && reveal(en.target)),
+      { threshold: 0.12 }
+    );
+    toReveal.forEach((el) => io.observe(el));
   } else {
-    toReveal.forEach(el => el.classList.add('in'));
+    toReveal.forEach(reveal);
   }
-})();
+
+  /* 3) Ripple animato sui pulsanti */
+  function addRipple(button, color = 'rgba(255,255,255,0.35)') {
+    button.style.position = button.style.position || 'relative';
+    button.style.overflow = 'hidden';
+
+    function createRipple(event) {
+      const rect = button.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x =
+        (event.clientX ?? rect.left + rect.width / 2) - rect.left - size / 2
