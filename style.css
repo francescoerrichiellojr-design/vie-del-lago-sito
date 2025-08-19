@@ -16,14 +16,34 @@ h1, h2, h3, h4 {
   color: var(--dark-brown);
 }
 
+/* ===== HERO con video ===== */
 .hero {
-  background: url('img/hero-favo.jpg') center/cover no-repeat;
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   padding: 0 10%;
   color: #fff;
-  position: relative;
+  overflow: hidden;
+}
+
+/* Video a pieno schermo */
+.hero-video {
+  position: absolute;
+  inset: 0;           /* top:0 right:0 bottom:0 left:0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* riempie mantenendo il ritaglio */
+  z-index: -2;
+}
+
+/* Leggera sovrapposizione per migliorare leggibilità del testo */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35));
+  z-index: -1;
 }
 
 .hero-text h1 {
@@ -39,8 +59,11 @@ h1, h2, h3, h4 {
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
+  border: none;
+  cursor: pointer;
 }
 
+/* ===== CHI SIAMO ===== */
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -75,8 +98,11 @@ h1, h2, h3, h4 {
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
+  display: inline-block;
+  cursor: pointer;
 }
 
+/* ===== CITAZIONE ===== */
 .quote {
   text-align: center;
   padding: 60px 10%;
@@ -87,6 +113,7 @@ h1, h2, h3, h4 {
   margin-bottom: 10px;
 }
 
+/* ===== LE NOSTRE API ===== */
 .bees {
   display: flex;
   align-items: center;
@@ -101,6 +128,7 @@ h1, h2, h3, h4 {
   max-width: 500px;
 }
 
+/* Illustrazioni botaniche */
 .botanical {
   position: absolute;
   opacity: 0.3;
@@ -119,7 +147,8 @@ h1, h2, h3, h4 {
   max-width: 200px;
 }
 
-@media(max-width:768px) {
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
   .about {
     grid-template-columns: 1fr;
   }
@@ -128,5 +157,8 @@ h1, h2, h3, h4 {
   }
   .botanical {
     display: none;
+  }
+  .hero-text h1 {
+    font-size: 2.2rem;
   }
 }
