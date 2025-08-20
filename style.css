@@ -473,3 +473,19 @@ h1, h2, h3, h4 {
 .site-footer a:hover {
   color: var(--honey-yellow);
 }
+
+.social-links {
+  margin-top: 12px;
+}
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.15);
+  opacity: 0.85;
+}
