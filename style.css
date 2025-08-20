@@ -283,120 +283,8 @@ h1, h2, h3, h4 {
 }
 
 /* ==============================
-   Responsive
+   STORIA — layout fedele con video
 ============================== */
-@media (max-width: 980px) {
-  .p-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .p-flower {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .about {
-    grid-template-columns: 1fr;
-  }
-  .bees {
-    flex-direction: column;
-  }
-  .botanical {
-    display: none;
-  }
-  .hero-text h1 {
-    font-size: 2.2rem;
-  }
-}
-
-/* ==============================
-   STORIA — layout fedele alla bozza
-============================== */
-
-/* Hero con immagine di sfondo */
-.bg-hero-storia { background-image: url("img/storia-hero.jpg"); } /* metti qui la tua immagine */
-
-.story-hero{
-  position: relative;
-  min-height: 62vh;
-  display:flex; align-items:flex-end;
-  background: #999 center/cover no-repeat;
-  padding: 120px 10% 84px;
-  color:#fff;
-  overflow:hidden;
-}
-.story-hero::before{
-  content:""; position:absolute; inset:0;
-  background: linear-gradient(180deg, rgba(0,0,0,.46), rgba(0,0,0,.28));
-}
-.story-hero__inner{ position:relative; z-index:1; max-width: 980px; }
-.story-back{ display:inline-block; margin-bottom:12px; color:#fff; text-decoration:none; font-weight:600; opacity:.95; }
-.story-back:hover{ text-decoration: underline; }
-.story-hero h1{
-  font-size: clamp(2.4rem, 6vw, 4rem);
-  margin:.2rem 0 .4rem;
-  text-transform: uppercase;
-  letter-spacing:.5px;
-  text-shadow: 0 2px 14px rgba(0,0,0,.35);
-}
-.story-lead{ font-size: clamp(1rem, 2.6vw, 1.25rem); margin:0; opacity:.96; }
-
-/* Sezioni alternate */
-.story{ background: var(--beige); }
-.story-row{
-  display:grid; grid-template-columns: 1.05fr 1fr; gap: 48px;
-  align-items:center; padding: 72px 10%;
-}
-.story-row.reverse{ grid-template-columns: 1fr 1.05fr; }
-.story-row.reverse .story-img{ order:2; }
-.story-row.reverse .story-text{ order:1; }
-
-.story-img img{
-  width:100%; height:480px; object-fit:cover;
-  border-radius: 14px;
-  box-shadow: 0 12px 28px rgba(0,0,0,.12);
-}
-
-.story-text h2{
-  margin:0 0 10px;
-  text-transform: uppercase;
-  letter-spacing:.4px;
-}
-.story-divider{
-  width: 120px; height: 2px; background: var(--honey-yellow);
-  margin: 16px 0 18px;
-}
-.story-text p{ margin: 0 0 12px; }
-
-/* Citazione finale */
-.story-quote{
-  position: relative;
-  background:#fff;
-  padding: 72px 10%;
-}
-.story-quote__inner{ max-width: 980px; margin: 0 auto; text-align: center; }
-.story-quote blockquote{ margin:0 0 16px; }
-.story-cta{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-
-/* Fiore PNG */
-.story-flower{
-  position: absolute; right: 3%; bottom: -20px;
-  width: 240px; height:auto; opacity:.5; pointer-events:none;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
-}
-
-/* Responsive */
-@media (max-width: 980px){
-  .story-row,
-  .story-row.reverse{
-    grid-template-columns: 1fr;
-  }
-  .story-img img{ height: 300px; }
-  .story-flower{ display:none; }
-}
-
-/* HERO Storia con video */
 .story-hero {
   position: relative;
   min-height: 62vh;
@@ -421,4 +309,149 @@ h1, h2, h3, h4 {
   inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,.46), rgba(0,0,0,.28));
   z-index: -1;
+}
+
+.story-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+}
+
+.story-back {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  opacity: .95;
+}
+.story-back:hover {
+  text-decoration: underline;
+}
+.story-hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  margin: .2rem 0 .4rem;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  text-shadow: 0 2px 14px rgba(0,0,0,.35);
+}
+.story-lead {
+  font-size: clamp(1rem, 2.6vw, 1.25rem);
+  margin: 0;
+  opacity: .96;
+}
+
+/* Sezioni alternate */
+.story {
+  background: var(--beige);
+}
+.story-row {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 72px 10%;
+}
+.story-row.reverse {
+  grid-template-columns: 1fr 1.05fr;
+}
+.story-row.reverse .story-img {
+  order: 2;
+}
+.story-row.reverse .story-text {
+  order: 1;
+}
+
+.story-img img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.12);
+}
+
+.story-text h2 {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+.story-divider {
+  width: 120px;
+  height: 2px;
+  background: var(--honey-yellow);
+  margin: 16px 0 18px;
+}
+.story-text p {
+  margin: 0 0 12px;
+}
+
+/* Citazione finale */
+.story-quote {
+  position: relative;
+  background: #fff;
+  padding: 72px 10%;
+}
+.story-quote__inner {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+.story-quote blockquote {
+  margin: 0 0 16px;
+}
+.story-cta {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Fiore PNG */
+.story-flower {
+  position: absolute;
+  right: 3%;
+  bottom: -20px;
+  width: 240px;
+  height: auto;
+  opacity: .5;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
+}
+
+/* ==============================
+   Responsive
+============================== */
+@media (max-width: 980px) {
+  .p-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .p-flower {
+    display: none;
+  }
+  .story-row,
+  .story-row.reverse {
+    grid-template-columns: 1fr;
+  }
+  .story-img img {
+    height: 300px;
+  }
+  .story-flower {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+  .bees {
+    flex-direction: column;
+  }
+  .botanical {
+    display: none;
+  }
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
 }
