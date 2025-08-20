@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>La nostra storia — Vie del Lago Apicoltura</title>
 
@@ -11,90 +11,88 @@
 </head>
 <body>
 
-  <!-- HERO essenziale, a piena larghezza -->
-  <header class="story-hero-min bg-hero-storia" role="banner" aria-label="La nostra storia">
-    <div class="story-hero-min__inner">
-      <a class="back" href="index.html">← Torna alla home</a>
+  <!-- HERO -->
+  <header class="story-hero bg-hero-storia" role="banner" aria-label="La nostra storia">
+    <div class="story-hero__inner">
+      <a class="story-back" href="index.html">← Torna alla home</a>
       <h1>La nostra storia</h1>
-      <p class="lead">Natura, famiglia e rispetto per le api. Da Conza della Campania, con amore.</p>
+      <p class="story-lead">Natura, famiglia e rispetto per le api. Da Conza della Campania, con amore.</p>
     </div>
   </header>
 
-  <main class="story-main">
-    <!-- Intro ampia, solo testo -->
-    <section class="story-section-min">
-      <div class="container-narrow">
-        <p class="intro">
-          Siamo una famiglia di apicoltori. Il nostro lavoro segue i ritmi delle stagioni e il benessere delle api.
-          Ogni vasetto nasce da piccole scelte quotidiane: pazienza, cura e biodiversità.
+  <main class="story">
+    <!-- Sezione 1 -->
+    <section class="story-row">
+      <div class="story-img">
+        <img src="img/storia-famiglia.jpg" alt="La nostra famiglia al lavoro" loading="lazy">
+      </div>
+      <div class="story-text">
+        <h2>Le radici di famiglia</h2>
+        <div class="story-divider"></div>
+        <p>
+          Vie del Lago nasce come piccola realtà familiare. Abbiamo imparato a
+          osservare i ritmi delle api, rispettando le stagioni e la biodiversità
+          che rende unico il nostro territorio.
+        </p>
+        <p>
+          Ogni scelta — dal posizionamento degli alveari alla raccolta — è fatta
+          con pazienza e cura, senza scorciatoie.
         </p>
       </div>
     </section>
 
-    <!-- Foto orizzontali (opzionale) -->
-    <section class="story-section-min soft">
-      <div class="container-wide gallery-row">
-        <img src="img/storia-1.jpg" alt="Fioriture d'Irpinia" loading="lazy">
-        <img src="img/storia-2.jpg" alt="Le nostre arnie" loading="lazy">
-        <img src="img/storia-3.jpg" alt="Dettagli di favi" loading="lazy">
+    <!-- Sezione 2 (invertita) -->
+    <section class="story-row reverse">
+      <div class="story-img">
+        <img src="img/storia-api.jpg" alt="Dettaglio api e favi" loading="lazy">
+      </div>
+      <div class="story-text">
+        <h2>Il benessere delle api</h2>
+        <div class="story-divider"></div>
+        <p>
+          Le api sono il cuore del nostro lavoro. Proteggiamo le loro colonie e
+          sosteniamo la biodiversità attraverso pratiche sostenibili e non
+          invasive.
+        </p>
+        <p>
+          Selezioniamo postazioni pulite e ricche di fioriture, per mieli che
+          raccontano davvero il paesaggio.
+        </p>
       </div>
     </section>
 
-    <!-- Timeline minimal -->
-    <section class="story-section-min">
-      <div class="container-narrow">
-        <h2 class="h2-min">Il percorso</h2>
-        <div class="divider-min"></div>
-
-        <ol class="timeline-min">
-          <li>
-            <span class="t-year">Le origini</span>
-            <p>I primi alveari: impariamo osservando, senza fretta, nel rispetto dell’ambiente.</p>
-          </li>
-          <li>
-            <span class="t-year">Crescita</span>
-            <p>Più postazioni e fioriture: millefiori, acacia e sulla entrano stabilmente in produzione.</p>
-          </li>
-          <li>
-            <span class="t-year">Oggi</span>
-            <p>Una piccola realtà familiare che unisce tradizione e divulgazione sul ruolo delle api.</p>
-          </li>
-        </ol>
+    <!-- Sezione 3 -->
+    <section class="story-row">
+      <div class="story-img">
+        <img src="img/storia-territorio.jpg" alt="Paesaggi dell'Irpinia" loading="lazy">
       </div>
-
-      <!-- fiore PNG come dettaglio -->
-      <img src="img/fiore-botanico.png" alt="" class="story-flower-min" aria-hidden="true">
-    </section>
-
-    <!-- Valori sintetici (3 colonne, senza box) -->
-    <section class="story-section-min soft">
-      <div class="container-wide values-min">
-        <div>
-          <h3>Sostenibilità</h3>
-          <p>Pratiche rispettose dell’ambiente, cicli naturali, niente trattamenti invasivi.</p>
-        </div>
-        <div>
-          <h3>Qualità</h3>
-          <p>Miele puro, tracciabile, raccolto e invasettato con attenzione artigianale.</p>
-        </div>
-        <div>
-          <h3>Famiglia</h3>
-          <p>Un lavoro fatto insieme, generazione dopo generazione, al servizio delle api.</p>
-        </div>
+      <div class="story-text">
+        <h2>Il territorio</h2>
+        <div class="story-divider"></div>
+        <p>
+          Dalle colline dell’Irpinia ai prati fioriti di Conza della Campania:
+          è qui che i nostri mieli prendono colore, profumo e personalità.
+        </p>
+        <p>
+          Millefiori, Acacia e Sulla sono il racconto della nostra terra, vaso
+          dopo vaso.
+        </p>
       </div>
     </section>
 
-    <!-- CTA finale -->
-    <section class="story-section-min">
-      <div class="container-narrow center">
-        <h2 class="h2-min">Parliamone</h2>
-        <div class="divider-min"></div>
-        <p>Vuoi saperne di più o assaggiare i nostri mieli?</p>
-        <p class="cta-row">
+    <!-- Citazione finale -->
+    <section class="story-quote">
+      <div class="story-quote__inner">
+        <blockquote>
+          <p><em>“Ogni goccia è una stagione: cura, tempo e rispetto.”</em></p>
+        </blockquote>
+        <div class="story-cta">
           <a class="btn-primary" href="mailto:info@viedellago.it?subject=Informazioni%20Vie%20del%20Lago">Scrivici</a>
           <a class="btn-secondary" href="index.html#chi-siamo">Torna ai prodotti</a>
-        </p>
+        </div>
       </div>
+      <!-- Fiore PNG decorativo -->
+      <img src="img/fiore-botanico.png" alt="" class="story-flower" aria-hidden="true">
     </section>
   </main>
 
