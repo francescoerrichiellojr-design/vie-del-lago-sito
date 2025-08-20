@@ -311,101 +311,102 @@ h1, h2, h3, h4 {
 }
 
 /* ==============================
-   Pagina STORIA
+   STORIA — layout editoriale minimal
 ============================== */
 
-/* Hero storia */
-.story-hero{
+/* Hero immagine (metti il tuo file in img/hero-storia.jpg) */
+.bg-hero-storia { background-image: url("img/hero-storia.jpg"); }
+
+.story-hero-min {
   position: relative;
-  min-height: 60vh;
-  display:flex; align-items:flex-end;
-  padding: 120px 10% 80px;
-  color:#fff;
-  background: #999 center/cover no-repeat;
-  overflow:hidden;
+  min-height: 56vh;
+  display: flex; align-items: flex-end;
+  background: #aaa center/cover no-repeat;
+  padding: 96px 10% 72px;
+  color: #fff;
+  overflow: hidden;
 }
-.story-hero::before{
+.story-hero-min::before {
   content:""; position:absolute; inset:0;
-  background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25));
+  background: linear-gradient(180deg, rgba(0,0,0,.42), rgba(0,0,0,.24));
 }
-.story-hero-inner{ position:relative; z-index:1; max-width: 900px; }
-.story-hero .back a{ color:#fff; text-decoration:none; font-weight:600; opacity:.9; }
-.story-hero h1{
-  font-size: clamp(2.2rem, 6vw, 4rem);
-  margin:.2rem 0 .4rem;
+.story-hero-min__inner { position: relative; z-index: 1; max-width: 900px; }
+.story-hero-min .back { display:inline-block; margin-bottom: 10px; opacity:.95; color:#fff; text-decoration:none; }
+.story-hero-min .back:hover { text-decoration: underline; }
+.story-hero-min h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  margin: .2rem 0 .4rem;
   text-transform: uppercase;
   letter-spacing: .5px;
   text-shadow: 0 2px 14px rgba(0,0,0,.35);
 }
-.story-hero .sub{ font-size: clamp(1rem,2.6vw,1.2rem); margin:0; opacity:.95; }
-
-/* Imposta l'immagine di sfondo dell'hero */
-.bg-hero-storia{ background-image: url("img/hero-storia.jpg"); }
+.story-hero-min .lead { font-size: clamp(1rem, 2.6vw, 1.2rem); margin:0; opacity:.96; }
 
 /* Sezioni */
-.story-section{ padding: 64px 10%; background: var(--beige); }
-.story-section.soft{ background: #fff; }
-.story-section .max{ max-width: 1100px; margin: 0 auto; }
-.story-section .center{ text-align: center; }
-.story-section h2{ margin:0 0 8px; }
-.story-section .divider{ width:120px; height:2px; background: var(--honey-yellow); margin: 16px 0 22px; }
-.story-section p{ margin: 0 0 12px; }
+.story-main { background: var(--beige); }
+.story-section-min { padding: 56px 10%; }
+.story-section-min.soft { background: #fff; }
+.container-narrow { max-width: 860px; margin: 0 auto; }
+.container-wide   { max-width: 1200px; margin: 0 auto; }
+.center { text-align: center; }
 
-/* Valori */
-.values{
-  display:grid; gap:22px;
+.intro {
+  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+  line-height: 1.7;
+}
+
+/* Gallery orizzontale */
+.gallery-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.gallery-row img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; }
+
+/* Titoli sottili + divider */
+.h2-min {
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  margin: 0;
+}
+.divider-min { width: 120px; height: 2px; background: var(--honey-yellow); margin: 14px 0 22px; }
+
+/* Timeline minimal (nessun box) */
+.timeline-min { list-style: none; margin: 0; padding: 0; position: relative; }
+.timeline-min::before {
+  content:""; position: absolute; left: 10px; top: 0; bottom: 0;
+  width: 1px; background: rgba(0,0,0,.18);
+}
+.timeline-min li {
+  position: relative; padding-left: 40px; margin: 18px 0 24px;
+}
+.timeline-min li::marker { content: ""; }
+.timeline-min li::after {
+  content:""; position: absolute; left: 6px; top: 4px;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--honey-yellow);
+  box-shadow: 0 0 0 4px rgba(212,160,23,.15);
+}
+.timeline-min .t-year {
+  display: inline-block; font-weight: 600; margin-bottom: 4px; color: var(--dark-brown);
+}
+.timeline-min p { margin: 0; color: var(--dark-brown); }
+
+/* Valori sintetici (senza card) */
+.values-min {
+  display: grid; gap: 20px;
   grid-template-columns: repeat(3, 1fr);
 }
-.value{ background: rgba(255,255,255,.6); border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:18px; }
-.value .ico{ width:40px; height:40px; color: var(--dark-brown); margin-bottom:8px; }
-.value .ico svg{ width:100%; height:100%; stroke-width:1.5; }
+.values-min h3 { margin: 0 0 6px; }
+.values-min p  { margin: 0; }
 
-/* Timeline */
-.timeline{
-  list-style:none; margin:0; padding:0;
-  position:relative;
-}
-.timeline::before{
-  content:""; position:absolute; left:14px; top:0; bottom:0;
-  width:2px; background: rgba(0,0,0,.1);
-}
-.timeline li{
-  position:relative; padding-left:48px; margin: 18px 0 26px;
-}
-.timeline .dot{
-  position:absolute; left:7px; top:3px; width:14px; height:14px;
-  border-radius:50%; background: var(--honey-yellow);
-  box-shadow: 0 0 0 4px rgba(212,160,23,.18);
-}
-.timeline .card{
-  background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:16px 18px;
-}
-
-/* Gallery */
-.grid-photos{
-  display:grid; gap:14px;
-  grid-template-columns: repeat(3, 1fr);
-}
-.grid-photos img{
-  width:100%; height:280px; object-fit:cover; border-radius:12px;
-}
-
-/* CTA row */
-.cta-row{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
-
-/* Fiore decorativo della pagina storia */
-.story-flower{
-  position: fixed; right: 3%; bottom: 3%;
-  width: 220px; height:auto; opacity:.45;
-  pointer-events:none; filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
-  display:none; /* lo mostriamo su desktop grande */
+/* Fiore PNG di dettaglio (delicato, fisso nella sezione timeline) */
+.story-flower-min {
+  position: absolute; right: 3%; bottom: -16px;
+  width: 220px; height: auto; opacity: .45; pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
 }
 
 /* Responsive */
 @media (max-width: 980px){
-  .values{ grid-template-columns: 1fr; }
-  .grid-photos{ grid-template-columns: 1fr; }
-}
-@media (min-width: 1200px){
-  .story-flower{ display:block; }
+  .gallery-row { grid-template-columns: 1fr; }
+  .values-min  { grid-template-columns: 1fr; }
+  .story-flower-min { display: none; }
 }
