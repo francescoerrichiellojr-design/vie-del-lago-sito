@@ -455,3 +455,21 @@ h1, h2, h3, h4 {
     font-size: 2.2rem;
   }
 }
+
+/* ==============================
+   FOOTER
+============================== */
+.site-footer {
+  background: #2F2A26; /* marrone scuro */
+  color: #fff;
+  text-align: center;
+  padding: 32px 10%;
+  font-size: 0.9rem;
+}
+.site-footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+.site-footer a:hover {
+  color: var(--honey-yellow);
+}
