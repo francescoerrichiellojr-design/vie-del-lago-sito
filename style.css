@@ -335,12 +335,15 @@ h1, h2, h3, h4 {
   margin: .2rem 0 .4rem;
   text-transform: uppercase;
   letter-spacing: .5px;
-  text-shadow: 0 2px 14px rgba(0,0,0,.35);
+  text-shadow: 0 2px 14px rgba(0,0,0,.45); /* ombra più marcata */
+  color: #fff; /* sempre bianco */
 }
 .story-lead {
   font-size: clamp(1rem, 2.6vw, 1.25rem);
   margin: 0;
   opacity: .96;
+   color: #fff; /* sempre bianco */
+  text-shadow: 0 2px 14px rgba(0,0,0,.45); /* migliora leggibilità */
 }
 
 /* Sezioni alternate */
