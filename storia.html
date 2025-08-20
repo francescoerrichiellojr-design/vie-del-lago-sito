@@ -12,13 +12,19 @@
 <body>
 
   <!-- HERO -->
-  <header class="story-hero bg-hero-storia" role="banner" aria-label="La nostra storia">
-    <div class="story-hero__inner">
-      <a class="story-back" href="index.html">← Torna alla home</a>
-      <h1>La nostra storia</h1>
-      <p class="story-lead">Natura, famiglia e rispetto per le api. Da Conza della Campania, con amore.</p>
-    </div>
-  </header>
+  <header class="story-hero" role="banner" aria-label="La nostra storia">
+  <video autoplay muted loop playsinline class="story-hero-video" poster="img/storia-fallback.jpg">
+    <source src="img/storia-hero.mp4" type="video/mp4">
+    Il tuo browser non supporta i video HTML5.
+  </video>
+  <div class="story-hero-overlay" aria-hidden="true"></div>
+
+  <div class="story-hero__inner">
+    <a class="story-back" href="index.html">← Torna alla home</a>
+    <h1>La nostra storia</h1>
+    <p class="story-lead">Natura, famiglia e rispetto per le api. Da Conza della Campania, con amore.</p>
+  </div>
+</header>
 
   <main class="story">
     <!-- Sezione 1 -->
