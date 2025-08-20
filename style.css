@@ -479,8 +479,8 @@ h1, h2, h3, h4 {
 }
 
 .social-icon {
-  width: 28px;
-  height: 28px;
+  width: 1.6rem;   /* dimensioni proporzionali */
+  height: 1.6rem;
   vertical-align: middle;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
