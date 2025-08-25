@@ -4,11 +4,18 @@
     window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* 1) Smooth scroll accessibile */
-  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  /* 1) Smooth scroll accessibile (supporta anche index.html#...) */
+  document.querySelectorAll('a[href^="#"], a[href*="index.html#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
-      const hash = a.getAttribute('href');
+      const href = a.getAttribute('href');
+      if (!href) return;
+
+      // Se è un link del tipo "index.html#..." ma non siamo in home, lascia navigare
+      if (href.startsWith('index.html#') && !location.pathname.endsWith('index.html')) return;
+
+      const hash = href.includes('#') ? '#' + href.split('#')[1] : null;
       if (!hash || hash === '#') return;
+
       const target = document.querySelector(hash);
       if (target) {
         e.preventDefault();
@@ -22,8 +29,8 @@
     });
   });
 
-  /* 2) Reveal on scroll */
-  const toReveal = document.querySelectorAll('.about, .quote, .bees');
+  /* 2) Reveal on scroll (aggiunta .p-section) */
+  const toReveal = document.querySelectorAll('.about, .quote, .bees, .p-section');
   toReveal.forEach((el) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(14px)';
@@ -39,7 +46,8 @@
 
   if (!prefersReduced && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver(
-      (entries) => entries.forEach((en) => en.isIntersecting && (reveal(en.target), io.unobserve(en.target))),
+      (entries) =>
+        entries.forEach((en) => en.isIntersecting && (reveal(en.target), io.unobserve(en.target))),
       { threshold: 0.12 }
     );
     toReveal.forEach((el) => io.observe(el));
@@ -93,4 +101,39 @@
   document.querySelectorAll('.btn-secondary').forEach((b) =>
     addRipple(b, 'rgba(212,160,23,0.25)') // honey yellow soft
   );
+})();
+
+// ==============================
+// NAV: hamburger + dropdown accessibile
+// ==============================
+(function(){
+  const navToggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('mainnav');
+
+  if (navToggle && nav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  // Dropdown "Prodotti" su mobile (click) + guardia submenu
+  document.querySelectorAll('.submenu-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const submenu = btn.nextElementSibling;
+      if (!submenu) return;
+      const isOpen = submenu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+
+  // Chiudi menu mobile dopo click su link
+  document.querySelectorAll('#mainnav a').forEach((a) => {
+    a.addEventListener('click', () => {
+      if (nav && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
 })();
