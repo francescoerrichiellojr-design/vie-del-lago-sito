@@ -62,6 +62,39 @@
   </style>
 </head>
 <body>
+<header class="site-header" role="banner">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html" aria-label="Vie del Lago Apicoltura — Home">
+      VIE DEL LAGO
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
+      <span class="sr-only"></span>
+      ☰
+    </button>
+
+    <nav id="mainnav" class="nav" role="navigation">
+      <ul class="menu">
+        <li><a href="index.html#chi-siamo">Chi siamo</a></li>
+        <li><a href="storia.html">La nostra storia</a></li>
+        <li><a href="index.html#api">Le nostre api</a></li>
+        <li><a href="educazione.html">Educazione & Trasparenza</a></li>
+
+        <li class="has-submenu">
+          <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
+          <ul class="submenu">
+            <li><a href="millefiori.html">Miele Millefiori</a></li>
+            <li><a href="acacia.html">Miele di Acacia</a></li>
+            <li><a href="sulla.html">Miele di Sulla</a></li>
+          </ul>
+        </li>
+
+        <li><a href="privacy.html">Privacy & Cookie</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 
   <header class="p-hero">
     <div class="p-hero-inner">
@@ -130,3 +163,8 @@
     </div>
   </div>
 </footer>
+
+<!-- Script per menu mobile -->
+  <script src="script.js"></script>
+</body>
+</html>
