@@ -4,38 +4,52 @@
   <!-- Homepage -->
   <url>
     <loc>https://www.viedellagoapicoltura.it/</loc>
-    <lastmod>2025-08-23</lastmod>
+    <lastmod>2025-08-26</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- Prodotti -->
   <url>
     <loc>https://www.viedellagoapicoltura.it/millefiori.html</loc>
-    <lastmod>2025-08-23</lastmod>
+    <lastmod>2025-08-26</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.viedellagoapicoltura.it/acacia.html</loc>
-    <lastmod>2025-08-23</lastmod>
+    <lastmod>2025-08-26</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.viedellagoapicoltura.it/sulla.html</loc>
-    <lastmod>2025-08-23</lastmod>
+    <lastmod>2025-08-26</lastmod>
     <priority>0.9</priority>
   </url>
 
   <!-- Storia -->
   <url>
     <loc>https://www.viedellagoapicoltura.it/storia.html</loc>
-    <lastmod>2025-08-23</lastmod>
+    <lastmod>2025-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+<!-- Api -->
+<url>
+    <loc>https://www.viedellagoapicoltura.it/api.html</loc>
+    <lastmod>2025-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+<!-- Educazione & Trasparenza -->
+<url>
+    <loc>https://www.viedellagoapicoltura.it/educazione.html</loc>
+    <lastmod>2025-08-26</lastmod>
     <priority>0.8</priority>
   </url>
 
   <!-- Privacy -->
   <url>
     <loc>https://www.viedellagoapicoltura.it/privacy.html</loc>
-    <lastmod>2025-08-23</lastmod>
+    <lastmod>2025-08-26</lastmod>
     <priority>0.5</priority>
   </url>
 

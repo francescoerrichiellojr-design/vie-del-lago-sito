@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti — Vie del Lago Apicoltura</title>
+  <meta name="description" content="Contatta Vie del Lago Apicoltura: scrivici per informazioni sui nostri mieli o vieni a trovarci a Conza della Campania (AV).">
+
+  <!-- Font + CSS globale -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html">VIE DEL LAGO</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">☰</button>
+    <nav id="mainnav" class="nav">
+      <ul class="menu">
+        <li><a href="index.html#">Home</a></li>
+        <li><a href="storia.html">La nostra storia</a></li>
+        <li><a href="api.html">Le nostre api</a></li>
+        <li><a href="educazione.html">Educazione & Trasparenza</a></li>
+        <li class="has-submenu">
+          <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
+          <ul class="submenu">
+            <li><a href="millefiori.html">Miele Millefiori</a></li>
+            <li><a href="acacia.html">Miele di Acacia</a></li>
+            <li><a href="sulla.html">Miele di Sulla</a></li>
+          </ul>
+        </li>
+        <li><a href="privacy.html">Privacy & Cookie</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<header class="story-hero" style="background:url('img/hero-contatti.jpeg') center/cover no-repeat;">
+  <div class="story-hero__inner">
+    <a class="story-back" href="index.html">← Torna alla home</a>
+    <h1>Contatti</h1>
+    <p class="story-lead">Scrivici o vieni a trovarci a Conza della Campania</p>
+  </div>
+</header>
+
+<main>
+  <!-- SEZIONE CONTATTI -->
+  <section class="p-section">
+    <h2>Come contattarci</h2>
+    <div class="p-divider"></div>
+    <p><strong>Indirizzo:</strong> Via Contrada Pescara, 74 — 83040 Conza della Campania (AV)</p>
+    <p><strong>Email:</strong> <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
+    
+  </section>
+
+  <!-- MAPPA -->
+  <section class="p-section">
+    <h2>Dove trovarci</h2>
+    <div class="p-divider"></div>
+    <iframe src="https://www.google.com/maps?q=Via+Contrada+Pescara+74+Conza+della+Campania&output=embed" width="100%" height="400" style="border:0;" allowfullscreen></iframe>
+  </section>
+
+  <!-- FORM -->
+  <section class="p-section">
+    <h2>Scrivici</h2>
+    <div class="p-divider"></div>
+    <form class="contact-form" action="mailto:info@viedellagoapicoltura.it" method="post" enctype="text/plain">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="messaggio">Messaggio</label>
+      <textarea id="messaggio" name="messaggio" rows="5" required></textarea>
+
+      <button type="submit" class="btn-primary">Invia</button>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p><strong>Vie del Lago Apicoltura</strong></p>
+    <p>Via Contrada Pescara, 74 - 83040 Conza della Campania (AV)</p>
+    <p>P.IVA 10819081216</p>
+    <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
+    <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
+    <!-- Icona social -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+        <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

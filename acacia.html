@@ -64,9 +64,44 @@
   </style>
 </head>
 <body>
+<header class="site-header" role="banner">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html" aria-label="Vie del Lago Apicoltura — Home">
+      VIE DEL LAGO
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
+      <span class="sr-only"></span>
+      ☰
+    </button>
+
+    <nav id="mainnav" class="nav" role="navigation">
+      <ul class="menu">
+        <li><a href="index.html#">Home</a></li>
+        <li><a href="storia.html">La nostra storia</a></li>
+        <li><a href="api.html">Le nostre api</a></li>
+        <li><a href="educazione.html">Educazione & Trasparenza</a></li>
+
+        <li class="has-submenu">
+          <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
+          <ul class="submenu">
+            <li><a href="millefiori.html">Miele Millefiori</a></li>
+            <li><a href="acacia.html">Miele di Acacia</a></li>
+            <li><a href="sulla.html">Miele di Sulla</a></li>
+          </ul>
+        </li>
+
+        <li><a href="privacy.html">Privacy & Cookie</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 
   <header class="p-hero">
     <div class="p-hero-inner">
+      <a class="story-back" href="index.html">← Torna alla home</a>
       <h1>Miele di Acacia</h1>
       <p class="p-sub">Chiaro, delicato e naturalmente dolce: il miele che piace a tutti.</p>
       <a class="btn-primary"
@@ -132,4 +167,9 @@
     </div>
   </div>
 </footer>
+
+<!-- Script per menu mobile -->
+  <script src="script.js"></script>
+</body>
+</html>
 
