@@ -474,3 +474,42 @@ h1, h2, h3, h4 {
   justify-self: start;
 }
 
+/* ===== Contatti: link e form ===== */
+.contact a {
+  color: var(--dark-brown);
+  font-weight: 600;
+  text-decoration: underline;
+}
+.contact a:hover {
+  color: var(--honey-yellow);
+}
+
+/* (opzionale) rifiniture del form */
+.contact .contact-form {
+  max-width: 640px;
+  margin-top: 12px;
+}
+.contact .contact-form label {
+  display: block;
+  font-weight: 600;
+  margin: 14px 0 6px;
+}
+.contact .contact-form input,
+.contact .contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04) inset;
+}
+.contact .contact-form input:focus,
+.contact .contact-form textarea:focus {
+  outline: 2px solid rgba(212,160,23,.35);
+  border-color: rgba(212,160,23,.55);
+}
+.contact .contact-form button {
+  margin-top: 14px;
+}
+
