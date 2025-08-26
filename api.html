@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Le nostre api — Vie del Lago Apicoltura</title>
+  <meta name="description" content="Conosci l’Apis mellifera ligustica: la sottospecie italiana dalle tinte dorate, mite e produttiva. La nostra filosofia e le buone pratiche per il benessere dell’alveare.">
+
+  <!-- Font + CSS globali -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Stili specifici pagina “Le nostre api” -->
+  <style>
+  /* HERO — stesso look della home */
+  .api-hero{
+    position: relative;
+    min-height: 62vh;
+    padding: 120px 10% 84px;
+    display: flex; align-items: flex-end;
+    color:#fff; overflow: hidden;
+    /* fallback beige + immagine, come la home */
+    background: var(--beige) url("img/hero-api.jpeg") center/cover no-repeat;
+  }
+  .api-hero::before{
+    content:""; position:absolute; inset:0;
+    /* identico alla home */
+    background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35));
+  }
+  .api-hero .hero-inner{ position: relative; z-index:1; max-width: 980px; }
+  .api-hero h1{
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    margin:.2rem 0 .4rem; text-transform: uppercase; letter-spacing:.5px;
+    color:#fff;
+    text-shadow: 0 2px 14px rgba(0,0,0,.45); /* come index */
+  }
+  .api-lead{
+    font-size: clamp(1rem, 2.6vw, 1.25rem);
+    margin:0; opacity:.96; color:#fff;
+    text-shadow: 0 2px 14px rgba(0,0,0,.45); /* come index */
+  }
+
+  /* Sezioni su beige brand (già in linea con il sito) */
+  .api-section{ padding: 64px 10%; background: var(--beige); color: var(--brown); }
+  .api-intro{ max-width: 980px; margin: 0 auto 26px; }
+  .api-intro h2{
+    margin:0 0 10px; text-transform: uppercase; letter-spacing:.4px;
+    font-family: 'Playfair Display', serif;
+  }
+  .api-divider{ width:120px; height:2px; background: var(--honey-yellow); margin: 12px 0 18px; }
+
+  /* Card caratteristiche */
+  .api-grid{
+    display:grid; grid-template-columns: repeat(4,1fr);
+    gap:22px; max-width: 1200px; margin: 0 auto;
+  }
+  .api-card{
+    background:#fff; border-radius:14px; padding:22px;
+    box-shadow:0 10px 24px rgba(0,0,0,.08);
+    display:grid; gap:8px;
+  }
+  .api-card h3{ margin:6px 0 4px; font-size:1.05rem; }
+  .api-card p{ margin:0; font-size:.98rem; opacity:.95; }
+  .icon{ width:42px; height:42px; color:var(--brown); }
+  .icon *{ stroke:currentColor; fill:none; stroke-width:1.5; }
+
+  /* Ruoli della colonia */
+  .roles{
+    display:grid; grid-template-columns: repeat(3,1fr);
+    gap:22px; max-width: 1200px; margin: 0 auto;
+  }
+  .role{
+    background:#fff; border-radius:14px; padding:22px;
+    box-shadow:0 10px 24px rgba(0,0,0,.08);
+  }
+  .role h3{ margin:6px 0 8px; }
+  .role p{ margin:0; }
+
+  /* Ciclo stagionale */
+  .season{
+    display:grid; grid-template-columns: 1fr 1fr; gap:32px; align-items:center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .season-illust{ max-width:520px; width:100%; height:auto; opacity:.65; }
+  .timeline{ position:relative; padding-left:32px; }
+  .timeline::before{
+    content:""; position:absolute; left:10px; top:6px; bottom:6px;
+    width:2px; background:rgba(0,0,0,.12);
+  }
+  .step{ position:relative; margin:0 0 16px; }
+
+  .step h4{ margin:0 0 4px; font-size:1.02rem; }
+  .step p{ margin:0; opacity:.95; }
+
+  /* Buone pratiche */
+  .checks{
+    display:grid; grid-template-columns: repeat(2,1fr); gap:14px 22px;
+    max-width: 1000px; margin: 0 auto;
+  }
+  .check{ display:flex; gap:10px; align-items:flex-start; }
+  .tick{ width:20px; height:20px; color:var(--honey-yellow); }
+  .tick *{ stroke:currentColor; fill:none; stroke-width:2.2; }
+
+  /* CTA finale */
+  .api-cta{ background: var(--beige); padding: 64px 10% 80px; text-align:center; }
+  .api-cta p{ margin:0 auto 18px; max-width:760px; font-size:1.1rem; }
+  .btn-wrap{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+  /* Responsive */
+  @media (max-width:1100px){
+    .api-grid{ grid-template-columns: repeat(2,1fr); }
+    .roles{ grid-template-columns: 1fr; }
+    .season{ grid-template-columns: 1fr; }
+  }
+  @media (max-width:680px){
+    .api-grid{ grid-template-columns: 1fr; }
+    .checks{ grid-template-columns: 1fr; }
+    .season-illust{ display:none; }
+  }
+</style>
+
+</head>
+<body>
+
+  <!-- HEADER / NAV (riusa lo stile globale) -->
+  <header class="site-header" role="banner">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html" aria-label="Vie del Lago Apicoltura — Home">
+      VIE DEL LAGO
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
+      <span class="sr-only"></span>
+      ☰
+    </button>
+
+    <nav id="mainnav" class="nav" role="navigation">
+      <ul class="menu">
+        <li><a href="index.html#">Home</a></li>
+        <li><a href="storia.html">La nostra storia</a></li>
+        <li><a href="api.html">Le nostre api</a></li>
+        <li><a href="educazione.html">Educazione & Trasparenza</a></li>
+
+        <li class="has-submenu">
+          <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
+          <ul class="submenu">
+            <li><a href="millefiori.html">Miele Millefiori</a></li>
+            <li><a href="acacia.html">Miele di Acacia</a></li>
+            <li><a href="sulla.html">Miele di Sulla</a></li>
+          </ul>
+        </li>
+
+        <li><a href="privacy.html">Privacy & Cookie</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <!-- HERO -->
+  <header class="api-hero">
+    <div class="hero-inner">
+      <h1>Le nostre api</h1>
+      <p class="api-lead">Apis mellifera ligustica, la sottospecie italiana: mitezza, adattabilità e mieli dal carattere unico.</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- CARATTERISTICHE -->
+    <section class="api-section">
+      <div class="api-intro">
+        <h2>Caratteristiche della ligustica</h2>
+        <div class="api-divider"></div>
+        <p>È riconoscibile dalle fasce addominali giallo-oro, dall’indole docile e dall’ottimo sviluppo primaverile. Qui i punti che la rendono ideale per la nostra apicoltura familiare.</p>
+      </div>
+
+      <div class="api-grid">
+        <article class="api-card">
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="16"/><path d="M18 24h12M24 18v12"/>
+          </svg>
+          <h3>Mitezza</h3>
+          <p>Gestione serena dell’apiario e visite più agevoli grazie alla spiccata docilità.</p>
+        </article>
+
+        <article class="api-card">
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M10 30c4-6 8-10 14-10s10 4 14 10"/><path d="M18 22l-4-4M30 22l4-4"/>
+          </svg>
+          <h3>Adattabilità</h3>
+          <p>Si adatta bene a climi e fioriture differenti, mantenendo costanza produttiva.</p>
+        </article>
+
+        <article class="api-card">
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M16 20l8-6 8 6v8l-8 6-8-6z"/><path d="M16 28l8-6 8 6"/>
+          </svg>
+          <h3>Buona produttività</h3>
+          <p>Sviluppo vivace in primavera e raccolti regolari quando le condizioni lo permettono.</p>
+        </article>
+
+        <article class="api-card">
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="14"/><path d="M18 24l4 4 8-8"/>
+          </svg>
+          <h3>Comportamento igienico</h3>
+          <p>Nidi puliti e vitali: un aiuto naturale alla salute della colonia.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- RUOLI -->
+    <section class="api-section">
+      <div class="api-intro">
+        <h2>Ruoli nella colonia</h2>
+        <div class="api-divider"></div>
+      </div>
+
+      <div class="roles">
+        <article class="role">
+          <h3>Regina</h3>
+          <p>Madre dell’alveare, depone fino a migliaia di uova al giorno in alta stagione e guida la colonia con i feromoni.</p>
+        </article>
+        <article class="role">
+          <h3>Operaia</h3>
+          <p>La forza dell’alveare: nutrice, costruttrice, ventilatrice e bottinatrice, a seconda dell’età.</p>
+        </article>
+        <article class="role">
+          <h3>Fuchi</h3>
+          <p>Maschi della colonia: il loro compito principale è l’accoppiamento con regine vergini durante i voli nuziali.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CICLO STAGIONALE -->
+    <section class="api-section">
+      <div class="api-intro">
+        <h2>Il ciclo stagionale</h2>
+        <div class="api-divider"></div>
+        <p>Dalla ripartenza primaverile al riposo invernale, seguiamo i loro ritmi per intervenire con misura e rispetto.</p>
+      </div>
+
+      <div class="season">
+  <div class="timeline">
+    <div class="step">
+      <h4>Primavera</h4>
+      <p>Crescita del nido e raccolte precoci: controlli regolari e spazio per la covata.</p>
+    </div>
+    <div class="step">
+      <h4>Inizio estate</h4>
+      <p>Piene fioriture: melari, prevenzione della sciamatura e smielature mirate.</p>
+    </div>
+    <div class="step">
+      <h4>Fine estate</h4>
+      <p>Valutazioni sanitarie e nutrizione di supporto dove serve.</p>
+    </div>
+    <div class="step">
+      <h4>Autunno / Inverno</h4>
+      <p>Riduzione delle attività, scorte adeguate e riposo dell’alveare.</p>
+    </div>
+  </div>
+</div>
+
+    </section>
+
+    <!-- BUONE PRATICHE -->
+    <section class="api-section">
+      <div class="api-intro">
+        <h2>Le nostre buone pratiche</h2>
+        <div class="api-divider"></div>
+      </div>
+
+      <div class="checks">
+        <div class="check">
+          <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
+          <p>Visite programmate e interventi non invasivi.</p>
+        </div>
+        <div class="check">
+          <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
+          <p>Postazioni pulite e lontane da contaminanti.</p>
+        </div>
+        <div class="check">
+          <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
+          <p>Rispetto delle scorte: prima il benessere dell’alveare.</p>
+        </div>
+        <div class="check">
+          <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
+          <p>Tracciabilità e controlli di qualità su ogni lotto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="api-cta">
+      <p><em>Il miele migliore nasce da api in salute e da mani che le rispettano.</em></p>
+      <div class="btn-wrap">
+        <a class="btn-primary" href="index.html#chi-siamo">Vai ai prodotti</a>
+        <a class="btn-secondary" href="mailto:info@viedellagoapicoltura.it">Scrivici</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p><strong>Vie del Lago Apicoltura</strong></p>
+      <p>Via Contrada Pescara, 74 - 83040 Conza della Campania (AV)</p>
+      <p>P.IVA 10819081216</p>
+      <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
+      <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+          <img class="social-icon" src="img/instagram-icon.svg" alt="">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
