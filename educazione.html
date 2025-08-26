@@ -20,9 +20,10 @@
       gap: 24px; max-width: var(--edu-max); margin: 0 auto;
     }
     .edu-card{
-      background: var(--beige);
+      background: #fff;
       border: 1px solid rgba(0,0,0,.08);
-      border-radius: 12px;
+      border-radius: 14px;
+      box-shadow:0 10px 24px rgba(0,0,0,.08);
       padding: 18px 18px 20px;
       display: grid; gap: 8px;
     }
@@ -97,9 +98,9 @@
 
     <nav id="mainnav" class="nav" role="navigation">
       <ul class="menu">
-        <li><a href="index.html#chi-siamo">Chi siamo</a></li>
+        <li><a href="index.html#">Home</a></li>
         <li><a href="storia.html">La nostra storia</a></li>
-        <li><a href="index.html#api">Le nostre api</a></li>
+        <li><a href="api.html">Le nostre api</a></li>
         <li><a href="educazione.html">Educazione & Trasparenza</a></li>
 
         <li class="has-submenu">
@@ -224,7 +225,7 @@
     <section class="p-section">
       <div class="edu-data">
         <div class="data-head">
-          <h3 class="p-h2" style="margin:0; text-transform:none;">Trasparenza dati</h3>
+          <h3 class="p-h2" style="margin:0; text-transform:none;">Arnia Priscilla - Conza della Campania</h3>
           <span class="badge">Coming soon • API 3Bee</span>
         </div>
 
@@ -266,23 +267,26 @@
     </section>
   </main>
 
-  <!-- Footer (riusa .site-footer già esistente) -->
+  <!-- altre sezioni del sito -->
+
   <footer class="site-footer">
     <div class="footer-inner">
       <p><strong>Vie del Lago Apicoltura</strong></p>
       <p>Via Contrada Pescara, 74 - 83040 Conza della Campania (AV)</p>
       <p>P.IVA 10819081216</p>
-      <p>Email: <a href="mailto:info@viedellago.it">info@viedellago.it</a></p>
+      <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
       <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
-      <div class="social-links">
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-          <img class="social-icon" src="img/instagram.svg" alt="">
-        </a>
-      </div>
-    </div>
-  </footer>
 
-  <!-- Script per menu mobile -->
+      <!-- Icona social -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+        <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- Script per menu mobile -->
   <script src="script.js"></script>
 </body>
 </html>
