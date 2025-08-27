@@ -68,6 +68,19 @@
     .spark{ width:100%; height:40px; margin-top:8px; }
     .spark polyline{ fill:none; stroke: var(--honey-yellow); stroke-width:2; }
 
+    /* Widget 3Bee: wrapper centrato e stesso max width delle sezioni */
+    .edu-widget{
+      max-width: var(--edu-max);
+      margin: 0 auto;
+    }
+    .edu-widget iframe{
+      width: 100%; height: 600px; border: 0;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      background-color: transparent;
+      display: block;
+    }
+
     /* CTA finale */
     .edu-cta{ background:#fff; border-radius:14px; padding:28px 24px; max-width: var(--edu-max); margin:0 auto; text-align:center; box-shadow:0 6px 14px rgba(0,0,0,.08); }
     .edu-cta p{ margin:0 0 16px; font-size:1.1rem; }
@@ -78,9 +91,11 @@
       .edu-grid{ grid-template-columns: 1fr; }
       .steps-grid{ grid-template-columns: repeat(2,1fr); }
       .data-grid{ grid-template-columns: 1fr; }
+      .edu-widget iframe{ height: 520px; }
     }
     @media (max-width: 560px){
       .steps-grid{ grid-template-columns: 1fr; }
+      .edu-widget iframe{ height: 460px; }
     }
   </style>
 </head>
@@ -118,7 +133,6 @@
     </nav>
   </div>
 </header>
-
 
   <!-- HERO in stile prodotto (riusa .p-hero) -->
   <header class="p-hero" style="background-image: url('img/hero-educazione.jpeg');">
@@ -251,8 +265,6 @@
     </section>
   </main>
 
-  <!-- altre sezioni del sito -->
-
   <footer class="site-footer">
     <div class="footer-inner">
       <p><strong>Vie del Lago Apicoltura</strong></p>
@@ -261,16 +273,15 @@
       <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
       <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
 
-      <!-- Icona social -->
-    <div class="social-links">
-      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
-        <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
-      </a>
+      <div class="social-links">
+        <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+          <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
+        </a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Script per menu mobile -->
+  <!-- Script per menu mobile -->
   <script src="script.js"></script>
 </body>
 </html>
