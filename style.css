@@ -591,3 +591,5 @@ h1, h2, h3, h4 {
 @media (max-width: 560px){
   .month-grid{ grid-template-columns: repeat(2,1fr); }
 }
+
+.care-card p { margin: 0 0 10px; }
