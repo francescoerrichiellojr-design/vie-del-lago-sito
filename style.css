@@ -519,3 +519,75 @@ h1, h2, h3, h4 {
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
+/* ===== Educazione: Cura & Benessere ===== */
+.badge-bio{
+  display:inline-block;
+  margin-left:.5rem;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:.85rem;
+  background: rgba(212,160,23,.12);
+  color: var(--dark-brown);
+  border: 1px solid rgba(212,160,23,.35);
+  white-space: nowrap;
+}
+
+.care-grid{
+  max-width:1100px;
+  margin: 0 auto 18px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:20px;
+}
+.care-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  box-shadow:0 10px 24px rgba(0,0,0,.08);
+  padding:18px 18px 20px;
+}
+.care-title{ margin:4px 0 6px; font-size:1.05rem; }
+.care-text{ margin:0; opacity:.95; }
+
+.care-year{ max-width:1100px; margin: 22px auto 10px; }
+.care-sub{ margin:0 0 10px; font-size:1.05rem; font-weight:700; letter-spacing:.2px; }
+.month-grid{
+  list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns: repeat(6,1fr);
+  gap:10px;
+}
+.month-grid li{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:12px;
+  padding:10px 12px;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+  display:grid; gap:2px;
+}
+.month-grid li strong{ color:var(--dark-brown); }
+.month-grid li span{ opacity:.9; font-size:.94rem; }
+
+.care-faq{ max-width:900px; margin: 18px auto 0; }
+.faq{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:12px;
+  padding:10px 14px;
+  box-shadow:0 6px 14px rgba(0,0,0,.06);
+  margin-bottom:10px;
+}
+.faq > summary{
+  cursor:pointer; font-weight:700; color:var(--dark-brown);
+  list-style:none; /* rimuove il marker */
+}
+.faq[open] > summary{ color: var(--honey-yellow); }
+.faq > p{ margin:8px 0 0; }
+
+/* responsive */
+@media (max-width: 980px){
+  .care-grid{ grid-template-columns: 1fr; }
+  .month-grid{ grid-template-columns: repeat(3,1fr); }
+}
+@media (max-width: 560px){
+  .month-grid{ grid-template-columns: repeat(2,1fr); }
+}
