@@ -68,19 +68,6 @@
     .spark{ width:100%; height:40px; margin-top:8px; }
     .spark polyline{ fill:none; stroke: var(--honey-yellow); stroke-width:2; }
 
-    /* Widget 3Bee: wrapper centrato e stesso max width delle sezioni */
-    .edu-widget{
-      max-width: var(--edu-max);
-      margin: 0 auto;
-    }
-    .edu-widget iframe{
-      width: 100%; height: 600px; border: 0;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-      background-color: transparent;
-      display: block;
-    }
-
     /* CTA finale */
     .edu-cta{ background:#fff; border-radius:14px; padding:28px 24px; max-width: var(--edu-max); margin:0 auto; text-align:center; box-shadow:0 6px 14px rgba(0,0,0,.08); }
     .edu-cta p{ margin:0 0 16px; font-size:1.1rem; }
@@ -91,11 +78,9 @@
       .edu-grid{ grid-template-columns: 1fr; }
       .steps-grid{ grid-template-columns: repeat(2,1fr); }
       .data-grid{ grid-template-columns: 1fr; }
-      .edu-widget iframe{ height: 520px; }
     }
     @media (max-width: 560px){
       .steps-grid{ grid-template-columns: 1fr; }
-      .edu-widget iframe{ height: 460px; }
     }
   </style>
 </head>
@@ -134,6 +119,7 @@
   </div>
 </header>
 
+
   <!-- HERO in stile prodotto (riusa .p-hero) -->
   <header class="p-hero" style="background-image: url('img/hero-educazione.jpeg');">
     <div class="p-hero-inner">
@@ -144,6 +130,54 @@
   </header>
 
   <main class="p-main">
+<!-- KPI / NUMERI CHIAVE -->
+<section class="kpi-grid" aria-label="Indicatori chiave">
+  <div class="container">
+    <ul class="kpi-list">
+      <li class="kpi-card" aria-label="Famiglie monitorate">
+        <span class="kpi-label">Famiglie monitorate</span>
+        <span class="kpi-value" id="kpiFamiglie">—</span>
+      </li>
+      <li class="kpi-card" aria-label="Peso medio alveare">
+        <span class="kpi-label">Peso medio alveare</span>
+        <span class="kpi-value" id="kpiPeso">—</span>
+      </li>
+      <li class="kpi-card" aria-label="Temperatura media nido">
+        <span class="kpi-label">Temperatura media (nido)</span>
+        <span class="kpi-value" id="kpiTemp">—</span>
+      </li>
+      <li class="kpi-card" aria-label="Umidità media nido">
+        <span class="kpi-label">Umidità media (nido)</span>
+        <span class="kpi-value" id="kpiUmi">—</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="widget-3bee" aria-labelledby="bee-widget-title">
+  <div class="container grid-2">
+    <div>
+      <h2 id="bee-widget-title">Monitoraggio in tempo reale</h2>
+      <p class="muted">
+        Il widget mostra peso, temperatura e umidità rilevati in apiario.
+        <strong>Suggerimento:</strong> picchi o cali del peso possono indicare raccolti di nettare
+        o periodi di scarsa fioritura.
+      </p>
+      <a class="btn-outline" href="https://www.3bee.com" target="_blank" rel="noopener">Scopri 3Bee</a>
+    </div>
+    <div class="frame-wrap" role="region" aria-label="Dati in tempo reale dall’apiario">
+      <!-- Inserisci qui il tuo iframe 3Bee, ad es.: -->
+      <iframe
+    src="https://3bee.com/en/owner/francescoerrichiello/monitoring/site/75057/widgets/field-observations/?variant=dark"
+    title="3Bee – Osservazioni in campo"
+    loading="lazy"
+    allowtransparency="true"
+    style="width:100%; height:100%; border:0; background-color: transparent;">
+  </iframe>
+    </div>
+  </div>
+</section>
+
     <!-- VALORI -->
     <section class="p-section">
       <div class="edu-intro" style="text-align:center; max-width:1100px; margin:0 auto 26px;">
@@ -237,118 +271,6 @@
       </div>
     </section>
 
-     <!-- CURA E BENESSERE DELLE API -->
-<section class="p-section" id="cura-api">
-  <div class="edu-intro" style="text-align:center; max-width:1100px; margin:0 auto 22px;">
-    <h2 class="p-h2" style="text-transform:uppercase; letter-spacing:.4px; margin:0;">
-      Cura & Benessere delle Api
-    </h2>
-    <div class="p-divider" style="margin:12px auto 16px;"></div>
-    <p style="margin:0; opacity:.95;">
-      Conduzione ispirata al biologico: rispetto dell’alveare, pratiche naturali e tracciabilità.
-      <span class="badge-bio" aria-label="Pratiche biologiche in corso">Pratiche biologiche in corso</span>
-    </p>
-  </div>
-
-  <!-- 3 pilastri -->
-  <div class="care-grid">
-    <article class="care-card">
-  <h3 class="care-title">Varroa, prevenzione e trattamenti</h3>
-  <p class="care-text">
-    Monitoriamo regolarmente la presenza della <em>Varroa destructor</em> e interveniamo solo quando necessario,
-    utilizzando esclusivamente sostanze ammesse in apicoltura biologica.
-    La nostra gestione si basa su un approccio scientifico, sempre aggiornato alla letteratura più recente:
-    i trattamenti con <strong>acido ossalico</strong> e, in rotazione, con <strong>acido formico</strong>,
-    vengono eseguiti in modo mirato e non secondo un calendario fisso.
-  </p>
-  <p class="care-text">
-    Questa strategia ci consente di mantenere l’infestazione <strong>stabilmente al di sotto dell’1%</strong>,
-    riducendo al minimo lo stress per le api e garantendo famiglie sane e vitali durante tutto l’anno.
-  </p>
-</article>
-
-
-    <article class="care-card">
-  <h3 class="care-title">Alimentazione responsabile</h3>
-  <p class="care-text">
-    Gestiamo le famiglie in modo che possano contare sulle proprie scorte naturali, ma in alcune annate
-    l’alimentazione di supporto diventa indispensabile a causa dei <strong>cambiamenti climatici</strong>
-    (periodi di siccità o fioriture anticipate).
-  </p>
-  <p class="care-text">
-    Quando necessario, interveniamo con <strong>sciroppo o candito</strong>, sempre con un unico obiettivo:
-    assicurare la sopravvivenza e il benessere delle colonie. Le famiglie alimentate artificialmente
-    <strong>non vengono destinate alla produzione commerciale</strong>, quindi il miele in vendita proviene
-    esclusivamente da arnie che hanno raccolto in autonomia.
-  </p>
-</article>
-
-
-    <article class="care-card">
-  <h3 class="care-title">Qualità &amp; tracciabilità</h3>
-  <p class="care-text">
-    Nessun antibiotico né molecole di sintesi: la salute delle api viene tutelata esclusivamente con
-    <strong>metodi naturali</strong> e ammessi in biologico. Ogni lotto di miele è tracciato con rigore:
-    annotiamo <strong>postazioni degli apiari</strong>, <strong>fioriture prevalenti</strong> e
-    <strong>interventi eseguiti</strong>, costruendo un vero e proprio “diario” dell’alveare.
-    Questo approccio, unito a <strong>controlli analitici</strong>, ci consente di offrire un miele puro,
-    sicuro e completamente rintracciabile, con dati verificabili che raccontano la storia di ogni raccolto.
-  </p>
-</article>
-
-  </div>
-
-  <!-- Timeline operativa (anno apiario) -->
-  <div class="care-year">
-    <h3 class="care-sub">Il nostro anno in apiario</h3>
-    <ul class="month-grid" aria-label="Attività principali per mese">
-      <li><strong>Gen</strong><span>Valutazioni invernali, blocchi covata</span></li>
-      <li><strong>Feb</strong><span>Controlli scorte, pulizia fondi</span></li>
-      <li><strong>Mar</strong><span>Visite di ripartenza, pareggi</span></li>
-      <li><strong>Apr</strong><span>Prevenzione sciamatura, melari</span></li>
-      <li><strong>Mag</strong><span>Smielature selettive</span></li>
-      <li><strong>Giu</strong><span>Monitoraggio varroa, bilanci famiglie</span></li>
-      <li><strong>Lug</strong><span>Controlli sanitari, melari</span></li>
-      <li><strong>Ago</strong><span>Trattamenti estivi mirati</span></li>
-      <li><strong>Set</strong><span>Valutazione scorte, nutrizione di supporto se serve</span></li>
-      <li><strong>Ott</strong><span>Bilancio alveari, restringimenti</span></li>
-      <li><strong>Nov</strong><span>Trattamenti a covata ridotta</span></li>
-      <li><strong>Dic</strong><span>Riposo invernale, controlli di routine</span></li>
-    </ul>
-  </div>
-
-  <!-- FAQ -->
-  <div class="care-faq">
-    <h3 class="care-sub">Domande frequenti</h3>
-
-    <details class="faq">
-      <summary>Perché non siete ancora certificati bio?</summary>
-      <p>
-        Il percorso di certificazione richiede tempo, investimenti e procedure rigorose.
-        <strong>Già oggi</strong> adottiamo standard ispirati al biologico; stiamo completando la
-        documentazione e la strutturazione dei controlli interni per presentarci all’ente certificatore con una
-        gestione solida e trasparente.
-      </p>
-    </details>
-  </div>
-</section>
-
-    <!-- MONITORAGGIO 3BEE (widget ufficiale) -->
-    <section class="p-section">
-      <div class="edu-intro" style="text-align:center; max-width:1100px; margin:0 auto 20px;">
-        <h2 class="p-h2" style="text-transform:uppercase; letter-spacing:.4px; margin:0;">Monitoraggio in tempo reale</h2>
-        <div class="p-divider" style="margin:12px auto 16px;"></div>
-        <p style="margin:0; opacity:.95;">Grazie alla collaborazione con <strong>3Bee</strong>, puoi osservare in tempo reale alcune osservazioni dal campo.</p>
-      </div>
-
-      <div class="edu-widget">
-        <iframe
-          src="https://3bee.com/en/owner/francescoerrichiello/monitoring/site/75057/widgets/field-observations/?variant=dark"
-          allowtransparency="true">
-        </iframe>
-      </div>
-    </section>
-
     <!-- CTA finale -->
     <section class="p-section" style="padding-top:0;">
       <div class="edu-cta">
@@ -359,7 +281,67 @@
         </div>
       </div>
     </section>
+  
+
+<!-- TIMELINE EDUCATIVA -->
+<section class="edu-timeline" aria-labelledby="timeline-title">
+  <div class="container">
+    <h2 id="timeline-title">La vita nell’alveare</h2>
+    <ol class="timeline">
+      <li>
+        <h4>Primavera — fioriture</h4>
+        <p>Aumento del peso: le api portano nettare e polline. Picchi positivi nei grafici di peso.</p>
+      </li>
+      <li>
+        <h4>Estate — raccolta</h4>
+        <p>Temperatura del nido intorno ai 35&nbsp;°C. Umidità controllata per maturare il miele.</p>
+      </li>
+      <li>
+        <h4>Autunno — scorte</h4>
+        <p>Riduzione dei voli. Si valutano riserve e salute della colonia.</p>
+      </li>
+      <li>
+        <h4>Inverno — riposo</h4>
+        <p>Cluster termico; dati più piatti. Interventi minimi per evitare stress.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="edu-cta" aria-labelledby="cta-title">
+  <div class="container">
+    <h2 id="cta-title">Ricevi aggiornamenti educativi</h2>
+    <p class="lead">Una volta al mese, consigli sul miele e insight dalle nostre arnie.</p>
+    <form class="cta-form" action="/iscrizione-newsletter" method="post" aria-label="Iscrizione newsletter">
+      <label class="sr-only" for="ctaEmail">Email</label>
+      <input id="ctaEmail" name="email" type="email" placeholder="La tua email" required autocomplete="email" />
+      <button type="submit" class="btn-primary">Iscrivimi</button>
+    </form>
+  </div>
+</section>
+
+
+  <section class="charts-edu" aria-labelledby="timeseries-title">
+  <div class="container">
+    <h2 id="timeseries-title">Andamento apiario (Arnia Priscilla)</h2>
+    <div class="chart-block" aria-label="Peso totale giornaliero">
+      <h3>Peso totale — media giornaliera</h3>
+      <div class="chart-wrapper"><canvas id="chartWeightTrend" role="img" aria-label="Andamento peso totale"></canvas></div>
+      <p class="chart-note">Dati: media giornaliera del peso totale per la singola arnia monitorata.</p>
+    </div>
+    <div class="chart-block" aria-label="Temperatura del nido giornaliera">
+      <h3>Temperatura del nido — media giornaliera</h3>
+      <div class="chart-wrapper"><canvas id="chartTempTrend" role="img" aria-label="Andamento temperatura"></canvas></div>
+    </div>
+    <div class="chart-block" aria-label="Umidità del nido giornaliera">
+      <h3>Umidità del nido — media giornaliera</h3>
+      <div class="chart-wrapper"><canvas id="chartHumTrend" role="img" aria-label="Andamento umidità"></canvas></div>
+    </div>
+  </div>
+</section>
   </main>
+
+  <!-- altre sezioni del sito -->
 
   <footer class="site-footer">
     <div class="footer-inner">
@@ -369,15 +351,100 @@
       <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
       <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
 
-      <div class="social-links">
-        <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
-          <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
-        </a>
-      </div>
+      <!-- Icona social -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+        <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
+      </a>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- Script per menu mobile -->
+<!-- Chart.js prima di script.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="script.js"></script>
+
+<script>
+// --- Diagnostica + Fallback grafici serie temporali ---
+(function(){
+  // 1) Check Chart.js
+  if (!window.Chart) {
+    console.error('[Vie del Lago] Chart.js non caricato.');
+    return;
+  } else {
+    console.log('[Vie del Lago] Chart.js OK');
+  }
+
+  // 2) Verifica canvases
+  const ids = ['chartWeightTrend','chartTempTrend','chartHumTrend'];
+  const els = ids.map(id => document.getElementById(id));
+  els.forEach((el, i) => {
+    if (!el) console.warn(`[Vie del Lago] Canvas mancante: ${ids[i]}`);
+  });
+
+  // 3) Dati: usa quelli di script.js (dataTS) o fallback locale
+  const dataTS = window.dataTS || {
+    dates: ['2025-06-01','2025-06-02','2025-06-03','2025-06-04','2025-06-05'],
+    weight: [40.2, 40.5, 40.9, 41.1, 41.0],
+    temp:   [24.6, 25.1, 24.9, 25.3, 25.0],
+    hum:    [74.8, 75.0, 74.6, 75.2, 75.1]
+  };
+  if (!window.dataTS) {
+    console.warn('[Vie del Lago] Usati dati fallback inline perché window.dataTS non è definito.');
+  } else {
+    console.log('[Vie del Lago] Dati serie temporali trovati in window.dataTS');
+  }
+
+  // 4) Helper grafico linea
+  const getVar = (n, fb) => { try { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || fb; } catch { return fb; } };
+  const COL = { honey: getVar('--honey-yellow','#D4A017'), brown: getVar('--dark-brown','#2F2A26') };
+
+  function mkLine(elId, label, values, unit) {
+    const el = document.getElementById(elId);
+    if (!el) return null;
+    const ctx = el.getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: dataTS.dates,
+        datasets: [{ label, data: values, fill: false, tension: 0.25, borderColor: COL.brown, pointRadius: 0 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: true },
+          tooltip: {
+            backgroundColor: '#fff', titleColor: COL.brown, bodyColor: COL.brown,
+            borderColor: 'rgba(0,0,0,.12)', borderWidth: 1, displayColors: false, padding: 10,
+            callbacks: { label: (ctx) => ` ${ctx.parsed.y} ${unit}` }
+          }
+        },
+        scales: {
+          x: { ticks: { color: COL.brown, maxTicksLimit: 8 }, grid: { display: false } },
+          y: { ticks: { color: COL.brown }, grid: { color: 'rgba(0,0,0,.08)' } }
+        }
+      }
+    });
+    el.chart = chart;
+    console.log(`[Vie del Lago] Creato grafico ${elId} con ${values.length} punti`);
+    return chart;
+  }
+
+  // 5) Se `script.js` non li ha già creati, creali ora
+  if (!(document.getElementById('chartWeightTrend')?.chart)) mkLine('chartWeightTrend','Peso totale (kg)', dataTS.weight, 'kg');
+  if (!(document.getElementById('chartTempTrend')?.chart))   mkLine('chartTempTrend','Temperatura (°C)', dataTS.temp, '°C');
+  if (!(document.getElementById('chartHumTrend')?.chart))    mkLine('chartHumTrend','Umidità (%)', dataTS.hum, '%');
+})();
+</script>
+
+
+
+<!-- Script per menu mobile -->
   <script src="script.js"></script>
+<script>
+  // KPI aggiornati da CSV arnia_766236.csv (intervallo: 2024-08-27 → 2025-08-26)
+  if (typeof window.updateKPI === 'function') {
+    window.updateKPI({ famiglie: 1, pesoMedioKg: 41.60, tempMedia: 24.57, umiMedia: 75.32 });
+  }
+</script>
 </body>
 </html>
