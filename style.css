@@ -547,3 +547,53 @@ h1, h2, h3, h4 {
 
 
 .chart-wrapper { position: relative; min-height: 320px; }
+
+
+/* --- Fix robusto KPI su desktop --- */
+.kpi-grid { padding: 1.5rem 0 0.5rem; }
+.kpi-list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+}
+.kpi-card {
+  display: block;
+  background: #fff; color: var(--dark-brown);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.06);
+}
+.kpi-label { display: block; font-size: .9rem; color: rgba(0,0,0,.6); }
+.kpi-value { font-family: 'Playfair Display', serif; font-size: 1.8rem; }
+
+/* --- Widget 3Bee: layout stabile su desktop --- */
+.widget-3bee .container { align-items: stretch; }
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1.05fr 1.2fr; /* testo | frame */
+  gap: 2rem;
+}
+.frame-wrap {
+  position: relative;
+  min-height: 420px;           /* più alto su desktop */
+  aspect-ratio: auto;          /* evita conflitti con min-height */
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+.frame-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Grafici: altezza minima per non collassare */
+.chart-wrapper { position: relative; min-height: 360px; }
+
+/* Responsività */
+@media (max-width: 980px) {
+  .kpi-list { grid-template-columns: repeat(2, 1fr); }
+  .grid-2 { grid-template-columns: 1fr; }
+  .frame-wrap { min-height: 300px; }
+}
+@media (max-width: 560px) {
+  .kpi-list { grid-template-columns: 1fr; }
+}
