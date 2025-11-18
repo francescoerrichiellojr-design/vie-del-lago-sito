@@ -109,6 +109,15 @@ h1, h2, h3, h4 {
   height: 120px;
   object-fit: contain;
 }
+.about-text {
+    /* Dice al div.about-text di estendersi e coprire entrambe le colonne */
+    grid-column: 1 / -1;
+}
+/* REGOLA PER ALLINEARE IL TESTO JUSTIFY */
+.about-text p {
+    text-align: justify; /* Applica l'allineamento giustificato ai paragrafi */
+    hyphens: auto;       /* [OPZIONALE] Migliora la giustificazione attivando la sillabazione */
+}
 
 /* ==============================
    Citazione
