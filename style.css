@@ -299,6 +299,12 @@ h1, h2, h3, h4 {
   width: 240px; height: auto; opacity: .5;
   pointer-events: none; filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
 }
+.story-text p { 
+    margin: 0 0 12px; 
+    /* AGGIUNGI QUI LE REGOLE PER IL GIUSTIFICATO */
+    text-align: justify;
+    hyphens: auto;
+}
 
 /* ==============================
    PRIVACY
