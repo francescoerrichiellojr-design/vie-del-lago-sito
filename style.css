@@ -612,3 +612,19 @@ h1, h2, h3, h4 {
 @media (max-width: 560px) {
   .kpi-list { grid-template-columns: 1fr; }
 }
+
+/* Aggiungi questo al tuo CSS */
+.tasting-notes li {
+    margin-bottom: 8px;
+    list-style: none; /* Rimuove i pallini standard */
+    border-left: 3px solid #d4af37; /* Linea oro elegante a sinistra */
+    padding-left: 10px;
+    color: #555;
+}
+
+.tasting-notes strong {
+    color: #333;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+}
