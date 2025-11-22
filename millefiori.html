@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Miele Millefiori — Vie del Lago Apicoltura</title>
-  <meta name="description" content="Miele Millefiori Vie del Lago: un miele dal gusto ricco che racchiude la biodiversità dei prati dell’Irpinia. Dolce, naturale e perfetto per ogni occasione.">
+  <title>Cuvée delle Colline: Millefiori Selvatico — Vie del Lago</title>
+  <meta name="description" content="Non un semplice Millefiori, ma una Cuvée botanica delle colline di Conza. Miele strutturato, ambrato, specchio del terroir argilloso.">
 
-  <!-- Font & Stili globali (già usati nel sito) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Stili della pagina prodotto (solo questa pagina) -->
   <style>
-    :root{ --flower-size: 280px;  /* cambia qui la dimensione del fiore decorativo */
-    }
+    :root{ --flower-size: 280px; }
 
-    /* HERO prodotto (immagine di sfondo + titolo) */
+    /* HERO prodotto */
     .p-hero{
       position: relative;
       min-height: 60vh;
       padding: 120px 10% 80px;
       color: #fff;
-      background: url('img/hero-millefiori.jpeg') center/cover no-repeat; /* sostituisci con la tua foto hero */
+      background: url('img/hero-millefiori.jpeg') center/cover no-repeat;
       display: flex; align-items: flex-end;
       overflow: hidden;
     }
-    .p-hero::before{ /* overlay per contrasto testo */
+    .p-hero::before{
       content: "";
       position: absolute; inset: 0;
       background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25));
@@ -45,46 +42,72 @@
       margin: 0 0 18px;
       font-size: clamp(1rem, 2.6vw, 1.25rem);
       opacity: .95;
+      font-weight: 300; /* Più leggero per eleganza */
     }
 
-    /* Corpo pagina a sfondo unico (beige del brand) */
+    /* Corpo pagina */
     .p-main{ background: var(--beige); }
     .p-section{ padding: 64px 10%; position: relative; }
-
-    /* Griglia immagine + contenuti */
-    .p-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .p-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; } /* Aumentato gap */
     .p-jar{ max-width: 480px; width: 100%; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 10px 25px rgba(0,0,0,.12)); }
 
-    /* Testi senza box bianco */
+    /* Testi */
     .p-h2{
       font-family: 'Playfair Display', serif;
       font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
-      color: var(--brown); margin: 0 0 10px;
+      color: var(--brown); margin: 30px 0 10px; font-size: 1.4rem;
     }
+    .p-h2:first-of-type { margin-top: 0; } /* Rimuove margine al primo titolo */
+    
     .p-divider{
-      width: 120px; height: 2px; background: var(--honey);
-      margin: 18px 0 20px;
+      width: 60px; height: 2px; background: var(--honey); /* Più corto ed elegante */
+      margin: 10px 0 18px;
     }
-    .p-info{
-      display: grid; grid-template-columns: auto 1fr; gap: 10px 24px;
-      margin-top: 10px;
+    
+    /* STILE PER LA SCHEDA DI DEGUSTAZIONE (NUOVO) */
+    .tasting-notes {
+        padding-left: 0;
+        margin-bottom: 24px;
     }
-    .p-info dt{ font-weight: 600; color: var(--brown); }
-    .p-info dd{ margin: 0; }
+    .tasting-notes li {
+        list-style: none;
+        border-left: 3px solid var(--honey); /* Linea oro a sinistra */
+        padding-left: 15px;
+        margin-bottom: 12px;
+        color: #4a4a4a;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    .tasting-notes strong {
+        color: var(--brown);
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 2px;
+    }
 
-    .p-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 24px; }
+    /* Info tecniche piccole */
+    .technical-info {
+        font-size: 0.85rem;
+        color: #666;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        padding-top: 15px;
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+    }
+
+    .p-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 30px; }
     .btn-primary{ box-shadow: 0 6px 18px rgba(212,160,23,.25); }
 
-    /* Fiore decorativo PNG */
     .p-flower{
-      position: absolute;
-      right: 3%; bottom: -20px;
+      position: absolute; right: 3%; bottom: -20px;
       width: var(--flower-size); height: auto;
       opacity: .55; pointer-events: none;
       filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
     }
 
-    /* Responsive */
     @media (max-width: 980px){
       .p-grid{ grid-template-columns: 1fr; gap: 32px; }
       .p-flower{ display: none; }
@@ -99,15 +122,14 @@
     </a>
 
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
-      <span class="sr-only"></span>
+      <span class="sr-only">Menu</span>
       ☰
     </button>
 
     <nav id="mainnav" class="nav" role="navigation">
       <ul class="menu">
         <li><a href="/#">Home</a></li>
-        <li><a href="storia.html">La nostra storia</a></li>
-        <li><a href="api.html">Le nostre api</a></li>
+        <li><a href="storia.html">Il Nostro Terroir</a></li> <li><a href="api.html">Le nostre api</a></li>
         <li><a href="educazione.html">Educazione & Trasparenza</a></li>
 
         <li class="has-submenu">
@@ -127,34 +149,30 @@
 </header>
 
 
-  <!-- HERO -->
   <header class="p-hero">
     <div class="p-hero-inner">
       <a class="story-back" href="/">← Torna alla home</a>
-      <h1>Miele Millefiori</h1>
-      <p class="p-sub">Dolcezza intensa che racchiude la biodiversità dei nostri prati.</p>
+      <h1>Cuvée delle Colline</h1>
+      <p class="p-sub">Millefiori Selvatico — Annata 2024</p>
       <a class="btn-primary"
-         href="mailto:info@viedellagoapicoltura.it?subject=Acquisto%20Miele%20Millefiori%20500g&body=Ciao,%0Avorrei%20acquistare%20o%20ricevere%20informazioni%20sul%20Miele%20Millefiori%20500g.%0AGrazie!">
-        Acquista ora
+         href="mailto:info@viedellagoapicoltura.it?subject=Ordine%20Cuvée%20Millefiori&body=Buongiorno,%0Adesidero%20ordinare%20il%20Miele%20Millefiori%20(Cuvée%20delle%20Colline).%0AAttendo%20info.">
+        Ordina la Cuvée
       </a>
     </div>
   </header>
 
-  <!-- CONTENUTO senza riquadri bianchi -->
   <main class="p-main">
     <section class="p-section">
-      <!-- fiore PNG decorativo -->
       <img src="img/fiore-botanico.png" alt="" class="p-flower" aria-hidden="true">
 
       <div class="p-grid">
-        <!-- immagine vasetto -->
         <div>
           <img class="p-jar" src="img/millefiori.png" alt="Vasetto di Miele Millefiori Vie del Lago" width="480" height="480" loading="lazy">
         </div>
 
-        <!-- testi -->
         <div>
-          <h2 class="p-h2">Il Carattere: Cuvée delle Colline</h2>
+          
+          <h2 class="p-h2">Il Carattere</h2>
           <div class="p-divider"></div>
           <p>
             Il nostro Millefiori non è una semplice miscela, ma una <strong>complessa polifonia botanica</strong>. 
@@ -163,29 +181,52 @@
             È un miele di struttura, ricco e avvolgente, specchio fedele del nostro terroir.
           </p>
 
-          <h3 class="p-h2" style="margin-top:26px">Informazioni</h3>
+          <h3 class="p-h2">Scheda di Degustazione</h3>
           <div class="p-divider"></div>
-          <dl class="p-info">
-            <dt>Formato</dt><dd>500 g</dd>
-            <dt>Origine</dt><dd>Oasi di Conza (AV) - Italia</dd>
-            <dt>Raccolta</dt><dd>Maggio-Luglio</dd>
-            <dt>Consigli</dt><dd>La sua struttura robusta lo rende ideale per contrasti decisi. 
-            Perfetto su <strong>Pecorino Irpino stagionato</strong>, per laccare arrosti di maiale o in abbinamento a pane nero di segale e burro salato.</dd>
-          </dl>
+          <ul class="tasting-notes">
+            <li>
+                <strong>Esame Visivo</strong>
+                Ambra profondo con riflessi ramati luminosi.
+            </li>
+            <li>
+                <strong>Bouquet Olfattivo</strong>
+                Note calde di fiori secchi, caramello bruno e leggeri sentori di macchia mediterranea.
+            </li>
+            <li>
+                <strong>Palato</strong>
+                Ingresso dolce che evolve verso note di frutta cotta e malto. Finale persistente con leggera vena tannica.
+            </li>
+            <li>
+                <strong>Cristallizzazione</strong>
+                Spontanea e irregolare, segno di assoluta integrità e assenza di trattamenti termici.
+            </li>
+          </ul>
+
+          <h3 class="p-h2">Abbinamenti Gourmet</h3>
+          <div class="p-divider"></div>
+          <p>
+            La sua struttura robusta lo rende ideale per contrasti decisi. 
+            Perfetto su <strong>Pecorino Irpino stagionato</strong>, per laccare arrosti di maiale o in abbinamento a pane nero di segale e burro salato.
+          </p>
+
+          <div class="technical-info">
+             <span><strong>Formato:</strong> 500 g</span> | 
+             <span><strong>Origine:</strong> Oasi di Conza (AV)</span> | 
+             <span><strong>Raccolta:</strong> Maggio-Luglio</span>
+          </div>
 
           <div class="p-cta">
             <a class="btn-primary"
-               href="mailto:info@viedellagoapicoltura.it?subject=Richiesta%20informazioni%20Miele%20Millefiori%20500g&body=Ciao,%0Avorrei%20avere%20maggiori%20informazioni%20sul%20Miele%20Millefiori%20500g.%0AGrazie!">
-              Richiedi informazioni
+               href="mailto:info@viedellagoapicoltura.it?subject=Informazioni%20Cuvée%20Millefiori">
+               Richiedi Disponibilità
             </a>
-            <a class="btn-secondary" href="/#chi-siamo">Torna ai prodotti</a>
+            <a class="btn-secondary" href="/#chi-siamo">Torna ai Cru</a>
           </div>
+
         </div>
       </div>
     </section>
   </main>
-
-     <!-- altre sezioni del sito -->
 
   <footer class="site-footer">
     <div class="footer-inner">
@@ -195,8 +236,7 @@
       <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
       <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
 
-      <!-- Icona social -->
-    <div class="social-links">
+      <div class="social-links">
       <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
         <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
       </a>
@@ -204,7 +244,6 @@
   </div>
 </footer>
 
-<!-- Script per menu mobile -->
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
