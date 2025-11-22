@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Miele di Acacia — Vie del Lago Apicoltura</title>
-  <meta name="description" content="Miele di Acacia Vie del Lago: chiaro, delicato e naturalmente dolce. Raccolto nei boschi di Conza della Campania, ideale per tisane e dolci.">
+  <title>Cru dei Valloni: Miele di Acacia in Purezza — Vie del Lago</title>
+  <meta name="description" content="Acacia in Purezza: miele Cru dei Valloni, ricercato per la sua limpidezza vitrea e tessitura setosa. Dolcezza raffinata senza cristallizzazione.">
 
-  <!-- Font & Stili globali -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Stili specifici -->
   <style>
     :root{
       --flower-size: 280px;
     }
 
+    /* HERO prodotto */
     .p-hero{
       position: relative;
       min-height: 60vh;
@@ -38,27 +37,74 @@
       text-transform: uppercase;
       text-shadow: 0 2px 14px rgba(0,0,0,.35);
     }
-    .p-sub{ font-size: clamp(1rem, 2.6vw, 1.25rem); }
+    .p-sub{ font-size: clamp(1rem, 2.6vw, 1.25rem); font-weight: 300; }
 
+    /* Corpo pagina */
     .p-main{ background: var(--beige); }
     .p-section{ padding: 64px 10%; position: relative; }
-    .p-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .p-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; } /* Aumentato gap */
     .p-jar{ max-width: 480px; width: 100%; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 10px 25px rgba(0,0,0,.12)); }
-    .p-h2{ font-family: 'Playfair Display', serif; text-transform: uppercase; margin: 0 0 10px; }
-    .p-divider{ width: 120px; height: 2px; background: var(--honey-yellow); margin: 18px 0 20px; }
-    .p-info{ display: grid; grid-template-columns: auto 1fr; gap: 10px 24px; margin-top: 10px; }
-    .p-info dt{ font-weight: 600; }
-    .p-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 24px; }
+    
+    /* Testi */
+    .p-h2{
+      font-family: 'Playfair Display', serif;
+      font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
+      color: var(--brown); margin: 30px 0 10px; font-size: 1.4rem;
+    }
+    .p-h2:first-of-type { margin-top: 0; }
+
+    .p-divider{
+      width: 60px; height: 2px; background: var(--honey); /* Più corto ed elegante */
+      margin: 10px 0 18px;
+    }
+
+    /* STILE PER LA SCHEDA DI DEGUSTAZIONE (AGGIUNTO) */
+    .tasting-notes {
+        padding-left: 0;
+        margin-bottom: 24px;
+    }
+    .tasting-notes li {
+        list-style: none;
+        border-left: 3px solid var(--honey, #d4af37); /* Linea oro */
+        padding-left: 15px;
+        margin-bottom: 12px;
+        color: #4a4a4a;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    .tasting-notes strong {
+        color: var(--brown);
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 2px;
+    }
+    
+    /* Info tecniche piccole (AGGIUNTO) */
+    .technical-info {
+        font-size: 0.85rem;
+        color: #666;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        padding-top: 15px;
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+    }
+
+    .p-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 30px; }
+    .btn-primary{ box-shadow: 0 6px 18px rgba(212,160,23,.25); }
 
     .p-flower{
       position: absolute;
       right: 3%; bottom: -20px;
       width: var(--flower-size); opacity: .55;
       pointer-events: none;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
     }
 
     @media (max-width: 980px){
-      .p-grid{ grid-template-columns: 1fr; }
+      .p-grid{ grid-template-columns: 1fr; gap: 32px; }
       .p-flower{ display:none; }
     }
   </style>
@@ -71,15 +117,14 @@
     </a>
 
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
-      <span class="sr-only"></span>
+      <span class="sr-only">Menu</span>
       ☰
     </button>
 
     <nav id="mainnav" class="nav" role="navigation">
       <ul class="menu">
         <li><a href="/#">Home</a></li>
-        <li><a href="storia.html">La nostra storia</a></li>
-        <li><a href="api.html">Le nostre api</a></li>
+        <li><a href="storia.html">Il Nostro Terroir</a></li> <li><a href="api.html">Le nostre api</a></li>
         <li><a href="educazione.html">Educazione & Trasparenza</a></li>
 
         <li class="has-submenu">
@@ -102,11 +147,11 @@
   <header class="p-hero">
     <div class="p-hero-inner">
       <a class="story-back" href="/">← Torna alla home</a>
-      <h1>Miele di Acacia</h1>
-      <p class="p-sub">Chiaro, delicato e naturalmente dolce: il miele che piace a tutti.</p>
+      <h1>Cru dei Valloni</h1>
+      <p class="p-sub">Acacia in Purezza — L'Eleganza Cristallina</p>
       <a class="btn-primary"
-         href="mailto:info@viedellagoapicoltura.it?subject=Acquisto%20Miele%20di%20Acacia%20500g&body=Ciao,%0Avorrei%20acquistare%20o%20ricevere%20informazioni%20sul%20Miele%20di%20Acacia%20500g.%0AGrazie!">
-        Acquista ora
+         href="mailto:info@viedellagoapicoltura.it?subject=Ordine%20Miele%20Acacia%20Cru%20dei%20Valloni&body=Buongiorno,%0Adesidero%20ordinare%20il%20Miele%20di%20Acacia%20(Cru%20dei%20Valloni).%0AAttendo%20info.">
+        Ordina il Cru
       </a>
     </div>
   </header>
@@ -121,40 +166,64 @@
         </div>
 
         <div>
+            
           <h2 class="p-h2">Il Carattere: Eleganza Cristallina</h2>
           <div class="p-divider"></div>
           <p>
             Ottenuto dalle fioriture di <em>Robinia Pseudoacacia</em> che ombreggiano i valloni umidi intorno al lago, 
-    questo miele è l'espressione della <strong>purezza assoluta</strong>. 
-    La nostra Acacia è ricercata per la sua limpidezza quasi vitrea e per una tessitura setosa che non stanca mai il palato. 
-    Grazie alla raccolta tempestiva e alla stanzialità delle arnie, garantiamo un monoflora di altissima precisione, 
-    privo di contaminazioni botaniche che ne altererebbero la delicatezza.
-  </p>
+            questo miele è l'espressione della <strong>purezza assoluta</strong>. 
+            La nostra Acacia è ricercata per la sua limpidezza quasi vitrea e per una tessitura setosa che non stanca mai il palato. 
+            Grazie alla raccolta tempestiva e alla stanzialità delle arnie, garantiamo un monoflora di altissima precisione, 
+            privo di contaminazioni botaniche che ne altererebbero la delicatezza.
+          </p>
 
-          <h3 class="p-h2" style="margin-top:26px">Informazioni</h3>
+          <h3 class="p-h2">Scheda di Degustazione</h3>
           <div class="p-divider"></div>
-          <dl class="p-info">
-            <dt>Formato</dt><dd>500 g</dd>
-            <dt>Origine</dt><dd>Oasi di Conza (AV) - Italia</dd>
-            <dt>Raccolta</dt><dd>Aprile-Maggio</dd>
-            <dt>Consigli</dt><dd>La sua delicatezza richiede abbinamenti che non lo coprano ma lo esaltino. 
-    Sublime su <strong>Erborinati piccanti</strong> (come Gorgonzola o Roquefort) per contrasto, 
-    o in armonia su ricotte fresche di bufala, fragole al naturale e tè bianchi pregiati.</dd>
-          </dl>
+          <ul class="tasting-notes">
+            <li>
+                <strong>Esame Visivo</strong>
+                Giallo paglierino chiarissimo, quasi trasparente, di grande lucentezza.
+            </li>
+            <li>
+                <strong>Bouquet Olfattivo</strong>
+                Delicato e floreale, con ricordi di vaniglia bourbon, confetto alla mandorra e fiori di sambuco.
+            </li>
+            <li>
+                <strong>Palato</strong>
+                Vellutato e avvolgente. Dolcezza raffinata che ricorda lo sciroppo di zucchero di canna, senza mai essere stucchevole.
+            </li>
+            <li>
+                <strong>Texture</strong>
+                Liquida e setosa per natura (cristallizzazione assente o lentissima).
+            </li>
+          </ul>
+          
+          <h3 class="p-h2">Abbinamenti Gourmet</h3>
+          <div class="p-divider"></div>
+          <p>
+            La sua delicatezza richiede abbinamenti che non lo coprano ma lo esaltino. 
+            Sublime su <strong>Erborinati piccanti</strong> (come Gorgonzola o Roquefort) per contrasto, 
+            o in armonia su ricotte fresche di bufala, fragole al naturale e tè bianchi pregiati.
+          </p>
+
+          <div class="technical-info">
+             <span><strong>Formato:</strong> 500 g</span> | 
+             <span><strong>Origine:</strong> Oasi di Conza (AV)</span> | 
+             <span><strong>Raccolta:</strong> Aprile-Maggio</span>
+          </div>
+
 
           <div class="p-cta">
             <a class="btn-primary"
-               href="mailto:info@viedellagoapicoltura.it?subject=Richiesta%20informazioni%20Miele%20di%20Acacia%20500g&body=Ciao,%0Avorrei%20avere%20maggiori%20informazioni%20sul%20Miele%20di%20Acacia%20500g.%0AGrazie!">
-              Richiedi informazioni
+               href="mailto:info@viedellagoapicoltura.it?subject=Richiesta%20Informazioni%20Miele%20di%20Acacia">
+               Richiedi Disponibilità
             </a>
-            <a class="btn-secondary" href="index.html#chi-siamo">Torna ai prodotti</a>
+            <a class="btn-secondary" href="index.html#chi-siamo">Torna ai Cru</a>
           </div>
         </div>
       </div>
     </section>
   </main>
-
-     <!-- altre sezioni del sito -->
 
   <footer class="site-footer">
     <div class="footer-inner">
@@ -164,8 +233,7 @@
       <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
       <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
 
-      <!-- Icona social -->
-    <div class="social-links">
+      <div class="social-links">
       <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
         <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
       </a>
@@ -173,8 +241,6 @@
   </div>
 </footer>
 
-<!-- Script per menu mobile -->
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
-
