@@ -6,21 +6,53 @@
   <title>Contatti — Vie del Lago Apicoltura</title>
   <meta name="description" content="Contatta Vie del Lago Apicoltura: scrivici per informazioni sui nostri mieli o vieni a trovarci a Conza della Campania (AV).">
 
-  <!-- Font + CSS globale -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Assicuriamo che la sezione principale del contenuto non sia troppo stretta */
+    .contact .p-section {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Stili per il form (presupponendo uno stile pulito da style.css) */
+    .contact-form label {
+        display: block;
+        margin-top: 16px;
+        margin-bottom: 6px;
+        font-weight: 600;
+        opacity: 0.9;
+    }
+    .contact-form input[type="text"], 
+    .contact-form input[type="email"], 
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 8px;
+        font-size: 1rem;
+        box-sizing: border-box; /* Importante per width: 100% */
+    }
+    .contact-form button {
+        margin-top: 24px;
+    }
+  </style>
 </head>
 <body>
 
 <header class="site-header" role="banner">
   <div class="nav-wrap">
-    <a class="brand" href="index.html">VIE DEL LAGO</a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">☰</button>
+    <a class="brand" href="index.html" aria-label="Vie del Lago Apicoltura — Home">VIE DEL LAGO</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
+        <span class="sr-only">Menu</span>
+        ☰
+    </button>
     <nav id="mainnav" class="nav">
       <ul class="menu">
         <li><a href="/#">Home</a></li>
-        <li><a href="storia.html">Il Nostro Terroir</a></li>
-        <li><a href="api.html">Le nostre api</a></li>
+        <li><a href="storia.html">Il Nostro Terroir</a></li> <li><a href="api.html">Le nostre api</a></li>
         <li><a href="educazione.html">Educazione & Trasparenza</a></li>
         <li class="has-submenu">
           <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
@@ -37,48 +69,74 @@
   </div>
 </header>
 
-<!-- HERO -->
 <header class="story-hero" style="background:url('img/hero-contatti.jpeg') center/cover no-repeat;">
   <div class="story-hero__inner">
     <a class="story-back" href="/">← Torna alla home</a>
     <h1>Contatti</h1>
-    <p class="story-lead">Scrivici o vieni a trovarci a Conza della Campania</p>
+    <p class="story-lead">Siamo qui per rispondere a tutte le tue domande. Scrivici o vieni a trovarci a Conza della Campania.</p>
   </div>
 </header>
 
-<main class="contact">
-  <!-- SEZIONE CONTATTI -->
+<main class="p-main contact">
+  
   <section class="p-section">
-    <h2>Come contattarci</h2>
+    <h2 class="p-h2">Informazioni di contatto</h2>
     <div class="p-divider"></div>
-    <p><strong>Indirizzo:</strong> Via Contrada Pescara, 74 — 83040 Conza della Campania (AV)</p>
-    <p><strong>Email:</strong> <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
+    <p style="font-size: 1.1rem; margin-bottom: 24px;">Il modo più veloce per avere informazioni sui nostri mieli o per fissare un appuntamento in sede.</p>
     
-    
+    <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+        <div style="flex: 1 1 300px;">
+            <h3 style="font-size: 1.2rem; margin-top: 0;">Sede Operativa</h3>
+            <p><strong>Vie del Lago Apicoltura</strong><br>Via Contrada Pescara, 74<br>83040 Conza della Campania (AV)</p>
+            <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank" class="btn-secondary" style="margin-top: 10px; display: inline-block;">Visualizza su Google Maps</a>
+        </div>
+        
+        <div style="flex: 1 1 300px;">
+            <h3 style="font-size: 1.2rem; margin-top: 0;">Contatti Diretti</h3>
+            <p style="margin-bottom: 8px;"><strong>Email:</strong> <br><a href="mailto:info@viedellagoapicoltura.it" style="font-weight: 600;">info@viedellagoapicoltura.it</a></p>
+            <p><strong>P.IVA:</strong> <br>10819081216</p>
+            </div>
+    </div>
   </section>
 
-  <!-- MAPPA -->
   <section class="p-section">
-    <h2>Dove trovarci</h2>
+    <h2 class="p-h2">Dove trovarci</h2>
     <div class="p-divider"></div>
-    <iframe src="https://www.google.com/maps?q=Via+Contrada+Pescara+74+Conza+della+Campania&output=embed" width="100%" height="400" style="border:0;" allowfullscreen></iframe>
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15259.72145550269!2d15.289115799999999!3d40.925573500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4e13!3m3!1m2!1s0x1338a9a4b3d3957f%3A0x6a0c5c363b9e4a3!2sContrada%20Pescara%2C%2083040%20Conza%20della%20Campania%20AV!5e0!3m2!1sit!2sit!4v1700688000000!5m2!1sit!2sit" 
+        width="100%" 
+        height="400" 
+        style="border:0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,.1);" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        aria-label="Mappa della sede di Vie del Lago Apicoltura, in Contrada Pescara, Conza della Campania">
+    </iframe>
+    <p style="text-align: center; margin-top: 12px; font-size: 0.9rem; opacity: 0.8;">Ci troviamo a Conza della Campania (AV), in una zona rurale vicino al lago.</p>
   </section>
 
-  <!-- FORM -->
   <section class="p-section">
-    <h2>Scrivici</h2>
+    <h2 class="p-h2">Inviaci un messaggio</h2>
     <div class="p-divider"></div>
     <form class="contact-form" action="mailto:info@viedellagoapicoltura.it" method="post" enctype="text/plain">
-      <label for="nome">Nome</label>
-      <input type="text" id="nome" name="nome" required>
+      
+      <label for="nome">Nome e Cognome</label>
+      <input type="text" id="nome" name="nome" required autocomplete="name">
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+      <label for="email">La tua migliore Email</label>
+      <input type="email" id="email" name="email" required autocomplete="email">
 
-      <label for="messaggio">Messaggio</label>
-      <textarea id="messaggio" name="messaggio" rows="5" required></textarea>
+      <label for="oggetto">Oggetto del Messaggio</label>
+      <input type="text" id="oggetto" name="oggetto" required>
 
-      <button type="submit" class="btn-primary">Invia</button>
+      <label for="messaggio">Il tuo Messaggio</label>
+      <textarea id="messaggio" name="messaggio" rows="6" required></textarea>
+
+      <button type="submit" class="btn-primary">Invia Messaggio via Email</button>
+      
+      <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.7;">
+        *Cliccando su "Invia" si aprirà il tuo programma di posta elettronica predefinito per l'invio. Non salviamo i tuoi dati tramite questo modulo.
+      </p>
     </form>
   </section>
 </main>
@@ -90,7 +148,6 @@
     <p>P.IVA 10819081216</p>
     <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
     <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
-    <!-- Icona social -->
     <div class="social-links">
       <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
         <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
