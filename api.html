@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Le nostre api — Vie del Lago Apicoltura</title>
-  <meta name="description" content="Conosci l’Apis mellifera ligustica: la sottospecie italiana dalle tinte dorate, mite e produttiva. La nostra filosofia e le buone pratiche per il benessere dell’alveare.">
+  <title>Il Nostro Alveare: Trasparenza e Benessere — Vie del Lago</title>
+  <meta name="description" content="Apis mellifera ligustica: la nostra scelta per una apicoltura etica. Scopri i ruoli nell'alveare, il ciclo stagionale e le buone pratiche che garantiscono un miele d'eccellenza.">
 
-  <!-- Font + CSS globali -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Stili specifici pagina “Le nostre api” -->
   <style>
   /* HERO — stesso look della home */
   .api-hero{
@@ -19,12 +17,10 @@
     padding: 120px 10% 84px;
     display: flex; align-items: flex-end;
     color:#fff; overflow: hidden;
-    /* fallback beige + immagine, come la home */
     background: var(--beige) url("img/hero-api.jpeg") center/cover no-repeat;
   }
   .api-hero::before{
     content:""; position:absolute; inset:0;
-    /* identico alla home */
     background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35));
   }
   .api-hero .hero-inner{ position: relative; z-index:1; max-width: 980px; }
@@ -32,22 +28,22 @@
     font-size: clamp(2.4rem, 6vw, 4rem);
     margin:.2rem 0 .4rem; text-transform: uppercase; letter-spacing:.5px;
     color:#fff;
-    text-shadow: 0 2px 14px rgba(0,0,0,.45); /* come index */
+    text-shadow: 0 2px 14px rgba(0,0,0,.45);
   }
   .api-lead{
     font-size: clamp(1rem, 2.6vw, 1.25rem);
-    margin:0; opacity:.96; color:#fff;
-    text-shadow: 0 2px 14px rgba(0,0,0,.45); /* come index */
+    margin:0; opacity:.96; color:#fff; font-weight: 300;
+    text-shadow: 0 2px 14px rgba(0,0,0,.45);
   }
 
-  /* Sezioni su beige brand (già in linea con il sito) */
+  /* Sezioni su beige brand */
   .api-section{ padding: 64px 10%; background: var(--beige); color: var(--brown); }
   .api-intro{ max-width: 980px; margin: 0 auto 26px; }
   .api-intro h2{
     margin:0 0 10px; text-transform: uppercase; letter-spacing:.4px;
     font-family: 'Playfair Display', serif;
   }
-  .api-divider{ width:120px; height:2px; background: var(--honey-yellow); margin: 12px 0 18px; }
+  .api-divider{ width:60px; height:2px; background: var(--honey); margin: 12px 0 18px; } /* Accorciato divider */
 
   /* Card caratteristiche */
   .api-grid{
@@ -81,15 +77,22 @@
     display:grid; grid-template-columns: 1fr 1fr; gap:32px; align-items:center;
     max-width: 1200px; margin: 0 auto;
   }
-  .season-illust{ max-width:520px; width:100%; height:auto; opacity:.65; }
+  /* Contenitore Immagine per coerenza */
+  .season-illust-wrap{ text-align:center; } 
+  .season-illust{ max-width:400px; width:100%; height:auto; opacity:.8; }
+  
   .timeline{ position:relative; padding-left:32px; }
   .timeline::before{
     content:""; position:absolute; left:10px; top:6px; bottom:6px;
-    width:2px; background:rgba(0,0,0,.12);
+    width:2px; background:var(--honey); /* Linea oro */
   }
-  .step{ position:relative; margin:0 0 16px; }
+  .step{ position:relative; margin:0 0 20px; padding-left:14px; } /* Aggiunto padding a step */
+  .step::before{ /* Punto cronologico */
+    content:""; position:absolute; left:-14px; top:4px;
+    width:8px; height:8px; background:var(--honey); border-radius:50%;
+  }
 
-  .step h4{ margin:0 0 4px; font-size:1.02rem; }
+  .step h4{ margin:0 0 4px; font-size:1.02rem; font-weight:600; }
   .step p{ margin:0; opacity:.95; }
 
   /* Buone pratiche */
@@ -98,7 +101,7 @@
     max-width: 1000px; margin: 0 auto;
   }
   .check{ display:flex; gap:10px; align-items:flex-start; }
-  .tick{ width:20px; height:20px; color:var(--honey-yellow); }
+  .tick{ width:20px; height:20px; color:var(--honey); } /* Colore miele */
   .tick *{ stroke:currentColor; fill:none; stroke-width:2.2; }
 
   /* CTA finale */
@@ -115,14 +118,13 @@
   @media (max-width:680px){
     .api-grid{ grid-template-columns: 1fr; }
     .checks{ grid-template-columns: 1fr; }
-    .season-illust{ display:none; }
+    .season-illust-wrap{ display:none; }
   }
 </style>
 
 </head>
 <body>
 
-  <!-- HEADER / NAV (riusa lo stile globale) -->
   <header class="site-header" role="banner">
   <div class="nav-wrap">
     <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home">
@@ -130,15 +132,14 @@
     </a>
 
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
-      <span class="sr-only"></span>
+      <span class="sr-only">Menu</span>
       ☰
     </button>
 
     <nav id="mainnav" class="nav" role="navigation">
       <ul class="menu">
         <li><a href="/#">Home</a></li>
-        <li><a href="storia.html">La nostra storia</a></li>
-        <li><a href="api.html">Le nostre api</a></li>
+        <li><a href="storia.html">La nostra storia</a></li> <li><a href="api.html">Le nostre api</a></li>
         <li><a href="educazione.html">Educazione & Trasparenza</a></li>
 
         <li class="has-submenu">
@@ -157,23 +158,24 @@
   </div>
 </header>
 
-  <!-- HERO -->
   <header class="api-hero">
     <div class="hero-inner">
       <a class="story-back" href="/">← Torna alla home</a>
-      <h1>Le nostre api</h1>
-      <p class="api-lead">Apis mellifera ligustica, la sottospecie italiana: mitezza, adattabilità e mieli dal carattere unico.</p>
+      <h1>Il Nostro Alveare</h1>
+      <p class="api-lead">Benessere, etica e qualità: la nostra scelta è l'Apis mellifera ligustica.</p>
     </div>
   </header>
 
   <main>
 
-    <!-- CARATTERISTICHE -->
     <section class="api-section">
       <div class="api-intro">
-        <h2>Caratteristiche della ligustica</h2>
+        <h2>Perché l'Apis mellifera ligustica?</h2>
         <div class="api-divider"></div>
-        <p>È riconoscibile dalle fasce addominali giallo-oro, dall’indole docile e dall’ottimo sviluppo primaverile. Qui i punti che la rendono ideale per la nostra apicoltura familiare.</p>
+        <p>
+          La nostra scelta ricade sulla sottospecie italiana per la sua spiccata **mitezza** e la capacità di svilupparsi in armonia con le fioriture locali. 
+          Questa selezione genetica è la base della nostra **apicoltura etica e di precisione**.
+        </p>
       </div>
 
       <div class="api-grid">
@@ -211,98 +213,101 @@
       </div>
     </section>
 
-    <!-- RUOLI -->
     <section class="api-section">
       <div class="api-intro">
-        <h2>Ruoli nella colonia</h2>
+        <h2>La Società dell'Alveare</h2>
         <div class="api-divider"></div>
+        <p>Ogni individuo ha un ruolo vitale, programmato per la sopravvivenza e la prosperità della colonia. Questa perfetta organizzazione è la chiave della loro forza.</p>
       </div>
+      
+
+
 
       <div class="roles">
         <article class="role">
-          <h3>Regina</h3>
-          <p>Madre dell’alveare, depone fino a migliaia di uova al giorno in alta stagione e guida la colonia con i feromoni.</p>
+          <h3>La Regina </h3>
+          <p>Madre dell’alveare, depone fino a migliaia di uova al giorno in alta stagione e guida la colonia con i feromoni. È la garante della genetica e dell'ordine.</p>
         </article>
         <article class="role">
-          <h3>Operaia</h3>
-          <p>La forza dell’alveare: nutrice, costruttrice, ventilatrice e bottinatrice, a seconda dell’età.</p>
+          <h3>L'Operaia </h3>
+          <p>La forza dell’alveare: nutrice, costruttrice, ventilatrice e bottinatrice, a seconda dell’età. La sua vita è una progressione di compiti a favore della comunità.</p>
         </article>
         <article class="role">
-          <h3>Fuchi</h3>
-          <p>Maschi della colonia: il loro compito principale è l’accoppiamento con regine vergini durante i voli nuziali.</p>
+          <h3>Il Fuco </h3>
+          <p>Maschio della colonia. Il loro unico e vitale compito è l’accoppiamento con regine vergini. Sono il veicolo per la diffusione della genetica ligustica.</p>
         </article>
       </div>
     </section>
 
-    <!-- CICLO STAGIONALE -->
     <section class="api-section">
       <div class="api-intro">
-        <h2>Il ciclo stagionale</h2>
+        <h2>I Ritmi della Natura</h2>
         <div class="api-divider"></div>
-        <p>Dalla ripartenza primaverile al riposo invernale, seguiamo i loro ritmi per intervenire con misura e rispetto.</p>
+        <p>Dalla ripartenza primaverile al riposo invernale, seguiamo i loro ritmi per intervenire con misura e rispetto. **Interveniamo solo quando è strettamente necessario.**</p>
       </div>
 
       <div class="season">
-  <div class="timeline">
-    <div class="step">
-      <h4>Primavera</h4>
-      <p>Crescita del nido e raccolte precoci: controlli regolari e spazio per la covata.</p>
-    </div>
-    <div class="step">
-      <h4>Inizio estate</h4>
-      <p>Piene fioriture: melari, prevenzione della sciamatura e smielature mirate.</p>
-    </div>
-    <div class="step">
-      <h4>Fine estate</h4>
-      <p>Valutazioni sanitarie e nutrizione di supporto dove serve.</p>
-    </div>
-    <div class="step">
-      <h4>Autunno / Inverno</h4>
-      <p>Riduzione delle attività, scorte adeguate e riposo dell’alveare.</p>
-    </div>
-  </div>
-</div>
+        <div class="season-illust-wrap">
+           
+        </div>
 
+        <div class="timeline">
+          <div class="step">
+            <h4>Primavera (Ripartenza)</h4>
+            <p>Crescita esplosiva del nido e raccolte precoci. Interventi minimi e spazio per la covata per prevenire lo stress.</p>
+          </div>
+          <div class="step">
+            <h4>Inizio estate (Apice Produttivo)</h4>
+            <p>Piene fioriture: gestione dei melari e smielature mirate solo quando le scorte superano il fabbisogno della colonia.</p>
+          </div>
+          <div class="step">
+            <h4>Fine estate (Preparazione)</h4>
+            <p>Valutazioni sanitarie e preparazione alle riserve invernali. Nutrizione di supporto solo se le scorte naturali sono insufficienti.</p>
+          </div>
+          <div class="step">
+            <h4>Autunno / Inverno (Riposo)</h4>
+            <p>Riduzione delle attività e blocco della covata. Le api restano nel glomere e noi garantiamo il loro riposo indisturbato.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- BUONE PRATICHE -->
     <section class="api-section">
       <div class="api-intro">
-        <h2>Le nostre buone pratiche</h2>
+        <h2>Il Nostro Codice Etico</h2>
         <div class="api-divider"></div>
+        <p>Ogni vasetto di miele Vie del Lago è il risultato di un impegno costante verso il **benessere delle api** e la **trasparenza** verso il consumatore.</p>
       </div>
 
       <div class="checks">
         <div class="check">
           <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
-          <p>Visite programmate e interventi non invasivi.</p>
+          <p>Visite programmate e **interventi non invasivi** (Minimal-Intervention Beekeeping).</p>
         </div>
         <div class="check">
           <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
-          <p>Postazioni pulite e lontane da contaminanti.</p>
+          <p>**Postazioni pulite** e lontane da fonti di contaminazione chimica o agricola.</p>
         </div>
         <div class="check">
           <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
-          <p>Rispetto delle scorte: prima il benessere dell’alveare.</p>
+          <p>**Rispetto delle scorte** naturali: il miele raccolto è l'eccedenza, mai la loro riserva.</p>
         </div>
         <div class="check">
           <svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
-          <p>Tracciabilità e controlli di qualità su ogni lotto.</p>
+          <p>**Tracciabilità** totale e controlli di qualità su ogni lotto di miele immesso sul mercato.</p>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="api-cta">
       <p><em>Il miele migliore nasce da api in salute e da mani che le rispettano.</em></p>
       <div class="btn-wrap">
-        <a class="btn-primary" href="/#chi-siamo">Vai ai prodotti</a>
-        <a class="btn-secondary" href="mailto:info@viedellagoapicoltura.it">Scrivici</a>
+        <a class="btn-primary" href="/#chi-siamo">Scopri i nostri Cru</a>
+        <a class="btn-secondary" href="mailto:info@viedellagoapicoltura.it">Fissa una Visita all'Apiario</a>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
       <p><strong>Vie del Lago Apicoltura</strong></p>
@@ -312,7 +317,7 @@
       <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
       <div class="social-links">
         <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-          <img class="social-icon" src="img/instagram-icon.svg" alt="">
+          <img class="social-icon" src="img/instagram-icon.svg" alt="Instagram">
         </a>
       </div>
     </div>
