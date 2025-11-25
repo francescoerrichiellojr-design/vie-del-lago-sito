@@ -628,3 +628,41 @@ h1, h2, h3, h4 {
     font-size: 0.9em;
     letter-spacing: 1px;
 }
+
+/* ==============================
+   GESTIONE SOLD OUT (ESAURITO)
+============================== */
+
+/* 1. Il Badge sull'immagine */
+.sold-out-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: var(--dark-brown); /* Marrone scuro elegante */
+  color: #fff;
+  padding: 8px 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* 2. Stile del pulsante quando è esaurito */
+.btn-disabled {
+  background-color: #cccccc !important; /* Grigio */
+  color: #666 !important;
+  cursor: not-allowed;
+  box-shadow: none !important;
+  pointer-events: none; /* Impedisce il click */
+  border: 1px solid #bbb !important;
+}
+
+/* 3. Opzionale: Opacità immagine */
+.product-unavailable .p-jar {
+  opacity: 0.8;
+  filter: grayscale(30%); /* Leggero bianco e nero per indicare indisponibilità */
+}
