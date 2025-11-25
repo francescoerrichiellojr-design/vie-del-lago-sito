@@ -814,10 +814,12 @@ h1, h2, h3, h4 {
 }
 
 .related-product-img {
-    width: 100%;
+    width: auto;
     max-width: 150px;
     height: auto;
     margin-bottom: 10px;
+   display: block; 
+    margin:
 }
 
 .related-product-name {
