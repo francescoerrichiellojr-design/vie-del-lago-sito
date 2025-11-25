@@ -780,3 +780,67 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--honey-yellow); /* Etichetta color miele */
+
+
+/* ==============================
+   CROSS-SELLING (Punto 5)
+============================== */
+.p-related-products {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.related-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive Grid */
+    gap: 30px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.related-product-card {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.related-product-card:hover {
+    border-color: var(--honey-yellow);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.related-product-img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.related-product-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-brown);
+    margin: 5px 0 0;
+}
+
+.related-product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--honey-yellow);
+    margin: 5px 0 10px;
+}
+
+.related-product-cta {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #666;
+    border-bottom: 1px solid transparent;
+}
+
+.related-product-card:hover .related-product-cta {
+    border-bottom: 1px solid #666;
+}
