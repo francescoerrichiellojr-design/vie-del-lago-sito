@@ -684,3 +684,77 @@ h1, h2, h3, h4 {
     font-weight: 400;
     color: rgba(47, 42, 38, 0.7);
 }
+
+/* ==============================
+   BLOCCO FIDUCIA E LOGISTICA (Trust Info)
+============================== */
+.p-trust-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Due colonne affiancate */
+    gap: 30px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.p-trust-h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--dark-brown);
+    margin: 0 0 10px;
+}
+
+.p-shipping ul {
+    list-style-type: none; /* Rimuove i pallini */
+    padding-left: 0;
+    margin-top: 0;
+    color: #4a4a4a;
+}
+.p-shipping li {
+    margin-bottom: 5px;
+}
+
+.trust-logos {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 10px;
+}
+.trust-logo {
+    height: 40px; /* Altezza fissa per le icone/loghi */
+    width: auto;
+    opacity: 0.8;
+}
+.trust-note {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+    color: #666;
+}
+
+/* Responsive: su schermi piccoli va su singola colonna */
+@media (max-width: 500px) {
+    .p-trust-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ==============================
+   FIX: Colore Link nel Blocco Fiducia
+============================== */
+.trust-note a {
+    /* Colore scuro del brand per la massima leggibilità */
+    color: var(--dark-brown); 
+    text-decoration: none; 
+    font-weight: 600; 
+    transition: color 0.2s ease;
+}
+
+.trust-note a:hover {
+    /* Colore miele in hover per un effetto elegante */
+    color: var(--honey-yellow); 
+    text-decoration: underline; 
+}
