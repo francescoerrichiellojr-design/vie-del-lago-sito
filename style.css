@@ -666,3 +666,21 @@ h1, h2, h3, h4 {
   opacity: 0.8;
   filter: grayscale(30%); /* Leggero bianco e nero per indicare indisponibilità */
 }
+
+/* ==============================
+   PREZZO SCHEDA PRODOTTO
+============================== */
+.p-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--dark-brown); /* Assicurati che --dark-brown sia definito */
+    margin-top: 24px;
+    margin-bottom: 8px;
+    display: block;
+}
+.p-price small {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(47, 42, 38, 0.7);
+}
