@@ -758,3 +758,25 @@ h1, h2, h3, h4 {
     color: var(--honey-yellow); 
     text-decoration: underline; 
 }
+/* ==============================
+   NOTA SULL'ANNATA (Punto 4)
+============================== */
+.p-annata-note {
+    background-color: #fefcf9; /* Bianco sporco leggerissimo */
+    border-left: 5px solid var(--honey-yellow); /* Linea dorata laterale */
+    padding: 15px 20px;
+    margin: 20px 0 30px; /* Spazio sopra e sotto per staccare dal testo */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Ombra leggera */
+    border-radius: 4px;
+}
+.p-annata-note p {
+    margin: 8px 0 0; /* Rimuove lo spazio eccessivo nel paragrafo interno */
+    font-size: 0.95rem;
+}
+.annata-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--honey-yellow); /* Etichetta color miele */
