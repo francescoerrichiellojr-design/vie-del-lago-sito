@@ -689,78 +689,73 @@ h1, h2, h3, h4 {
    BLOCCO FIDUCIA E LOGISTICA (Trust Info)
 ============================== */
 .p-trust-info {
+    /* Nuovi stili per la posizione finale: sfondo chiaro e leggibilità */
+    padding: 40px 10%; /* Spazio attorno al blocco, a larghezza intera */
+    background: #f7f3ed; /* Sfondo leggermente colorato per staccare dal main content */
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Due colonne affiancate */
-    gap: 30px;
-    margin-top: 40px;
-    padding-top: 20px;
-    color: #ffffff;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.6), -1px -1px 3px rgba(0,0,0,0.6);
+    grid-template-columns: 1fr 1fr; /* Due colonne */
+    gap: 40px;
+    border-top: 1px solid rgba(0,0,0,.05);
+    /* Imposta il colore di base del testo su scuro, garantendo leggibilità */
+    color: var(--brown); 
 }
 
 .p-trust-h4 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    color: #ffffff;
-    margin: 0 0 10px;
+    font-family: 'Playfair Display', serif; /* Mantieni il font elegante per il titolo */
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--brown); /* Titolo scuro per il contrasto */
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .p-shipping ul {
     list-style-type: none; /* Rimuove i pallini */
     padding-left: 0;
     margin-top: 0;
-    color: inherit;
 }
 .p-shipping li {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-size: 0.95rem; /* Testo del corpo leggermente più piccolo */
+    line-height: 1.5;
+    opacity: 0.9; /* Opacità per non essere troppo pesante */
 }
 
-.trust-logos {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    margin-top: 10px;
-}
-.trust-logo {
-    height: 40px; /* Altezza fissa per le icone/loghi */
-    width: auto;
-    opacity: 1;
-}
 .trust-note {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--brown); /* Assicura che anche la nota sia scura */
+    opacity: 0.9;
     margin-bottom: 0;
-    color: inherit;
 }
 
 /* Responsive: su schermi piccoli va su singola colonna */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .p-trust-info {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 30px;
+        padding: 30px 10%;
     }
 }
 
+
 /* ==============================
-   FIX: Colore Link nel Blocco Fiducia
+   FIX: Colore Link nel Blocco Fiducia (ORA FUNZIONA SU SFONDO CHIARO)
 ============================== */
 .trust-note a {
-    /* Colore scuro del brand per la massima leggibilità */
-    color: var(--honey-yellow); 
+    /* Link scuro per leggibilità su sfondo chiaro */
+    color: var(--brown); 
     text-decoration: underline; 
     font-weight: 600; 
     transition: color 0.2s ease;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Ombra più definita per i link */
+    /* Rimuovi l'ombra scura (text-shadow) che non serve più e peggiora la leggibilità */
+    text-shadow: none; 
 }
 
 .trust-note a:hover {
-    /* Colore miele in hover per un effetto elegante */
-    color: #ffffff; 
+    /* Colore miele in hover */
+    color: var(--honey-yellow); 
     text-decoration: none;
-    text-shadow: none; /* Rimuovi ombra in hover per un effetto pulito, o cambiala */ 
 }
 /* ==============================
    NOTA SULL'ANNATA (Punto 4)
