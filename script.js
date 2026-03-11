@@ -29,7 +29,7 @@
       'storia.html': 'storia', 'api.html': 'api',
       'educazione.html': 'educazione', 'millefiori.html': 'millefiori',
       'acacia.html': 'acacia', 'sulla.html': 'sulla',
-      'contatti.html': 'contatti', 'privacy.html': 'privacy', 'faq.html': 'faq',
+      'contatti.html': 'contatti', 'privacy.html': 'privacy', 'prodotti.html': 'prodotti', 'faq.html': 'faq',
     };
     const currentKey = pageMap[filename] || null;
     if (!currentKey) return;
