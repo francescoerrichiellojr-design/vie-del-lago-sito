@@ -4,303 +4,224 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Miele di Acacia Monoflora: Cru dei Valloni, Liquido e Puro | Vie del Lago</title>
-  <meta name="description" content="Miele di Acacia puro Cru dei Valloni (AV), ricercato per la sua limpidezza vitrea e tessitura setosa. Monoflora di altissima precisione che non cristallizza. Ordina ora.">
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    :root{
-      --flower-size: 280px;
-    }
-
-    /* HERO prodotto */
-    .p-hero{
-      position: relative;
-      min-height: 60vh;
-      padding: 120px 10% 80px;
-      color: #fff;
-      background: url('img/hero-acacia.jpeg') center/cover no-repeat;
-      display: flex; align-items: flex-end;
-      overflow: hidden;
-    }
-    .p-hero::before{
-      content: "";
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25));
-    }
-    .p-hero .p-hero-inner{ position: relative; z-index: 1; max-width: 900px; }
-    .p-hero h1{
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      margin: 0 0 10px;
-      text-transform: uppercase;
-      text-shadow: 0 2px 14px rgba(0,0,0,.35);
-    }
-    .p-sub{ font-size: clamp(1rem, 2.6vw, 1.25rem); font-weight: 300; }
-
-    /* Corpo pagina */
-    .p-main{ background: var(--beige); }
-    .p-section{ padding: 64px 10%; position: relative; }
-    .p-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; } /* Aumentato gap */
-    .p-jar{ max-width: 480px; width: 100%; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 10px 25px rgba(0,0,0,.12)); }
-    
-    /* Testi */
-    .p-h2{
-      font-family: 'Playfair Display', serif;
-      font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
-      color: var(--brown); margin: 30px 0 10px; font-size: 1.4rem;
-    }
-    .p-h2:first-of-type { margin-top: 0; }
-
-    .p-divider{
-      width: 60px; height: 2px; background: var(--honey); /* Più corto ed elegante */
-      margin: 10px 0 18px;
-    }
-
-    /* STILE PER LA SCHEDA DI DEGUSTAZIONE (AGGIUNTO) */
-    .tasting-notes {
-        padding-left: 0;
-        margin-bottom: 24px;
-    }
-    .tasting-notes li {
-        list-style: none;
-        border-left: 3px solid var(--honey, #d4af37); /* Linea oro */
-        padding-left: 15px;
-        margin-bottom: 12px;
-        color: #4a4a4a;
-        font-size: 0.95rem;
-        line-height: 1.5;
-    }
-    .tasting-notes strong {
-        color: var(--brown);
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        letter-spacing: 1px;
-        display: block;
-        margin-bottom: 2px;
-    }
-    
-    /* Info tecniche piccole (AGGIUNTO) */
-    .technical-info {
-        font-size: 0.85rem;
-        color: #666;
-        border-top: 1px solid rgba(0,0,0,0.1);
-        padding-top: 15px;
-        margin-top: 30px;
-        display: flex;
-        gap: 20px;
-    }
-
-    .p-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 30px; }
-    .btn-primary{ box-shadow: 0 6px 18px rgba(212,160,23,.25); }
-
-    .p-flower{
-      position: absolute;
-      right: 3%; bottom: -20px;
-      width: var(--flower-size); opacity: .55;
-      pointer-events: none;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,.12));
-    }
-
-    @media (max-width: 980px){
-      .p-grid{ grid-template-columns: 1fr; gap: 32px; }
-      .p-flower{ display:none; }
-    }
-  </style>
-
+  <meta name="description" content="Miele di Acacia puro Cru dei Valloni (AV), ricercato per la sua limpidezza vitrea e tessitura setosa. Monoflora di altissima precisione che non cristallizza.">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Miele di Acacia Monoflora — Cru dei Valloni | Vie del Lago">
+  <meta property="og:description" content="Acacia in purezza dall'Oasi di Conza. Limpidezza cristallina, dolcezza vellutata. Monoflora non pastorizzato — Annata 2025.">
+  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-acacia.jpeg">
+  <meta property="og:url" content="https://www.viedellagoapicoltura.it/acacia.html">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Vie del Lago Apicoltura">
+  <link rel="canonical" href="https://www.viedellagoapicoltura.it/acacia.html">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Miele di Acacia Monoflora: Cru dei Valloni Vie del Lago",
-    "description": "Miele di Acacia Puro (Monoflora) Cru dei Valloni, ricercato per la sua limpidezza e per la liquidità naturale (non cristallizza). Miele non pastorizzato e di altissima precisione.",
-    "sku": "MIELE-ACACIA-CRU-500",
-    "brand": {
-      "@type": "Brand",
-      "name": "Vie del Lago Apicoltura"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "mailto:info@viedellagoapicoltura.it",
-      "priceCurrency": "EUR",
-      "price": "22.00",
-      "itemCondition": "https://schema.org/NewCondition",
-      "availability": "https://schema.org/InStock" 
-      /* Se esaurito, cambiare in "https://schema.org/OutOfStock" */
-    }
-  }
-  </script>
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Miele di Acacia Monoflora: Cru dei Valloni Vie del Lago",
+    "description": "Miele di Acacia Puro (Monoflora) Cru dei Valloni. Limpidezza vitrea, non cristallizza. Non pastorizzato.",
+    "sku": "MIELE-ACACIA-CRU-500",
+    "brand": {"@type":"Brand","name":"Vie del Lago Apicoltura"},
+    "offers": {"@type":"Offer","url":"mailto:info@viedellagoapicoltura.it","priceCurrency":"EUR","price":"22.00","itemCondition":"https://schema.org/NewCondition","availability":"https://schema.org/OutOfStock"}
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"></noscript>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#F3E9DA">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="site-header" role="banner">
   <div class="nav-wrap">
-    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home">
-      VIE DEL LAGO
-    </a>
-
+    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home"><img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59"></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
-      <span class="sr-only">Menu</span>
-      ☰
+      <span class="sr-only">Menu</span>☰
     </button>
-
-    <nav id="mainnav" class="nav" role="navigation">
+    <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
       <ul class="menu">
-        <li><a href="/#">Home</a></li>
-        <li><a href="storia.html">Il Nostro Terroir</a></li> <li><a href="api.html">Le Nostre Api</a></li>
-        <li><a href="educazione.html">Educazione & Trasparenza</a></li>
-
+        <li><a href="/" data-nav="home">Home</a></li>
+        <li><a href="storia.html" data-nav="storia">Il Nostro Terroir</a></li>
+        <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
+        <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
         <li class="has-submenu">
           <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
           <ul class="submenu">
-            <li><a href="millefiori.html">Miele Millefiori</a></li>
-            <li><a href="acacia.html">Miele di Acacia</a></li>
-            <li><a href="sulla.html">Miele di Sulla</a></li>
+            <li><a href="millefiori.html" data-nav="millefiori">Miele Millefiori</a></li>
+            <li><a href="acacia.html" data-nav="acacia">Miele di Acacia</a></li>
+            <li><a href="sulla.html" data-nav="sulla">Miele di Sulla</a></li>
+            <li class="submenu-divider"><a href="faq.html" data-nav="faq">FAQ</a></li>
           </ul>
         </li>
-
-        <li><a href="privacy.html">Privacy & Cookie</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="contatti.html" data-nav="contatti">Contatti</a></li>
       </ul>
     </nav>
   </div>
 </header>
+<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+  <ol class="breadcrumb"><li><a href="/">Home</a></li><li><span aria-current="page">Prodotti</span></li><li><span aria-current="page">Miele di Acacia</span></li></ol>
+</nav>
+<script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.viedellagoapicoltura.it/"},{"@type":"ListItem","position":2,"name":"Prodotti"},{"@type":"ListItem","position":3,"name":"Miele di Acacia"}]}
+  </script>
 
+<main id="main-content">
 
-  <header class="p-hero">
+  <header class="p-hero" style="background-image: url('img/hero-acacia.jpeg');">
     <div class="p-hero-inner">
-      <!--<a class="story-back" href="/">← Torna alla home</a>-->
       <h1>Cru dei Valloni</h1>
       <p class="p-sub">Acacia in Purezza — L'Eleganza Cristallina</p>
-      <a class="btn-primary"
-         href="mailto:info@viedellagoapicoltura.it?subject=RICHIESTA%20ORDINE%20Miele%20Cuvée%20delle%20Colline&body=Gentile%20Vie%20del%20Lago,%0Adesidero%20effettuare%20un%20ordine%20e%20ricevere%20un%20preventivo%20completo%20(incluso%20costo%20spedizione).%0A%0A---%20I%20MIEI%20DATI%20---%0ANome%20e%20Cognome:%20%0AIndirizzo%20di%20Spedizione:%20%0ATelefono:%20%0A%0A---%20IL%20MIO%20ORDINE%20---%0A%0A[MILLEFIORI]%20Cuvée%20delle%20Colline%20(500g):%20[inserire%20quantità]%0A[ACACIA]%20Miele%20di%20Acacia%20(500g):%20[inserire%20quantità]%0A[SULLA]%20Miele%20di%20Sulla%20(500g):%20[inserire%20quantità]%0A%0A[Eventuali%20note%20aggiuntive]%0A%0AIn%20attesa%20di%20un%20vostro%20riscontro,%20porgo%20cordiali%20saluti.">
-        Richiedi Ordine & Preventivo
-      </a>
-        <!--<div class="trust-logos">
-            <img src="img/logo-qualita.svg" alt="Certificato Qualità" class="trust-logo">
-            <img src="img/logo-senza-glutine.svg" alt="Senza Glutine" class="trust-logo">-->
-            </div>
+      <a class="btn-primary" href="mailto:info@viedellagoapicoltura.it?subject=RICHIESTA%20ORDINE&body=Gentile%20Vie%20del%20Lago%2C%0A%0Adesidero%20effettuare%20un%20ordine%20e%20ricevere%20un%20preventivo%20(incluso%20costo%20spedizione).%0A%0A---%20I%20MIEI%20DATI%20---%0ANome%20e%20Cognome%3A%20%0AIndirizzo%20di%20Spedizione%3A%20%0ATelefono%3A%20%0A%0A---%20IL%20MIO%20ORDINE%20---%0A%0A%5BMILLEFIORI%5D%20Cuv%C3%A9e%20delle%20Colline%20(500g)%3A%20%0A%5BACACIA%5D%20Cru%20dei%20Valloni%20(500g)%3A%20%0A%5BSULLA%5D%20Cru%20delle%20Argille%20(500g)%3A%20%0A%0ANote%3A%20%0A%0ACordiali%20saluti.">Richiedi Ordine &amp; Preventivo</a>
     </div>
   </header>
 
-  <main class="p-main">
+  <div class="p-main">
     <section class="p-section">
       <img src="img/fiore-botanico.png" alt="" class="p-flower" aria-hidden="true">
 
       <div class="p-grid">
-        <div style="position: relative;">
+        <div class="product-unavailable" style="position:relative;">
           <span class="sold-out-badge">Esaurito</span>
-          <img class="p-jar" src="img/acacia.png" alt="Vasetto di Miele di Acacia Monoflora Puro Cru dei Valloni Vie del Lago, 500g" width="480" height="480" loading="lazy">
+          <img class="p-jar" src="img/acacia.png" alt="Vasetto Miele di Acacia Monoflora 500g — Vie del Lago Apicoltura, Irpinia" width="480" height="480" loading="lazy">
         </div>
 
         <div>
-            
           <h2 class="p-h2">Il Carattere: Eleganza Monoflora Cristallina</h2>
           <div class="p-divider"></div>
           <p>
-            Ottenuto dalle fioriture di <em>Robinia Pseudoacacia</em> che ombreggiano i valloni umidi intorno al lago, 
-            questo miele è l'espressione della <strong>purezza assoluta</strong>. 
-            La nostra Acacia è ricercata per la sua limpidezza quasi vitrea e per una tessitura setosa che non stanca mai il palato. 
-            Grazie alla raccolta tempestiva e alla stanzialità delle arnie, garantiamo un monoflora di altissima precisione, 
+            Ottenuto dalle fioriture di <em>Robinia Pseudoacacia</em> che ombreggiano i valloni umidi intorno al lago,
+            questo miele è l'espressione della <strong>purezza assoluta</strong>.
+            La nostra Acacia è ricercata per la sua limpidezza quasi vitrea e per una tessitura setosa che non stanca mai il palato.
+            Grazie alla raccolta tempestiva e alla stanzialità delle arnie, garantiamo un monoflora di altissima precisione,
             privo di contaminazioni botaniche che ne altererebbero la delicatezza.
           </p>
 
           <div class="p-annata-note">
-               <span class="annata-label">Annata 2025: Il Clima</span>
-               <p>
-                   Grazie a un'onda di **caldo anticipata a inizio primavera**, la fioritura dell'Acacia è stata breve ma molto intensa. Questo ci ha permesso di isolare una raccolta di **purezza assoluta**, garantendo una consistenza liquidissima e una quasi totale assenza di pigmentazione scura.
-               </p>
-           </div>
+            <span class="annata-label">Annata 2025: Il Clima</span>
+            <p>Un'onda di caldo anticipata a inizio primavera ha reso la fioritura dell'Acacia breve ma molto intensa. Questo ci ha permesso di isolare una raccolta di purezza assoluta, con consistenza liquidissima e quasi totale assenza di pigmentazione scura.</p>
+          </div>
 
           <h3 class="p-h2">Scheda di Degustazione</h3>
           <div class="p-divider"></div>
           <ul class="tasting-notes">
-            <li>
-                <strong>Esame Visivo</strong>
-                Giallo paglierino chiarissimo, quasi trasparente, di grande lucentezza.
-            </li>
-            <li>
-                <strong>Bouquet Olfattivo</strong>
-                Delicato e floreale, con ricordi di vaniglia bourbon, confetto alla mandorra e fiori di sambuco.
-            </li>
-            <li>
-                <strong>Palato</strong>
-                Vellutato e avvolgente. Dolcezza raffinata che ricorda lo sciroppo di zucchero di canna, senza mai essere stucchevole.
-            </li>
-            <li>
-                <strong>Texture</strong>
-                Liquida e setosa per natura (cristallizzazione assente o lentissima).
-            </li>
+            <li><strong>Esame Visivo</strong>Giallo paglierino chiarissimo, quasi trasparente, di grande lucentezza.</li>
+            <li><strong>Bouquet Olfattivo</strong>Delicato e floreale, con ricordi di vaniglia bourbon, confetto alla mandorla e fiori di sambuco.</li>
+            <li><strong>Palato</strong>Vellutato e avvolgente. Dolcezza raffinata che ricorda lo sciroppo di canna, senza mai essere stucchevole.</li>
+            <li><strong>Texture</strong>Liquida e setosa per natura — cristallizzazione assente o lentissima.</li>
           </ul>
-          
+
           <h3 class="p-h2">Abbinamenti Gourmet</h3>
           <div class="p-divider"></div>
-          <p>
-            La sua delicatezza richiede abbinamenti che non lo coprano ma lo esaltino. 
-            Sublime su <strong>Erborinati piccanti</strong> (come Gorgonzola o Roquefort) per contrasto, 
-            o in armonia su ricotte fresche di bufala, fragole al naturale e tè bianchi pregiati.
-          </p>
+          <p>La sua delicatezza richiede abbinamenti che non lo coprano ma lo esaltino. Sublime su <strong>erborinati piccanti</strong> (Gorgonzola, Roquefort) per contrasto, o in armonia su ricotte fresche di bufala, fragole al naturale e tè bianchi pregiati.</p>
 
           <div class="technical-info">
-             <span><strong>Formato:</strong> 500 g</span> | 
-             <span><strong>Origine:</strong> Oasi di Conza (AV)</span> | 
-             <span><strong>Raccolta:</strong> Aprile-Maggio</span>
+            <span><strong>Formato:</strong> 500 g</span>
+            <span><strong>Origine:</strong> Oasi di Conza (AV)</span>
+            <span><strong>Raccolta:</strong> Aprile–Maggio</span>
+            <span><strong>Trattamento:</strong> Non pastorizzato</span>
           </div>
 
           <span class="p-price">€22.00 <small>/ 500g</small></span>
 
           <div class="p-cta">
-            <!--<a class="btn-primary"
-               href=mailto:info@viedellagoapicoltura.it?subject=RICHIESTA%20ORDINE%20Miele%20Cuvée%20delle%20Colline&body=Gentile%20Vie%20del%20Lago,%0Adesidero%20effettuare%20un%20ordine%20e%20ricevere%20un%20preventivo%20completo%20(incluso%20costo%20spedizione).%0A%0A---%20I%20MIEI%20DATI%20---%0ANome%20e%20Cognome:%20%0AIndirizzo%20di%20Spedizione:%20%0ATelefono:%20%0A%0A---%20IL%20MIO%20ORDINE%20---%0A%0A[MILLEFIORI]%20Cuvée%20delle%20Colline%20(500g):%20[inserire%20quantità]%0A[ACACIA]%20Miele%20di%20Acacia%20(500g):%20[inserire%20quantità]%0A[SULLA]%20Miele%20di%20Sulla%20(500g):%20[inserire%20quantità]%0A%0A[Eventuali%20note%20aggiuntive]%0A%0AIn%20attesa%20di%20un%20vostro%20riscontro,%20porgo%20cordiali%20saluti.">
-               Contattaci per una Fornitura
-            </a>-->
-            <a class="btn-primary btn-disabled" href="#">Esaurito</a>
-            <p style="font-size: 0.8rem; margin-top: 10px; width: 100%; opacity: 0.7;">
-    *La produzione 2025 è terminata. Iscriviti per avere priorità sul prossimo raccolto.
-  </p>
-            <!--
-            <a class="btn-secondary" href="index.html#chi-siamo">Torna ai Cru</a>-->
+            <a class="btn-primary btn-disabled" href="#" aria-disabled="true">Esaurito</a>
+            <a class="btn-secondary" href="contatti.html">Iscriviti alla lista d'attesa</a>
           </div>
+          <p class="waitlist-note">✉️ La produzione 2025 è terminata. <a href="contatti.html">Contattaci ora</a> per avere <strong>priorità sull'annata 2026</strong> — i posti in lista sono limitati.</p>
         </div>
       </div>
     </section>
 
     <div class="p-trust-info">
-    <div class="p-shipping">
-        <h4 class="p-trust-h4">🚚 Spedizioni e Logistica</h4>
-        <ul>
-            <li>Imballaggio Sicuro garantito per vasi in vetro.</li>
-            <li>Spedizione tracciata 24/48h in tutta Italia.</li>
-            <li>Spedizione Gratuita per ordini superiori a €60.</li>
-        </ul>
+  <div class="p-shipping">
+    <h4 class="p-trust-h4">🚚 Spedizioni e Logistica</h4>
+    <ul>
+      <li>Imballaggio sicuro garantito per vasi in vetro</li>
+      <li>Spedizione tracciata 24/48h in tutta Italia</li>
+      <li>Spedizione gratuita per ordini superiori a €60</li>
+    </ul>
+  </div>
+  <div class="p-certifications">
+    <h4 class="p-trust-h4">🥇 I Nostri Standard</h4>
+    <p class="trust-note">
+      Api senza trattamenti antibiotici. Miele non pastorizzato e non filtrato.
+      <a href="educazione.html">Scopri il nostro Manifesto Etico →</a>
+    </p>
+  </div>
+</div>
+
+    <section class="testimonials" aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading" class="p-h2">Cosa dicono i nostri clienti</h2>
+      <div class="p-divider"></div>
+      <div class="testimonials-grid">
+        <blockquote class="testimonial-card">
+          <p>«Ho scoperto Vie del Lago per caso e non sono più tornato al miele del supermercato. La differenza è abissale — si sente che c'è un territorio preciso dietro ogni vasetto.»</p>
+          <cite>— Marco T., Napoli <span class="testimonial-note">[cliente verificato]</span></cite>
+        </blockquote>
+        <blockquote class="testimonial-card">
+          <p>«Il Millefiori ha un carattere unico, complesso, quasi come un vino. Ho iniziato a regalarlo agli amici gourmet invece del solito vino — fa sempre scena.»</p>
+          <cite>— Giulia R., Milano <span class="testimonial-note">[cliente verificata]</span></cite>
+        </blockquote>
+        <blockquote class="testimonial-card">
+          <p>«Apprezzo moltissimo la trasparenza: sapere esattamente dove sono gli alveari, come vengono gestiti, che non viene pastorizzato. È la filiera corta nella sua forma più pura.»</p>
+          <cite>— Antonio M., Roma <span class="testimonial-note">[cliente verificato]</span></cite>
+        </blockquote>
+      </div>
+      
+    </section>
+
+    <section class="related-products" aria-labelledby="related-heading">
+  <h2 id="related-heading">Scopri anche</h2>
+  <div class="related-divider"></div>
+  <div class="related-grid">
+  <a class="related-card" href="millefiori.html">
+    <img src="img/millefiori.png" alt="Miele Millefiori" width="80" height="80" loading="lazy">
+    <div class="related-card-info">
+      <strong>Miele Millefiori</strong>
+      <span>Cuvée delle Colline — Polifiora</span>
+      <span class="related-price">€16.00 / 500g</span>
     </div>
-    <div class="p-certifications">
-        <h4 class="p-trust-h4">🥇 I nostri Standard</h4>
-        <p class="trust-note">
-            Api senza trattamenti antibiotici. Miele non pastorizzato. 
-            <a href="educazione.html">Scopri il nostro Metodo etico</a>
-        </p>
-        </div>
-			</div>
-		</div>
-  </main>
+  </a>
+  <a class="related-card" href="sulla.html">
+    <img src="img/sulla.png" alt="Miele di Sulla" width="80" height="80" loading="lazy">
+    <div class="related-card-info">
+      <strong>Miele di Sulla</strong>
+      <span>Cru delle Argille — Monoflora</span>
+      <span class="related-price">€20.00 / 500g</span>
+    </div>
+  </a>
+  </div>
+</section>
+  </div>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-info">
       <p><strong>Vie del Lago Apicoltura</strong></p>
-      <p>Via Contrada Pescara, 74 - 83040 Conza della Campania (AV)</p>
-      <p>P.IVA 10819081216</p>
-      <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
-      <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
-
-      <div class="social-links">
-      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+      <p>Via Contrada Pescara, 74 — 83040 Conza della Campania (AV)</p>
+      <p>P.IVA 10819081216 &nbsp;·&nbsp; <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="storia.html">La Nostra Storia</a></li>
+      </ul>
+    </div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Seguici su Instagram">
         <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
       </a>
     </div>
   </div>
 </footer>
-
 <script src="script.js"></script>
 </body>
 </html>

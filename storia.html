@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Il Nostro Terroir: Miele Cru, Apicoltura Stanziale a Conza della Campania — Vie del Lago</title>
-  <meta name="description" content="Scopri l'Apicoltura Stanziale di Vie del Lago: la storia, il rigore scientifico e l'influenza del Terroir dell'Oasi di Conza della Campania nella produzione del nostro Miele Cru.">
-
-  <!-- CANONICAL -->
+  <meta name="description" content="Scopri l'Apicoltura Stanziale di Vie del Lago: la storia, il rigore scientifico e l'influenza del Terroir dell'Oasi di Conza della Campania nella produzione del Miele Cru.">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Il Nostro Terroir — Vie del Lago Apicoltura">
+  <meta property="og:description" content="Apicoltura stanziale, scienza e territorio. La storia di Vie del Lago e del Miele Cru dell'Oasi di Conza della Campania.">
+  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/storia-fallback.jpeg">
+  <meta property="og:url" content="https://www.viedellagoapicoltura.it/storia.html">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Vie del Lago Apicoltura">
   <link rel="canonical" href="https://www.viedellagoapicoltura.it/storia.html">
-
-  <!-- Markup VideoObject -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -18,171 +22,173 @@
     "description": "La storia di Vie del Lago Apicoltura: famiglia, passione e territorio.",
     "thumbnailUrl": "https://www.viedellagoapicoltura.it/img/storia-fallback.jpeg",
     "uploadDate": "2025-08-25",
-    "contentUrl": "https://www.viedellagoapicoltura.it/img/storia-hero.mp4",
-    "embedUrl": "https://www.viedellagoapicoltura.it/storia.html"
+    "contentUrl": "https://www.viedellagoapicoltura.it/img/storia-hero.mp4"
   }
   </script>
-
-  <!-- Font + CSS globali -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"></noscript>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#F3E9DA">
   <link rel="stylesheet" href="style.css">
 </head>
-
-  
 <body>
 <header class="site-header" role="banner">
   <div class="nav-wrap">
-    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home">
-      VIE DEL LAGO
-    </a>
-
+    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home"><img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59"></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
-      <span class="sr-only"></span>
-      ☰
+      <span class="sr-only">Menu</span>☰
     </button>
-
-    <nav id="mainnav" class="nav" role="navigation">
+    <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
       <ul class="menu">
-        <li><a href="/#">Home</a></li>
-        <li><a href="storia.html">Il Nostro Terroir</a></li>
-        <li><a href="api.html">Le Nostre Api</a></li>
-        <li><a href="educazione.html">Educazione & Trasparenza</a></li>
-
+        <li><a href="/" data-nav="home">Home</a></li>
+        <li><a href="storia.html" data-nav="storia">Il Nostro Terroir</a></li>
+        <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
+        <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
         <li class="has-submenu">
           <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
           <ul class="submenu">
-            <li><a href="millefiori.html">Miele Millefiori</a></li>
-            <li><a href="acacia.html">Miele di Acacia</a></li>
-            <li><a href="sulla.html">Miele di Sulla</a></li>
+            <li><a href="millefiori.html" data-nav="millefiori">Miele Millefiori</a></li>
+            <li><a href="acacia.html" data-nav="acacia">Miele di Acacia</a></li>
+            <li><a href="sulla.html" data-nav="sulla">Miele di Sulla</a></li>
+            <li class="submenu-divider"><a href="faq.html" data-nav="faq">FAQ</a></li>
           </ul>
         </li>
-
-        <li><a href="privacy.html">Privacy & Cookie</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="contatti.html" data-nav="contatti">Contatti</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
+<main id="main-content">
 
-  <!-- HERO -->
-  <header class="story-hero" role="banner" aria-label="La nostra storia">
-  <video autoplay muted loop playsinline class="story-hero-video" poster="img/storia-fallback.jpg">
-    <source src="img/storia-hero.mp4" type="video/mp4">
-    Il tuo browser non supporta i video HTML5.
-  </video>
-  <div class="story-hero-overlay" aria-hidden="true"></div>
+  <section class="story-hero" aria-label="La nostra storia">
+    <video autoplay muted loop playsinline class="story-hero-video" poster="img/storia-fallback.jpeg">
+      <source src="img/storia-hero.mp4" type="video/mp4">
+    </video>
+    <div class="story-hero-overlay" aria-hidden="true"></div>
+    <div class="story-hero__inner">
+      <a class="story-back" href="/">← Torna alla home</a>
+      <h1>Il Nostro Terroir</h1>
+      <p class="story-lead">Rigore scientifico, radici nel territorio. L'identità di Conza della Campania in un micro-lotto irripetibile.</p>
+    </div>
+  </section>
 
-  <div class="story-hero__inner">
-    <a class="story-back" href="/">← Torna alla home</a>
-    <h1>IL NOSTRO TERROIR</h1>
-    <p class="story-lead">Rigore scientifico, radici nel terroir. L'identità di Conza della Campania in un micro-lotto irripetibile.</p>
-  </div>
-</header>
+  <div class="story">
 
-  <main class="story">
-    <!-- Sezione 1 -->
     <section class="story-row">
       <div class="story-img">
-        <img src="img/storia-famiglia.jpeg" alt="Famiglia Vie del Lago al lavoro con rigore scientifico" loading="lazy">
+        <img src="img/storia-famiglia.jpeg" alt="Famiglia apicoltrice Vie del Lago al lavoro nell'apiario, Conza della Campania, Irpinia" loading="lazy" width="600" height="480">
       </div>
       <div class="story-text">
-        <h2>Le origini: La Scienza</h2>
+        <h2>Le Origini: La Scienza</h2>
         <div class="story-divider"></div>
-       <p>
-    Vie del Lago nasce da una visione che unisce l’eleganza del mondo enologico alla <strong>rigorosità della ricerca scientifica</strong>. Non parliamo di un’eredità folkloristica o di una pratica tramandata per semplice consuetudine: parliamo di un progetto fondato su basi accademiche, studi in Agraria e una profonda comprensione dei sistemi biologici.
-        </p>
-
         <p>
-          Qui l’apicoltura non è romanticismo, ma <strong>analisi, zonazione e osservazione</strong> delle dinamiche vegeto-climatiche. Ogni decisione – dalla disposizione degli apiari al monitoraggio delle fioriture – nasce da un approccio metodico, che considera l’alveare come un laboratorio vivente in cui si riflette l’integrità botanica dell’ambiente circostante.
+          Vie del Lago nasce da una visione che unisce l'eleganza del mondo enologico alla <strong>rigorosità della ricerca scientifica</strong>.
+          Non parliamo di un'eredità folkloristica o di una pratica tramandata per semplice consuetudine:
+          parliamo di un progetto fondato su basi accademiche, studi in Agraria e una profonda comprensione dei sistemi biologici.
         </p>
-
         <p>
-          Il nostro obiettivo non è “fare miele”, ma interpretare un ecosistema, tradurlo in un <strong>micro-lotto di assoluta identità territoriale</strong> e custodirlo con la precisione di chi studia la natura prima ancora di raccoglierla.
+          Qui l'apicoltura non è romanticismo, ma <strong>analisi, zonazione e osservazione</strong> delle dinamiche vegeto-climatiche.
+          Ogni decisione — dalla disposizione degli apiari al monitoraggio delle fioriture — nasce da un approccio metodico,
+          che considera l'alveare come un laboratorio vivente in cui si riflette l'integrità botanica dell'ambiente circostante.
+        </p>
+        <p>
+          Il nostro obiettivo non è «fare miele», ma interpretare un ecosistema, tradurlo in un
+          <strong>micro-lotto di assoluta identità territoriale</strong> e custodirlo con la precisione di chi studia la natura prima ancora di raccoglierla.
         </p>
       </div>
     </section>
 
-    <!-- Sezione 2 (invertita) -->
     <section class="story-row reverse">
       <div class="story-img">
-        <img src="img/storia-api.jpeg" alt="Api in arnia Vie del Lago, esempio di apicoltura stanziale" loading="lazy">
+        <img src="img/storia-api.jpeg" alt="Api nell'arnia Vie del Lago: apicoltura stanziale nell'Oasi di Conza della Campania" loading="lazy" width="600" height="480">
       </div>
       <div class="story-text">
         <h2>La Scelta Stanziale: Il Cru</h2>
         <div class="story-divider"></div>
         <p>
-   In un mercato dominato dalla pratica del nomadismo, Vie del Lago compie una scelta controcorrente: l’<strong>apicoltura stanziale</strong>. Non spostiamo le api. Non rincorriamo le fioriture di altre regioni. Non mescoliamo nettari di origini diverse.
+          In un mercato dominato dalla pratica del nomadismo, Vie del Lago compie una scelta controcorrente:
+          l'<strong>apicoltura stanziale</strong>. Non spostiamo le api. Non rincorriamo le fioriture di altre regioni.
+          Non mescoliamo nettari di origini diverse.
         </p>
-
         <p>
-          Proprio come accade per i <em>single vineyard</em> nelle grandi zone vitivinicole, ogni alveare è un interprete fedele di un’unica porzione di territorio. Il suo miele è l’istantanea precisa di quella fioritura, di quella stagione, di quelle condizioni climatiche.
+          Proprio come accade per i <em>single vineyard</em> nelle grandi zone vitivinicole, ogni alveare è un interprete fedele
+          di un'unica porzione di territorio. Il suo miele è l'istantanea precisa di quella fioritura,
+          di quella stagione, di quelle condizioni climatiche.
         </p>
-
         <p>
-          Questa scelta limita la produzione, ma amplifica il valore. È così che nasce il nostro <strong>“Cru del Lago”</strong>: un miele identitario, geograficamente tracciabile e unico per micro-lotto.
+          Questa scelta limita la produzione, ma amplifica il valore. È così che nasce il nostro <strong>Miele Cru</strong>:
+          identitario, geograficamente tracciabile, unico per micro-lotto.
         </p>
       </div>
     </section>
 
-    <!-- Sezione 3 -->
     <section class="story-row">
       <div class="story-img">
-        <img src="img/storia-territorio.jpeg" alt="Paesaggi dell'Oasi di Conza della Campania, Irpinia" loading="lazy">
+        <img src="img/storia-territorio.jpeg" alt="Paesaggio dell'Oasi di Conza della Campania, territorio del Miele Cru di Vie del Lago" loading="lazy" width="600" height="480">
       </div>
       <div class="story-text">
         <h2>Il Suolo e il Lago: Il Terroir</h2>
         <div class="story-divider"></div>
         <p>
-    Conza della Campania è un luogo raro: un’area di confine biologico dove il <strong>substrato argilloso</strong>, la vicinanza del lago e l’assenza di agricoltura intensiva creano un mosaico vegetale incontaminato.
+          Conza della Campania è un luogo raro: un'area di confine biologico dove il <strong>substrato argilloso</strong>,
+          la vicinanza del lago e l'assenza di agricoltura intensiva creano un mosaico vegetale incontaminato.
         </p>
-
         <p>
-          L’argilla trattiene umidità e micronutrienti, influenzando la fisiologia delle piante e, di conseguenza, la composizione del nettare. Il risultato è una materia prima che possiede una sua struttura, una sua complessità e una sua <strong>espressione territoriale riconoscibile</strong>.
+          L'argilla trattiene umidità e micronutrienti, influenzando la fisiologia delle piante e, di conseguenza, la composizione del nettare.
+          Il risultato è una materia prima che possiede una sua struttura, una sua complessità e una sua
+          <strong>espressione territoriale riconoscibile</strong>.
         </p>
-
         <p>
-          È questo equilibrio tra geologia, microclima e integrità vegetale a rendere possibile un miele che non è semplice “dolcezza”, ma una <strong>lettura liquida del paesaggio</strong>.
+          È questo equilibrio tra geologia, microclima e integrità vegetale a rendere possibile un miele che non è semplice «dolcezza»,
+          ma una <strong>lettura liquida del paesaggio</strong>.
         </p>
       </div>
     </section>
 
-    <!-- Citazione finale -->
     <section class="story-quote">
       <div class="story-quote__inner">
         <blockquote>
-          <p><em>“Un miele che non vuole essere replicabile, ma irripetibile. Custodiamo la voce autentica del territorio.”</em></p>
+          <p>«Un miele che non vuole essere replicabile, ma irripetibile.<br>Custodiamo la voce autentica del territorio.»</p>
         </blockquote>
         <div class="story-cta">
-            <a href="millefiori.html" class="btn-primary">Scopri il nostro Miele Cru del Lago</a>
-          
+          <a href="millefiori.html" class="btn-primary">Scopri il Miele Millefiori Cru</a>
+          <a href="contatti.html" class="btn-secondary">Contattaci</a>
         </div>
       </div>
-      <!-- Fiore PNG decorativo -->
       <img src="img/fiore-botanico.png" alt="" class="story-flower" aria-hidden="true">
     </section>
-  </main>
 
-     <!-- altre sezioni del sito -->
+  </div>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-info">
       <p><strong>Vie del Lago Apicoltura</strong></p>
-      <p>Via Contrada Pescara, 74 - 83040 Conza della Campania (AV)</p>
-      <p>P.IVA 10819081216</p>
-      <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
-      <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
-
-      <!-- Icona social -->
+      <p>Via Contrada Pescara, 74 — 83040 Conza della Campania (AV)</p>
+      <p>P.IVA 10819081216 &nbsp;·&nbsp; <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="storia.html">La Nostra Storia</a></li>
+      </ul>
+    </div>
     <div class="social-links">
-      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Seguici su Instagram">
         <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
       </a>
     </div>
   </div>
 </footer>
-
-<!-- Script per menu mobile -->
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
