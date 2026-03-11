@@ -3,124 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy & Cookie Policy — Vie del Lago Apicoltura</title>
-  <meta name="description" content="Privacy & Cookie Policy di Vie del Lago Apicoltura: informazioni chiare sull’uso dei dati e sui cookie. Non raccogliamo dati personali e non utilizziamo cookie di profilazione.">
+  <title>Privacy &amp; Cookie Policy — Vie del Lago Apicoltura</title>
+  <meta name="description" content="Informativa Privacy e Cookie Policy di Vie del Lago Apicoltura. Leggi come trattiamo i tuoi dati personali.">
+  <link rel="canonical" href="https://www.viedellagoapicoltura.it/privacy.html">
+  <!-- Favicon & theme -->
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#F3E9DA">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Stile specifico per il testo della policy (coerenza) */
-    .policy-content p {
-      margin-bottom: 1.2rem;
-      line-height: 1.6;
-      /* Allineamento giustificato per prosa legale */
-      text-align: justify;
-      hyphens: auto;
-    }
-  </style>
 </head>
 <body>
 <header class="site-header" role="banner">
   <div class="nav-wrap">
-    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home">
-      VIE DEL LAGO
-    </a>
-
+    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home"><img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59"></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
-      <span class="sr-only">Menu</span>
-      ☰
+      <span class="sr-only">Menu</span>☰
     </button>
-
-    <nav id="mainnav" class="nav" role="navigation">
+    <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
       <ul class="menu">
-        <li><a href="/#">Home</a></li>
-        <li><a href="storia.html">Il Nostro Terroir</a></li> <li><a href="api.html">Le Nostre Api</a></li>
-        <li><a href="educazione.html">Educazione & Trasparenza</a></li>
-
+        <li><a href="/" data-nav="home">Home</a></li>
+        <li><a href="storia.html" data-nav="storia">Il Nostro Terroir</a></li>
+        <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
+        <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
         <li class="has-submenu">
           <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
           <ul class="submenu">
-            <li><a href="millefiori.html">Miele Millefiori</a></li>
-            <li><a href="acacia.html">Miele di Acacia</a></li>
-            <li><a href="sulla.html">Miele di Sulla</a></li>
+            <li><a href="millefiori.html" data-nav="millefiori">Miele Millefiori</a></li>
+            <li><a href="acacia.html" data-nav="acacia">Miele di Acacia</a></li>
+            <li><a href="sulla.html" data-nav="sulla">Miele di Sulla</a></li>
+            <li class="submenu-divider"><a href="faq.html" data-nav="faq">FAQ</a></li>
           </ul>
         </li>
-
-        <li><a href="privacy.html">Privacy & Cookie</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="contatti.html" data-nav="contatti">Contatti</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
+<main id="main-content">
 
-<header class="privacy-hero" style="background-image:url('img/hero-millefiori.jpeg');">
-  <div class="p-hero-inner">
-    <a class="story-back" href="/">← Torna alla home</a>
-    <h1>Informativa Privacy & Cookie</h1>
-    <p class="p-sub">Trasparenza e rispetto totale per la tua navigazione e i tuoi dati personali.</p>
-  </div>
-</header>
+  <!-- Hero -->
+  <header class="privacy-hero">
+    <div class="privacy-hero__inner">
+      <a class="story-back" href="/">← Torna alla home</a>
+      <h1>Privacy &amp; Cookie Policy</h1>
+      <p class="story-lead">Trasparenza totale: come trattiamo i tuoi dati e perché non ne abbiamo quasi nessuno.</p>
+    </div>
+  </header>
 
-<main class="p-main">
-  <section class="p-section policy-content">
-    
-    <h2 class="p-h2">Informativa sul Trattamento dei Dati Personali (GDPR)</h2>
-    <div class="p-divider"></div>
-    
-    <h3 class="p-h2" style="font-size:1.3rem; margin-top:20px;">Titolare del Trattamento</h3>
-    <p>
-      Il Titolare del Trattamento dei dati è **Vie del Lago Apicoltura**.
-      Contatto: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a>.
-    </p>
-
-    <h3 class="p-h2" style="font-size:1.3rem; margin-top:30px;">Finalità del Trattamento dei Dati</h3>
-    <p>
-      **Questo sito web è progettato per garantire il massimo rispetto della privacy.** Non raccogliamo attivamente dati personali degli utenti, non utilizziamo strumenti di monitoraggio intrusivi né moduli di contatto automatici.
-    </p>
-    <p>
-      **Dati comunicati volontariamente:** Qualsiasi dato (come nome, cognome, indirizzo email) comunicato volontariamente dall'utente, ad esempio scrivendo direttamente all'indirizzo email 
-      <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a> o iscrivendosi alla newsletter tramite form, viene trattato unicamente per rispondere alla richiesta, gestire l'iscrizione o processare eventuali ordini. Tali dati non sono memorizzati in database centralizzati del sito o ceduti a terzi per fini diversi dalla risposta o dall'evasione dell'ordine.
-    </p>
-    
-    <h2 class="p-h2" style="margin-top:36px;">Cookie Policy</h2>
-    <div class="p-divider"></div>
-    
-    <p>
-      Il sito utilizza **esclusivamente cookie tecnici essenziali** per garantire la corretta navigazione e il funzionamento delle pagine. Questi cookie non richiedono il consenso dell'utente ai sensi del GDPR.
-    </p>
-    
-    <h3 class="p-h2" style="font-size:1.3rem; margin-top:30px;">Cookie utilizzati e assenza di profilazione</h3>
-    <ul>
-      <li style="margin-bottom: 8px;">**Cookie Tecnici (Essenziali):** Permettono la normale esplorazione del sito, la corretta visualizzazione e l'accesso alle aree riservate. La loro disattivazione può compromettere l'uso dei servizi.</li>
-      <li style="margin-bottom: 8px;">**Cookie di Terze Parti (Analisi/Social):** Non sono presenti cookie di profilazione, marketing o di terze parti (come Google Analytics, Facebook Pixel, ecc.). La navigazione è totalmente anonima e non tracciata.</li>
-    </ul>
-
-    <h2 class="p-h2" style="margin-top:36px;">I Tuoi Diritti</h2>
-    <div class="p-divider"></div>
-
-    <p>
-      In qualità di interessato, hai il diritto di chiedere al Titolare l'accesso ai tuoi dati personali, la rettifica, la cancellazione degli stessi o la limitazione del trattamento. Le richieste possono essere indirizzate via email al Titolare.
-    </p>
-
-    <p style="margin-top: 40px; font-style: italic;">Ultimo aggiornamento: Novembre 2025</p>
+  <!-- Summary cards -->
+  <section class="privacy-summary" aria-label="Riepilogo policy">
+    <div class="privacy-summary-grid">
+      <div class="privacy-card privacy-card--green">
+        <div class="privacy-card-icon">🔒</div>
+        <h3>Dati minimi</h3>
+        <p>Raccogliamo solo i dati che ci comunichi volontariamente via email o form. Nessun database centralizzato.</p>
+      </div>
+      <div class="privacy-card privacy-card--green">
+        <div class="privacy-card-icon">🍪</div>
+        <h3>Solo cookie tecnici</h3>
+        <p>Nessun cookie di profilazione, nessun tracciamento, nessun Google Analytics. Navigazione completamente anonima.</p>
+      </div>
+      <div class="privacy-card privacy-card--green">
+        <div class="privacy-card-icon">🚫</div>
+        <h3>Zero cessioni a terzi</h3>
+        <p>I tuoi dati non vengono venduti né ceduti a terzi per scopi di marketing o analisi.</p>
+      </div>
+      <div class="privacy-card privacy-card--green">
+        <div class="privacy-card-icon">✉️</div>
+        <h3>Controllo totale</h3>
+        <p>Puoi richiedere in qualsiasi momento accesso, rettifica o cancellazione dei tuoi dati scrivendo a <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a>.</p>
+      </div>
+    </div>
   </section>
+
+  <!-- Full policy -->
+  <div class="privacy-body">
+
+    <article class="privacy-section">
+      <div class="privacy-section-label">01</div>
+      <div class="privacy-section-content">
+        <h2>Titolare del Trattamento</h2>
+        <p>Il Titolare del Trattamento è <strong>Vie del Lago Apicoltura</strong>, con sede in Via Contrada Pescara, 74 — 83040 Conza della Campania (AV), P.IVA 10819081216.</p>
+        <p>Per qualsiasi questione relativa alla privacy puoi contattarci direttamente a: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
+      </div>
+    </article>
+
+    <article class="privacy-section">
+      <div class="privacy-section-label">02</div>
+      <div class="privacy-section-content">
+        <h2>Dati Raccolti e Finalità</h2>
+        <p>Questo sito è progettato per raccogliere il minimo indispensabile. In concreto:</p>
+        <div class="privacy-item-list">
+          <div class="privacy-item">
+            <span class="privacy-item-tag privacy-item-tag--yes">Sì</span>
+            <div>
+              <strong>Dati comunicati volontariamente</strong>
+              <p>Nome, email e messaggio inviati tramite il form di contatto o scrivendo direttamente a info@viedellagoapicoltura.it. Questi dati vengono usati esclusivamente per rispondere alla richiesta o gestire l'ordine.</p>
+            </div>
+          </div>
+          <div class="privacy-item">
+            <span class="privacy-item-tag privacy-item-tag--no">No</span>
+            <div>
+              <strong>Dati di navigazione automatici</strong>
+              <p>Non utilizziamo Google Analytics, Facebook Pixel, Hotjar o altri sistemi di tracciamento comportamentale. Non raccogliamo IP, device fingerprint o cronologia di navigazione.</p>
+            </div>
+          </div>
+          <div class="privacy-item">
+            <span class="privacy-item-tag privacy-item-tag--no">No</span>
+            <div>
+              <strong>Newsletter e marketing automatizzato</strong>
+              <p>Non gestiamo mailing list automatizzate. Eventuali comunicazioni sono manuali e su espressa richiesta dell'utente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="privacy-section">
+      <div class="privacy-section-label">03</div>
+      <div class="privacy-section-content">
+        <h2>Cookie Policy</h2>
+        <p>Il sito utilizza esclusivamente <strong>cookie tecnici essenziali</strong> necessari per il funzionamento delle pagine. Non è richiesto il consenso per questi cookie ai sensi del GDPR (Art. 122 D.Lgs. 196/2003).</p>
+        <table class="privacy-table">
+          <thead>
+            <tr>
+              <th>Tipo di Cookie</th>
+              <th>Presente?</th>
+              <th>Scopo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cookie tecnici essenziali</td>
+              <td><span class="badge-yes">Sì</span></td>
+              <td>Corretta navigazione e funzionamento del sito</td>
+            </tr>
+            <tr>
+              <td>Cookie di sessione</td>
+              <td><span class="badge-yes">Sì</span></td>
+              <td>Gestione temporanea delle preferenze di navigazione</td>
+            </tr>
+            <tr>
+              <td>Cookie analitici (es. Google Analytics)</td>
+              <td><span class="badge-no">No</span></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Cookie di profilazione / marketing</td>
+              <td><span class="badge-no">No</span></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Cookie di terze parti (social, ads)</td>
+              <td><span class="badge-no">No</span></td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="privacy-section">
+      <div class="privacy-section-label">04</div>
+      <div class="privacy-section-content">
+        <h2>I Tuoi Diritti (GDPR)</h2>
+        <p>In qualità di interessato ai sensi del Regolamento UE 2016/679, hai il diritto di:</p>
+        <div class="privacy-rights-grid">
+          <div class="privacy-right"><span>👁</span><strong>Accesso</strong><p>Richiedere copia dei dati che ci hai fornito</p></div>
+          <div class="privacy-right"><span>✏️</span><strong>Rettifica</strong><p>Correggere dati inesatti o incompleti</p></div>
+          <div class="privacy-right"><span>🗑</span><strong>Cancellazione</strong><p>Richiedere la rimozione dei tuoi dati</p></div>
+          <div class="privacy-right"><span>⛔</span><strong>Limitazione</strong><p>Limitare il trattamento in determinate circostanze</p></div>
+          <div class="privacy-right"><span>📦</span><strong>Portabilità</strong><p>Ricevere i tuoi dati in formato leggibile</p></div>
+          <div class="privacy-right"><span>🚩</span><strong>Opposizione</strong><p>Opporti al trattamento per motivi legittimi</p></div>
+        </div>
+        <p class="privacy-rights-note">Per esercitare uno qualsiasi di questi diritti scrivi a <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a>. Risponderemo entro 30 giorni.</p>
+      </div>
+    </article>
+
+    <article class="privacy-section privacy-section--last">
+      <div class="privacy-section-label">05</div>
+      <div class="privacy-section-content">
+        <h2>Aggiornamenti a questa Policy</h2>
+        <p>Questa informativa può essere aggiornata periodicamente per riflettere modifiche normative o operative. La data dell'ultimo aggiornamento è indicata in fondo alla pagina.</p>
+        <p class="privacy-update-date">Ultimo aggiornamento: <strong>Marzo 2026</strong></p>
+      </div>
+    </article>
+
+  </div><!-- /privacy-body -->
+
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
-    <p><strong>Vie del Lago Apicoltura</strong></p>
-    <p>Via Contrada Pescara, 74 - 83040 Conza della Campania (AV)</p>
-    <p>P.IVA 10819081216</p>
-    <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
-    <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
-
+    <div class="footer-info">
+      <p><strong>Vie del Lago Apicoltura</strong></p>
+      <p>Via Contrada Pescara, 74 — 83040 Conza della Campania (AV)</p>
+      <p>P.IVA 10819081216 &nbsp;·&nbsp; <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="storia.html">La Nostra Storia</a></li>
+      </ul>
+    </div>
     <div class="social-links">
-      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Seguici su Instagram">
         <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
       </a>
     </div>
   </div>
 </footer>
-
 <script src="script.js"></script>
 </body>
 </html>

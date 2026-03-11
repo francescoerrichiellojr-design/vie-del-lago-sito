@@ -1,269 +1,157 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apicoltura Etica e Benessere Api: La Nostra Ligustica — Vie del Lago</title>
   <meta name="description" content="Apicoltura etica e data-driven a Conza della Campania. Scopri come l'Apis mellifera ligustica, la cura del benessere api e le nostre pratiche garantiscono l'eccellenza del Miele Cru.">
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Apicoltura Etica — Le Nostre Api | Vie del Lago">
+  <meta property="og:description" content="Benessere dell'alveare, Apis mellifera ligustica e apicoltura di precisione. Scopri il metodo etico di Vie del Lago a Conza della Campania.">
+  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-api.jpeg">
+  <meta property="og:url" content="https://www.viedellagoapicoltura.it/api.html">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Vie del Lago Apicoltura">
+  <link rel="canonical" href="https://www.viedellagoapicoltura.it/api.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"></noscript>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#F3E9DA">
   <link rel="stylesheet" href="style.css">
-
-  <style>
-  /* HERO — stesso look della home */
-  .api-hero{
-    position: relative;
-    min-height: 62vh;
-    padding: 120px 10% 84px;
-    display: flex; align-items: flex-end;
-    color:#fff; overflow: hidden;
-    background: var(--beige) url("img/hero-api.jpeg") center/cover no-repeat;
-  }
-  .api-hero::before{
-    content:""; position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35));
-  }
-  .api-hero .hero-inner{ position: relative; z-index:1; max-width: 980px; }
-  .api-hero h1{
-    font-size: clamp(2.4rem, 6vw, 4rem);
-    margin:.2rem 0 .4rem; text-transform: uppercase; letter-spacing:.5px;
-    color:#fff;
-    text-shadow: 0 2px 14px rgba(0,0,0,.45);
-  }
-  .api-lead{
-    font-size: clamp(1rem, 2.6vw, 1.25rem);
-    margin:0; opacity:.96; color:#fff; font-weight: 300;
-    text-shadow: 0 2px 14px rgba(0,0,0,.45);
-  }
-
-  /* Sezioni su beige brand */
-  .api-section{ padding: 64px 10%; background: var(--beige); color: var(--brown); }
-  .api-intro{ max-width: 980px; margin: 0 auto 26px; }
-  .api-intro h2{
-    margin:0 0 10px; text-transform: uppercase; letter-spacing:.4px;
-    font-family: 'Playfair Display', serif;
-  }
-  .api-divider{ width:60px; height:2px; background: var(--honey); margin: 12px 0 18px; } /* Accorciato divider */
-
-  /* Card caratteristiche */
-  .api-grid{
-    display:grid; grid-template-columns: repeat(4,1fr);
-    gap:22px; max-width: 1200px; margin: 0 auto;
-  }
-  .api-card{
-    background:#fff; border-radius:14px; padding:22px;
-    box-shadow:0 10px 24px rgba(0,0,0,.08);
-    display:grid; gap:8px;
-  }
-  .api-card h3{ margin:6px 0 4px; font-size:1.05rem; }
-  .api-card p{ margin:0; font-size:.98rem; opacity:.95; }
-  .icon{ width:42px; height:42px; color:var(--brown); }
-  .icon *{ stroke:currentColor; fill:none; stroke-width:1.5; }
-
-  /* Ruoli della colonia */
-  .roles{
-    display:grid; grid-template-columns: repeat(3,1fr);
-    gap:22px; max-width: 1200px; margin: 0 auto;
-  }
-  .role{
-    background:#fff; border-radius:14px; padding:22px;
-    box-shadow:0 10px 24px rgba(0,0,0,.08);
-  }
-  .role h3{ margin:6px 0 8px; }
-  .role p{ margin:0; }
-
-  /* Ciclo stagionale */
-  .season{
-    display:grid; grid-template-columns: 1fr 1fr; gap:32px; align-items:center;
-    max-width: 1200px; margin: 0 auto;
-  }
-  /* Contenitore Immagine per coerenza */
-  .season-illust-wrap{ text-align:center; } 
-  .season-illust{ max-width:400px; width:100%; height:auto; opacity:.8; }
-  
-  .timeline{ position:relative; padding-left:32px; }
-  .timeline::before{
-    content:""; position:absolute; left:10px; top:6px; bottom:6px;
-    width:2px; background:var(--honey); /* Linea oro */
-  }
-  .step{ position:relative; margin:0 0 20px; padding-left:14px; } /* Aggiunto padding a step */
-  .step::before{ /* Punto cronologico */
-    content:""; position:absolute; left:-14px; top:4px;
-    width:8px; height:8px; background:var(--honey); border-radius:50%;
-  }
-
-  .step h4{ margin:0 0 4px; font-size:1.02rem; font-weight:600; }
-  .step p{ margin:0; opacity:.95; }
-
-  /* Buone pratiche */
-  .checks{
-    display:grid; grid-template-columns: repeat(2,1fr); gap:14px 22px;
-    max-width: 1000px; margin: 0 auto;
-  }
-  .check{ display:flex; gap:10px; align-items:flex-start; }
-  .tick{ width:20px; height:20px; color:var(--honey); } /* Colore miele */
-  .tick *{ stroke:currentColor; fill:none; stroke-width:2.2; }
-
-  /* CTA finale */
-  .api-cta{ background: var(--beige); padding: 64px 10% 80px; text-align:center; }
-  .api-cta p{ margin:0 auto 18px; max-width:760px; font-size:1.1rem; }
-  .btn-wrap{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-
-  /* Responsive */
-  @media (max-width:1100px){
-    .api-grid{ grid-template-columns: repeat(2,1fr); }
-    .roles{ grid-template-columns: 1fr; }
-    .season{ grid-template-columns: 1fr; }
-  }
-  @media (max-width:680px){
-    .api-grid{ grid-template-columns: 1fr; }
-    .checks{ grid-template-columns: 1fr; }
-    .season-illust-wrap{ display:none; }
-  }
-</style>
-
 </head>
 <body>
-
-  <header class="site-header" role="banner">
+<header class="site-header" role="banner">
   <div class="nav-wrap">
-    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home">
-      VIE DEL LAGO
-    </a>
-
+    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home"><img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59"></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
-      <span class="sr-only">Menu</span>
-      ☰
+      <span class="sr-only">Menu</span>☰
     </button>
-
-    <nav id="mainnav" class="nav" role="navigation">
+    <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
       <ul class="menu">
-        <li><a href="/#">Home</a></li>
-        <li><a href="storia.html">Il Nostro Terroir</a></li> <li><a href="api.html">Le Nostre Api</a></li>
-        <li><a href="educazione.html">Educazione & Trasparenza</a></li>
-
+        <li><a href="/" data-nav="home">Home</a></li>
+        <li><a href="storia.html" data-nav="storia">Il Nostro Terroir</a></li>
+        <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
+        <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
         <li class="has-submenu">
           <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
           <ul class="submenu">
-            <li><a href="millefiori.html">Miele Millefiori</a></li>
-            <li><a href="acacia.html">Miele di Acacia</a></li>
-            <li><a href="sulla.html">Miele di Sulla</a></li>
+            <li><a href="millefiori.html" data-nav="millefiori">Miele Millefiori</a></li>
+            <li><a href="acacia.html" data-nav="acacia">Miele di Acacia</a></li>
+            <li><a href="sulla.html" data-nav="sulla">Miele di Sulla</a></li>
+            <li class="submenu-divider"><a href="faq.html" data-nav="faq">FAQ</a></li>
           </ul>
         </li>
-
-        <li><a href="privacy.html">Privacy & Cookie</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="contatti.html" data-nav="contatti">Contatti</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-  <header class="api-hero">
-    <div class="hero-inner">
+<main id="main-content">
+
+  <header class="story-hero" style="background: var(--beige) url('img/hero-api.jpeg') center/cover no-repeat;" aria-label="Le nostre api">
+    <div class="story-hero-overlay" aria-hidden="true"></div>
+    <div class="story-hero__inner">
       <a class="story-back" href="/">← Torna alla home</a>
       <h1>Il Nostro Alveare: Benessere e Etica</h1>
-      <p class="api-lead">La base del nostro Miele Cru: cura stanziale e selezione genetica dell'Apis mellifera ligustica per la massima qualità.</p>
+      <p class="story-lead">La base del nostro Miele Cru: cura stanziale e selezione genetica dell'Apis mellifera ligustica per la massima qualità.</p>
     </div>
   </header>
-
-  <main>
 
     <section class="api-section">
       <div class="api-intro">
         <h2>Perché l'Apis mellifera ligustica?</h2>
         <div class="api-divider"></div>
         <p>
-          La nostra scelta ricade sulla sottospecie italiana per la sua spiccata <strong>mitidezza</strong> e la capacità di svilupparsi in armonia con le fioriture locali. 
+          La nostra scelta ricade sulla sottospecie italiana per la sua spiccata <strong>mitezza</strong>
+          e la capacità di svilupparsi in armonia con le fioriture locali.
           Questa selezione genetica è la base della nostra <strong>apicoltura etica e di precisione</strong>.
         </p>
       </div>
 
       <div class="api-grid">
         <article class="api-card">
-          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-            <circle cx="24" cy="24" r="16"/><path d="M18 24h12M24 18v12"/>
-          </svg>
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><path d="M18 24h12M24 18v12"/></svg>
           <h3>Mitezza</h3>
-          <p>Gestione serena dell’apiario e visite più agevoli grazie alla spiccata docilità.</p>
+          <p>Gestione serena dell'apiario e visite più agevoli grazie alla spiccata docilità della Ligustica.</p>
         </article>
-
         <article class="api-card">
-          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M10 30c4-6 8-10 14-10s10 4 14 10"/><path d="M18 22l-4-4M30 22l4-4"/>
-          </svg>
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 30c4-6 8-10 14-10s10 4 14 10"/><path d="M18 22l-4-4M30 22l4-4"/></svg>
           <h3>Adattabilità</h3>
-          <p>Si adatta bene a climi e fioriture differenti, mantenendo costanza produttiva.</p>
+          <p>Si adatta bene a climi e fioriture differenti, mantenendo costanza produttiva stagione dopo stagione.</p>
         </article>
-
         <article class="api-card">
-          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M16 20l8-6 8 6v8l-8 6-8-6z"/><path d="M16 28l8-6 8 6"/>
-          </svg>
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M16 20l8-6 8 6v8l-8 6-8-6z"/><path d="M16 28l8-6 8 6"/></svg>
           <h3>Buona produttività</h3>
-          <p>Sviluppo vivace in primavera e raccolti regolari quando le condizioni lo permettono.</p>
+          <p>Sviluppo vivace in primavera e raccolti regolari quando le condizioni biologiche lo permettono.</p>
         </article>
-
         <article class="api-card">
-          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-            <circle cx="24" cy="24" r="14"/><path d="M18 24l4 4 8-8"/>
-          </svg>
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="14"/><path d="M18 24l4 4 8-8"/></svg>
           <h3>Comportamento igienico</h3>
-          <p>Nidi puliti e vitali: un aiuto naturale alla salute della colonia.</p>
+          <p>Nidi puliti e vitali: un aiuto naturale alla salute della colonia, senza interventi chimici.</p>
         </article>
       </div>
     </section>
 
-    <section class="api-section">
+    <section class="api-section" style="background:#fff;">
       <div class="api-intro">
         <h2>La Società dell'Alveare</h2>
         <div class="api-divider"></div>
-        <p>Ogni individuo ha un ruolo vitale, programmato per la sopravvivenza e la prosperità della colonia. Questa perfetta organizzazione è la chiave della loro forza.</p>
+        <p>Ogni individuo ha un ruolo vitale, programmato per la sopravvivenza e la prosperità della colonia.</p>
       </div>
-      
-
-
-
       <div class="roles">
         <article class="role">
-          <h3>La Regina </h3>
-          <p>Madre dell’alveare, depone fino a migliaia di uova al giorno in alta stagione e guida la colonia con i feromoni. È la garante della genetica e dell'ordine.</p>
+          <h3>La Regina 👑</h3>
+          <p>Madre dell'alveare, depone fino a migliaia di uova al giorno in alta stagione e guida la colonia con i feromoni. È la garante della genetica e dell'ordine.</p>
         </article>
         <article class="role">
-          <h3>L'Operaia </h3>
-          <p>La forza dell’alveare: nutrice, costruttrice, ventilatrice e bottinatrice, a seconda dell’età. La sua vita è una progressione di compiti a favore della comunità.</p>
+          <h3>L'Operaia 🐝</h3>
+          <p>La forza dell'alveare: nutrice, costruttrice, ventilatrice e bottinatrice, a seconda dell'età. La sua vita è una progressione di compiti a favore della comunità.</p>
         </article>
         <article class="role">
-          <h3>Il Fuco </h3>
-          <p>Maschio della colonia. Il loro unico e vitale compito è l’accoppiamento con regine vergini. Sono il veicolo per la diffusione della genetica ligustica.</p>
+          <h3>Il Fuco 🐝</h3>
+          <p>Maschio della colonia. Il loro unico e vitale compito è l'accoppiamento con regine vergini. Sono il veicolo per la diffusione della genetica ligustica.</p>
         </article>
       </div>
     </section>
 
     <section class="api-cta">
-      <p><em>"Il miele migliore nasce da api in salute e da mani che le rispettano. Vuoi scoprire come garantiamo la loro salute e la tua fiducia?"</em></p>
+      <p><em>«Il miele migliore nasce da api in salute e da mani che le rispettano. Vuoi scoprire come garantiamo la loro salute e la tua fiducia?»</em></p>
       <div class="btn-wrap">
-        <a href="educazione.html" class="btn-primary">Leggi il Manifesto Etico e la Trasparenza</a>
-        
-      
+        <a href="educazione.html" class="btn-primary">Leggi il Manifesto Etico</a>
+        <a href="contatti.html" class="btn-secondary">Contattaci</a>
       </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-info">
       <p><strong>Vie del Lago Apicoltura</strong></p>
-      <p>Via Contrada Pescara, 74 - 83040 Conza della Campania (AV)</p>
-      <p>P.IVA 10819081216</p>
-      <p>Email: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
-      <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
-      <div class="social-links">
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-          <img class="social-icon" src="img/instagram-icon.svg" alt="Instagram">
-        </a>
-      </div>
+      <p>Via Contrada Pescara, 74 — 83040 Conza della Campania (AV)</p>
+      <p>P.IVA 10819081216 &nbsp;·&nbsp; <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="storia.html">La Nostra Storia</a></li>
+      </ul>
     </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <div class="social-links">
+      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Seguici su Instagram">
+        <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
+      </a>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
