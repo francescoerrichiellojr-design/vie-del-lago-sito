@@ -32,6 +32,14 @@
     <priority>0.80</priority>
   </url>
 
+
+  <!-- Etichette -->
+  <url>
+    <loc>https://www.viedellagoapicoltura.it/etichette.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <priority>0.75</priority>
+  </url>
+
   <!-- Prodotti -->
   <url>
     <loc>https://www.viedellagoapicoltura.it/millefiori.html</loc>
