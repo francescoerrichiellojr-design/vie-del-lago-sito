@@ -5,26 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Api Ligustiche & Apicoltura Sostenibile Irpinia | Vie del Lago</title>
   <meta name="description" content="Le api ligustiche di Vie del Lago vivono nell'Oasi WWF di Conza. Apicoltura sostenibile, senza antibiotici, con monitoraggio stagionale in Irpinia.">
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Apicoltura Etica — Le Nostre Api | Vie del Lago">
-  <meta property="og:description" content="Benessere dell'alveare, Apis mellifera ligustica e apicoltura di precisione. Scopri il metodo etico di Vie del Lago a Conza della Campania.">
+  <meta property="og:title" content="Le Nostre Api — Vie del Lago Apicoltura">
+  <meta property="og:description" content="Apis mellifera ligustica, apicoltura etica e stanziale nell'Oasi WWF di Conza della Campania. La base di ogni miele cru.">
   <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-api.webp">
   <meta property="og:url" content="https://www.viedellagoapicoltura.it/api.html">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Vie del Lago Apicoltura">
   <link rel="canonical" href="https://www.viedellagoapicoltura.it/api.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"></noscript>
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="theme-color" content="#F3E9DA">
-  <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,40 +26,285 @@
     "description": "Le api Apis mellifera ligustica dell'apiario Priscilla a Conza della Campania. Apicoltura stanziale senza antibiotici nell'Oasi WWF.",
     "url": "https://www.viedellagoapicoltura.it/api.html",
     "datePublished": "2025-04-01",
-    "dateModified": "2026-03-11",
+    "dateModified": "2026-03-12",
     "inLanguage": "it-IT",
-    "about": {
-      "@type": "Thing",
-      "name": "Apicoltura, Apis mellifera ligustica, Biodiversità"
-    },
-    "author": {
-      "@type": "Organization",
-      "name": "Vie del Lago Apicoltura",
-      "url": "https://www.viedellagoapicoltura.it"
-    },
+    "about": { "@type": "Thing", "name": "Apicoltura, Apis mellifera ligustica, Biodiversità" },
+    "author": { "@type": "Organization", "name": "Vie del Lago Apicoltura", "url": "https://www.viedellagoapicoltura.it" },
     "publisher": {
-      "@type": "Organization",
-      "name": "Vie del Lago Apicoltura",
+      "@type": "Organization", "name": "Vie del Lago Apicoltura",
       "url": "https://www.viedellagoapicoltura.it",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.viedellagoapicoltura.it/img/logo-esteso-nero.png"
-      }
+      "logo": { "@type": "ImageObject", "url": "https://www.viedellagoapicoltura.it/img/logo-esteso-nero.png" }
     },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type":"ListItem","position":1,"name":"Home","item":"https://www.viedellagoapicoltura.it/"},
-        {"@type":"ListItem","position":2,"name":"Le Nostre Api Ligustiche"}
+        {"@type":"ListItem","position":2,"name":"Le Nostre Api"}
       ]
     }
   }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ══════════════════════════════════════════
+       api.html — scoped layout styles
+    ══════════════════════════════════════════ */
+
+    /* HERO */
+    .apg-hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .apg-hero__bg {
+      position: absolute; inset: 0;
+      background: var(--dark-brown) url('img/hero-api.webp') center 30% / cover no-repeat;
+      animation: apgZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes apgZoom {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1.00); }
+    }
+    .apg-hero__veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top,
+        rgba(47,42,38,.95) 0%,
+        rgba(47,42,38,.5)  45%,
+        rgba(47,42,38,.1)  100%);
+    }
+    .apg-hero__body {
+      position: relative; z-index: 2;
+      padding: 0 10% 72px;
+      width: 100%;
+    }
+    .apg-hero__eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: .72rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--honey-yellow);
+      margin-bottom: 22px;
+    }
+    .apg-hero__eyebrow::before {
+      content: ""; width: 36px; height: 1px; background: var(--honey-yellow);
+    }
+    .apg-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+      color: #fff; margin: 0 0 22px; line-height: 1.08;
+      letter-spacing: -.02em; max-width: 700px;
+    }
+    .apg-hero h1 em { color: var(--honey-yellow); font-style: italic; }
+    .apg-hero__lead {
+      font-size: clamp(.95rem, 1.8vw, 1.12rem);
+      color: rgba(255,255,255,.7); line-height: 1.8;
+      max-width: 580px; font-weight: 300; margin: 0 0 44px;
+    }
+    .apg-stats {
+      display: flex; gap: 48px; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 32px;
+    }
+    .apg-stat__val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem; color: var(--honey-yellow);
+      display: block; line-height: 1;
+    }
+    .apg-stat__label {
+      display: block; margin-top: 6px;
+      font-size: .7rem; color: rgba(255,255,255,.45);
+      letter-spacing: .5px; text-transform: uppercase;
+    }
+
+    /* SECTION BASE */
+    .apg-s { padding: 88px 10%; }
+    .apg-s--beige  { background: var(--beige); }
+    .apg-s--white  { background: #fff; }
+    .apg-s--dark   { background: var(--dark-brown); }
+    .apg-s__w      { max-width: 1200px; margin: 0 auto; }
+    .apg-s__wn     { max-width: 840px;  margin: 0 auto; }
+
+    .apg-eyebrow {
+      font-size: .7rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--honey-yellow);
+      margin: 0 0 10px; display: block;
+    }
+    .apg-eyebrow--dim { color: rgba(212,160,23,.7); }
+    .apg-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+      color: var(--dark-brown); margin: 0 0 10px; line-height: 1.15;
+    }
+    .apg-h2--white { color: #fff; }
+    .apg-rule { width: 44px; height: 2px; background: var(--honey-yellow); margin: 0 0 28px; }
+    .apg-lead { font-size: 1rem; line-height: 1.85; color: #555; margin: 0 0 20px; max-width: 680px; }
+    .apg-lead--white { color: rgba(255,255,255,.65); }
+
+    /* LIGUSTICA CARDS — 2×2 grid with icon accent */
+    .lig-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 20px; margin-top: 44px;
+    }
+    .lig-card {
+      background: var(--beige); border-radius: 14px;
+      padding: 28px 26px 24px;
+      border: 1px solid rgba(0,0,0,.05);
+      display: grid; grid-template-columns: 48px 1fr;
+      gap: 0 16px; align-items: start;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .lig-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.08);
+    }
+    .lig-card__ico {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: rgba(212,160,23,.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; grid-row: span 2;
+      margin-top: 2px;
+    }
+    .lig-card__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.02rem; color: var(--dark-brown);
+      margin: 0 0 6px; align-self: end;
+    }
+    .lig-card__body {
+      font-size: .875rem; line-height: 1.65; color: #666;
+      margin: 0; grid-column: 2;
+    }
+
+    /* RUOLI — tre colonne con bordo divisorio e hover a sfondo */
+    .ruoli-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px; overflow: hidden;
+      margin-top: 40px;
+    }
+    .ruolo {
+      padding: 36px 28px;
+      border-right: 1px solid rgba(0,0,0,.08);
+      transition: background .2s;
+      position: relative;
+    }
+    .ruolo:last-child { border-right: none; }
+    .ruolo:hover { background: rgba(212,160,23,.04); }
+    .ruolo__badge {
+      display: inline-block;
+      font-size: .68rem; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--honey-yellow);
+      border: 1px solid rgba(212,160,23,.35);
+      padding: 3px 10px; border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .ruolo__emoji { font-size: 2.2rem; display: block; margin-bottom: 12px; }
+    .ruolo__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; color: var(--dark-brown); margin: 0 0 12px;
+    }
+    .ruolo__body { font-size: .9rem; line-height: 1.75; color: #666; margin: 0; }
+
+    /* CICLO — vertical timeline con linea */
+    .ciclo {
+      margin-top: 48px;
+      position: relative;
+    }
+    .ciclo::before {
+      content: "";
+      position: absolute; left: 22px; top: 22px; bottom: 22px;
+      width: 2px; background: rgba(212,160,23,.2);
+    }
+    .ciclo-step {
+      display: grid; grid-template-columns: 46px 1fr;
+      gap: 0 20px; margin-bottom: 32px;
+    }
+    .ciclo-step:last-child { margin-bottom: 0; }
+    .ciclo-step__dot {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--dark-brown); border: 2px solid var(--honey-yellow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem; font-weight: 700; color: var(--honey-yellow);
+      flex-shrink: 0; z-index: 1; position: relative;
+      font-family: 'Playfair Display', serif;
+    }
+    .ciclo-step__inner { padding-top: 6px; }
+    .ciclo-step__phase {
+      font-size: .68rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--honey-yellow);
+      margin: 0 0 3px; display: block;
+    }
+    .ciclo-step__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.02rem; color: var(--dark-brown); margin: 0 0 5px;
+    }
+    .ciclo-step__text { font-size: .9rem; line-height: 1.7; color: #666; margin: 0; }
+
+    /* ETICA — griglia 3×2 su sfondo scuro */
+    .etica-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; margin-top: 44px;
+    }
+    .etica-card {
+      border: 1px solid rgba(212,160,23,.18);
+      border-radius: 12px; padding: 24px 22px;
+      transition: border-color .2s, background .2s;
+    }
+    .etica-card:hover {
+      border-color: rgba(212,160,23,.45);
+      background: rgba(212,160,23,.04);
+    }
+    .etica-card__label {
+      font-size: .68rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: rgba(212,160,23,.6);
+      margin: 0 0 8px; display: block;
+    }
+    .etica-card__val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; color: #fff; margin: 0 0 8px;
+    }
+    .etica-card__desc { font-size: .85rem; color: rgba(255,255,255,.5); margin: 0; line-height: 1.65; }
+
+    /* CTA finale */
+    .apg-cta {
+      background: var(--beige); padding: 80px 10%; text-align: center;
+    }
+    .apg-cta__inner { max-width: 600px; margin: 0 auto; }
+    .apg-cta blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+      font-style: italic; color: var(--dark-brown);
+      border: none; margin: 0 0 32px; padding: 0; line-height: 1.6;
+    }
+    .apg-cta__btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .apg-s { padding: 60px 5%; }
+      .apg-hero__body { padding: 0 5% 52px; }
+      .apg-stats { gap: 28px; }
+      .lig-grid { grid-template-columns: 1fr; }
+      .ruoli-strip { grid-template-columns: 1fr; }
+      .ruolo { border-right: none; border-bottom: 1px solid rgba(0,0,0,.08); }
+      .ruolo:last-child { border-bottom: none; }
+      .etica-grid { grid-template-columns: 1fr 1fr; }
+      .apg-cta { padding: 60px 5%; }
+    }
+    @media (max-width: 560px) {
+      .etica-grid { grid-template-columns: 1fr; }
+      .apg-stats { flex-direction: column; gap: 20px; }
+    }
+  </style>
 </head>
 <body>
+
 <header class="site-header" role="banner">
   <div class="nav-wrap">
-    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home"><img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59"></a>
+    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home">
+      <img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura" class="brand-logo" width="190" height="59">
+    </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
       <span class="sr-only">Menu</span>☰
     </button>
@@ -81,7 +319,7 @@
             <li><a href="chi-siamo.html" data-nav="chi-siamo">Chi Siamo</a></li>
           </ul>
         </li>
-        <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
+        <li><a href="api.html" data-nav="api" class="active">Le Nostre Api</a></li>
         <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
         <li class="has-submenu">
           <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
@@ -99,81 +337,251 @@
   </div>
 </header>
 
+<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Le Nostre Api</span></li>
+  </ol>
+</nav>
+
 <main id="main-content">
 
-  <header class="story-hero" style="background: var(--beige) url('img/hero-api.webp') center/cover no-repeat;" aria-label="Le nostre api">
-    <div class="story-hero-overlay" aria-hidden="true"></div>
-    <div class="story-hero__inner">
-      <a class="story-back" href="/">← Torna alla home</a>
-      <h1>Il Nostro Alveare: Benessere e Etica</h1>
-      <p class="story-lead">La base del nostro Miele Cru: cura stanziale e selezione genetica dell'Apis mellifera ligustica per la massima qualità.</p>
+  <!-- ── HERO ── -->
+  <header class="apg-hero" aria-label="Le Nostre Api — Hero">
+    <div class="apg-hero__bg" role="img" aria-label="Apiario Priscilla nell'Oasi WWF di Conza della Campania"></div>
+    <div class="apg-hero__veil"></div>
+    <div class="apg-hero__body">
+      <p class="apg-hero__eyebrow">Apiario Priscilla · Oasi WWF · Irpinia</p>
+      <h1>50.000 api.<br>Un solo <em>territorio</em>.</h1>
+      <p class="apg-hero__lead">
+        L'<em>Apis mellifera ligustica</em> non è solo la protagonista dei nostri alveari — è la ragione
+        per cui ogni miele ha carattere. Le sue caratteristiche genetiche, l'ecosistema dell'Oasi di Conza
+        e la nostra gestione etica formano un sistema inscindibile.
+      </p>
+      <div class="apg-stats" role="list">
+        <div role="listitem">
+          <span class="apg-stat__val">50.000</span>
+          <span class="apg-stat__label">Api per arnia al picco</span>
+        </div>
+        <div role="listitem">
+          <span class="apg-stat__val">0</span>
+          <span class="apg-stat__label">Antibiotici utilizzati</span>
+        </div>
+        <div role="listitem">
+          <span class="apg-stat__val">100%</span>
+          <span class="apg-stat__label">Apicoltura stanziale</span>
+        </div>
+        <div role="listitem">
+          <span class="apg-stat__val">3 km</span>
+          <span class="apg-stat__label">Raggio medio di bottinamento</span>
+        </div>
+      </div>
     </div>
   </header>
 
-    <section class="api-section">
-      <div class="api-intro">
-        <h2>Perché l'Apis mellifera ligustica?</h2>
-        <div class="api-divider"></div>
-        <p>
-          La nostra scelta ricade sulla sottospecie italiana per la sua spiccata <strong>mitezza</strong>
-          e la capacità di svilupparsi in armonia con le fioriture locali.
-          Questa selezione genetica è la base della nostra <strong>apicoltura etica e di precisione</strong>.
-        </p>
+  <!-- ── LIGUSTICA ── -->
+  <section class="apg-s apg-s--white" aria-labelledby="lig-h2">
+    <div class="apg-s__w">
+      <span class="apg-eyebrow">La scelta genetica</span>
+      <h2 class="apg-h2" id="lig-h2">Perché l'<em>Apis mellifera ligustica</em></h2>
+      <div class="apg-rule"></div>
+      <p class="apg-lead">
+        La sottospecie italiana è la più apprezzata dagli apicoltori di qualità in tutto il mondo,
+        e per una ragione precisa: è docile, produttiva e si sincronizza in modo naturale con le fioriture
+        locali. In un'apicoltura stanziale come la nostra — dove le api non si spostano mai dal loro territorio
+        — questa sincronia con l'ecosistema dell'Oasi di Conza è tutto.
+      </p>
+      <div class="lig-grid">
+        <div class="lig-card">
+          <div class="lig-card__ico">🤲</div>
+          <h3 class="lig-card__title">Mitezza</h3>
+          <p class="lig-card__body">Gestione serena senza protezioni eccessive. La docilità permette ispezioni frequenti, lettura del comportamento della colonia e diagnosi precoce di qualsiasi anomalia.</p>
+        </div>
+        <div class="lig-card">
+          <div class="lig-card__ico">🌡️</div>
+          <h3 class="lig-card__title">Adattabilità climatica</h3>
+          <p class="lig-card__body">Resiste bene alle escursioni termiche dell'Appennino irpino — inverni rigidi, estati calde. Si adatta al ritmo stagionale dell'Oasi senza stress da gestione.</p>
+        </div>
+        <div class="lig-card">
+          <div class="lig-card__ico">📅</div>
+          <h3 class="lig-card__title">Sincronia floreale</h3>
+          <p class="lig-card__body">La colonia si espande in sincronia con le fioriture locali: cresce prima della Sulla di maggio, scala dopo l'Acacia, mantiene il ritmo con il Millefiori estivo.</p>
+        </div>
+        <div class="lig-card">
+          <div class="lig-card__ico">🧹</div>
+          <h3 class="lig-card__title">Comportamento igienico</h3>
+          <p class="lig-card__body">Rimuove istintivamente covata malata e acari. Riduce la pressione della varroa in modo naturale — meno trattamenti, più rispetto del ciclo biologico.</p>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="api-grid">
-        <article class="api-card">
-          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><path d="M18 24h12M24 18v12"/></svg>
-          <h3>Mitezza</h3>
-          <p>Gestione serena dell'apiario e visite più agevoli grazie alla spiccata docilità della Ligustica.</p>
-        </article>
-        <article class="api-card">
-          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 30c4-6 8-10 14-10s10 4 14 10"/><path d="M18 22l-4-4M30 22l4-4"/></svg>
-          <h3>Adattabilità</h3>
-          <p>Si adatta bene a climi e fioriture differenti, mantenendo costanza produttiva stagione dopo stagione.</p>
-        </article>
-        <article class="api-card">
-          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M16 20l8-6 8 6v8l-8 6-8-6z"/><path d="M16 28l8-6 8 6"/></svg>
-          <h3>Buona produttività</h3>
-          <p>Sviluppo vivace in primavera e raccolti regolari quando le condizioni biologiche lo permettono.</p>
-        </article>
-        <article class="api-card">
-          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="14"/><path d="M18 24l4 4 8-8"/></svg>
-          <h3>Comportamento igienico</h3>
-          <p>Nidi puliti e vitali: un aiuto naturale alla salute della colonia, senza interventi chimici.</p>
-        </article>
+  <!-- ── RUOLI SOCIALI ── -->
+  <section class="apg-s apg-s--beige" aria-labelledby="ruoli-h2">
+    <div class="apg-s__w">
+      <span class="apg-eyebrow">Chi abita l'alveare</span>
+      <h2 class="apg-h2" id="ruoli-h2">La società dell'alveare</h2>
+      <div class="apg-rule"></div>
+      <p class="apg-lead">
+        Cinquantamila individui con ruoli precisi. Non è una metafora — è un sistema biologico
+        di straordinaria efficienza. Capire chi fa cosa nell'alveare significa capire perché
+        il miele di Priscilla ha le caratteristiche che ha.
+      </p>
+      <div class="ruoli-strip">
+        <div class="ruolo">
+          <span class="ruolo__emoji">👑</span>
+          <span class="ruolo__badge">Unica · Vita 2–5 anni</span>
+          <h3 class="ruolo__title">La Regina</h3>
+          <p class="ruolo__body">
+            Madre e governante. Depone fino a 2.000 uova al giorno in alta stagione.
+            I suoi feromoni regolano l'intera colonia: la sua salute è la salute dell'alveare.
+            Monitoriamo la sua presenza ad ogni ispezione settimanale.
+          </p>
+        </div>
+        <div class="ruolo">
+          <span class="ruolo__emoji">🐝</span>
+          <span class="ruolo__badge">~49.000 per arnia · Vita 6–7 settimane</span>
+          <h3 class="ruolo__title">L'Operaia</h3>
+          <p class="ruolo__body">
+            La forza di ogni vasetto. Vola fino a 800 km nella sua vita, visita migliaia di fiori.
+            All'inizio è nutrice, poi costruttrice, poi bottinatrice — una progressione biologica
+            di servizio alla comunità che non si ferma mai.
+          </p>
+        </div>
+        <div class="ruolo">
+          <span class="ruolo__emoji">🪲</span>
+          <span class="ruolo__badge">Stagionale · Solo primavera–estate</span>
+          <h3 class="ruolo__title">Il Fuco</h3>
+          <p class="ruolo__body">
+            Maschio della colonia, presente solo in stagione calda.
+            Il suo compito unico è l'accoppiamento con regine vergini di altri alveari,
+            garantendo la diversità genetica della specie. La loro espulsione autunnale
+            segna la chiusura della stagione produttiva.
+          </p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="api-section" style="background:#fff;">
-      <div class="api-intro">
-        <h2>La Società dell'Alveare</h2>
-        <div class="api-divider"></div>
-        <p>Ogni individuo ha un ruolo vitale, programmato per la sopravvivenza e la prosperità della colonia.</p>
+  <!-- ── CICLO OPERAIA ── -->
+  <section class="apg-s apg-s--white" aria-labelledby="ciclo-h2">
+    <div class="apg-s__wn">
+      <span class="apg-eyebrow">Una vita in sei settimane</span>
+      <h2 class="apg-h2" id="ciclo-h2">Il ciclo dell'ape operaia</h2>
+      <div class="apg-rule"></div>
+      <p class="apg-lead">
+        Ogni operaia percorre ruoli precisi in progressione — dal cuore dell'arnia al campo aperto.
+        Per noi è il motivo per cui ogni stagione è irripetibile: le api di maggio non sono le stesse di luglio.
+      </p>
+      <div class="ciclo">
+        <div class="ciclo-step">
+          <div class="ciclo-step__dot">1–3</div>
+          <div class="ciclo-step__inner">
+            <span class="ciclo-step__phase">Giorni 1–3</span>
+            <h3 class="ciclo-step__title">Pulizia delle celle</h3>
+            <p class="ciclo-step__text">Appena schiusa, pulisce la propria cella e le celle vicine. Il primo atto di servizio alla comunità.</p>
+          </div>
+        </div>
+        <div class="ciclo-step">
+          <div class="ciclo-step__dot">4–9</div>
+          <div class="ciclo-step__inner">
+            <span class="ciclo-step__phase">Giorni 4–9</span>
+            <h3 class="ciclo-step__title">Nutrice della covata</h3>
+            <p class="ciclo-step__text">Le ghiandole ipofaringee producono pappa reale per le larve. Non esce mai dall'arnia: è il periodo più interno e delicato.</p>
+          </div>
+        </div>
+        <div class="ciclo-step">
+          <div class="ciclo-step__dot">10–18</div>
+          <div class="ciclo-step__inner">
+            <span class="ciclo-step__phase">Giorni 10–18</span>
+            <h3 class="ciclo-step__title">Costruttrice e magazziniera</h3>
+            <p class="ciclo-step__text">Produce cera, costruisce i favi, riceve il nettare dalle bottinatrici e lo lavora. Ventila per regolare temperatura e umidità dell'arnia.</p>
+          </div>
+        </div>
+        <div class="ciclo-step">
+          <div class="ciclo-step__dot">19–21</div>
+          <div class="ciclo-step__inner">
+            <span class="ciclo-step__phase">Giorni 19–21</span>
+            <h3 class="ciclo-step__title">Guardia all'ingresso</h3>
+            <p class="ciclo-step__text">Protegge l'alveare dagli intrusi. Impara la firma olfattiva della colonia — l'identità chimica unica di ogni arnia.</p>
+          </div>
+        </div>
+        <div class="ciclo-step">
+          <div class="ciclo-step__dot">22+</div>
+          <div class="ciclo-step__inner">
+            <span class="ciclo-step__phase">Dal giorno 22 alla fine</span>
+            <h3 class="ciclo-step__title">Bottinatrice</h3>
+            <p class="ciclo-step__text">Finalmente all'aperto. Vola fino a 5 km, visita centinaia di fiori al giorno. È lei che raccoglie il nettare di Sulla, Acacia e Millefiori che diventerà il nostro miele cru.</p>
+          </div>
+        </div>
       </div>
-      <div class="roles">
-        <article class="role">
-          <h3>La Regina 👑</h3>
-          <p>Madre dell'alveare, depone fino a migliaia di uova al giorno in alta stagione e guida la colonia con i feromoni. È la garante della genetica e dell'ordine.</p>
-        </article>
-        <article class="role">
-          <h3>L'Operaia 🐝</h3>
-          <p>La forza dell'alveare: nutrice, costruttrice, ventilatrice e bottinatrice, a seconda dell'età. La sua vita è una progressione di compiti a favore della comunità.</p>
-        </article>
-        <article class="role">
-          <h3>Il Fuco 🐝</h3>
-          <p>Maschio della colonia. Il loro unico e vitale compito è l'accoppiamento con regine vergini. Sono il veicolo per la diffusione della genetica ligustica.</p>
-        </article>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="api-cta">
-      <p><em>«Il miele migliore nasce da api in salute e da mani che le rispettano. Vuoi scoprire come garantiamo la loro salute e la tua fiducia?»</em></p>
-      <div class="btn-wrap">
-        <a href="educazione.html" class="btn-primary">Leggi il Manifesto Etico</a>
-        <a href="contatti.html" class="btn-secondary">Contattaci</a>
+  <!-- ── ETICA DI GESTIONE ── -->
+  <section class="apg-s apg-s--dark" aria-labelledby="etica-h2">
+    <div class="apg-s__w">
+      <span class="apg-eyebrow apg-eyebrow--dim">Come gestiamo l'apiario</span>
+      <h2 class="apg-h2 apg-h2--white" id="etica-h2">I principi della nostra gestione etica</h2>
+      <div class="apg-rule"></div>
+      <p class="apg-lead apg-lead--white">
+        Non esiste un miele onesto senza un apiario sano. Ogni intervento è giustificato da un dato
+        e orientato al benessere della colonia prima che alla produzione.
+      </p>
+      <div class="etica-grid">
+        <div class="etica-card">
+          <span class="etica-card__label">Controllo varroa</span>
+          <p class="etica-card__val">Acido ossalico</p>
+          <p class="etica-card__desc">Zero antibiotici. Trattiamo solo in periodo di assenza di covata: efficace, autorizzato in bio, nessuna residuità nel miele.</p>
+        </div>
+        <div class="etica-card">
+          <span class="etica-card__label">Smielatura</span>
+          <p class="etica-card__val">Solo sopra soglia di riserva</p>
+          <p class="etica-card__desc">Rimuoviamo i melari solo quando il peso registrato supera la soglia minima di riserva alimentare sicura per la colonia. Il dato decide.</p>
+        </div>
+        <div class="etica-card">
+          <span class="etica-card__label">Spostamenti</span>
+          <p class="etica-card__val">Zero — apicoltura stanziale</p>
+          <p class="etica-card__desc">Le arnie non si muovono. Mai. Meno stress per la colonia, identità botanica garantita, miele che racconta davvero un solo luogo.</p>
+        </div>
+        <div class="etica-card">
+          <span class="etica-card__label">Monitoraggio</span>
+          <p class="etica-card__val">Sensori 3Bee 24/7</p>
+          <p class="etica-card__desc">Peso, temperatura e umidità in tempo reale. Dati storici pubblicati nella pagina Educazione & Trasparenza — accessibili a tutti.</p>
+        </div>
+        <div class="etica-card">
+          <span class="etica-card__label">Ispezioni</span>
+          <p class="etica-card__val">Settimanali in stagione</p>
+          <p class="etica-card__desc">Visita visiva ogni settimana: stato della regina, presenza di malattie, spazio disponibile. Minimo intervento, massima osservazione.</p>
+        </div>
+        <div class="etica-card">
+          <span class="etica-card__label">Invernamento</span>
+          <p class="etica-card__val">Cluster naturale indisturbato</p>
+          <p class="etica-card__desc">In inverno non apriamo gli alveari. I sensori ci allertano in caso di anomalie — interveniamo solo se i dati lo richiedono.</p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="apg-cta" aria-labelledby="apg-cta-h2">
+    <div class="apg-cta__inner">
+      <blockquote>
+        «Il miele migliore nasce da api in salute e da mani che le rispettano.»
+      </blockquote>
+      <h2 id="apg-cta-h2" style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--dark-brown); margin:0 0 10px;">
+        Vuoi vedere i dati in tempo reale dell'alveare Priscilla?
+      </h2>
+      <p style="color:#666; font-size:.95rem; line-height:1.75; margin:0 0 28px;">
+        Temperatura, umidità, peso e andamento storico — tutto pubblicato e consultabile da chiunque.
+        Perché se lo produciamo con cura, non abbiamo niente da nascondere.
+      </p>
+      <div class="apg-cta__btns">
+        <a href="educazione.html" class="btn-primary">Educazione &amp; Trasparenza →</a>
+        <a href="prodotti.html" class="btn-secondary">Scopri i mieli cru</a>
+      </div>
+    </div>
+  </section>
 
 </main>
 
