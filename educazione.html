@@ -1,30 +1,23 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apicoltura Trasparente — Dati & Educazione | Vie del Lago</title>
   <meta name="description" content="Dati reali dall'alveare Priscilla: temperature, umidità, famiglie attive. Apicoltura trasparente con analisi melissopalinologiche pubblicate.">
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Manifesto Etico — Vie del Lago Apicoltura">
-  <meta property="og:description" content="Trasparenza produttiva, monitoraggio 3Bee e apicoltura data-driven. Scopri i valori che guidano ogni vasetto di Miele Cru.">
+  <meta property="og:title" content="Educazione & Trasparenza — Vie del Lago Apicoltura">
+  <meta property="og:description" content="Trasparenza produttiva, monitoraggio 3Bee e apicoltura data-driven. I dati reali dell'alveare Priscilla, pubblicati.">
   <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-educazione.webp">
   <meta property="og:url" content="https://www.viedellagoapicoltura.it/educazione.html">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Vie del Lago Apicoltura">
   <link rel="canonical" href="https://www.viedellagoapicoltura.it/educazione.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"></noscript>
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="theme-color" content="#F3E9DA">
-  <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,40 +26,332 @@
     "description": "Dati reali dall'alveare Priscilla, analisi melissopalinologiche e approfondimenti sull'apicoltura sostenibile irpina.",
     "url": "https://www.viedellagoapicoltura.it/educazione.html",
     "datePublished": "2025-04-01",
-    "dateModified": "2026-03-11",
+    "dateModified": "2026-03-12",
     "inLanguage": "it-IT",
-    "about": {
-      "@type": "Thing",
-      "name": "Educazione apicoltura, Analisi miele, Trasparenza"
-    },
-    "author": {
-      "@type": "Organization",
-      "name": "Vie del Lago Apicoltura",
-      "url": "https://www.viedellagoapicoltura.it"
-    },
+    "about": { "@type": "Thing", "name": "Educazione apicoltura, Analisi miele, Trasparenza" },
+    "author": { "@type": "Organization", "name": "Vie del Lago Apicoltura", "url": "https://www.viedellagoapicoltura.it" },
     "publisher": {
-      "@type": "Organization",
-      "name": "Vie del Lago Apicoltura",
+      "@type": "Organization", "name": "Vie del Lago Apicoltura",
       "url": "https://www.viedellagoapicoltura.it",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.viedellagoapicoltura.it/img/logo-esteso-nero.png"
-      }
+      "logo": { "@type": "ImageObject", "url": "https://www.viedellagoapicoltura.it/img/logo-esteso-nero.png" }
     },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type":"ListItem","position":1,"name":"Home","item":"https://www.viedellagoapicoltura.it/"},
-        {"@type":"ListItem","position":2,"name":"Apicoltura Trasparente"}
+        {"@type":"ListItem","position":2,"name":"Educazione & Trasparenza"}
       ]
     }
   }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ══════════════════════════════════════════
+       educazione.html — scoped layout styles
+    ══════════════════════════════════════════ */
+
+    /* HERO */
+    .edu-hero {
+      position: relative;
+      min-height: 72vh;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .edu-hero__bg {
+      position: absolute; inset: 0;
+      background: var(--dark-brown) url('img/hero-educazione.webp') center 30% / cover no-repeat;
+    }
+    .edu-hero__veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top,
+        rgba(47,42,38,.95) 0%,
+        rgba(47,42,38,.55) 50%,
+        rgba(47,42,38,.08) 100%);
+    }
+    .edu-hero__body {
+      position: relative; z-index: 2;
+      padding: 0 10% 68px; max-width: 760px;
+    }
+    .edu-hero__tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: .72rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--honey-yellow);
+      margin-bottom: 20px;
+    }
+    .edu-hero__tag::before {
+      content: ""; width: 36px; height: 1px; background: var(--honey-yellow);
+    }
+    .edu-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: #fff; margin: 0 0 18px; line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+    .edu-hero h1 em { color: var(--honey-yellow); font-style: italic; }
+    .edu-hero__sub {
+      font-size: clamp(.9rem, 1.8vw, 1.08rem);
+      color: rgba(255,255,255,.65); line-height: 1.8;
+      font-weight: 300; margin: 0;
+    }
+
+    /* SECTION BASE */
+    .edu-s { padding: 88px 10%; }
+    .edu-s--beige  { background: var(--beige); }
+    .edu-s--white  { background: #fff; }
+    .edu-s--dark   { background: var(--dark-brown); }
+    .edu-s--mid    { background: #f8f3ec; }
+    .edu-s__w      { max-width: 1200px; margin: 0 auto; }
+    .edu-s__wn     { max-width: 860px;  margin: 0 auto; }
+
+    .edu-eyebrow {
+      font-size: .7rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--honey-yellow);
+      margin: 0 0 10px; display: block;
+    }
+    .edu-eyebrow--dim { color: rgba(212,160,23,.7); }
+    .edu-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      color: var(--dark-brown); margin: 0 0 10px; line-height: 1.18;
+    }
+    .edu-h2--white { color: #fff; }
+    .edu-rule { width: 44px; height: 2px; background: var(--honey-yellow); margin: 0 0 28px; }
+    .edu-body { font-size: 1rem; line-height: 1.85; color: #555; margin: 0 0 20px; }
+    .edu-body--white { color: rgba(255,255,255,.65); }
+
+    /* MANIFESTO — intro 2 col: testo + 4 pillole */
+    .manifesto-layout {
+      display: grid; grid-template-columns: 1.1fr 1fr;
+      gap: 72px; align-items: start;
+    }
+    .manifesto-text h2 { margin-bottom: 10px; }
+    .manifesto-text p { font-size: 1rem; line-height: 1.9; color: #555; margin: 0 0 18px; }
+    .manifesto-pills {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; padding-top: 8px;
+    }
+    .mpill {
+      background: var(--dark-brown); border-radius: 12px;
+      padding: 22px 20px; display: flex; flex-direction: column; gap: 8px;
+      transition: transform .3s;
+    }
+    .mpill:hover { transform: translateY(-3px); }
+    .mpill__ico { font-size: 1.6rem; }
+    .mpill__title {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem; color: #fff; margin: 0;
+    }
+    .mpill__body { font-size: .8rem; color: rgba(255,255,255,.5); margin: 0; line-height: 1.6; }
+
+    /* KPI CARDS — 3 colonne orizzontali con sparkline */
+    .kpi-section {
+      background: var(--dark-brown);
+    }
+    .kpi-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap; margin-bottom: 32px;
+    }
+    .kpi-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 20px;
+      border: 1px solid rgba(212,160,23,.3);
+      font-size: .72rem; color: rgba(212,160,23,.8);
+      font-weight: 600; letter-spacing: .3px;
+      white-space: nowrap;
+    }
+    .kpi-badge::before {
+      content: ""; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--honey-yellow);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(1.4); }
+    }
+    .kpi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .kpi-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(212,160,23,.15);
+      border-radius: 14px; padding: 24px 22px 16px;
+      transition: border-color .2s, background .2s;
+    }
+    .kpi-card:hover {
+      border-color: rgba(212,160,23,.4);
+      background: rgba(255,255,255,.08);
+    }
+    .kpi-card__label {
+      font-size: .68rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: rgba(212,160,23,.6);
+      margin: 0 0 10px; display: block;
+    }
+    .kpi-card__value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; color: var(--honey-yellow);
+      margin: 0 0 4px; line-height: 1;
+    }
+    .kpi-card__note {
+      font-size: .78rem; color: rgba(255,255,255,.4);
+      margin: 0 0 16px; line-height: 1.5;
+    }
+    .kpi-card svg.spark {
+      width: 100%; height: 36px; display: block;
+      overflow: visible;
+    }
+    .kpi-card svg.spark polyline {
+      fill: none; stroke: var(--honey-yellow);
+      stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+      opacity: .55;
+    }
+
+    /* CHARTS — blocchi grafici puliti */
+    .charts-section { background: #fff; }
+    .chart-block {
+      margin-bottom: 48px;
+      padding: 28px 28px 20px;
+      background: var(--beige);
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.05);
+    }
+    .chart-block:last-child { margin-bottom: 0; }
+    .chart-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; color: var(--dark-brown);
+      margin: 0 0 4px;
+    }
+    .chart-block__sub {
+      font-size: .78rem; color: #888; margin: 0 0 20px; display: block;
+    }
+    .chart-wrapper { height: 200px; }
+    .chart-wrapper canvas { width: 100% !important; height: 100% !important; }
+
+    /* PERCORSO — steps orizzontali con connettore */
+    .percorso-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; margin-top: 44px;
+      position: relative;
+    }
+    .percorso-steps::before {
+      content: "";
+      position: absolute;
+      top: 28px; left: calc(12.5% + 14px); right: calc(12.5% + 14px);
+      height: 2px; background: rgba(212,160,23,.25);
+      z-index: 0;
+    }
+    .pstep {
+      text-align: center; padding: 0 16px; position: relative; z-index: 1;
+    }
+    .pstep__num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--dark-brown); border: 2px solid var(--honey-yellow);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; color: var(--honey-yellow);
+      margin-bottom: 16px;
+    }
+    .pstep__ico { font-size: 1.3rem; display: block; margin-bottom: 12px; }
+    .pstep__title {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem; color: var(--dark-brown); margin: 0 0 6px;
+    }
+    .pstep__body { font-size: .82rem; line-height: 1.65; color: #666; margin: 0; }
+
+    /* STAGIONI — 4 colonne con colori stagionali */
+    .stagioni-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 20px; margin-top: 44px;
+    }
+    .stagione-card {
+      border-radius: 14px; padding: 28px 22px;
+      border: 1px solid rgba(0,0,0,.07);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .stagione-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,.08);
+    }
+    .stagione-card--primavera { background: #f0f7ee; }
+    .stagione-card--estate    { background: #fff8e7; }
+    .stagione-card--autunno   { background: #fef3e8; }
+    .stagione-card--inverno   { background: #f0f4f8; }
+    .stagione-card__season {
+      font-size: .68rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin: 0 0 6px; display: block;
+    }
+    .stagione-card--primavera .stagione-card__season { color: #4a7c3f; }
+    .stagione-card--estate    .stagione-card__season { color: #b07800; }
+    .stagione-card--autunno   .stagione-card__season { color: #9b4d1a; }
+    .stagione-card--inverno   .stagione-card__season { color: #3a6080; }
+    .stagione-card__emoji { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+    .stagione-card__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: var(--dark-brown); margin: 0 0 10px;
+    }
+    .stagione-card__body { font-size: .85rem; line-height: 1.7; color: #666; margin: 0; }
+
+    /* NEWSLETTER CTA */
+    .edu-cta-section {
+      background: var(--dark-brown); padding: 80px 10%;
+    }
+    .edu-cta-inner {
+      max-width: 680px; margin: 0 auto; text-align: center;
+    }
+    .edu-cta-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      color: #fff; margin: 0 0 14px;
+    }
+    .edu-cta-inner p { color: rgba(255,255,255,.6); line-height: 1.8; margin: 0 0 28px; }
+    .edu-cta-form {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    }
+    .edu-cta-form input[type="email"] {
+      flex: 1 1 260px; max-width: 300px;
+      padding: 11px 16px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px; color: #fff;
+      font-size: .95rem; font-family: inherit;
+    }
+    .edu-cta-form input[type="email"]::placeholder { color: rgba(255,255,255,.35); }
+    .edu-cta-form input[type="email"]:focus {
+      outline: none; border-color: var(--honey-yellow);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .manifesto-layout { grid-template-columns: 1fr; gap: 44px; }
+      .stagioni-grid { grid-template-columns: repeat(2, 1fr); }
+      .percorso-steps { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .percorso-steps::before { display: none; }
+    }
+    @media (max-width: 900px) {
+      .edu-s { padding: 60px 5%; }
+      .edu-hero__body { padding: 0 5% 52px; }
+      .kpi-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .manifesto-pills { grid-template-columns: 1fr; }
+      .stagioni-grid { grid-template-columns: 1fr; }
+      .percorso-steps { grid-template-columns: 1fr; }
+      .edu-cta-section { padding: 60px 5%; }
+    }
+  </style>
 </head>
 <body>
+
 <header class="site-header" role="banner">
   <div class="nav-wrap">
-    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home"><img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59"></a>
+    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home">
+      <img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura" class="brand-logo" width="190" height="59">
+    </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
       <span class="sr-only">Menu</span>☰
     </button>
@@ -82,7 +367,7 @@
           </ul>
         </li>
         <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
-        <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
+        <li><a href="educazione.html" data-nav="educazione" class="active">Educazione &amp; Trasparenza</a></li>
         <li class="has-submenu">
           <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
           <ul class="submenu">
@@ -99,216 +384,265 @@
   </div>
 </header>
 
-  <header class="p-hero" style="background-image: url('img/hero-educazione.webp');">
-    <div class="p-hero-inner">
-      <a class="story-back" href="/">← Torna alla home</a>
-      <h1>Il Manifesto Etico</h1>
-      <p class="p-sub">Trasparenza etica e gestione data-driven. Monitoraggio 3Bee in tempo reale per la massima salute dell'alveare.</p>
+<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Educazione &amp; Trasparenza</span></li>
+  </ol>
+</nav>
+
+<main id="main-content">
+
+  <!-- ── HERO ── -->
+  <header class="edu-hero" aria-label="Educazione & Trasparenza — Hero">
+    <div class="edu-hero__bg" role="img" aria-label="Alveare dell'apiario Priscilla"></div>
+    <div class="edu-hero__veil"></div>
+    <div class="edu-hero__body">
+      <p class="edu-hero__tag">Apiario Priscilla · Monitoraggio 3Bee · Dati reali</p>
+      <h1>Il manifesto<br>della <em>trasparenza</em></h1>
+      <p class="edu-hero__sub">
+        Rendiamo pubblici i dati del nostro alveare perché crediamo che la fiducia
+        si costruisca con i numeri, non con le promesse.
+        Temperatura, peso, umidità — tutto consultabile, stagione per stagione.
+      </p>
     </div>
   </header>
 
-  <main id="main-content" class="p-main">
-
-    <section class="p-section">
-      <div class="edu-intro" style="text-align:center; max-width:1100px; margin:0 auto 26px;">
-        <h2 class="p-h2" style="text-transform:uppercase; letter-spacing:.4px; margin:0;">Trasparenza produttiva: l'atto di fiducia</h2>
-        <div class="p-divider" style="margin:12px auto 18px;"></div>
-        <p style="margin:0; opacity:.95; text-align: justify;">
-          In <strong>Vie del Lago</strong>, l'impegno per l'<strong>Educazione e la Trasparenza</strong> si traduce in una finestra aperta e costante sul nostro apiario. Condividere i dati di monitoraggio in tempo reale va oltre la semplice statistica: è un <strong>atto di fiducia</strong>, un invito a scoprire. Ogni cifra, ogni variazione di peso, temperatura o umidità che vedi non è un freddo dato, ma il <strong>battito cardiaco dell'alveare</strong> che pulsa giorno dopo giorno. È il diario di bordo autentico che documenta in modo tangibile il <strong>ciclo vitale</strong> delle nostre api, dall'attività riproduttiva al riposo invernale, l'esplosione delle fioriture stagionali e i loro generosi raccolti, e la traccia misurabile della nostra gestione etica, improntata al massimo rispetto e alla sostenibilità. Attraverso questi dati, ti portiamo idealmente tra i nostri alveari, permettendoti di scegliere il nostro miele con piena <strong>consapevolezza e trasparenza</strong>.
-        </p>
-      </div>
-
-      <div class="edu-grid">
-        <article class="edu-card">
-          <svg class="edu-icon" viewBox="0 0 48 48" aria-hidden="true">
-            <circle cx="24" cy="24" r="16"/>
-            <path d="M16 26c4-2 12-2 16 0M20 20l8 8M28 20l-8 8"/>
-          </svg>
-          <h3>Tracciabilità Fiore-Vasetto</h3>
-          <p>Indichiamo quali fiori contribuiscono ai nostri mieli e monitoriamo la zona di bottinamento.</p>
-        </article>
-
-        <article class="edu-card">
-          <svg class="edu-icon" viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M24 8l10 6v12l-10 6-10-6V14z"/>
-            <path d="M14 14l10 6 10-6M24 20v12"/>
-          </svg>
-          <h3>Benessere della Ligustica</h3>
-          <p>Gestione non invasiva e rispetto delle colonie, basato sui dati 3Bee, per una salute ottimale.</p>
-        </article>
-
-        <article class="edu-card">
-          <svg class="edu-icon" viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M24 6c6 6 6 12 0 18-6-6-6-12 0-18z"/>
-            <path d="M16 32c4-4 12-4 16 0"/>
-          </svg>
-          <h3>Raccolta Etica e Sostenibile</h3>
-          <p>Solo quando gli alveari hanno scorte sufficienti (riserva monitorata dal peso) per il loro benessere.</p>
-        </article>
-
-        <article class="edu-card">
-          <svg class="edu-icon" viewBox="0 0 48 48" aria-hidden="true">
-            <circle cx="20" cy="20" r="10"/>
-            <line x1="28" y1="28" x2="40" y2="40"/>
-            <path d="M16 20l2 2 6-6"/>
-          </svg>
-          <h3>Analisi e Garanzia di Purezza</h3>
-          <p>Ogni lotto è verificato in laboratorio per garantire l'autenticità del monoflora e la massima qualità.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="p-section" style="padding-top:0;">
-      <div class="edu-data" aria-labelledby="live-data-title">
-        <div class="data-head">
-          <h2 id="live-data-title" class="p-h2" style="margin:0; font-size:1.4rem;">Monitoraggio alveare (Arnia Priscilla)</h2>
-          <span class="badge">Dati forniti da 3Bee Hive-Tech</span>
+  <!-- ── MANIFESTO — intro + 4 pillole ── -->
+  <section class="edu-s edu-s--white" aria-labelledby="manifesto-h2">
+    <div class="edu-s__w">
+      <div class="manifesto-layout">
+        <div class="manifesto-text">
+          <span class="edu-eyebrow">L'atto di fiducia</span>
+          <h2 class="edu-h2" id="manifesto-h2">Trasparenza produttiva:<br>il nostro impegno</h2>
+          <div class="edu-rule"></div>
+          <p>
+            In Vie del Lago, la trasparenza non è un claim di marketing — è una scelta operativa.
+            Condividiamo i dati di monitoraggio in tempo reale perché vogliamo che chi acquista
+            il nostro miele possa verificare, capire e decidere con piena consapevolezza.
+          </p>
+          <p>
+            Ogni variazione di peso, temperatura o umidità che vedi non è un freddo dato:
+            è il <strong>battito cardiaco dell'alveare Priscilla</strong>. Documenta il ciclo vitale
+            delle nostre api, le fioriture stagionali, il ritmo della raccolta e la traccia misurabile
+            di una gestione etica e sostenibile.
+          </p>
+          <p>
+            Non abbiamo niente da nascondere nel processo. Solo il mistero naturale delle api —
+            e quello non è nascondibile da nessuno.
+          </p>
         </div>
-        <p style="margin-top:0; margin-bottom: 20px; font-size: 0.95rem; opacity:.95;">
-          Questi sono i dati raccolti dal sensore installato nella nostra arnia Priscilla.
-          La salute della colonia è una priorità.
-        </p>
-        
-        <div class="data-grid">
-          <div class="data-card" aria-label="Peso totale medio">
-            <p class="data-label">Peso totale medio (kg)</p>
-            <p class="data-value" id="kpiPeso">41.60 kg</p>
-            <small style="opacity:.7; font-size:.8rem;">Indicatore chiave di raccolta e scorte</small>
-            <svg class="spark" viewBox="0 0 100 40" preserveAspectRatio="none"><polyline points="0,38 25,20 50,22 75,10 100,5"></polyline></svg>
+        <div class="manifesto-pills">
+          <div class="mpill">
+            <span class="mpill__ico">🌺</span>
+            <h3 class="mpill__title">Tracciabilità fiore-vasetto</h3>
+            <p class="mpill__body">Indichiamo quali fioriture contribuiscono a ogni miele e monitoriamo la zona di bottinamento.</p>
           </div>
-          
-          <div class="data-card" aria-label="Temperatura del nido">
-            <p class="data-label">Temperatura media (°C)</p>
-            <p class="data-value" id="kpiTemp">24.57 °C</p>
-            <small style="opacity:.7; font-size:.8rem;">Stabilità termica = covata sana</small>
-            <svg class="spark" viewBox="0 0 100 40" preserveAspectRatio="none"><polyline points="0,20 25,18 50,21 75,19 100,20"></polyline></svg>
+          <div class="mpill">
+            <span class="mpill__ico">🐝</span>
+            <h3 class="mpill__title">Benessere della colonia</h3>
+            <p class="mpill__body">Gestione non invasiva basata sui dati 3Bee. La salute della colonia prima della produzione.</p>
           </div>
-          
-          <div class="data-card" aria-label="Umidità del nido">
-            <p class="data-label">Umidità media (%)</p>
-            <p class="data-value" id="kpiUmi">75.32 %</p>
-            <small style="opacity:.7; font-size:.8rem;">Umidità ideale per maturazione miele</small>
-            <svg class="spark" viewBox="0 0 100 40" preserveAspectRatio="none"><polyline points="0,25 25,28 50,30 75,26 100,29"></polyline></svg>
+          <div class="mpill">
+            <span class="mpill__ico">⚖️</span>
+            <h3 class="mpill__title">Raccolta etica</h3>
+            <p class="mpill__body">Rimuoviamo i melari solo quando il peso registrato supera la soglia di riserva sicura.</p>
+          </div>
+          <div class="mpill">
+            <span class="mpill__ico">🔬</span>
+            <h3 class="mpill__title">Analisi di purezza</h3>
+            <p class="mpill__body">Ogni lotto è verificato con analisi melissopalinologica. L'autenticità del monoflora è documentata.</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="charts-edu" aria-labelledby="timeseries-title" style="padding-top: 1rem;">
-      <div class="container" style="max-width: var(--edu-max);">
-        <h2 id="timeseries-title" class="p-h2" style="text-transform:uppercase; letter-spacing:.4px; margin-bottom: 10px;">Andamento storico dell'apiario</h2>
-        <div class="p-divider" style="margin:12px 0 26px;"></div>
-        
-        <div class="chart-block" aria-label="Peso totale giornaliero">
-          <h3>Peso totale — media giornaliera (kg)</h3>
-          <div class="chart-wrapper"><canvas id="chartWeightTrend" role="img" aria-label="Andamento peso totale"></canvas></div>
-          <p class="chart-note">Dati: media giornaliera del peso totale per la singola arnia monitorata.</p>
+  <!-- ── KPI in tempo reale ── -->
+  <section class="edu-s kpi-section" aria-labelledby="kpi-h2">
+    <div class="edu-s__w">
+      <div class="kpi-head">
+        <div>
+          <span class="edu-eyebrow edu-eyebrow--dim">Arnia Priscilla — live</span>
+          <h2 class="edu-h2 edu-h2--white" id="kpi-h2">Monitoraggio alveare</h2>
+          <div class="edu-rule"></div>
         </div>
-        
-        <div class="chart-block" aria-label="Temperatura del nido giornaliera">
-          <h3>Temperatura del nido — media giornaliera (°C)</h3>
-          <div class="chart-wrapper"><canvas id="chartTempTrend" role="img" aria-label="Andamento temperatura"></canvas></div>
+        <span class="kpi-badge">Dati forniti da 3Bee Hive-Tech</span>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi-card" aria-label="Peso totale medio">
+          <span class="kpi-card__label">Peso totale medio</span>
+          <p class="kpi-card__value" id="kpiPeso">41,60 kg</p>
+          <p class="kpi-card__note">Indicatore chiave di raccolta e scorte</p>
+          <svg class="spark" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,38 25,20 50,22 75,10 100,5"/>
+          </svg>
         </div>
-        
-        <div class="chart-block" aria-label="Umidità del nido giornaliera">
-          <h3>Umidità del nido — media giornaliera (%)</h3>
-          <div class="chart-wrapper"><canvas id="chartHumTrend" role="img" aria-label="Andamento umidità"></canvas></div>
+        <div class="kpi-card" aria-label="Temperatura del nido">
+          <span class="kpi-card__label">Temperatura media del nido</span>
+          <p class="kpi-card__value" id="kpiTemp">24,57 °C</p>
+          <p class="kpi-card__note">Stabilità termica = covata sana</p>
+          <svg class="spark" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,20 25,18 50,21 75,19 100,20"/>
+          </svg>
+        </div>
+        <div class="kpi-card" aria-label="Umidità del nido">
+          <span class="kpi-card__label">Umidità media del nido</span>
+          <p class="kpi-card__value" id="kpiUmi">75,32 %</p>
+          <p class="kpi-card__note">Umidità ideale per maturazione miele</p>
+          <svg class="spark" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,25 25,28 50,30 75,26 100,29"/>
+          </svg>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
+  <!-- ── GRAFICI STORICI ── -->
+  <section class="edu-s charts-section" aria-labelledby="charts-h2">
+    <div class="edu-s__w">
+      <span class="edu-eyebrow">Arnia Priscilla — serie storica</span>
+      <h2 class="edu-h2" id="charts-h2">Andamento storico dell'apiario</h2>
+      <div class="edu-rule"></div>
+      <p class="edu-body" style="max-width:640px; margin-bottom:36px;">
+        I grafici mostrano l'andamento giornaliero dei principali parametri misurati dal sensore
+        installato nell'arnia Priscilla. Ogni picco, ogni calo racconta un evento reale —
+        una fioritura, un'ondata di calore, l'inizio dell'invernamento.
+      </p>
+      <div class="chart-block" aria-label="Peso totale giornaliero">
+        <h3>Peso totale — media giornaliera (kg)</h3>
+        <span class="chart-block__sub">L'aumento rapido indica una fioritura attiva. Il calo è la smielatura — solo quando le scorte sono sopra soglia.</span>
+        <div class="chart-wrapper"><canvas id="chartWeightTrend" role="img" aria-label="Andamento peso totale"></canvas></div>
+      </div>
+      <div class="chart-block" aria-label="Temperatura del nido">
+        <h3>Temperatura del nido — media giornaliera (°C)</h3>
+        <span class="chart-block__sub">L'alveare mantiene ~35°C di covata in estate. In inverno il cluster si stabilizza intorno ai 20°C.</span>
+        <div class="chart-wrapper"><canvas id="chartTempTrend" role="img" aria-label="Andamento temperatura"></canvas></div>
+      </div>
+      <div class="chart-block" aria-label="Umidità del nido">
+        <h3>Umidità del nido — media giornaliera (%)</h3>
+        <span class="chart-block__sub">Le api ventilano per mantenere l'umidità ottimale intorno al 60–80% durante la maturazione del miele.</span>
+        <div class="chart-wrapper"><canvas id="chartHumTrend" role="img" aria-label="Andamento umidità"></canvas></div>
+      </div>
+    </div>
+  </section>
 
-    <section class="p-section" style="text-align:center;">
-      <h2 class="p-h2" style="text-transform:uppercase; letter-spacing:.4px; margin:0;">Il percorso: dal nettare al vasetto</h2>
-      <div class="p-divider" style="margin:12px auto 26px;"></div>
-
-      <div class="steps-grid">
-        <div class="step">
-          <span class="step-number">1</span>
-          <svg viewBox="0 0 48 48" aria-hidden="true">
-            <circle cx="24" cy="24" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M24 14v20M14 24h20" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          <p>Le api <strong>bottinano</strong> il nettare dalle fioriture locali</p>
+  <!-- ── DAL NETTARE AL VASETTO ── -->
+  <section class="edu-s edu-s--beige" aria-labelledby="percorso-h2">
+    <div class="edu-s__w">
+      <span class="edu-eyebrow">Il processo produttivo</span>
+      <h2 class="edu-h2" id="percorso-h2">Dal nettare al vasetto</h2>
+      <div class="edu-rule"></div>
+      <p class="edu-body" style="max-width:640px;">
+        Quattro fasi, nessun compromesso. Ogni passaggio è documentabile e verificabile —
+        dal campo fino alla chiusura del tappo.
+      </p>
+      <div class="percorso-steps">
+        <div class="pstep">
+          <div class="pstep__num">1</div>
+          <span class="pstep__ico">🌸</span>
+          <h3 class="pstep__title">Bottinatura</h3>
+          <p class="pstep__body">Le api raccolgono il nettare dalle fioriture locali dell'Oasi di Conza — Sulla, Acacia, Millefiori — entro un raggio di ~3 km dall'arnia.</p>
         </div>
-
-        <div class="step">
-          <span class="step-number">2</span>
-          <svg viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M16 18h16l4 6-4 6H16l-4-6 4-6z" fill="none" stroke="currentColor" stroke-width="2"/>
-            <circle cx="24" cy="24" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          <p>Maturazione: le api <strong>sigillano i favi</strong> (opercolo)</p>
+        <div class="pstep">
+          <div class="pstep__num">2</div>
+          <span class="pstep__ico">🏠</span>
+          <h3 class="pstep__title">Maturazione</h3>
+          <p class="pstep__body">Le api lavorano il nettare per settimane — lo ventilano, riducono l'umidità, lo arricchiscono di enzimi. Quando i favi sono operchelati, il miele è maturo.</p>
         </div>
-
-        <div class="step">
-          <span class="step-number">3</span>
-          <svg viewBox="0 0 48 48" aria-hidden="true">
-            <rect x="14" y="22" width="8" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-            <rect x="26" y="20" width="8" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M18 22v-6h12v4" fill="none" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          <p><strong>Smielatura</strong> a freddo, filtraggio leggero e invasettamento</p>
+        <div class="pstep">
+          <div class="pstep__num">3</div>
+          <span class="pstep__ico">🍯</span>
+          <h3 class="pstep__title">Smielatura a freddo</h3>
+          <p class="pstep__body">Smuoviamo solo i favi operchelati, a temperatura ambiente. Filtraggio leggero, nessun riscaldamento. Il miele non viene mai pastorizzato.</p>
         </div>
-
-        <div class="step">
-          <span class="step-number">4</span>
-          <svg viewBox="0 0 48 48" aria-hidden="true">
-            <rect x="16" y="12" width="16" height="24" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M20 20l3 3 5-5" fill="none" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          <p><strong>Analisi</strong> finale di purezza e qualità su ogni lotto</p>
+        <div class="pstep">
+          <div class="pstep__num">4</div>
+          <span class="pstep__ico">🔬</span>
+          <h3 class="pstep__title">Analisi e invasettamento</h3>
+          <p class="pstep__body">Ogni lotto è analizzato in laboratorio con analisi melissopalinologica per confermare l'origine floreale. Poi invasettato e sigillato come micro-lotto.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="p-section edu-timeline" style="background: var(--beige);">
-      <div class="container" style="max-width: var(--edu-max);">
-        <h2 class="p-h2" style="text-transform:uppercase; letter-spacing:.4px; margin:0;">I nostri interventi stagionali</h2>
-        <div class="p-divider" style="margin:12px 0 26px;"></div>
-        <p style="margin-bottom: 24px;">Dalla ripartenza primaverile al riposo invernale, seguiamo i loro ritmi per intervenire con misura e rispetto. <strong>Interveniamo solo quando è strettamente necessario.</strong></p>
-        
-        <ol class="timeline">
-          <li>
-            <h4>Primavera — Crescita</h4>
-            <p>Aumento del peso (visibile dai grafici) indica l'inizio delle grandi fioriture. Interventi mirati a prevenire la sciamatura e dare spazio alla Regina.</p>
-          </li>
-          <li>
-            <h4>Estate — Raccolta e Picco</h4>
-            <p>Temperatura del nido intorno ai 35°C (ideale per la covata). Rimuoviamo i melari solo se il peso totale supera la soglia di riserva etica.</p>
-          </li>
-          <li>
-            <h4>Autunno — Preparazione</h4>
-            <p>Riduzione dei voli. I dati ci aiutano a valutare le riserve per l'inverno. Solo se necessario, integrazione leggera delle scorte.</p>
-          </li>
-          <li>
-            <h4>Inverno — Riposo</h4>
-            <p>Cluster termico stabile; i dati sono più piatti. Interventi minimi per evitare stress. La colonia riposa indisturbata.</p>
-          </li>
-        </ol>
+  <!-- ── STAGIONI ── -->
+  <section class="edu-s edu-s--white" aria-labelledby="stagioni-h2">
+    <div class="edu-s__w">
+      <span class="edu-eyebrow">Il calendario dell'apiario</span>
+      <h2 class="edu-h2" id="stagioni-h2">I nostri interventi stagionali</h2>
+      <div class="edu-rule"></div>
+      <p class="edu-body" style="max-width:640px;">
+        Dalla ripartenza primaverile al riposo invernale, seguiamo i ritmi naturali dell'alveare.
+        <strong>Interveniamo solo quando è strettamente necessario</strong> — e sempre guidati dai dati.
+      </p>
+      <div class="stagioni-grid">
+        <div class="stagione-card stagione-card--primavera">
+          <span class="stagione-card__emoji">🌱</span>
+          <span class="stagione-card__season">Primavera — Crescita</span>
+          <h3 class="stagione-card__title">Espansione e fioriture</h3>
+          <p class="stagione-card__body">
+            L'aumento rapido del peso segnala l'inizio delle grandi fioriture.
+            Interventi mirati a prevenire la sciamatura e garantire spazio alla Regina.
+            Inizia la Sulla — la prima fioritura importante.
+          </p>
+        </div>
+        <div class="stagione-card stagione-card--estate">
+          <span class="stagione-card__emoji">☀️</span>
+          <span class="stagione-card__season">Estate — Raccolta e picco</span>
+          <h3 class="stagione-card__title">Il cuore della stagione</h3>
+          <p class="stagione-card__body">
+            Temperatura del nido intorno ai 35°C — ottimale per la covata.
+            Rimuoviamo i melari solo se il peso supera la soglia di riserva etica.
+            Acacia e Millefiori sono al picco.
+          </p>
+        </div>
+        <div class="stagione-card stagione-card--autunno">
+          <span class="stagione-card__emoji">🍂</span>
+          <span class="stagione-card__season">Autunno — Preparazione</span>
+          <h3 class="stagione-card__title">Chiusura e riserve</h3>
+          <p class="stagione-card__body">
+            I voli si riducono. I dati ci aiutano a valutare le riserve per l'inverno.
+            Solo se necessario, integrazione leggera delle scorte.
+            L'espulsione dei fuchi segna la fine della stagione.
+          </p>
+        </div>
+        <div class="stagione-card stagione-card--inverno">
+          <span class="stagione-card__emoji">❄️</span>
+          <span class="stagione-card__season">Inverno — Riposo</span>
+          <h3 class="stagione-card__title">Il cluster indisturbato</h3>
+          <p class="stagione-card__body">
+            Le api formano un cluster termico stabile. I grafici si appiattiscono.
+            Non apriamo gli alveari. I sensori ci segnalano eventuali anomalie —
+            la colonia riposa indisturbata.
+          </p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    
-    
-    <section class="p-section" style="padding-top:0;">
-      <div class="edu-cta">
-        <h2 class="p-h2" style="text-transform:uppercase; letter-spacing:.4px; margin:0;">Diventa parte della nostra community</h2>
-        <div class="p-divider" style="margin:12px auto 18px;"></div>
-        <p>
-          Una volta al mese: fioriture in arrivo, dati dall'alveare Priscilla, e la storia di cosa sta accadendo nell'Oasi di Conza. Nessuno spam. Solo apiario.
-        </p>
-        <form class="cta-form" action="/iscrizione-newsletter" method="post" aria-label="Iscrizione newsletter" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-          <label class="sr-only" for="ctaEmail">Email</label>
-          <input id="ctaEmail" name="email" type="email" placeholder="La tua migliore email" required autocomplete="email" style="flex: 1 1 260px; max-width: 300px; padding: 10px; border: 1px solid rgba(0,0,0,.2); border-radius: 6px;" />
-          <button type="submit" class="btn-primary">Iscrivimi alla Newsletter</button>
-        </form>
-      </div>
-    </section>
-  
-  </main>
+  <!-- ── NEWSLETTER CTA ── -->
+  <section class="edu-cta-section" aria-labelledby="edu-cta-h2">
+    <div class="edu-cta-inner">
+      <span class="edu-eyebrow edu-eyebrow--dim" style="text-align:center; display:block; margin-bottom:10px;">Resta in contatto con l'apiario</span>
+      <h2 id="edu-cta-h2">Diventa parte<br>della nostra community</h2>
+      <div class="edu-rule" style="margin:14px auto 24px;"></div>
+      <p>
+        Una volta al mese: fioriture in arrivo, dati dall'alveare Priscilla,
+        e la storia di cosa sta accadendo nell'Oasi di Conza.
+        Nessuno spam. Solo apiario.
+      </p>
+      <form class="edu-cta-form" action="/iscrizione-newsletter" method="post" aria-label="Iscrizione newsletter">
+        <label class="sr-only" for="ctaEmail">Email</label>
+        <input id="ctaEmail" name="email" type="email" placeholder="La tua migliore email" required autocomplete="email">
+        <button type="submit" class="btn-primary">Iscrivimi →</button>
+      </form>
+    </div>
+  </section>
 
-  <footer class="site-footer" role="contentinfo">
+</main>
+
+<footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
     <div class="footer-info">
       <p><img src="img/logo-esteso-bianco.png" alt="Vie del Lago Apicoltura" class="footer-logo" width="160" height="49" loading="lazy"></p>
@@ -331,88 +665,63 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
-
-
 <script>
-// --- Diagnostica + Fallback grafici serie temporali ---
 (function(){
-  // 1) Check Chart.js
-  if (!window.Chart) {
-    console.error('[Vie del Lago] Chart.js non caricato.');
-    return;
-  } else {
-    console.log('[Vie del Lago] Chart.js OK');
-  }
+  if (!window.Chart) { console.error('[VdL] Chart.js mancante'); return; }
 
-  // 2) Verifica elementi KPI e assegna valori di fallback/demo
-  const kpiData = window.kpiData || { famiglie: 1, pesoMedioKg: 41.60, tempMedia: 24.57, umiMedia: 75.32 };
-  
-  document.getElementById('kpiFamiglie').textContent = kpiData.famiglie; // Questo ID era nel tuo codice ma non nell'HTML, lo tolgo dai KPI sopra per coerenza.
-  document.getElementById('kpiPeso').textContent = kpiData.pesoMedioKg.toFixed(2) + ' kg';
-  document.getElementById('kpiTemp').textContent = kpiData.tempMedia.toFixed(2) + ' °C';
-  document.getElementById('kpiUmi').textContent = kpiData.umiMedia.toFixed(2) + ' %';
-  
-  if (typeof window.updateKPI === 'function') {
-    window.updateKPI(kpiData); // Chiamata se la funzione è definita in script.js
-  }
+  const kpiData = window.kpiData || { pesoMedioKg: 41.60, tempMedia: 24.57, umiMedia: 75.32 };
+  const fmt = (v, u) => v.toFixed(2).replace('.',',') + ' ' + u;
+  document.getElementById('kpiPeso').textContent = fmt(kpiData.pesoMedioKg, 'kg');
+  document.getElementById('kpiTemp').textContent = fmt(kpiData.tempMedia, '°C');
+  document.getElementById('kpiUmi').textContent  = fmt(kpiData.umiMedia, '%');
+  if (typeof window.updateKPI === 'function') window.updateKPI(kpiData);
 
-
-  // 3) Dati: usa quelli di script.js (dataTS) o fallback locale
   const dataTS = window.dataTS || {
-    dates: ['2025-06-01','2025-06-02','2025-06-03','2025-06-04','2025-06-05'],
+    dates:  ['2025-06-01','2025-06-02','2025-06-03','2025-06-04','2025-06-05'],
     weight: [40.2, 40.5, 40.9, 41.1, 41.0],
-    temp:   [24.6, 25.1, 24.9, 25.3, 25.0],
-    hum:    [74.8, 75.0, 74.6, 75.2, 75.1]
+    temp:   [24.6, 25.1, 24.9, 25.3, 25.0],
+    hum:    [74.8, 75.0, 74.6, 75.2, 75.1]
   };
-  if (!window.dataTS) {
-    console.warn('[Vie del Lago] Usati dati fallback inline perché window.dataTS non è definito.');
-  } else {
-    console.log('[Vie del Lago] Dati serie temporali trovati in window.dataTS');
-  }
 
-  // 4) Helper grafico linea
-  const getVar = (n, fb) => { try { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || fb; } catch { return fb; } };
+  const getVar = (n,fb) => { try { return getComputedStyle(document.documentElement).getPropertyValue(n).trim()||fb; } catch { return fb; } };
   const COL = { honey: getVar('--honey-yellow','#D4A017'), brown: getVar('--dark-brown','#2F2A26') };
 
   function mkLine(elId, label, values, unit) {
     const el = document.getElementById(elId);
-    if (!el) return null;
-    const ctx = el.getContext('2d');
-    const chart = new Chart(ctx, {
+    if (!el) return;
+    new Chart(el.getContext('2d'), {
       type: 'line',
-      data: { labels: dataTS.dates,
-        datasets: [{ label, data: values, fill: false, tension: 0.25, borderColor: COL.honey, backgroundColor: COL.honey, pointRadius: 0 }]
+      data: {
+        labels: dataTS.dates,
+        datasets: [{ label, data: values, fill: true,
+          backgroundColor: 'rgba(212,160,23,.06)',
+          borderColor: COL.honey, pointRadius: 0, tension: 0.3 }]
       },
       options: {
-        responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+        responsive: true, maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
         plugins: {
           legend: { display: false },
           tooltip: {
             backgroundColor: COL.brown, titleColor: '#fff', bodyColor: '#fff',
-            borderColor: 'rgba(255,255,255,.2)', borderWidth: 1, displayColors: false, padding: 10,
-            callbacks: { label: (ctx) => ` ${label}: ${ctx.parsed.y} ${unit}` } // Migliorato label tooltip
+            borderColor: 'rgba(255,255,255,.15)', borderWidth: 1,
+            displayColors: false, padding: 10,
+            callbacks: { label: ctx => ` ${label}: ${ctx.parsed.y} ${unit}` }
           }
         },
         scales: {
-          x: { ticks: { color: COL.brown, maxTicksLimit: 8 }, grid: { display: false } },
-          y: { ticks: { color: COL.brown }, grid: { color: 'rgba(0,0,0,.08)' } }
+          x: { ticks: { color: COL.brown, maxTicksLimit: 8, font: { size: 11 } }, grid: { display: false } },
+          y: { ticks: { color: COL.brown, font: { size: 11 } }, grid: { color: 'rgba(0,0,0,.06)' } }
         }
       }
     });
-    el.chart = chart;
-    console.log(`[Vie del Lago] Creato grafico ${elId} con ${values.length} punti`);
-    return chart;
   }
 
-  // 5) Se `script.js` non li ha già creati, creali ora
-  if (!(document.getElementById('chartWeightTrend')?.chart)) mkLine('chartWeightTrend','Peso totale', dataTS.weight, 'kg');
-  if (!(document.getElementById('chartTempTrend')?.chart))   mkLine('chartTempTrend','Temperatura', dataTS.temp, '°C');
-  if (!(document.getElementById('chartHumTrend')?.chart))    mkLine('chartHumTrend','Umidità', dataTS.hum, '%');
+  mkLine('chartWeightTrend', 'Peso totale', dataTS.weight, 'kg');
+  mkLine('chartTempTrend',   'Temperatura', dataTS.temp,   '°C');
+  mkLine('chartHumTrend',    'Umidità',     dataTS.hum,    '%');
 })();
 </script>
-
-
 <script src="script.js"></script>
-
 </body>
 </html>
