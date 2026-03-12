@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Il Territorio — Oasi di Conza, Lago e Biodiversità | Vie del Lago Apicoltura</title>
-  <meta name="description" content="Scopri l'Oasi WWF di Conza della Campania: il lago artificiale, le argille irpine, le fioriture selvatiche. Il territorio che dà carattere ai nostri mieli cru dell'Appennino Campano.">
+  <title>Oasi di Conza — Terroir & Biodiversità | Vie del Lago</title>
+  <meta name="description" content="L'Oasi WWF di Conza della Campania: mappa interattiva, biodiversità, stagioni di fioritura e dati sul terroir irpino dei nostri mieli cru.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Il Territorio — Oasi di Conza, Lago e Biodiversità">
   <meta property="og:description" content="L'Oasi WWF di Conza, il Lago, le argille irpine. Il luogo che dà carattere ai nostri mieli cru.">
@@ -25,7 +25,7 @@
     "name": "Oasi WWF di Conza della Campania",
     "description": "Area protetta WWF attorno al Lago di Conza, cuore del terroir di Vie del Lago Apicoltura. Ecosistema di praterie argillose, macchia mediterranea e zone umide nell'Appennino Irpino.",
     "url": "https://www.viedellagoapicoltura.it/territorio.html",
-    "geo": { "@type": "GeoCoordinates", "latitude": 40.9255, "longitude": 15.2891 },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.87128953038465, "longitude": 15.300502782432183 },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Conza della Campania",
@@ -446,7 +446,7 @@
     <div class="terr-hero__bg" role="img" aria-label="Panorama dell'Oasi di Conza della Campania"></div>
     <div class="terr-hero__overlay"></div>
     <div class="terr-hero__content">
-      <p class="terr-hero__kicker">40°55'N · 15°17'E · 650 m s.l.m.</p>
+      <p class="terr-hero__kicker">40°52'N · 15°18'E · 650 m s.l.m.</p>
       <h1>Un luogo <em>preciso</em><br>su una mappa</h1>
       <p class="terr-hero__lead">
         L'Oasi WWF di Conza della Campania non è uno sfondo. È il motore di ogni cosa che facciamo.
@@ -804,6 +804,7 @@
         <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="chi-siamo.html">Chi Siamo</a></li>
         <li><a href="storia.html">La Nostra Storia</a></li>
       </ul>
     </div>
@@ -823,7 +824,7 @@
     if (typeof L === 'undefined') return;
 
     const map = L.map('territorio-map', {
-      center: [40.9255, 15.2891],
+      center: [40.87128953038465, 15.300502782432183],
       zoom: 13,
       zoomControl: true,
       scrollWheelZoom: false,
@@ -858,37 +859,37 @@
     // Markers
     const markers = [
       {
-        lat: 40.9255, lng: 15.2891,
+        lat: 40.87128953038465, lng: 15.300502782432183,
         icon: iconApiario,
         title: 'Apiario Priscilla',
         body: 'Il nostro apiario stanziale. Qui vivono le famiglie di <em>Apis mellifera ligustica</em> che producono tutti i nostri mieli cru.'
       },
       {
-        lat: 40.935, lng: 15.295,
+        lat: 40.889290, lng: 15.296503,
         icon: iconOasi,
         title: 'Oasi WWF di Conza',
         body: 'Area protetta WWF di 3.700 ha. Zona umida di importanza europea, habitat per oltre 170 specie di uccelli.'
       },
       {
-        lat: 40.920, lng: 15.308,
+        lat: 40.89628953038465, lng: 15.312502782432183,
         icon: iconOasi,
         title: 'Lago di Conza',
         body: 'Il bacino artificiale sul fiume Ofanto. La massa d\'acqua regola il microclima delle fioriture — elemento chiave del nostro terroir.'
       },
       {
-        lat: 40.932, lng: 15.278,
+        lat: 40.881290, lng: 15.286503,
         icon: iconFioritura,
         title: 'Zone di Fioritura Sulla',
         body: 'Le praterie argillose dove fiorisce la <em>Hedysarum coronarium</em> a maggio. Base del nostro raro Cru delle Argille.'
       },
       {
-        lat: 40.915, lng: 15.282,
+        lat: 40.865290, lng: 15.290503,
         icon: iconFioritura,
         title: 'Valloni dell\'Acacia',
         body: 'I fondovalle umidi dove cresce la <em>Robinia Pseudoacacia</em>. Fiorisce per 8-12 giorni all\'anno — il nettare più prezioso e fugace.'
       },
       {
-        lat: 40.940, lng: 15.275,
+        lat: 40.886290, lng: 15.282503,
         icon: iconFioritura,
         title: 'Prati Millefiori',
         body: 'Le praterie miste di trifoglio, borragine, origano, timo e centaurea. La diversità botanica che produce la complessità del nostro Millefiori.'
@@ -905,7 +906,7 @@
     });
 
     // Oasi boundary circle (approximate)
-    L.circle([40.930, 15.292], {
+    L.circle([40.88628953038465, 15.303502782432183], {
       color: '#4ade80', fillColor: '#4ade80',
       fillOpacity: 0.08, weight: 1.5, opacity: .5,
       radius: 2800

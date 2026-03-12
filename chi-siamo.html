@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Siamo — Francesco & Rosanna | Vie del Lago Apicoltura</title>
+  <meta name="description" content="Francesco e Rosanna, apicoltori a Conza della Campania. Apicoltura stanziale a conduzione familiare nell'Oasi WWF. Miele cru non pastorizzato, micro-lotti irpini.">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Chi Siamo — Francesco & Rosanna | Vie del Lago Apicoltura">
+  <meta property="og:description" content="La storia di Francesco e Rosanna: apicoltori irpini, miele cru a conduzione familiare, Oasi WWF di Conza della Campania.">
+  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/chi-siamo-foto.webp">
+  <meta property="og:url" content="https://www.viedellagoapicoltura.it/chi-siamo.html">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Vie del Lago Apicoltura">
+  <link rel="canonical" href="https://www.viedellagoapicoltura.it/chi-siamo.html">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#F3E9DA">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Chi Siamo — Francesco & Rosanna | Vie del Lago Apicoltura",
+    "description": "La storia di Francesco e Rosanna, apicoltori a Conza della Campania. Apicoltura stanziale a conduzione familiare nell'Oasi WWF di Conza.",
+    "url": "https://www.viedellagoapicoltura.it/chi-siamo.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://www.viedellagoapicoltura.it/"},
+        {"@type":"ListItem","position":2,"name":"Chi Siamo"}
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Vie del Lago Apicoltura",
+    "founder": [
+      { "@type": "Person", "name": "Francesco", "jobTitle": "Apicoltore" },
+      { "@type": "Person", "name": "Rosanna",   "jobTitle": "Co-fondatrice" }
+    ],
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Conza della Campania",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Conza della Campania",
+        "addressRegion": "Campania",
+        "addressCountry": "IT"
+      }
+    },
+    "description": "Apicoltura stanziale a conduzione familiare nell'Oasi WWF di Conza della Campania. Miele cru non pastorizzato, micro-lotti annuali.",
+    "url": "https://www.viedellagoapicoltura.it",
+    "email": "info@viedellagoapicoltura.it",
+    "telephone": "+393293496354"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── Chi Siamo — page styles ── */
+    .cs-hero {
+      background: var(--dark-brown);
+      min-height: 60vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-hero__text {
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 80px 8% 80px 10%;
+      position: relative; z-index: 2;
+    }
+    .cs-hero__eyebrow {
+      font-size: .72rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--honey-yellow);
+      margin: 0 0 20px;
+    }
+    .cs-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      color: #fff; margin: 0 0 8px; line-height: 1.1;
+    }
+    .cs-hero h1 em { font-style: italic; color: var(--honey-yellow); }
+    .cs-hero__subtitle {
+      font-size: 1.1rem; color: rgba(255,255,255,.65);
+      font-weight: 300; margin: 0 0 36px; line-height: 1.6;
+    }
+    .cs-hero__badges {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .cs-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px;
+      border: 1px solid rgba(212,160,23,.35);
+      font-size: .78rem; color: rgba(255,255,255,.7);
+      font-weight: 600; letter-spacing: .3px;
+    }
+    .cs-hero__img-col {
+      position: relative; overflow: hidden;
+    }
+    .cs-hero__img-col picture,
+    .cs-hero__img-col img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 20%;
+      display: block;
+    }
+    .cs-hero__img-col::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--dark-brown) 0%, transparent 30%);
+      pointer-events: none;
+    }
+
+    /* ── Intro section ── */
+    .cs-intro {
+      background: #fff;
+      padding: 88px 10%;
+    }
+    .cs-intro__inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.2fr;
+      gap: 72px; align-items: center;
+    }
+    .cs-kicker {
+      font-size: .72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--honey-yellow); margin: 0 0 12px;
+    }
+    .cs-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--dark-brown); margin: 0 0 8px; line-height: 1.2;
+    }
+    .cs-divider {
+      width: 48px; height: 2px;
+      background: var(--honey-yellow); margin: 0 0 28px;
+    }
+    .cs-body {
+      font-size: 1.05rem; line-height: 1.85; color: #444; margin: 0 0 22px;
+    }
+    .cs-pullquote {
+      border-left: 3px solid var(--honey-yellow);
+      padding: 16px 20px;
+      margin: 28px 0;
+      background: var(--beige);
+      border-radius: 0 8px 8px 0;
+    }
+    .cs-pullquote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; line-height: 1.65;
+      color: var(--dark-brown); margin: 0;
+      font-style: italic;
+    }
+    .cs-pullquote cite {
+      display: block; margin-top: 10px;
+      font-size: .8rem; color: #888; font-style: normal;
+      font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
+    }
+    .cs-portrait-wrap {
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,.14);
+      aspect-ratio: 1/1;
+    }
+    .cs-portrait-wrap picture,
+    .cs-portrait-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .5s ease;
+    }
+    .cs-portrait-wrap:hover img { transform: scale(1.04); }
+
+    /* ── Values grid ── */
+    .cs-values {
+      background: var(--beige);
+      padding: 80px 10%;
+    }
+    .cs-values__inner { max-width: 1200px; margin: 0 auto; }
+    .cs-values__head { margin-bottom: 48px; }
+    .cs-values-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .cs-value-card {
+      background: #fff; border-radius: 16px;
+      padding: 32px 28px;
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .cs-value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,.1);
+    }
+    .cs-value-card__icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+    .cs-value-card__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--dark-brown);
+      margin: 0 0 10px;
+    }
+    .cs-value-card__body { font-size: .92rem; line-height: 1.7; color: #666; margin: 0; }
+
+    /* ── Timeline ── */
+    .cs-timeline {
+      background: #fff;
+      padding: 80px 10%;
+    }
+    .cs-timeline__inner { max-width: 800px; margin: 0 auto; }
+    .timeline-list {
+      list-style: none; padding: 0; margin: 48px 0 0;
+      position: relative;
+    }
+    .timeline-list::before {
+      content: "";
+      position: absolute; left: 20px; top: 0; bottom: 0;
+      width: 2px; background: rgba(212,160,23,.25);
+    }
+    .timeline-item {
+      display: grid; grid-template-columns: 44px 1fr;
+      gap: 20px; margin-bottom: 40px;
+      position: relative;
+    }
+    .timeline-item__dot {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--dark-brown);
+      border: 3px solid var(--honey-yellow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 700; color: var(--honey-yellow);
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .timeline-item__body { padding-top: 6px; }
+    .timeline-item__year {
+      font-size: .7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--honey-yellow); margin: 0 0 4px;
+    }
+    .timeline-item__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--dark-brown); margin: 0 0 8px;
+    }
+    .timeline-item__text {
+      font-size: .92rem; line-height: 1.7; color: #555; margin: 0;
+    }
+
+    /* ── Contact strip ── */
+    .cs-contact {
+      background: var(--dark-brown);
+      padding: 72px 10%;
+    }
+    .cs-contact__inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 48px; align-items: center;
+    }
+    .cs-contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      color: #fff; margin: 0 0 12px;
+    }
+    .cs-contact p { color: rgba(255,255,255,.65); font-size: 1rem; line-height: 1.7; margin: 0; }
+    .cs-contact__btns { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+    .cs-contact__btns .btn-primary,
+    .cs-contact__btns .btn-secondary { white-space: nowrap; text-align: center; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .cs-hero { grid-template-columns: 1fr; min-height: auto; }
+      .cs-hero__img-col { height: 50vw; max-height: 360px; }
+      .cs-hero__img-col::after { background: linear-gradient(to bottom, var(--dark-brown) 0%, transparent 40%); }
+      .cs-hero__text { order: -1; padding: 56px 5% 36px; min-height: auto; }
+      .cs-intro__inner { grid-template-columns: 1fr; gap: 36px; }
+      .cs-portrait-wrap { max-width: 420px; }
+      .cs-values-grid { grid-template-columns: 1fr 1fr; }
+      .cs-contact__inner { grid-template-columns: 1fr; }
+      .cs-contact__btns { flex-direction: row; }
+    }
+    @media (max-width: 600px) {
+      .cs-intro { padding: 56px 5%; }
+      .cs-values { padding: 56px 5%; }
+      .cs-values-grid { grid-template-columns: 1fr; }
+      .cs-timeline { padding: 56px 5%; }
+      .cs-contact { padding: 56px 5%; }
+      .cs-hero__badges { flex-direction: column; }
+      .cs-contact__btns { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="nav-wrap">
+    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home">
+      <img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
+      <span class="sr-only">Menu</span>☰
+    </button>
+    <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
+      <ul class="menu">
+        <li><a href="/" data-nav="home">Home</a></li>
+        <li class="has-submenu">
+          <button class="submenu-toggle" aria-expanded="false">Il Nostro Terroir</button>
+          <ul class="submenu" style="min-width:200px;">
+            <li><a href="storia.html">La Nostra Storia</a></li>
+            <li><a href="territorio.html" data-nav="territorio">Scopri il Territorio</a></li>
+            <li><a href="chi-siamo.html" data-nav="chi-siamo">Chi Siamo</a></li>
+          </ul>
+        </li>
+        <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
+        <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
+        <li class="has-submenu">
+          <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
+          <ul class="submenu">
+            <li><a href="prodotti.html" data-nav="prodotti" style="font-weight:700;">→ Tutti i Mieli</a></li>
+            <li><a href="millefiori.html" data-nav="millefiori">Miele Millefiori</a></li>
+            <li><a href="acacia.html" data-nav="acacia">Miele di Acacia</a></li>
+            <li><a href="sulla.html" data-nav="sulla">Miele di Sulla</a></li>
+            <li class="submenu-divider"><a href="faq.html" data-nav="faq">FAQ</a></li>
+          </ul>
+        </li>
+        <li><a href="contatti.html" data-nav="contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Chi Siamo</span></li>
+  </ol>
+</nav>
+
+<main id="main-content">
+
+  <!-- ── HERO ── -->
+  <header class="cs-hero" aria-label="Hero chi siamo">
+    <div class="cs-hero__text">
+      <p class="cs-hero__eyebrow">Apicoltori · Conza della Campania · Irpinia</p>
+      <h1>Francesco<br>& <em>Rosanna</em></h1>
+      <p class="cs-hero__subtitle">Due persone, un apiario, un territorio.<br>Vie del Lago è una storia di famiglia.</p>
+      <div class="cs-hero__badges">
+        <span class="cs-badge">🍯 Apicoltura stanziale</span>
+        <span class="cs-badge">🌿 Oasi WWF di Conza</span>
+        <span class="cs-badge">👨‍👩‍ A conduzione familiare</span>
+      </div>
+    </div>
+    <div class="cs-hero__img-col">
+      <picture>
+        <source srcset="img/chi-siamo-foto.webp" type="image/webp">
+        <img src="img/chi-siamo-foto.jpeg"
+             alt="Francesco e Rosanna, apicoltori di Vie del Lago Apicoltura a Conza della Campania"
+             width="600" height="800" loading="eager">
+      </picture>
+    </div>
+  </header>
+
+  <!-- ── INTRO ── -->
+  <section class="cs-intro" aria-labelledby="cs-intro-h2">
+    <div class="cs-intro__inner">
+      <div>
+        <p class="cs-kicker">La nostra storia</p>
+        <h2 class="cs-h2" id="cs-intro-h2">Nati in Irpinia,<br>cresciuti tra le api</h2>
+        <div class="cs-divider"></div>
+        <p class="cs-body">
+          Vie del Lago nasce da una scelta precisa: restare. Restare in Irpinia, restare vicino
+          al Lago di Conza, restare a fare le cose lentamente e bene.
+          Francesco ha iniziato con pochi alveari, per curiosità. Poi la curiosità è diventata
+          passione, la passione metodo, il metodo una piccola impresa familiare.
+        </p>
+        <p class="cs-body">
+          Rosanna è parte di tutto questo dall'inizio — nelle decisioni, nel lavoro, nella
+          filosofia del brand. Vie del Lago non è un marchio creato a tavolino:
+          è il riflesso di come due persone guardano il territorio dove sono cresciute.
+        </p>
+        <div class="cs-pullquote">
+          <p>«Non abbiamo mai voluto fare miele industriale. Vogliamo fare il miele
+          di questo posto specifico, di questa stagione specifica. Se non è abbastanza, preferiamo
+          non produrlo.»</p>
+          <cite>— Francesco, apicoltore</cite>
+        </div>
+      </div>
+      <div class="cs-portrait-wrap">
+        <picture>
+          <source srcset="img/chi-siamo-ritratto.webp" type="image/webp">
+          <img src="img/chi-siamo-ritratto.jpeg"
+               alt="Ritratto di Francesco e Rosanna — fondatori Vie del Lago Apicoltura"
+               width="800" height="800" loading="lazy">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VALORI ── -->
+  <section class="cs-values" aria-labelledby="cs-values-h2">
+    <div class="cs-values__inner">
+      <div class="cs-values__head">
+        <p class="cs-kicker">Cosa ci guida</p>
+        <h2 class="cs-h2" id="cs-values-h2">I valori che non negoziamo</h2>
+        <div class="cs-divider"></div>
+      </div>
+      <div class="cs-values-grid">
+        <div class="cs-value-card">
+          <span class="cs-value-card__icon">📍</span>
+          <h3 class="cs-value-card__title">Stanzialità assoluta</h3>
+          <p class="cs-value-card__body">
+            Le nostre api non si spostano. L'apiario Priscilla è fisso nell'Oasi di Conza.
+            Questo significa che ogni miele racconta un solo luogo, non una somma di territori.
+            È la condizione necessaria per parlare di <em>cru</em>.
+          </p>
+        </div>
+        <div class="cs-value-card">
+          <span class="cs-value-card__icon">🚫</span>
+          <h3 class="cs-value-card__title">Zero pastorizzazione</h3>
+          <p class="cs-value-card__body">
+            Non riscaldiamo il miele. Non lo filtriamo oltre il necessario. Non aggiungiamo
+            nulla. La pastorizzazione prolunga la vita commerciale ma distrugge enzimi,
+            profumi e complessità. Noi scegliamo la complessità.
+          </p>
+        </div>
+        <div class="cs-value-card">
+          <span class="cs-value-card__icon">📊</span>
+          <h3 class="cs-value-card__title">Trasparenza totale</h3>
+          <p class="cs-value-card__body">
+            Pubblichiamo i dati dell'alveare in tempo reale: temperatura, umidità, peso delle
+            famiglie. Ogni produzione ha un'analisi melissopalinologica. Non ci sono
+            segreti nel processo — solo il mistero naturale delle api.
+          </p>
+        </div>
+        <div class="cs-value-card">
+          <span class="cs-value-card__icon">🌿</span>
+          <h3 class="cs-value-card__title">Rispetto per l'ecosistema</h3>
+          <p class="cs-value-card__body">
+            L'Oasi WWF è il nostro habitat condiviso con decine di specie protette.
+            Nessun trattamento antibiotico. Gestione integrata della varroa con acido ossalico.
+            Le api sono parte dell'ecosistema, non uno strumento industriale.
+          </p>
+        </div>
+        <div class="cs-value-card">
+          <span class="cs-value-card__icon">📦</span>
+          <h3 class="cs-value-card__title">Micro-lotto per scelta</h3>
+          <p class="cs-value-card__body">
+            Non cerchiamo di produrre di più. I micro-lotti hanno un limite naturale dato
+            dal territorio e dalle stagioni. Quando finiscono, finiscono. L'anno prossimo
+            sarà un miele diverso — magari migliore, magari più scarso. È così che funziona.
+          </p>
+        </div>
+        <div class="cs-value-card">
+          <span class="cs-value-card__icon">💬</span>
+          <h3 class="cs-value-card__title">Rapporto diretto</h3>
+          <p class="cs-value-card__body">
+            Chi compra il nostro miele scrive a Francesco o Rosanna. Non a un customer service.
+            Ogni ordine è una conversazione. Conosciamo i nostri clienti per nome, e spesso
+            sappiamo già cosa preferiscono.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TIMELINE ── -->
+  <section class="cs-timeline" aria-labelledby="cs-timeline-h2">
+    <div class="cs-timeline__inner">
+      <p class="cs-kicker">Come è iniziata</p>
+      <h2 class="cs-h2" id="cs-timeline-h2">La storia di Vie del Lago</h2>
+      <div class="cs-divider"></div>
+      <ol class="timeline-list" role="list">
+        <li class="timeline-item">
+          <div class="timeline-item__dot" aria-hidden="true">🌱</div>
+          <div class="timeline-item__body">
+            <p class="timeline-item__year">I primi anni</p>
+            <h3 class="timeline-item__title">I primi alveari sull'Ofanto</h3>
+            <p class="timeline-item__text">
+              Francesco inizia con pochi alveari sulle rive del fiume Ofanto,
+              nella piana argillosa sotto Conza. Scopre le fioriture di Sulla —
+              una pianta che quasi nessun apicoltore considera, ma che produce un miele rarissimo.
+            </p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-item__dot" aria-hidden="true">🗺️</div>
+          <div class="timeline-item__body">
+            <p class="timeline-item__year">La svolta</p>
+            <h3 class="timeline-item__title">Scoperta dell'Oasi WWF</h3>
+            <p class="timeline-item__text">
+              L'apiario si sposta nell'area protetta WWF. Il territorio cambia tutto:
+              più diversità botanica, più pulizia ambientale, fioriture più lunghe.
+              È qui che nasce l'idea del miele come «cru» — racconto di un posto preciso.
+            </p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-item__dot" aria-hidden="true">🐝</div>
+          <div class="timeline-item__body">
+            <p class="timeline-item__year">L'apiario Priscilla</p>
+            <h3 class="timeline-item__title">La famiglia diventa il brand</h3>
+            <p class="timeline-item__text">
+              Con Rosanna arriva la struttura: il brand Vie del Lago, il nome dell'apiario
+              Priscilla, la filosofia della non-pastorizzazione come scelta identitaria.
+              Iniziano le prime vendite dirette — i clienti scrivono, chiedono, tornano.
+            </p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-item__dot" aria-hidden="true">📱</div>
+          <div class="timeline-item__body">
+            <p class="timeline-item__year">Oggi</p>
+            <h3 class="timeline-item__title">Tre mieli, un territorio, zero compromessi</h3>
+            <p class="timeline-item__text">
+              Millefiori, Acacia e Sulla. Tre cru stagionali, micro-lotto, con dati pubblicati
+              in tempo reale. I clienti prenotano la stagione successiva già mentre quella
+              corrente si esaurisce. Vie del Lago è piccola per scelta — e intende restarlo.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── CONTACT STRIP ── -->
+  <section class="cs-contact" aria-labelledby="cs-contact-h2">
+    <div class="cs-contact__inner">
+      <div>
+        <h2 id="cs-contact-h2">Scrivici direttamente</h2>
+        <p>Ogni messaggio arriva a Francesco o Rosanna — nessun assistente virtuale, nessun
+        chatbot. Se hai domande sul miele, sull'apiario o vuoi prenotare un micro-lotto,
+        siamo qui.</p>
+      </div>
+      <div class="cs-contact__btns">
+        <a href="contatti.html" class="btn-primary">Scrivi un messaggio →</a>
+        <a href="prodotti.html" class="btn-secondary">Scopri i mieli</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-info">
+      <p><img src="img/logo-esteso-bianco.png" alt="Vie del Lago Apicoltura" class="footer-logo" width="160" height="49" loading="lazy"></p>
+      <p>Via Contrada Pescara, 74 — 83040 Conza della Campania (AV)</p>
+      <p>P.IVA 10819081216 &nbsp;·&nbsp; <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      </ul>
+    </div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr"
+         target="_blank" rel="noopener" aria-label="Seguici su Instagram">
+        <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
+      </a>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

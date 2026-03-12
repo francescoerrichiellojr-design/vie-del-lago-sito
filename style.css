@@ -100,6 +100,18 @@ img { max-width: 100%; height: auto; }
 
 /* Submenu dropdown */
 .has-submenu { position: relative; }
+/* Desktop: hover apre il dropdown senza click */
+@media (min-width: 769px) {
+  .has-submenu:hover > .submenu,
+  .has-submenu:focus-within > .submenu {
+    display: block !important;
+    animation: submenuFade .15s ease;
+  }
+  @keyframes submenuFade {
+    from { opacity:0; transform:translateY(-4px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+}
 .submenu {
   position: absolute; left: 0; top: calc(100% + 4px);
   background: var(--beige);
@@ -1370,3 +1382,5 @@ img { max-width: 100%; height: auto; }
 @media (max-width: 768px) {
   .contact-cols { grid-template-columns: 1fr !important; }
 }
+
+.submenu-toggle--active { color: var(--honey-yellow) !important; }
