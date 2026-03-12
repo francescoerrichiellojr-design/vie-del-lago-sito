@@ -100,7 +100,6 @@ img { max-width: 100%; height: auto; }
 
 /* Submenu dropdown */
 .has-submenu { position: relative; }
-/* Desktop: hover apre il dropdown senza click */
 @media (min-width: 769px) {
   .has-submenu:hover > .submenu,
   .has-submenu:focus-within > .submenu {
@@ -113,17 +112,33 @@ img { max-width: 100%; height: auto; }
   }
 }
 .submenu {
-  position: absolute; left: 0; top: calc(100% + 4px);
+  position: absolute; left: 0; top: 100%;
+  /* padding-top crea un ponte invisibile tra il trigger e la lista:
+     il mouse non "cade nel vuoto" e il :hover non si interrompe */
+  padding-top: 8px;
+  list-style: none; display: none; min-width: 220px;
+  z-index: 200;
+}
+/* Box visivo separato dal padding bridge */
+.submenu li {
   background: var(--beige);
-  border: 1px solid rgba(0,0,0,.08);
-  box-shadow: 0 12px 28px rgba(0,0,0,.1);
-  border-radius: 12px; padding: 6px 0;
-  list-style: none; display: none; min-width: 210px;
+  border-left: 1px solid rgba(0,0,0,.08);
+  border-right: 1px solid rgba(0,0,0,.08);
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.submenu li:first-child {
+  border-top: 1px solid rgba(0,0,0,.08);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 8px 28px rgba(0,0,0,.1);
+}
+.submenu li:last-child {
+  border-radius: 0 0 10px 10px;
+  border-bottom: 1px solid rgba(0,0,0,.08);
 }
 .has-submenu:hover .submenu,
 .has-submenu:focus-within .submenu { display: block; }
 .submenu li a { display: block; padding: 10px 18px; font-size: .88rem; }
-.submenu li a:hover { background: rgba(212,160,23,.08); }
+.submenu li a:hover { background: rgba(212,160,23,.1); }
 
 @media (max-width: 860px) {
   .nav-toggle { display: inline-block; }
