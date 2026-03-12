@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Il Nostro Terroir — Vie del Lago Apicoltura">
   <meta property="og:description" content="Apicoltura stanziale, scienza e territorio. La storia di Vie del Lago e del Miele Cru dell'Oasi di Conza della Campania.">
-  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/storia-fallback.jpeg">
+  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/storia-fallback.webp">
   <meta property="og:url" content="https://www.viedellagoapicoltura.it/storia.html">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Vie del Lago Apicoltura">
@@ -20,7 +20,7 @@
     "@type": "VideoObject",
     "name": "La nostra storia — Vie del Lago",
     "description": "La storia di Vie del Lago Apicoltura: famiglia, passione e territorio.",
-    "thumbnailUrl": "https://www.viedellagoapicoltura.it/img/storia-fallback.jpeg",
+    "thumbnailUrl": "https://www.viedellagoapicoltura.it/img/storia-fallback.webp",
     "uploadDate": "2025-08-25",
     "contentUrl": "https://www.viedellagoapicoltura.it/img/storia-hero.mp4"
   }
@@ -47,7 +47,13 @@
     <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
       <ul class="menu">
         <li><a href="/" data-nav="home">Home</a></li>
-        <li><a href="storia.html" data-nav="storia">Il Nostro Terroir</a></li>
+        <li class="has-submenu">
+          <a href="storia.html" data-nav="storia">Il Nostro Terroir</a>
+          <ul class="submenu" style="min-width:200px;">
+            <li><a href="storia.html">La Nostra Storia</a></li>
+            <li><a href="territorio.html" data-nav="territorio">Scopri il Territorio</a></li>
+          </ul>
+        </li>
         <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
         <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
         <li class="has-submenu">
@@ -69,7 +75,7 @@
 <main id="main-content">
 
   <section class="story-hero" aria-label="La nostra storia">
-    <video autoplay muted loop playsinline class="story-hero-video" poster="img/storia-fallback.jpeg">
+    <video autoplay muted loop playsinline class="story-hero-video" poster="img/storia-fallback.webp">
       <source src="img/storia-hero.mp4" type="video/mp4">
     </video>
     <div class="story-hero-overlay" aria-hidden="true"></div>
@@ -84,7 +90,7 @@
 
     <section class="story-row">
       <div class="story-img">
-        <img src="img/storia-famiglia.jpeg" alt="Famiglia apicoltrice Vie del Lago al lavoro nell'apiario, Conza della Campania, Irpinia" loading="lazy" width="600" height="480">
+        <picture><source srcset="img/storia-famiglia.webp" type="image/webp"><img src="img/storia-famiglia.webp" alt="Famiglia apicoltrice Vie del Lago al lavoro nell'apiario, Conza della Campania, Irpinia" loading="lazy" width="600" height="480"></picture>
       </div>
       <div class="story-text">
         <h2>Le Origini: La Scienza</h2>
@@ -108,7 +114,7 @@
 
     <section class="story-row reverse">
       <div class="story-img">
-        <img src="img/storia-api.jpeg" alt="Api nell'arnia Vie del Lago: apicoltura stanziale nell'Oasi di Conza della Campania" loading="lazy" width="600" height="480">
+        <picture><source srcset="img/storia-api.webp" type="image/webp"><img src="img/storia-api.webp" alt="Api nell'arnia Vie del Lago: apicoltura stanziale nell'Oasi di Conza della Campania" loading="lazy" width="600" height="480"></picture>
       </div>
       <div class="story-text">
         <h2>La Scelta Stanziale: Il Cru</h2>
@@ -132,7 +138,7 @@
 
     <section class="story-row">
       <div class="story-img">
-        <img src="img/storia-territorio.jpeg" alt="Paesaggio dell'Oasi di Conza della Campania, territorio del Miele Cru di Vie del Lago" loading="lazy" width="600" height="480">
+        <picture><source srcset="img/storia-territorio.webp" type="image/webp"><img src="img/storia-territorio.webp" alt="Paesaggio dell'Oasi di Conza della Campania, territorio del Miele Cru di Vie del Lago" loading="lazy" width="600" height="480"></picture>
       </div>
       <div class="story-text">
         <h2>Il Suolo e il Lago: Il Terroir</h2>

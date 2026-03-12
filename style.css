@@ -579,7 +579,7 @@ img { max-width: 100%; height: auto; }
   padding: 96px 10% 64px;
   display: flex; align-items: flex-end;
   color: #fff; overflow: hidden;
-  background: url('img/hero-contatti.jpeg') center/cover no-repeat;
+  background: url('img/hero-contatti.webp') center/cover no-repeat;
 }
 .privacy-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.50), rgba(0,0,0,.30)); }
 .privacy-hero .p-hero-inner { position: relative; z-index: 1; }
@@ -904,7 +904,7 @@ img { max-width: 100%; height: auto; }
   padding: 100px 10% 70px;
   display: flex; align-items: flex-end;
   color: #fff; overflow: hidden;
-  background: url('img/hero-millefiori.jpeg') center/cover no-repeat;
+  background: url('img/hero-millefiori.webp') center/cover no-repeat;
 }
 .privacy-hero::before {
   content: ""; position: absolute; inset: 0;
@@ -1366,3 +1366,7 @@ img { max-width: 100%; height: auto; }
 }
 
 .footer-logo { display: block; margin-bottom: 8px; }
+
+@media (max-width: 768px) {
+  .contact-cols { grid-template-columns: 1fr !important; }
+}

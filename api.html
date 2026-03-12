@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Apicoltura Etica — Le Nostre Api | Vie del Lago">
   <meta property="og:description" content="Benessere dell'alveare, Apis mellifera ligustica e apicoltura di precisione. Scopri il metodo etico di Vie del Lago a Conza della Campania.">
-  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-api.jpeg">
+  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-api.webp">
   <meta property="og:url" content="https://www.viedellagoapicoltura.it/api.html">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Vie del Lago Apicoltura">
@@ -36,7 +36,13 @@
     <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
       <ul class="menu">
         <li><a href="/" data-nav="home">Home</a></li>
-        <li><a href="storia.html" data-nav="storia">Il Nostro Terroir</a></li>
+        <li class="has-submenu">
+          <a href="storia.html" data-nav="storia">Il Nostro Terroir</a>
+          <ul class="submenu" style="min-width:200px;">
+            <li><a href="storia.html">La Nostra Storia</a></li>
+            <li><a href="territorio.html" data-nav="territorio">Scopri il Territorio</a></li>
+          </ul>
+        </li>
         <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
         <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
         <li class="has-submenu">
@@ -57,7 +63,7 @@
 
 <main id="main-content">
 
-  <header class="story-hero" style="background: var(--beige) url('img/hero-api.jpeg') center/cover no-repeat;" aria-label="Le nostre api">
+  <header class="story-hero" style="background: var(--beige) url('img/hero-api.webp') center/cover no-repeat;" aria-label="Le nostre api">
     <div class="story-hero-overlay" aria-hidden="true"></div>
     <div class="story-hero__inner">
       <a class="story-back" href="/">← Torna alla home</a>

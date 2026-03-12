@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Manifesto Etico — Vie del Lago Apicoltura">
   <meta property="og:description" content="Trasparenza produttiva, monitoraggio 3Bee e apicoltura data-driven. Scopri i valori che guidano ogni vasetto di Miele Cru.">
-  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-educazione.jpeg">
+  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-educazione.webp">
   <meta property="og:url" content="https://www.viedellagoapicoltura.it/educazione.html">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Vie del Lago Apicoltura">
@@ -36,7 +36,13 @@
     <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
       <ul class="menu">
         <li><a href="/" data-nav="home">Home</a></li>
-        <li><a href="storia.html" data-nav="storia">Il Nostro Terroir</a></li>
+        <li class="has-submenu">
+          <a href="storia.html" data-nav="storia">Il Nostro Terroir</a>
+          <ul class="submenu" style="min-width:200px;">
+            <li><a href="storia.html">La Nostra Storia</a></li>
+            <li><a href="territorio.html" data-nav="territorio">Scopri il Territorio</a></li>
+          </ul>
+        </li>
         <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
         <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
         <li class="has-submenu">
@@ -55,7 +61,7 @@
   </div>
 </header>
 
-  <header class="p-hero" style="background-image: url('img/hero-educazione.jpeg');">
+  <header class="p-hero" style="background-image: url('img/hero-educazione.webp');">
     <div class="p-hero-inner">
       <a class="story-back" href="/">← Torna alla home</a>
       <h1>Il Manifesto Etico</h1>
@@ -286,7 +292,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
-<script src="script.js"></script>
+
 
 <script>
 // --- Diagnostica + Fallback grafici serie temporali ---
