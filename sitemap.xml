@@ -24,6 +24,14 @@
     <priority>0.85</priority>
   </url>
 
+
+  <!-- Chi siamo -->
+  <url>
+    <loc>https://www.viedellagoapicoltura.it/chi-siamo.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <priority>0.80</priority>
+  </url>
+
   <!-- Prodotti -->
   <url>
     <loc>https://www.viedellagoapicoltura.it/millefiori.html</loc>
