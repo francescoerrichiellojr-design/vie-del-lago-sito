@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Miele di Acacia Monoflora — Cru dei Valloni | Vie del Lago">
   <meta property="og:description" content="Acacia in purezza dall'Oasi di Conza. Limpidezza cristallina, dolcezza vellutata. Monoflora non pastorizzato — Annata 2025.">
-  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-acacia.jpeg">
+  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-acacia.webp">
   <meta property="og:url" content="https://www.viedellagoapicoltura.it/acacia.html">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Vie del Lago Apicoltura">
@@ -48,7 +48,13 @@
     <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
       <ul class="menu">
         <li><a href="/" data-nav="home">Home</a></li>
-        <li><a href="storia.html" data-nav="storia">Il Nostro Terroir</a></li>
+        <li class="has-submenu">
+          <a href="storia.html" data-nav="storia">Il Nostro Terroir</a>
+          <ul class="submenu" style="min-width:200px;">
+            <li><a href="storia.html">La Nostra Storia</a></li>
+            <li><a href="territorio.html" data-nav="territorio">Scopri il Territorio</a></li>
+          </ul>
+        </li>
         <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
         <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
         <li class="has-submenu">
@@ -75,7 +81,7 @@
 
 <main id="main-content">
 
-  <header class="p-hero" style="background-image: url('img/hero-acacia.jpeg');">
+  <header class="p-hero" style="background-image: url('img/hero-acacia.webp');">
     <div class="p-hero-inner">
       <h1>Cru dei Valloni</h1>
       <p class="p-sub">Acacia in Purezza — L'Eleganza Cristallina</p>

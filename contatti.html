@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contatti — Vie del Lago Apicoltura">
   <meta property="og:description" content="Scrivici per ordini, informazioni o visite. Apicoltura artigianale a Conza della Campania, Irpinia.">
-  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-contatti.jpeg">
+  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-contatti.webp">
   <meta property="og:url" content="https://www.viedellagoapicoltura.it/contatti.html">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Vie del Lago Apicoltura">
@@ -25,6 +25,25 @@
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="theme-color" content="#F3E9DA">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Vie del Lago Apicoltura",
+    "telephone": "+393293496354",
+    "email": "info@viedellagoapicoltura.it",
+    "url": "https://www.viedellagoapicoltura.it/contatti.html",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Contrada Pescara, 74",
+      "addressLocality": "Conza della Campania",
+      "postalCode": "83040",
+      "addressRegion": "Campania",
+      "addressCountry": "IT"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.9255, "longitude": 15.2891 }
+  }
+  </script>
 </head>
 <body>
 <header class="site-header" role="banner">
@@ -36,7 +55,13 @@
     <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
       <ul class="menu">
         <li><a href="/" data-nav="home">Home</a></li>
-        <li><a href="storia.html" data-nav="storia">Il Nostro Terroir</a></li>
+        <li class="has-submenu">
+          <a href="storia.html" data-nav="storia">Il Nostro Terroir</a>
+          <ul class="submenu" style="min-width:200px;">
+            <li><a href="storia.html">La Nostra Storia</a></li>
+            <li><a href="territorio.html" data-nav="territorio">Scopri il Territorio</a></li>
+          </ul>
+        </li>
         <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
         <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
         <li class="has-submenu">
@@ -57,7 +82,7 @@
 
 <main id="main-content">
 
-  <header class="story-hero" style="background: var(--beige) url('img/hero-contatti.jpeg') center/cover no-repeat;" aria-label="Contatti">
+  <header class="story-hero" style="background: var(--beige) url('img/hero-contatti.webp') center/cover no-repeat;" aria-label="Contatti">
     <div class="story-hero-overlay" aria-hidden="true"></div>
     <div class="story-hero__inner">
       <a class="story-back" href="/">← Torna alla home</a>
@@ -187,10 +212,5 @@
   </div>
 </footer>
 <script src="script.js"></script>
-<style>
-@media (max-width: 768px) {
-  .contact-cols { grid-template-columns: 1fr !important; }
-}
-</style>
 </body>
 </html>
