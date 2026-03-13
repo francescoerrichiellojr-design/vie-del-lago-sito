@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oasi di Conza — Terroir & Biodiversità | Vie del Lago</title>
-  <meta name="description" content="L'Oasi WWF di Conza della Campania: mappa interattiva, biodiversità, stagioni di fioritura e dati sul terroir irpino dei nostri mieli cru.">
+  <meta name="description" content="Il Lago di Conza e l'Oasi WWF in Irpinia: biodiversità, argille e fioriture selvatiche del terroir dei mieli cru di Vie del Lago Apicoltura — Conza della Campania.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Il Territorio — Oasi di Conza, Lago e Biodiversità">
-  <meta property="og:description" content="L'Oasi WWF di Conza, il Lago, le argille irpine. Il luogo che dà carattere ai nostri mieli cru.">
+  <meta property="og:description" content="Il Lago di Conza della Campania e l'Oasi WWF irpina: il terroir unico che dà carattere ai mieli artigianali cru di Vie del Lago Apicoltura.">
   <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/storia-territorio.webp">
   <meta property="og:url" content="https://www.viedellagoapicoltura.it/territorio.html">
   <meta property="og:locale" content="it_IT">
@@ -485,13 +485,23 @@
     </div>
   </header>
 
+  <!-- ── NAVIGAZIONE INTERNA (mobile) ── -->
+  <nav class="page-anchors" aria-label="Sezioni della pagina">
+    <a href="#lago-h2" class="page-anchor">Il Lago</a>
+    <a href="#argille-h2" class="page-anchor">Le Argille</a>
+    <a href="#mappa-h2" class="page-anchor">Mappa</a>
+    <a href="#bio-h2" class="page-anchor">Biodiversità</a>
+    <a href="#stagioni-h2" class="page-anchor">Stagioni</a>
+    <a href="#dati-h2" class="page-anchor">Dati Apiario</a>
+  </nav>
+
   <!-- ── IL LAGO ───────────────────────────────────────────────── -->
   <section class="terr-section terr-section--light" aria-labelledby="lago-h2">
     <div class="terr-section__inner">
       <div class="terr-twocol">
         <div class="terr-text-col">
           <p class="terr-kicker">Il bacino artificiale</p>
-          <h2 class="terr-h2" id="lago-h2">Il Lago di Conza:<br>un'opera d'ingegneria<br>diventata natura</h2>
+          <h2 class="terr-h2" id="lago-h2">Il Lago di Conza della Campania:<br>un'opera d'ingegneria<br>diventata natura</h2>
           <div class="terr-divider"></div>
           <p class="terr-body">
             Costruito negli anni Ottanta come invaso artificiale sul fiume Ofanto, il Lago di Conza ha
@@ -799,6 +809,14 @@
     </div>
   </section>
 
+  <!-- ── BACK TO TOP ── -->
+  <div class="back-to-top-wrap">
+    <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna in cima alla pagina">
+      ↑ Torna su
+    </button>
+  </div>
+
+
 </main>
 
 <footer class="site-footer" role="contentinfo">
@@ -825,6 +843,14 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
+
 <script>
   // ── Leaflet Interactive Map ──────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function() {

@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contatti & Ordini | Miele Artigianale — Vie del Lago</title>
-  <meta name="description" content="Ordina i mieli cru di Vie del Lago Apicoltura. Scrivi a info@viedellagoapicoltura.it o iscriviti alla lista Private Reserve per i micro-lotti.">
+  <meta name="description" content="Contatta Vie del Lago Apicoltura a Conza della Campania (AV), Irpinia. Ordina il miele artigianale, iscriviti alla lista d'attesa o vienici a trovare in apicoltura.">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contatti — Vie del Lago Apicoltura">
-  <meta property="og:description" content="Scrivici per ordini, informazioni o visite. Apicoltura artigianale a Conza della Campania, Irpinia.">
+  <meta property="og:description" content="Apicoltura artigianale a Conza della Campania, Irpinia. Ordina il miele non pastorizzato di Vie del Lago o prenota una visita agli alveari.">
   <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-contatti.webp">
   <meta property="og:url" content="https://www.viedellagoapicoltura.it/contatti.html">
   <meta property="og:locale" content="it_IT">
@@ -214,5 +214,13 @@
   </div>
 </footer>
 <script src="script.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
+
 </body>
 </html>

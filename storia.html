@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Il Nostro Terroir | Apicoltura a Conza — Vie del Lago</title>
-  <meta name="description" content="La storia di Vie del Lago Apicoltura: apicoltura stanziale in Irpinia tra il Lago di Conza e l'Appennino Campano. Miele cru dal terroir.">
+  <meta name="description" content="La storia di Vie del Lago: apicoltura artigianale in Irpinia, sul Lago di Conza della Campania. Miele cru non pastorizzato da un terroir unico nell'Appennino campano.">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Il Nostro Terroir — Vie del Lago Apicoltura">
-  <meta property="og:description" content="Apicoltura stanziale, scienza e territorio. La storia di Vie del Lago e del Miele Cru dell'Oasi di Conza della Campania.">
+  <meta property="og:description" content="Apicoltura artigianale in Irpinia: la storia di Vie del Lago e del miele cru del Lago di Conza della Campania. Non pastorizzato, sostenibile, micro-lotto.">
   <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/storia-fallback.webp">
   <meta property="og:url" content="https://www.viedellagoapicoltura.it/storia.html">
   <meta property="og:locale" content="it_IT">
@@ -22,7 +22,10 @@
     "description": "La storia di Vie del Lago Apicoltura: famiglia, passione e territorio.",
     "thumbnailUrl": "https://www.viedellagoapicoltura.it/img/storia-fallback.webp",
     "uploadDate": "2025-08-25",
-    "contentUrl": "https://www.viedellagoapicoltura.it/img/storia-hero.mp4"
+    "contentUrl": "https://www.viedellagoapicoltura.it/img/storia-hero.mp4",
+    "duration": "PT1M30S",
+    "description": "Storia di Vie del Lago Apicoltura: apicoltura artigianale sostenibile in Irpinia, sul Lago di Conza della Campania. Miele cru non pastorizzato.",
+    "keywords": "apicoltura sostenibile irpinia, miele lago di conza, miele artigianale campania"
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -145,7 +148,7 @@
         <h2>Il Suolo e il Lago: Il Terroir</h2>
         <div class="story-divider"></div>
         <p>
-          Conza della Campania è un luogo raro: un'area di confine biologico dove il <strong>substrato argilloso</strong>,
+          Conza della Campania, nel cuore dell'<strong>Irpinia</strong>, è un luogo raro: un'area di confine biologico dove il <strong>substrato argilloso</strong>,
           la vicinanza del lago e l'assenza di agricoltura intensiva creano un mosaico vegetale incontaminato.
         </p>
         <p>
@@ -157,6 +160,45 @@
           È questo equilibrio tra geologia, microclima e integrità vegetale a rendere possibile un miele che non è semplice «dolcezza»,
           ma una <strong>lettura liquida del paesaggio</strong>.
         </p>
+      </div>
+    </section>
+
+
+    <section class="story-sensory" aria-labelledby="sensory-h2">
+      <div class="story-sensory__inner">
+        <span class="story-eyebrow">Il terroir che non si vede — ma si sente</span>
+        <h2 id="sensory-h2">L'alba sull'apiario Priscilla</h2>
+        <div class="story-divider"></div>
+        <div class="story-sensory__prose">
+          <p>
+            Alle cinque e mezza di mattina, a maggio, il Lago di Conza è ancora avvolto nella nebbia bassa
+            della Valle dell'Ofanto. Le prime api escono dagli alveari prima che il sole superi la cresta
+            appenninica: sanno già dove andare. Lo sanno da generazioni.
+          </p>
+          <p>
+            La Sulla è in fioritura da tre settimane — ma non ha ancora raggiunto il picco.
+            Il nettare è più concentrato nelle ore fresche. Le api di Priscilla bottinano
+            in silenzio, senza fretta, su una prateria argillosa che non ha mai conosciuto erbicidi.
+            L'odore è selvatico, leggermente erbaceo: è l'odore del miele che si sta formando
+            in questo momento, in questi melari, su questo suolo preciso.
+          </p>
+          <p>
+            Questo paesaggio — la luce radente, il peso dell'aria umida, il profumo della Sulla in fioritura —
+            non è uno sfondo poetico. <strong>È la materia prima.</strong> È quello che finisce nel vasetto
+            quando diciamo che il nostro miele ha un'identità geografica irripetibile.
+          </p>
+          <p class="story-sensory__closing">
+            Un miele di Sulla del Lago di Conza dell'Irpinia non può esistere altrove. Questa è la promessa
+            di un'apicoltura stanziale: il terroir non si porta in giro. Lo si custodisce.
+          </p>
+        </div>
+        <div class="story-sensory__tags">
+          <span class="s-tag">Lago di Conza</span>
+          <span class="s-tag">Valle dell'Ofanto</span>
+          <span class="s-tag">Apiario Priscilla</span>
+          <span class="s-tag">Miele di Sulla Irpinia</span>
+          <span class="s-tag">Apicoltura stanziale</span>
+        </div>
       </div>
     </section>
 
@@ -199,5 +241,13 @@
   </div>
 </footer>
 <script src="script.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
+
 </body>
 </html>
