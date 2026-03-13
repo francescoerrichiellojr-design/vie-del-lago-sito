@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Miele Artigianale Campania | Apicoltura Stanziale — Vie del Lago</title>
-  <meta name="description" content="Miele cru artigianale dall'Oasi WWF di Conza della Campania. Apicoltura stanziale, non pastorizzato, micro-lotto. Millefiori, Acacia e Sulla.">
+  <meta name="description" content="Miele artigianale non pastorizzato dall'Oasi di Conza della Campania, Irpinia. Apicoltura sostenibile stanziale. Miele Millefiori, Acacia e Sulla — micro-lotto cru.">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Vie del Lago Apicoltura | Miele Cru e Monoflora">
-  <meta property="og:description" content="Miele artigianale non pastorizzato dall'Oasi di Conza della Campania. Apicoltura stanziale, rigore scientifico, biodiversità irpina.">
+  <meta property="og:description" content="Miele artigianale non pastorizzato dall'Oasi di Conza, Irpinia, Campania. Apicoltura stanziale, biodiversità, miele millefiori e miele di sulla cru.">
   <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/hero-fallback.webp">
   <meta property="og:url" content="https://www.viedellagoapicoltura.it/">
   <meta property="og:locale" content="it_IT">
@@ -292,5 +292,13 @@
   </div>
 </footer>
 <script src="script.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
+
 </body>
 </html>

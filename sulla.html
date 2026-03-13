@@ -147,10 +147,18 @@
           <span class="p-price">€20,00 <small>/ 500g</small></span>
 
           <div class="p-cta">
-            <a class="btn-primary btn-disabled" href="#" aria-disabled="true">Esaurito</a>
-            <a class="btn-secondary" href="contatti.html">Iscriviti alla lista d'attesa</a>
+            <span class="btn-primary btn-disabled" aria-disabled="true">Esaurito — Annata 2025</span>
           </div>
-          <p class="waitlist-note">✉️ La produzione 2025 è terminata. <a href="contatti.html">Contattaci ora</a> per avere <strong>priorità sull'annata 2026</strong> — i posti in lista sono limitati.</p>
+          <div class="avvisami-box" id="avvisami-sulla">
+            <p class="avvisami-box__title">🍯 Avvisami all'apertura dell'annata 2026</p>
+            <p class="avvisami-box__sub">I posti in lista sono limitati. Ti scriviamo non appena il miele è disponibile.</p>
+            <form class="avvisami-form" onsubmit="return avvisamiSubmit(this,'Avvisami — Miele di Sulla Cru delle Argille annata 2026')" novalidate>
+              <label class="sr-only" for="email-sulla">La tua email</label>
+              <input id="email-sulla" type="email" name="email" placeholder="La tua email" required autocomplete="email">
+              <button type="submit" class="btn-primary">Avvisami →</button>
+            </form>
+            <p class="avvisami-box__privacy">Nessuno spam. Solo una email quando il miele torna disponibile.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -241,5 +249,13 @@
   </div>
 </footer>
 <script src="script.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
+
 </body>
 </html>

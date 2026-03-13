@@ -408,6 +408,17 @@
     </div>
   </header>
 
+
+  <!-- ── NAVIGAZIONE INTERNA (mobile) ── -->
+  <nav class="page-anchors" aria-label="Sezioni della pagina">
+    <a href="#manifesto-h2" class="page-anchor">Il Manifesto</a>
+    <a href="#kpi-h2" class="page-anchor">Dati Live</a>
+    <a href="#charts-h2" class="page-anchor">Storico</a>
+    <a href="#percorso-h2" class="page-anchor">Dal Nettare al Vasetto</a>
+    <a href="#stagioni-h2" class="page-anchor">Stagioni</a>
+    <a href="#scientifico-h2" class="page-anchor">Il Metodo</a>
+  </nav>
+
   <!-- ── MANIFESTO — intro + 4 pillole ── -->
   <section class="edu-s edu-s--white" aria-labelledby="manifesto-h2">
     <div class="edu-s__w">
@@ -621,6 +632,61 @@
     </div>
   </section>
 
+
+  <!-- ── METODO SCIENTIFICO ── -->
+  <section class="edu-s edu-s--beige" aria-labelledby="scientifico-h2">
+    <div class="edu-s__w edu-s__w--narrow">
+      <span class="edu-eyebrow">La formazione dietro al miele</span>
+      <h2 class="edu-h2" id="scientifico-h2">Perché un dottorato in Food Science<br>fa la differenza nel vasetto</h2>
+      <div class="edu-rule"></div>
+      <div class="scientifico-grid">
+        <div class="scientifico-text">
+          <p>
+            Francesco non è arrivato all'apicoltura per tradizione familiare. Ci è arrivato attraverso
+            anni di ricerca universitaria sulla <strong>biodiversità degli ecosistemi agricoli</strong> e sulla
+            sostenibilità della produzione alimentare. Laurea triennale in Enologia e Viticoltura,
+            magistrale in Scienze e Tecnologie Agrarie, dottorato in Food Science.
+          </p>
+          <p>
+            Quella formazione non è un titolo da esporre: è il motivo per cui ogni scelta produttiva
+            ha un fondamento misurabile. <strong>Perché non pastorizziamo?</strong> Perché la letteratura
+            scientifica è unanime: il trattamento termico degrada enzimi, fenoli e profili aromatici
+            che definiscono l'identità di un miele monoflora. <strong>Perché l'apicoltura stanziale?</strong>
+            Perché lo stress da trasporto compromette la coesione della colonia e altera la composizione
+            del nettare raccolto — dati rilevati anche nel nostro monitoraggio 3Bee.
+          </p>
+          <p>
+            <strong>Perché analisi melissopalinologica su ogni lotto?</strong> Perché la purezza di un miele
+            monoflora non è un'impressione organolettica: è un dato verificabile al microscopio, con la
+            percentuale di pollini identificati specie per specie. È la firma del territorio nel vasetto.
+          </p>
+        </div>
+        <div class="scientifico-pillars">
+          <div class="sci-pillar">
+            <span class="sci-pillar__ico">🔬</span>
+            <h3 class="sci-pillar__title">Non pastorizzato</h3>
+            <p class="sci-pillar__body">La pastorizzazione distrugge enzimi e profili aromatici. La scelta è scientifica, non estetica.</p>
+          </div>
+          <div class="sci-pillar">
+            <span class="sci-pillar__ico">📍</span>
+            <h3 class="sci-pillar__title">Apicoltura stanziale</h3>
+            <p class="sci-pillar__body">Nessun trasporto. La colonia presidia un unico terroir per tutta la stagione: dati misurabili, qualità stabile.</p>
+          </div>
+          <div class="sci-pillar">
+            <span class="sci-pillar__ico">🌿</span>
+            <h3 class="sci-pillar__title">Analisi melissopalinologica</h3>
+            <p class="sci-pillar__body">Ogni lotto è verificato. La purezza del monoflora è documentata con percentuale di pollini specie per specie.</p>
+          </div>
+          <div class="sci-pillar">
+            <span class="sci-pillar__ico">📊</span>
+            <h3 class="sci-pillar__title">Monitoraggio 3Bee</h3>
+            <p class="sci-pillar__body">Peso, temperatura e umidità dell'alveare in tempo reale. Le decisioni di raccolta si basano sui dati, non sulle abitudini.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── NEWSLETTER CTA ── -->
   <section class="edu-cta-section" aria-labelledby="edu-cta-h2">
     <div class="edu-cta-inner">
@@ -639,6 +705,14 @@
       </form>
     </div>
   </section>
+
+  <!-- ── BACK TO TOP ── -->
+  <div class="back-to-top-wrap">
+    <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna in cima alla pagina">
+      ↑ Torna su
+    </button>
+  </div>
+
 
 </main>
 
@@ -723,5 +797,13 @@
 })();
 </script>
 <script src="script.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
+
 </body>
 </html>
