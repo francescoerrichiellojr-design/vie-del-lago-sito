@@ -138,6 +138,7 @@
           <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
           <ul class="submenu">
             <li><a href="prodotti.html" data-nav="prodotti" style="font-weight:700;">→ Tutti i Mieli</a></li>
+            <li><a href="come-ordinare.html" data-nav="come-ordinare">Come Ordinare</a></li>
             <li><a href="millefiori.html" data-nav="millefiori">Miele Millefiori</a></li>
             <li><a href="acacia.html" data-nav="acacia">Miele di Acacia</a></li>
             <li><a href="sulla.html" data-nav="sulla">Miele di Sulla</a></li>
@@ -393,6 +394,58 @@ if ('serviceWorker' in navigator) {
   document.getElementById('cookie-reject').addEventListener('click', function() {
     localStorage.setItem('cookie_consent', 'rejected');
     document.getElementById('cookie-banner').style.display = 'none';
+  });
+})();
+</script>
+
+<!-- Torna Su -->
+<button id="back-to-top" aria-label="Torna in cima" title="Torna in cima">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<style>
+#back-to-top {
+  position: fixed;
+  bottom: 96px;
+  right: 34px;
+  width: 42px;
+  height: 42px;
+  background: #F3E9DA;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+  cursor: pointer;
+  z-index: 998;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
+  pointer-events: none;
+}
+#back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+#back-to-top:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+</style>
+<script>
+(function() {
+  var btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
 </script>

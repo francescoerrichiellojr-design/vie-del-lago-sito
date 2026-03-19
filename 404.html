@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina non trovata — Vie del Lago Apicoltura</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#F3E9DA">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 5%;
+      background: var(--beige);
+    }
+    .error-page__logo {
+      margin-bottom: 48px;
+    }
+    .error-page__logo img {
+      height: 48px;
+      width: auto;
+    }
+    .error-page__number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(6rem, 18vw, 10rem);
+      font-weight: 600;
+      color: var(--honey-yellow);
+      line-height: 1;
+      margin: 0 0 8px;
+      opacity: .25;
+    }
+    .error-page__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: var(--dark-brown);
+      margin: 0 0 16px;
+    }
+    .error-page__text {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #666;
+      max-width: 480px;
+      margin: 0 auto 36px;
+    }
+    .error-page__links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .error-page__divider {
+      width: 48px;
+      height: 2px;
+      background: var(--honey-yellow);
+      margin: 0 auto 24px;
+    }
+    .error-page__suggestions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+    .error-page__suggestions a {
+      color: var(--dark-brown);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: color .2s;
+    }
+    .error-page__suggestions a:hover {
+      color: var(--honey-yellow);
+    }
+  </style>
+</head>
+<body>
+
+<div class="error-page">
+
+  <div class="error-page__logo">
+    <a href="/"><img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura"></a>
+  </div>
+
+  <p class="error-page__number">404</p>
+  <h1 class="error-page__title">Questa pagina si è persa tra le colline</h1>
+  <div class="error-page__divider"></div>
+  <p class="error-page__text">
+    La pagina che cerchi non esiste o è stata spostata. 
+    Ma il miele c'è ancora — torna alla home e riprendi da lì.
+  </p>
+
+  <div class="error-page__links">
+    <a href="/" class="btn-primary">Torna alla Home →</a>
+    <a href="prodotti.html" class="btn-secondary">Scopri i Prodotti</a>
+  </div>
+
+  <p style="font-size:.8rem; color:#aaa; margin:0 0 12px; text-transform:uppercase; letter-spacing:1px; font-weight:600;">O vai direttamente a</p>
+  <div class="error-page__suggestions">
+    <a href="contatti.html">Contatti</a>
+    <a href="come-ordinare.html">Come Ordinare</a>
+    <a href="faq.html">FAQ</a>
+    <a href="chi-siamo.html">Chi Siamo</a>
+  </div>
+
+</div>
+
+</body>
+</html>
