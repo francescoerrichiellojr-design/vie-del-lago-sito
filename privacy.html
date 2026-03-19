@@ -23,13 +23,23 @@
   <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/og-logo.png">
   <meta property="og:image:width" content="800">
   <meta property="og:image:height" content="246">
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTSNPM7WK"></script>
+  <!-- Google Analytics (caricato solo dopo consenso cookie) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-TMTSNPM7WK');
+    function loadGA() {
+      if (document.getElementById('ga-script')) return;
+      var s = document.createElement('script');
+      s.id = 'ga-script';
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-TMTSNPM7WK';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-TMTSNPM7WK', { anonymize_ip: true });
+    }
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      loadGA();
+    }
   </script>
 </head>
 <body>
@@ -283,5 +293,111 @@ if ('serviceWorker' in navigator) {
 }
 </style>
 
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" role="dialog" aria-label="Consenso cookie" style="display:none;">
+  <div class="cookie-banner__inner">
+    <p class="cookie-banner__text">
+      Utilizziamo <strong>Google Analytics</strong> per analisi anonime del traffico e migliorare il sito.
+      Puoi accettare o rifiutare i cookie analitici. 
+      <a href="/privacy.html">Leggi la Privacy Policy</a>.
+    </p>
+    <div class="cookie-banner__btns">
+      <button id="cookie-accept" class="cookie-btn cookie-btn--accept">Accetto</button>
+      <button id="cookie-reject" class="cookie-btn cookie-btn--reject">Rifiuto</button>
+    </div>
+  </div>
+</div>
+<style>
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: #2F2A26;
+  border-top: 2px solid #D4A017;
+  padding: 16px 5%;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.18);
+}
+.cookie-banner__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cookie-banner__text {
+  margin: 0;
+  font-size: .88rem;
+  line-height: 1.6;
+  color: rgba(243,233,218,0.85);
+  flex: 1;
+}
+.cookie-banner__text strong {
+  color: #F3E9DA;
+}
+.cookie-banner__text a {
+  color: #D4A017;
+  font-weight: 600;
+  text-decoration: none;
+}
+.cookie-banner__text a:hover {
+  text-decoration: underline;
+}
+.cookie-banner__btns {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.cookie-btn {
+  padding: 9px 22px;
+  border-radius: 4px;
+  font-size: .85rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: opacity .2s, transform .15s;
+  letter-spacing: .02em;
+}
+.cookie-btn:hover {
+  opacity: .88;
+  transform: translateY(-1px);
+}
+.cookie-btn--accept {
+  background: #F3E9DA;
+  color: #2F2A26;
+}
+.cookie-btn--reject {
+  background: transparent;
+  color: rgba(243,233,218,0.6);
+  border: 1px solid rgba(243,233,218,0.25);
+}
+@media (max-width: 600px) {
+  .cookie-banner__inner { flex-direction: column; align-items: flex-start; }
+  .cookie-banner__btns { width: 100%; }
+  .cookie-btn { flex: 1; text-align: center; }
+}
+</style>
+<script>
+(function() {
+  var consent = localStorage.getItem('cookie_consent');
+  if (!consent) {
+    document.getElementById('cookie-banner').style.display = 'block';
+  }
+  document.getElementById('cookie-accept').addEventListener('click', function() {
+    localStorage.setItem('cookie_consent', 'accepted');
+    document.getElementById('cookie-banner').style.display = 'none';
+    loadGA();
+  });
+  document.getElementById('cookie-reject').addEventListener('click', function() {
+    localStorage.setItem('cookie_consent', 'rejected');
+    document.getElementById('cookie-banner').style.display = 'none';
+  });
+})();
+</script>
 </body>
 </html>
