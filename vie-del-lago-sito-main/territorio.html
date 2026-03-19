@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oasi di Conza — Terroir & Biodiversità | Vie del Lago</title>
+  <meta name="description" content="Il Lago di Conza e l'Oasi WWF in Irpinia: biodiversità, argille e fioriture selvatiche del terroir dei mieli cru di Vie del Lago Apicoltura — Conza della Campania.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Il Territorio — Oasi di Conza, Lago e Biodiversità">
+  <meta property="og:description" content="Il Lago di Conza della Campania e l'Oasi WWF irpina: il terroir unico che dà carattere ai mieli artigianali cru di Vie del Lago Apicoltura.">
+  <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/og-logo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vie del Lago Apicoltura — Logo">
+  <meta property="og:url" content="https://www.viedellagoapicoltura.it/territorio.html">
+  <meta property="og:locale" content="it_IT">
+  <link rel="canonical" href="https://www.viedellagoapicoltura.it/territorio.html">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <meta name="msapplication-TileImage" content="img/favicon-48.png">
+  <meta name="theme-color" content="#F3E9DA">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristAttraction",
+    "name": "Oasi WWF di Conza della Campania",
+    "description": "Area protetta WWF attorno al Lago di Conza, cuore del terroir di Vie del Lago Apicoltura. Ecosistema di praterie argillose, macchia mediterranea e zone umide nell'Appennino Irpino.",
+    "url": "https://www.viedellagoapicoltura.it/territorio.html",
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.87128953038465, "longitude": 15.300502782432183 },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Conza della Campania",
+      "addressRegion": "Campania",
+      "addressCountry": "IT"
+    },
+    "touristType": ["Ecoturismo", "Apicoltura", "Biodiversità"],
+    "isPartOf": {
+      "@type": "Place",
+      "name": "Appennino Irpino",
+      "containedInPlace": { "@type": "AdministrativeArea", "name": "Campania" }
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://www.viedellagoapicoltura.it/"},
+      {"@type":"ListItem","position":2,"name":"Il Nostro Terroir","item":"https://www.viedellagoapicoltura.it/storia.html"},
+      {"@type":"ListItem","position":3,"name":"Scopri il Territorio"}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="style.css">
+  <!-- Leaflet for interactive map -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+
+  <style>
+    /* ── Territorio page — scoped styles ── */
+    .terr-hero {
+      min-height: 92vh;
+      background: var(--dark-brown);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 0 10%;
+    }
+    .terr-hero__bg {
+      position: absolute; inset: 0;
+      background-image: url('img/storia-territorio.webp');
+      background-size: cover; background-position: center 40%;
+      opacity: .22;
+      transform: scale(1.06);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.06); }
+      to   { transform: scale(1.00); }
+    }
+    .terr-hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(47,42,38,.85) 0%, rgba(47,42,38,.5) 60%, transparent 100%);
+    }
+    .terr-hero__content {
+      position: relative; z-index: 2;
+      max-width: 700px;
+    }
+    .terr-hero__kicker {
+      font-size: .72rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--honey-yellow);
+      margin: 0 0 20px; display: flex; align-items: center; gap: 12px;
+    }
+    .terr-hero__kicker::after {
+      content: ""; display: block; width: 40px; height: 1px;
+      background: var(--honey-yellow); opacity: .5;
+    }
+    .terr-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 4.6rem);
+      color: #fff; margin: 0 0 24px; line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+    .terr-hero h1 em {
+      font-style: italic; color: var(--honey-yellow);
+    }
+    .terr-hero__lead {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.78);
+      line-height: 1.75; margin: 0 0 36px; font-weight: 300;
+    }
+    .terr-hero__stats {
+      display: flex; gap: 40px; flex-wrap: wrap;
+    }
+    .terr-stat {
+      text-align: left;
+    }
+    .terr-stat__num {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; color: var(--honey-yellow);
+      line-height: 1;
+    }
+    .terr-stat__label {
+      font-size: .76rem; color: rgba(255,255,255,.55);
+      letter-spacing: .5px; margin-top: 4px;
+      display: block;
+    }
+    .terr-hero__scroll {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center;
+      gap: 8px; z-index: 2;
+    }
+    .terr-hero__scroll span {
+      font-size: .7rem; color: rgba(255,255,255,.35);
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+    .scroll-arrow {
+      width: 20px; height: 20px;
+      border-right: 1px solid rgba(255,255,255,.3);
+      border-bottom: 1px solid rgba(255,255,255,.3);
+      transform: rotate(45deg);
+      animation: bounce 1.8s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: rotate(45deg) translateY(0); }
+      50%      { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* ── Narrative sections ── */
+    .terr-section {
+      padding: 88px 10%;
+    }
+    .terr-section--light { background: #fff; }
+    .terr-section--beige { background: var(--beige); }
+    .terr-section--dark  { background: var(--dark-brown); }
+
+    .terr-section__inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .terr-section__inner--narrow {
+      max-width: 820px; margin: 0 auto;
+    }
+
+    .terr-kicker {
+      font-size: .72rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--honey-yellow);
+      margin: 0 0 12px;
+    }
+    .terr-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--dark-brown); margin: 0 0 8px; line-height: 1.2;
+    }
+    .terr-h2--white { color: #fff; }
+    .terr-divider {
+      width: 48px; height: 2px;
+      background: var(--honey-yellow); margin: 0 0 32px;
+    }
+    .terr-body {
+      font-size: 1.05rem; line-height: 1.85; color: #444;
+      margin: 0 0 24px;
+    }
+    .terr-body--white { color: rgba(255,255,255,.78); }
+
+    /* ── Two-col layout ── */
+    .terr-twocol {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .terr-twocol--flip { direction: rtl; }
+    .terr-twocol--flip > * { direction: ltr; }
+
+    .terr-img-wrap {
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.15);
+      aspect-ratio: 4/3;
+    }
+    .terr-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; transition: transform .6s ease;
+    }
+    .terr-img-wrap:hover img { transform: scale(1.04); }
+
+    /* ── Interactive map ── */
+    .terr-map-section {
+      background: var(--dark-brown);
+      padding: 80px 10%;
+    }
+    .terr-map-section__inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .terr-map-section__head {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 24px; align-items: end; margin-bottom: 36px;
+    }
+    .map-legend {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      font-size: .8rem; color: rgba(255,255,255,.6);
+    }
+    .map-legend-item {
+      display: flex; align-items: center; gap: 6px;
+    }
+    .map-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .map-dot--apiario  { background: var(--honey-yellow); }
+    .map-dot--oasi     { background: #4ade80; }
+    .map-dot--fioritura{ background: #f472b6; }
+
+    #territorio-map {
+      height: 480px; border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      box-shadow: 0 24px 64px rgba(0,0,0,.4);
+    }
+
+    /* Leaflet dark override */
+    #territorio-map .leaflet-tile { filter: brightness(.85) saturate(.9); }
+    #territorio-map .leaflet-popup-content-wrapper {
+      background: var(--dark-brown); color: #fff;
+      border: 1px solid rgba(212,160,23,.3);
+      border-radius: 10px; box-shadow: none;
+    }
+    #territorio-map .leaflet-popup-tip { background: var(--dark-brown); }
+    #territorio-map .leaflet-popup-content { margin: 14px 18px; }
+    .map-popup-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: var(--honey-yellow);
+      margin: 0 0 6px;
+    }
+    .map-popup-body {
+      font-size: .85rem; line-height: 1.6;
+      color: rgba(255,255,255,.75); margin: 0;
+    }
+
+    /* ── Biodiversità grid ── */
+    .bio-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-top: 48px;
+    }
+    .bio-card {
+      background: #fff; border-radius: 14px;
+      padding: 28px 24px;
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .bio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.1);
+    }
+    .bio-card__icon {
+      font-size: 2.2rem; margin-bottom: 14px; display: block;
+    }
+    .bio-card__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; color: var(--dark-brown);
+      margin: 0 0 8px;
+    }
+    .bio-card__body {
+      font-size: .88rem; line-height: 1.65; color: #666; margin: 0;
+    }
+    .bio-card__tag {
+      display: inline-block; margin-top: 12px;
+      font-size: .72rem; font-weight: 700; letter-spacing: .8px;
+      text-transform: uppercase; padding: 3px 10px;
+      background: rgba(212,160,23,.12);
+      color: #92400e; border-radius: 4px;
+    }
+
+    /* ── Stagioni timeline ── */
+    .stagioni-timeline {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; margin-top: 48px;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px; overflow: hidden;
+    }
+    .stagione-col {
+      padding: 32px 24px;
+      border-right: 1px solid rgba(0,0,0,.08);
+    }
+    .stagione-col:last-child { border-right: none; }
+    .stagione-col__season {
+      font-size: .72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--honey-yellow);
+      margin: 0 0 6px;
+    }
+    .stagione-col__months {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--dark-brown);
+      margin: 0 0 16px;
+    }
+    .stagione-col__events {
+      list-style: none; padding: 0; margin: 0;
+      font-size: .86rem; line-height: 1.6; color: #555;
+    }
+    .stagione-col__events li {
+      padding: 4px 0; border-bottom: 1px dotted rgba(0,0,0,.1);
+    }
+    .stagione-col__events li:last-child { border-bottom: none; }
+    .stagione-col__events li::before {
+      content: "·"; color: var(--honey-yellow); margin-right: 6px;
+    }
+    .stagione-col--primavera { background: #fffdf5; }
+    .stagione-col--estate    { background: #fef9ec; }
+    .stagione-col--autunno   { background: #fdf5e6; }
+    .stagione-col--inverno   { background: #f9f4ee; }
+
+    /* ── Dati scientifici ── */
+    .dati-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 24px; margin-top: 48px;
+    }
+    .dato-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(212,160,23,.2);
+      border-radius: 14px; padding: 28px 24px;
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .dato-card__num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; color: var(--honey-yellow);
+      line-height: 1; flex-shrink: 0; min-width: 80px;
+    }
+    .dato-card__label {
+      font-size: .78rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: rgba(255,255,255,.45);
+      margin: 0 0 4px;
+    }
+    .dato-card__desc {
+      font-size: .92rem; color: rgba(255,255,255,.7);
+      line-height: 1.6; margin: 0;
+    }
+
+    /* ── CTA finale ── */
+    .terr-cta {
+      background: var(--beige);
+      padding: 80px 10%; text-align: center;
+    }
+    .terr-cta__inner { max-width: 640px; margin: 0 auto; }
+    .terr-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--dark-brown); margin: 0 0 16px;
+    }
+    .terr-cta p { color: #555; font-size: 1rem; line-height: 1.75; margin: 0 0 32px; }
+    .terr-cta__btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .bio-grid { grid-template-columns: repeat(2, 1fr); }
+      .stagioni-timeline { grid-template-columns: repeat(2, 1fr); }
+      .stagione-col:nth-child(2) { border-right: none; }
+      .stagione-col:nth-child(1),
+      .stagione-col:nth-child(2) { border-bottom: 1px solid rgba(0,0,0,.08); }
+      .dati-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .terr-hero { padding: 0 5%; min-height: 85vh; }
+      .terr-section { padding: 56px 5%; }
+      .terr-twocol { grid-template-columns: 1fr; gap: 32px; }
+      .terr-twocol--flip { direction: ltr; }
+      .terr-map-section { padding: 56px 5%; }
+      .terr-map-section__head { grid-template-columns: 1fr; }
+      #territorio-map { height: 340px; }
+      .bio-grid { grid-template-columns: 1fr; }
+      .stagioni-timeline { grid-template-columns: 1fr; }
+      .stagione-col { border-right: none; border-bottom: 1px solid rgba(0,0,0,.08); }
+      .terr-hero__stats { gap: 24px; }
+      .terr-cta { padding: 56px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="nav-wrap">
+    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home">
+      <img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
+      <span class="sr-only">Menu</span>☰
+    </button>
+    <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
+      <ul class="menu">
+        <li><a href="/" data-nav="home">Home</a></li>
+        <li class="has-submenu">
+          <button class="submenu-toggle" aria-expanded="false">Il Nostro Terroir</button>
+          <ul class="submenu" style="min-width:240px;">
+            <li><a href="chi-siamo.html" data-nav="chi-siamo">Chi Siamo</a></li>
+            <li><a href="storia.html">La Nostra Storia</a></li>
+            <li><a href="territorio.html" data-nav="territorio" class="active">Scopri il Territorio</a></li>
+            <li><a href="etichette.html" data-nav="etichette">Le Etichette</a></li>
+          </ul>
+        </li>
+        <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
+        <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
+        <li class="has-submenu">
+          <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
+          <ul class="submenu">
+            <li><a href="prodotti.html" data-nav="prodotti" style="font-weight:700;">→ Tutti i Mieli</a></li>
+            <li><a href="millefiori.html" data-nav="millefiori">Miele Millefiori</a></li>
+            <li><a href="acacia.html" data-nav="acacia">Miele di Acacia</a></li>
+            <li><a href="sulla.html" data-nav="sulla">Miele di Sulla</a></li>
+          </ul>
+        </li>
+        <li><a href="contatti.html" data-nav="contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="storia.html">Il Nostro Terroir</a></li>
+    <li><span aria-current="page">Scopri il Territorio</span></li>
+  </ol>
+</nav>
+
+<main id="main-content">
+
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <header class="terr-hero" aria-label="Hero Territorio">
+    <div class="terr-hero__bg" role="img" aria-label="Panorama dell'Oasi di Conza della Campania"></div>
+    <div class="terr-hero__overlay"></div>
+    <div class="terr-hero__content">
+      <p class="terr-hero__kicker">40°52'N · 15°18'E · 650 m s.l.m.</p>
+      <h1>Un luogo <em>preciso</em><br>su una mappa</h1>
+      <p class="terr-hero__lead">
+        L'Oasi WWF di Conza della Campania non è uno sfondo. È il motore di ogni cosa che facciamo.
+        Argille, acque, fioriture selvatiche, vento appenninico — ogni elemento di questo paesaggio
+        finisce dentro i nostri vasetti.
+      </p>
+      <div class="terr-hero__stats">
+        <div class="terr-stat">
+          <span class="terr-stat__num">650m</span>
+          <span class="terr-stat__label">Altitudine apiario</span>
+        </div>
+        <div class="terr-stat">
+          <span class="terr-stat__num">3.700ha</span>
+          <span class="terr-stat__label">Oasi protetta WWF</span>
+        </div>
+        <div class="terr-stat">
+          <span class="terr-stat__num">~170</span>
+          <span class="terr-stat__label">Specie di uccelli</span>
+        </div>
+        <div class="terr-stat">
+          <span class="terr-stat__num">40+</span>
+          <span class="terr-stat__label">Specie botaniche mellifere</span>
+        </div>
+      </div>
+    </div>
+    <div class="terr-hero__scroll" aria-hidden="true">
+      <span>Scorri</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </header>
+
+  <!-- ── NAVIGAZIONE INTERNA (mobile) ── -->
+  <nav class="page-anchors" aria-label="Sezioni della pagina">
+    <a href="#lago-h2" class="page-anchor">Il Lago</a>
+    <a href="#argille-h2" class="page-anchor">Le Argille</a>
+    <a href="#mappa-h2" class="page-anchor">Mappa</a>
+    <a href="#bio-h2" class="page-anchor">Biodiversità</a>
+    <a href="#stagioni-h2" class="page-anchor">Stagioni</a>
+    <a href="#dati-h2" class="page-anchor">Dati Apiario</a>
+  </nav>
+
+  <!-- ── IL LAGO ───────────────────────────────────────────────── -->
+  <section class="terr-section terr-section--light" aria-labelledby="lago-h2">
+    <div class="terr-section__inner">
+      <div class="terr-twocol">
+        <div class="terr-text-col">
+          <p class="terr-kicker">Il bacino artificiale</p>
+          <h2 class="terr-h2" id="lago-h2">Il Lago di Conza della Campania:<br>un'opera d'ingegneria<br>diventata natura</h2>
+          <div class="terr-divider"></div>
+          <p class="terr-body">
+            Costruito negli anni Ottanta come invaso artificiale sul fiume Ofanto, il Lago di Conza ha
+            nel tempo trasformato un'area agricola in un ecosistema straordinario. L'acqua ha
+            richiamato la vegetazione ripariale, la vegetazione ha chiamato gli insetti,
+            gli insetti hanno chiamato le api.
+          </p>
+          <p class="terr-body">
+            Oggi il lago è il centro di gravità di un corridoio ecologico che collega l'Appennino
+            Lucano al Sele. Le rive ospitano canneti, saliceti e prati umidi — ambienti ideali
+            per specie come la natrice tassellata, il falco pescatore, l'airone cenerino.
+            E per le nostre api: l'umidità lacustre crea microclimi di fioritura unici.
+          </p>
+          <p class="terr-body">
+            <strong>Il lago regola le stagioni del miele.</strong> La massa d'acqua ammorbidisce
+            le gelate primaverili, prolunga le fioriture estive, crea un gradiente termico che
+            favorisce la raccolta tardiva. Non si trova in nessun disciplinare di produzione —
+            eppure è il vero segreto dei nostri cru.
+          </p>
+        </div>
+        <div class="terr-img-wrap">
+          <picture>
+            <source srcset="img/storia-territorio.webp" type="image/webp">
+            <img src="img/storia-territorio.jpeg"
+                 alt="Lago di Conza della Campania — panorama del bacino artificiale e area WWF"
+                 width="800" height="600" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ARGILLE ────────────────────────────────────────────────── -->
+  <section class="terr-section terr-section--beige" aria-labelledby="argille-h2">
+    <div class="terr-section__inner">
+      <div class="terr-twocol terr-twocol--flip">
+        <div class="terr-text-col">
+          <p class="terr-kicker">Il suolo che parla nel miele</p>
+          <h2 class="terr-h2" id="argille-h2">Le argille irpine:<br>perché il nostro miele<br>ha quel carattere</h2>
+          <div class="terr-divider"></div>
+          <p class="terr-body">
+            I suoli intorno a Conza sono prevalentemente argillosi — rimanenze del fondo del mare
+            del Miocene, emerse con l'orogenesi appenninica. Questa argilla è responsabile di due
+            cose fondamentali per i nostri mieli: <strong>trattiene l'umidità</strong> nei periodi
+            di siccità estiva, permettendo alle piante mellifere di fiorire più a lungo;
+            <strong>mineralizza le piante</strong> che vi affondano le radici.
+          </p>
+          <p class="terr-body">
+            Il Miele di Sulla — la nostra produzione più rara — è un caso di studio in questo
+            senso. La <em>Hedysarum coronarium</em> è una leguminosa che si adatta perfettamente
+            ai suoli pesanti, e assorbe il minerale argilloso restituendolo come una lieve nota
+            erbaceo-salina nel miele. Un carattere impossibile da replicare altrove.
+          </p>
+          <p class="terr-body">
+            Ecco perché parliamo di <strong>miele cru</strong>: come un vino di territorio,
+            il suolo è un ingrediente attivo, non uno sfondo passivo.
+          </p>
+        </div>
+        <div class="terr-img-wrap">
+          <picture>
+            <source srcset="img/storia-api.webp" type="image/webp">
+            <img src="img/storia-api.jpeg"
+                 alt="Api al lavoro sui fiori selvatici delle argille irpine — Oasi di Conza"
+                 width="800" height="600" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MAPPA INTERATTIVA ──────────────────────────────────────── -->
+  <section class="terr-map-section" aria-labelledby="mappa-h2">
+    <div class="terr-map-section__inner">
+      <div class="terr-map-section__head">
+        <div>
+          <p class="terr-kicker">Il nostro terroir su mappa</p>
+          <h2 class="terr-h2 terr-h2--white" id="mappa-h2">Dove nasce il miele</h2>
+          <div class="terr-divider"></div>
+        </div>
+        <div class="map-legend" aria-label="Legenda mappa">
+          <div class="map-legend-item">
+            <span class="map-dot map-dot--apiario"></span> Apiario Priscilla
+          </div>
+          <div class="map-legend-item">
+            <span class="map-dot map-dot--oasi"></span> Oasi WWF
+          </div>
+          <div class="map-legend-item">
+            <span class="map-dot map-dot--fioritura"></span> Zone di fioritura
+          </div>
+        </div>
+      </div>
+      <div id="territorio-map" role="application" aria-label="Mappa interattiva del territorio Vie del Lago Apicoltura"></div>
+    </div>
+  </section>
+
+  <!-- ── BIODIVERSITÀ ───────────────────────────────────────────── -->
+  <section class="terr-section terr-section--beige" aria-labelledby="bio-h2">
+    <div class="terr-section__inner">
+      <div class="terr-section__inner--narrow" style="max-width:100%;">
+        <p class="terr-kicker">L'ecosistema del miele</p>
+        <h2 class="terr-h2" id="bio-h2">Biodiversità come garanzia di qualità</h2>
+        <div class="terr-divider"></div>
+        <p class="terr-body" style="max-width:720px;">
+          Un ecosistema sano produce un miele complesso. Le api di Priscilla non hanno un
+          monocultura davanti — hanno un paesaggio. Ogni pianta che fiorisce aggiunge
+          una sfumatura, ogni insetto che vola è un indicatore di equilibrio. Ecco i principali
+          attori botanici e faunistici del nostro territorio.
+        </p>
+      </div>
+
+      <div class="bio-grid">
+        <div class="bio-card">
+          <span class="bio-card__icon">🌸</span>
+          <h3 class="bio-card__title">Sulla (Hedysarum coronarium)</h3>
+          <p class="bio-card__body">
+            Leguminosa annuale che fiorisce in maggio sui suoli argillosi. Fiori rosso-porpora
+            ad alto contenuto di nettare. Rarissima fuori dall'area mediterranea occidentale.
+            Base del nostro Cru delle Argille.
+          </p>
+          <span class="bio-card__tag">Monoflora rara</span>
+        </div>
+        <div class="bio-card">
+          <span class="bio-card__icon">🌿</span>
+          <h3 class="bio-card__title">Robinia Pseudoacacia</h3>
+          <p class="bio-card__body">
+            Originaria del Nord America, naturalizzata nei valloni umidi. Fioritura brevissima
+            (8-12 giorni) ma nettarifera straordinaria. Il nettare produce un miele a cristallizzazione
+            lentissima di eccezionale limpidezza.
+          </p>
+          <span class="bio-card__tag">Monoflora delicata</span>
+        </div>
+        <div class="bio-card">
+          <span class="bio-card__icon">🌼</span>
+          <h3 class="bio-card__title">Millefiori Selvatico</h3>
+          <p class="bio-card__body">
+            Trifoglio pratense, erba medica, sulla, centaurea, borragine, cisto, timo, origano.
+            La complessità del nostro Millefiori dipende dal numero di specie: più alta la diversità
+            floristica, più articolato il profilo aromatico.
+          </p>
+          <span class="bio-card__tag">Polifiora complessa</span>
+        </div>
+        <div class="bio-card">
+          <span class="bio-card__icon">🦅</span>
+          <h3 class="bio-card__title">Avifauna dell'Oasi</h3>
+          <p class="bio-card__body">
+            Falco pescatore, airone cenerino, mignattino piombato, martin pescatore, tarabusino.
+            La presenza di specie ornitologiche sensibili è l'indicatore più attendibile della
+            qualità ambientale dell'area: dove vivono loro, vivono bene anche le api.
+          </p>
+          <span class="bio-card__tag">Indicatori biologici</span>
+        </div>
+        <div class="bio-card">
+          <span class="bio-card__icon">🐟</span>
+          <h3 class="bio-card__title">Fauna Acquatica</h3>
+          <p class="bio-card__body">
+            Luccio, carpa, tinca, anguilla, gambero di fiume. La qualità dell'acqua del lago —
+            monitorata dal WWF — è direttamente correlata alla salute degli habitat ripariali dove
+            crescono le piante mellifere della zona umida.
+          </p>
+          <span class="bio-card__tag">Ecosistema lacustre</span>
+        </div>
+        <div class="bio-card">
+          <span class="bio-card__icon">🦋</span>
+          <h3 class="bio-card__title">Impollinatori Selvatici</h3>
+          <p class="bio-card__body">
+            Bombus terrestris, Osmia cornuta, farfalle Vanessa e Polyommatus. Le nostre
+            <em>Apis mellifera ligustica</em> condividono il territorio con decine di specie
+            di impollinatori selvatici — segnale di un ecosistema in salute e non compromesso.
+          </p>
+          <span class="bio-card__tag">Impollinatori</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STAGIONI ───────────────────────────────────────────────── -->
+  <section class="terr-section terr-section--light" aria-labelledby="stagioni-h2">
+    <div class="terr-section__inner">
+      <p class="terr-kicker">Il ritmo del territorio</p>
+      <h2 class="terr-h2" id="stagioni-h2">Le quattro stagioni del terroir</h2>
+      <div class="terr-divider"></div>
+      <p class="terr-body" style="max-width:680px;">
+        Il territorio non è statico. Cambia ogni stagione, e con esso cambia l'alveare, il miele,
+        il lavoro dell'apicoltore. Questa è la mappa temporale del nostro anno.
+      </p>
+      <div class="stagioni-timeline" role="list">
+        <div class="stagione-col stagione-col--primavera" role="listitem">
+          <p class="stagione-col__season">Primavera</p>
+          <p class="stagione-col__months">Marzo — Maggio</p>
+          <ul class="stagione-col__events">
+            <li>Risveglio delle famiglie</li>
+            <li>Fioritura di Sulla (maggio)</li>
+            <li>Fioritura di Acacia (apr–mag)</li>
+            <li>Prima smielatura dell'anno</li>
+            <li>Ispezioni e sciamatura</li>
+          </ul>
+        </div>
+        <div class="stagione-col stagione-col--estate" role="listitem">
+          <p class="stagione-col__season">Estate</p>
+          <p class="stagione-col__months">Giugno — Agosto</p>
+          <ul class="stagione-col__events">
+            <li>Raccolta Millefiori</li>
+            <li>Fioriture tardo-estive (origano, timo)</li>
+            <li>Smielatura principale</li>
+            <li>Monitoraggio varroa</li>
+            <li>Gestione calore alveare</li>
+          </ul>
+        </div>
+        <div class="stagione-col stagione-col--autunno" role="listitem">
+          <p class="stagione-col__season">Autunno</p>
+          <p class="stagione-col__months">Settembre — Novembre</p>
+          <ul class="stagione-col__events">
+            <li>Preparazione invernamento</li>
+            <li>Scorte di miele per api</li>
+            <li>Trattamenti antiparassitari</li>
+            <li>Ispezione finale arnie</li>
+            <li>Raccolta dati stagione</li>
+          </ul>
+        </div>
+        <div class="stagione-col stagione-col--inverno" role="listitem">
+          <p class="stagione-col__season">Inverno</p>
+          <p class="stagione-col__months">Dicembre — Febbraio</p>
+          <ul class="stagione-col__events">
+            <li>Cluster: api a riposo</li>
+            <li>Manutenzione arnie</li>
+            <li>Analisi e studi botanici</li>
+            <li>Pianificazione stagione</li>
+            <li>Comunicazione con waitlist</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DATI SCIENTIFICI ───────────────────────────────────────── -->
+  <section class="terr-section terr-section--dark" aria-labelledby="dati-h2">
+    <div class="terr-section__inner">
+      <div class="terr-section__inner--narrow" style="max-width:100%;">
+        <p class="terr-kicker" style="color:var(--honey-yellow);">Il territorio in numeri</p>
+        <h2 class="terr-h2 terr-h2--white" id="dati-h2">Cosa succede in un anno nell'apiario</h2>
+        <div class="terr-divider"></div>
+      </div>
+      <div class="dati-grid">
+        <div class="dato-card">
+          <span class="dato-card__num">18–25</span>
+          <div>
+            <p class="dato-card__label">Km di raggio — territorio battuto</p>
+            <p class="dato-card__desc">
+              Un'ape compie fino a 90.000 voli in una stagione, coprendo in media 3–5 km per
+              raccolta. Il territorio effettivo dell'apiario Priscilla è un cerchio di ~25 km di raggio
+              intorno a Conza — una delle aree più incontaminate dell'Irpinia.
+            </p>
+          </div>
+        </div>
+        <div class="dato-card">
+          <span class="dato-card__num">60+</span>
+          <div>
+            <p class="dato-card__label">Kg di miele per arnia — stagione buona</p>
+            <p class="dato-card__desc">
+              In anni con primavera favorevole e fioriture abbondanti, ogni arnia può produrre
+              60–80 kg. Anni di siccità o late frost scendono a 20–30 kg. Il micro-lotto è
+              reale: la variabilità è parte del carattere cru.
+            </p>
+          </div>
+        </div>
+        <div class="dato-card">
+          <span class="dato-card__num">50.000</span>
+          <div>
+            <p class="dato-card__label">Api per arnia al picco estivo</p>
+            <p class="dato-card__desc">
+              Un'arnia sana in estate conta 50.000–80.000 individui. Ogni ape operaia vive
+              6–7 settimane. L'alveare Priscilla è monitorato settimanalmente per garantire
+              salute delle famiglie e densità ottimale per la raccolta.
+            </p>
+          </div>
+        </div>
+        <div class="dato-card">
+          <span class="dato-card__num">8–12</span>
+          <div>
+            <p class="dato-card__label">Giorni di fioritura Acacia</p>
+            <p class="dato-card__desc">
+              La Robinia Pseudoacacia fiorisce per 8–12 giorni all'anno, e solo in quella
+              finestra l'api raccolgono il nettare per il Miele di Acacia. Pioggia, vento o
+              caldo anomalo possono ridurre la finestra a 5 giorni — azzerando la raccolta.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ────────────────────────────────────────────────────── -->
+  <section class="terr-cta" aria-labelledby="cta-h2">
+    <div class="terr-cta__inner">
+      <p class="terr-kicker" style="text-align:center;">Questo territorio è nel vasetto</p>
+      <h2 id="cta-h2">Ora che conosci il luogo,<br>conosci il miele</h2>
+      <p>
+        Ogni acquisto è un'istantanea geografica: un terroir specifico, un'annata precisa,
+        un ecosistema che ha lavorato per te. Scopri i nostri mieli cru disponibili.
+      </p>
+      <div class="terr-cta__btns">
+        <a href="prodotti.html" class="btn-primary">Scopri i mieli cru →</a>
+        <a href="storia.html" class="btn-secondary">La nostra storia</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BACK TO TOP ── -->
+  <div class="back-to-top-wrap">
+    <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna in cima alla pagina">
+      ↑ Torna su
+    </button>
+  </div>
+
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-info">
+      <p><img src="img/logo-esteso-bianco.png" alt="Vie del Lago Apicoltura" class="footer-logo" width="160" height="49" loading="lazy"></p>
+      <p>Via Contrada Pescara, 74 — 83040 Conza della Campania (AV)</p>
+      <p>P.IVA 10819081216 &nbsp;·&nbsp; <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="chi-siamo.html">Chi Siamo</a></li>
+        <li><a href="storia.html">La Nostra Storia</a></li>
+      </ul>
+    </div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/winebeesness_?igsh=MTlvcnJsZDFibzVrZg%3D%3D&utm_source=qr"
+         target="_blank" rel="noopener" aria-label="Seguici su Instagram">
+        <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
+
+<script>
+  // ── Leaflet Interactive Map ──────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof L === 'undefined') return;
+
+    const map = L.map('territorio-map', {
+      center: [40.87128953038465, 15.300502782432183],
+      zoom: 13,
+      zoomControl: true,
+      scrollWheelZoom: false,
+    });
+
+    // OpenStreetMap tiles (no API key needed)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 18,
+    }).addTo(map);
+
+    // Custom icons
+    function makeIcon(color, emoji) {
+      return L.divIcon({
+        className: '',
+        html: `<div style="
+          background:${color}; width:36px; height:36px; border-radius:50%;
+          display:flex; align-items:center; justify-content:center;
+          font-size:16px; box-shadow: 0 4px 12px rgba(0,0,0,.35);
+          border:2px solid rgba(255,255,255,.8);
+        ">${emoji}</div>`,
+        iconSize: [36, 36],
+        iconAnchor: [18, 18],
+        popupAnchor: [0, -20],
+      });
+    }
+
+    const iconApiario   = makeIcon('#D4A017', '🍯');
+    const iconOasi      = makeIcon('#16a34a', '🌿');
+    const iconFioritura = makeIcon('#db2777', '🌸');
+
+    // Markers
+    const markers = [
+      {
+        lat: 40.87128953038465, lng: 15.300502782432183,
+        icon: iconApiario,
+        title: 'Apiario Priscilla',
+        body: 'Il nostro apiario stanziale. Qui vivono le famiglie di <em>Apis mellifera ligustica</em> che producono tutti i nostri mieli cru.'
+      },
+      {
+        lat: 40.889290, lng: 15.296503,
+        icon: iconOasi,
+        title: 'Oasi WWF di Conza',
+        body: 'Area protetta WWF di 3.700 ha. Zona umida di importanza europea, habitat per oltre 170 specie di uccelli.'
+      },
+      {
+        lat: 40.89628953038465, lng: 15.312502782432183,
+        icon: iconOasi,
+        title: 'Lago di Conza',
+        body: 'Il bacino artificiale sul fiume Ofanto. La massa d\'acqua regola il microclima delle fioriture — elemento chiave del nostro terroir.'
+      },
+      {
+        lat: 40.881290, lng: 15.286503,
+        icon: iconFioritura,
+        title: 'Zone di Fioritura Sulla',
+        body: 'Le praterie argillose dove fiorisce la <em>Hedysarum coronarium</em> a maggio. Base del nostro raro Cru delle Argille.'
+      },
+      {
+        lat: 40.865290, lng: 15.290503,
+        icon: iconFioritura,
+        title: 'Valloni dell\'Acacia',
+        body: 'I fondovalle umidi dove cresce la <em>Robinia Pseudoacacia</em>. Fiorisce per 8-12 giorni all\'anno — il nettare più prezioso e fugace.'
+      },
+      {
+        lat: 40.886290, lng: 15.282503,
+        icon: iconFioritura,
+        title: 'Prati Millefiori',
+        body: 'Le praterie miste di trifoglio, borragine, origano, timo e centaurea. La diversità botanica che produce la complessità del nostro Millefiori.'
+      },
+    ];
+
+    markers.forEach(function(m) {
+      L.marker([m.lat, m.lng], { icon: m.icon })
+        .addTo(map)
+        .bindPopup(
+          `<p class="map-popup-title">${m.title}</p><p class="map-popup-body">${m.body}</p>`,
+          { maxWidth: 240 }
+        );
+    });
+
+    // Oasi boundary circle (approximate)
+    L.circle([40.88628953038465, 15.303502782432183], {
+      color: '#4ade80', fillColor: '#4ade80',
+      fillOpacity: 0.08, weight: 1.5, opacity: .5,
+      radius: 2800
+    }).addTo(map).bindPopup('<p class="map-popup-title">Oasi WWF di Conza</p><p class="map-popup-body">Area protetta approssimativa di ~3.700 ha.</p>');
+  });
+</script>
+</body>
+</html>
