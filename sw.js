@@ -1,7 +1,7 @@
-// Vie del Lago Apicoltura — Service Worker v18
+// Vie del Lago Apicoltura — Service Worker v19
 // Cache-first per asset statici; network-first per HTML
 
-const CACHE = 'vdl-v18';
+const CACHE = 'vdl-v19';
 const STATIC = [
   '/',
   '/index.html',
