@@ -1,7 +1,7 @@
-// Vie del Lago Apicoltura — Service Worker v19
-// Cache-first per asset statici; network-first per HTML
+// Vie del Lago Apicoltura — Service Worker v20
+// Cache-first per asset statici; stale-while-revalidate per immagini; network-first per HTML
 
-const CACHE = 'vdl-v19';
+const CACHE = 'vdl-v20';
 const STATIC = [
   '/',
   '/index.html',
@@ -59,7 +59,25 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // Asset statici: cache-first
+  // Immagini: stale-while-revalidate (mostra subito la cache, aggiorna in background)
+  if (request.destination === 'image') {
+    e.respondWith(
+      caches.open(CACHE).then(cache =>
+        cache.match(request).then(cached => {
+          const fetchPromise = fetch(request).then(res => {
+            if (res && res.status === 200 && res.type === 'basic') {
+              cache.put(request, res.clone());
+            }
+            return res;
+          }).catch(() => cached);
+          return cached || fetchPromise;
+        })
+      )
+    );
+    return;
+  }
+
+  // Altri asset statici (CSS, JS, ecc.): cache-first
   e.respondWith(
     caches.match(request).then(cached => {
       if (cached) return cached;
