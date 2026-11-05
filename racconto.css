@@ -218,3 +218,46 @@ a{color:inherit}
 .correlato h3{margin:0 0 6px;font-weight:500;font-size:clamp(26px,2.4vw,36px);line-height:1.1}
 .correlato p{margin:0;font-size:15px;color:var(--grigio)}
 @media (max-width:520px){.menu{gap:6px 18px;font-size:14px}}
+
+/* ── Apertura delle pagine interne ── */
+.intro{padding:clamp(24px,3vw,40px) 0 clamp(72px,9vw,130px)}
+.intro .titolo{font-size:clamp(56px,8vw,128px);line-height:.95;margin-top:24px}
+.intro__lead{margin:clamp(28px,3vw,40px) 0 0;max-width:34ch}
+.fatti{display:flex;flex-wrap:wrap;gap:12px 32px;margin:clamp(40px,5vw,64px) 0 0;padding:22px 0 0;border-top:1px solid rgba(30,26,18,.22);list-style:none;font-size:15px;color:var(--grigio)}
+.fatti li{display:flex;align-items:center;gap:10px}
+.fatti li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--miele)}
+
+/* ── Tabella di confronto ── */
+.tabella-box{overflow-x:auto;margin-top:clamp(40px,5vw,64px)}
+.confronto{width:100%;min-width:720px;border-collapse:collapse;font-size:16px}
+.confronto th,.confronto td{text-align:left;padding:18px 20px;border-top:1px solid rgba(30,26,18,.18);vertical-align:top}
+.confronto thead th{border-top:0;padding-bottom:22px}
+.confronto thead th span{display:block}
+.confronto thead .nome{font-weight:500;font-size:clamp(26px,2.4vw,36px);line-height:1.1}
+.confronto thead .cru{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grigio);margin-top:6px}
+.confronto tbody th{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grigio);width:18%}
+.intensita{display:inline-flex;gap:5px}
+.intensita i{width:10px;height:10px;border-radius:50%;border:1px solid var(--terra)}
+.intensita i.pieno{background:var(--terra)}
+
+/* ── Passi numerati ── */
+.passi{list-style:none;margin:0;padding:0;counter-reset:passo}
+.passo{display:grid;grid-template-columns:minmax(80px,180px) 1fr;gap:clamp(20px,4vw,64px);padding:clamp(40px,5vw,72px) 0;border-top:1px solid rgba(30,26,18,.18)}
+.passo:last-child{border-bottom:1px solid rgba(30,26,18,.18)}
+.passo__num{font-weight:500;font-size:clamp(64px,8vw,120px);line-height:.9;color:var(--miele)}
+.passo h3{margin:0 0 14px;font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.1}
+.passo p{margin:0;max-width:52ch}
+.passo ul{margin:16px 0 0;padding-left:1.1em;color:var(--grigio)}
+.passo li+li{margin-top:6px}
+.passo__azioni{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+@media (max-width:640px){.passo{grid-template-columns:1fr;gap:12px}}
+
+/* ── Domande ── */
+.domande{max-width:900px}
+.domanda{border-top:1px solid rgba(30,26,18,.2)}
+.domanda:last-of-type{border-bottom:1px solid rgba(30,26,18,.2)}
+.domanda summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;align-items:center;padding:24px 0;font-weight:500;font-size:clamp(20px,1.8vw,26px);line-height:1.3}
+.domanda summary::-webkit-details-marker{display:none}
+.domanda summary::after{content:"+";font-weight:400;font-size:32px;line-height:1;color:var(--miele);transition:transform .3s}
+.domanda[open] summary::after{transform:rotate(45deg)}
+.domanda p{margin:0 0 26px;max-width:60ch;color:var(--grigio)}
