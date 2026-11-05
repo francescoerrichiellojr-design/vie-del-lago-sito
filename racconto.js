@@ -2,6 +2,26 @@
    Scorrimento morbido (Lenis, ospitato in /vendor), testi che compaiono riga per riga,
    immagini che si svelano e leggero effetto di profondità.
    Con "riduci movimento" attivo nel sistema, o senza JavaScript, tutto resta fermo e leggibile. */
+/* Pulsante "torna su": compare dopo aver scorso un po' e riporta all'inizio della pagina. */
+(function () {
+  var btn = document.querySelector('.torna-su');
+  if (!btn) return;
+  var ridotto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var visibile = false;
+  function controlla() {
+    var si = window.scrollY > window.innerHeight * 0.8;
+    if (si !== visibile) { visibile = si; btn.classList.toggle('visibile', si); }
+  }
+  window.addEventListener('scroll', controlla, { passive: true });
+  controlla();
+  btn.addEventListener('click', function () {
+    if (window.vdlLenis && !ridotto) window.vdlLenis.scrollTo(0, { duration: 1.4 });
+    else window.scrollTo({ top: 0, behavior: ridotto ? 'auto' : 'smooth' });
+    var logo = document.querySelector('.marca');
+    if (logo) logo.focus({ preventScroll: true });
+  });
+})();
+
 /* Menu su telefono: pulsante "Menu" che apre le voci a tutto schermo. Funziona anche con "riduci movimento". */
 (function () {
   var btn = document.querySelector('.menu-apri');

@@ -430,3 +430,11 @@ a{color:inherit}
 }
 @media (max-width:720px) and (prefers-reduced-motion:reduce){.js-menu .menu,.js-menu .menu a,.menu-apri__linee::before,.menu-apri__linee::after{transition:none}}
 @media (max-width:720px){.piede__sep{display:none}.piede__piva{display:block;margin-top:4px}}
+
+/* ── Torna su ── */
+.torna-su{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(20px,calc(env(safe-area-inset-bottom) + 12px));z-index:50;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(30,26,18,.18);border-radius:50%;background:var(--carta);color:var(--terra);box-shadow:0 8px 24px -10px rgba(30,26,18,.5);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s}
+.torna-su.visibile{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .3s ease}
+.torna-su:hover{background:#F2F0E6}
+.torna-su:focus-visible{outline:2px solid var(--miele);outline-offset:3px}
+.menu-aperto .torna-su{opacity:0;visibility:hidden}
+@media (prefers-reduced-motion:reduce){.torna-su{transition:none}}
