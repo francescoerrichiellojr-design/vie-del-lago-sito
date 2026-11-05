@@ -17,8 +17,6 @@
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Vie del Lago Apicoltura">
   <link rel="canonical" href="https://www.viedellagoapicoltura.it/contatti.html">
-  <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/playfair-display-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
@@ -26,8 +24,7 @@
   <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <meta name="msapplication-TileImage" content="img/favicon-48.png">
-  <meta name="theme-color" content="#F3E9DA">
-  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#E6E4D8">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -64,201 +61,129 @@
       loadGA();
     }
   </script>
-  <link rel="stylesheet" href="/ritocchi.css">
+  <link rel="preload" href="/fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/vendor/lenis-1.3.27.css">
+  <link rel="stylesheet" href="/racconto.css">
+  <meta name="format-detection" content="telephone=no">
 </head>
 <body>
-<header class="site-header" role="banner">
-  <div class="nav-wrap">
-    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home"><picture><source srcset="img/logo-esteso-nero.webp" type="image/webp"><img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59" fetchpriority="high"></picture></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
-      <span class="sr-only">Menu</span>☰
-    </button>
-    <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
-      <ul class="menu">
-        <li><a href="/" data-nav="home">Home</a></li>
-        <li class="has-submenu">
-          <button class="submenu-toggle" aria-expanded="false">Il Nostro Terroir</button>
-          <ul class="submenu" style="min-width:240px;">
-            <li><a href="chi-siamo.html" data-nav="chi-siamo">Chi Siamo</a></li>
-            <li><a href="storia.html">La Nostra Storia</a></li>
-            <li><a href="territorio.html" data-nav="territorio">Scopri il Territorio</a></li>
-            <li><a href="etichette.html" data-nav="etichette">Le Etichette</a></li>
-          </ul>
-        </li>
-        <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
-        <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
-        <li class="has-submenu">
-          <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
-          <ul class="submenu">
-            <li><a href="prodotti.html" data-nav="prodotti" style="font-weight:700;">→ Tutti i Mieli</a></li>
-            <li><a href="come-ordinare.html" data-nav="come-ordinare">Come Ordinare</a></li>
-            <li><a href="millefiori.html" data-nav="millefiori">Miele Millefiori</a></li>
-            <li><a href="acacia.html" data-nav="acacia">Miele di Acacia</a></li>
-            <li><a href="sulla.html" data-nav="sulla">Miele di Sulla</a></li>
-          </ul>
-        </li>
-        <li><a href="contatti.html" data-nav="contatti">Contatti</a></li>
-        <li><a href="come-ordinare.html" class="btn-primary" style="padding:8px 16px; font-size:.85rem; margin-left:6px;">Ordina →</a></li>
-      </ul>
+<a class="sr-only salta" href="#contenuto">Vai al contenuto</a>
+
+<header class="testata testata--chiara">
+  <div class="contenitore">
+    <a class="marca marca--logo" href="/" aria-label="Vie del Lago Apicoltura, home">
+      <img src="img/logo-firma-terra.webp" alt="Vie del Lago Apicoltura" width="871" height="261">
+    </a>
+    <nav class="menu" id="menu-principale" aria-label="Menu principale">
+      <a href="/">Home</a>
+      <a href="territorio.html">Il lago</a>
+      <a href="prodotti.html">I mieli</a>
+      <a href="educazione.html">Il metodo</a>
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="#ordina">Ordina</a>
     </nav>
+    <button type="button" class="menu-apri" aria-expanded="false" aria-controls="menu-principale"><span class="menu-apri__testo">Menu</span><span class="menu-apri__linee" aria-hidden="true"></span></button>
   </div>
 </header>
 
-<main id="main-content">
+<main id="contenuto">
 
-  <header class="story-hero" style="background: var(--beige) url('img/hero-contatti.webp') center/cover no-repeat;" aria-label="Contatti">
-    <div class="story-hero-overlay" aria-hidden="true"></div>
-    <div class="story-hero__inner">
-      <a class="story-back" href="/">← Torna alla home</a>
-      <h1>Vieni a trovarci tra le colline dell'Oasi di Conza</h1>
-      <p class="story-lead">Ti aspettiamo a Conza della Campania. Scrivici per ordini, informazioni o per organizzare una visita all'apiario.</p>
+  <section class="intro">
+    <div class="contenitore">
+      <nav class="briciole" aria-label="Percorso"><ol><li><a href="/">Home</a></li><li aria-current="page">Contatti</li></ol></nav>
+      <p class="etichetta" data-rivela>Conza della Campania · Irpinia</p>
+      <h1 class="titolo" data-rivela><span class="riga" style="--i:0"><span>Scrivici</span></span></h1>
+      <p class="racconto intro__lead" data-rivela style="--i:2">Per ordini, informazioni o per venire a trovarci all'apiario. Ti risponde Francesco, o Rosanna.</p>
     </div>
-  </header>
+  </section>
 
-  <div class="p-main">
+  <section class="capitolo capitolo--salvia" id="ordina" aria-labelledby="titolo-canali">
+    <div class="contenitore due" style="align-items:start">
+      <div class="capitolo__testa">
+        <p class="etichetta" data-rivela>Due modi per raggiungerci</p>
+        <h2 class="titolo titolo--medio" id="titolo-canali" data-rivela><span class="riga" style="--i:0"><span>Il più rapido</span></span><span class="riga" style="--i:1"><span>è WhatsApp</span></span></h2>
+        <p class="secondario" data-rivela style="--i:2;margin:0;max-width:44ch">Indicaci miele, quantità e indirizzo di spedizione: ti rispondiamo con disponibilità e costi entro 24 ore nei giorni feriali.</p>
+      </div>
+      <div class="canali">
+        <a class="canale" data-rivela href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20">
+          <span class="canale__nome">WhatsApp</span><span class="canale__det">Il modo più rapido per ordinare o chiedere</span><span class="freccia" aria-hidden="true">→</span>
+        </a>
+        <a class="canale" data-rivela style="--i:1" href="mailto:info@viedellagoapicoltura.it?subject=Richiesta%20ordine">
+          <span class="canale__nome">Email</span><span class="canale__det">info@viedellagoapicoltura.it</span><span class="freccia" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <section class="p-section" style="max-width:1100px; margin:0 auto;">
-      <h2 class="p-h2">Informazioni di Contatto</h2>
-      <div class="p-divider"></div>
-
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;" class="contact-cols">
-
-        <!-- Info block -->
-        <div>
-          <h3 style="font-size:1.1rem; margin:0 0 16px;">Sede Operativa</h3>
-          <p style="line-height:1.75; margin:0 0 20px;">
-            <strong>Vie del Lago Apicoltura</strong><br>
-            Via Contrada Pescara, 74<br>
-            83040 Conza della Campania (AV)<br>
-            Campania, Italia
-          </p>
-          <a href="https://maps.google.com/?q=Via+Contrada+Pescara+74,+83040+Conza+della+Campania+AV" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;">Visualizza su Google Maps</a>
+  <section class="capitolo" aria-labelledby="titolo-dove">
+    <div class="contenitore">
+      <div class="due" style="align-items:end">
+      <div class="capitolo__testa">
+        <p class="etichetta" data-rivela>Dove siamo</p>
+        <h2 class="titolo titolo--medio" id="titolo-dove" data-rivela><span class="riga" style="--i:0"><span>Tra le colline</span></span><span class="riga" style="--i:1"><span>dell'Oasi di Conza</span></span></h2>
+      </div>
+        <address class="indirizzo" data-rivela>
+          <strong>Vie del Lago Apicoltura</strong><br>Via Contrada Pescara, 74<br>83040 Conza della Campania (AV)<br>Campania, Italia
+          <p style="margin:18px 0 0"><a href="https://maps.google.com/?q=Via+Contrada+Pescara+74,+83040+Conza+della+Campania+AV" target="_blank" rel="noopener">Apri in Google Maps</a></p>
+        </address>
+      </div>
+      <div class="mappa map-consent" data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15259.72145550269!2d15.289115799999999!3d40.925573500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4e13!3m3!1m2!1s0x1338a9a4b3d3957f%3A0x6a0c5c363b9e4a3!2sContrada%20Pescara%2C%2083040%20Conza%20della%20Campania%20AV!5e0!3m2!1sit!2sit!4v1700688000000!5m2!1sit!2sit" data-rivela>
+        <div class="mappa__invito">
+          <button type="button" class="btn btn--pieno" data-map-load>Carica la mappa</button>
+          <p>La mappa è di Google Maps: caricandola, Google riceve il tuo indirizzo IP e può impostare cookie.</p>
         </div>
+      </div>
+      <p class="secondario" style="margin:20px 0 0;font-size:15px">Siamo in zona rurale, vicino al lago. Per una visita all'apiario scrivici prima: ti diamo le indicazioni per arrivare.</p>
+    </div>
+  </section>
 
-        <!-- Canali di contatto: solo WhatsApp ed email -->
-        <div>
-          <h3 style="font-size:1.1rem; margin:0 0 8px;">Scrivi o Ordina</h3>
-          <p style="margin:0 0 20px; font-size:.95rem; line-height:1.7;">Indicaci miele, quantità e indirizzo di spedizione: ti rispondiamo con disponibilità e costi entro 24 ore nei giorni feriali.</p>
-          <div class="contact-channels">
-            <a class="contact-channel contact-channel--wa" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20ordinare%3A%20" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-              <span><strong>WhatsApp</strong><small>Il modo più rapido</small></span>
-            </a>
-            <div class="contact-channel contact-channel--mail">
-              <a href="mailto:info@viedellagoapicoltura.it?subject=Richiesta%20ordine">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
-                <span><strong>Email</strong><small>info@viedellagoapicoltura.it</small></span>
-              </a>
-              <button type="button" class="contact-copy" data-copy="info@viedellagoapicoltura.it" aria-label="Copia l'indirizzo email">Copia</button>
-            </div>
-          </div>
-          <p style="font-size:.8rem; margin-top:12px; opacity:.65;">Se il link email non apre nessuna app, usa “Copia” e incolla l'indirizzo nella tua casella di posta.</p>
+  <section class="capitolo capitolo--scuro ordina" aria-labelledby="titolo-lista">
+    <div class="contenitore">
+      <div class="capitolo__testa">
+        <svg class="sigillo" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="98" fill="none" stroke="#D8D6C4" stroke-width="1"/>
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#D8D6C4" stroke-width=".6" opacity=".5"/>
+          <g fill="#D8D6C4" font-family="Manrope, sans-serif" font-weight="600" font-size="13.5" text-anchor="middle"><text x="46.71" y="48.66" transform="rotate(-46.07 46.71 48.66)">V</text><text x="54.01" y="42.03" transform="rotate(-38.43 54.01 42.03)">I</text><text x="61.84" y="36.60" transform="rotate(-31.04 61.84 36.60)">E</text><text x="79.14" y="29.00" transform="rotate(-16.37 79.14 29.00)">D</text><text x="91.29" y="26.51" transform="rotate(-6.76 91.29 26.51)">E</text><text x="102.57" y="26.04" transform="rotate(1.99 102.57 26.04)">L</text><text x="119.79" y="28.70" transform="rotate(15.51 119.79 28.70)">L</text><text x="130.89" y="32.75" transform="rotate(24.67 130.89 32.75)">A</text><text x="142.30" y="39.28" transform="rotate(34.86 142.30 39.28)">G</text><text x="152.76" y="48.12" transform="rotate(45.48 152.76 48.12)">O</text><text x="163.24" y="61.57" transform="rotate(58.71 163.24 61.57)">&#183;</text><text x="170.18" y="76.53" transform="rotate(71.51 170.18 76.53)">A</text><text x="173.13" y="88.67" transform="rotate(81.20 173.13 88.67)">P</text><text x="173.98" y="98.48" transform="rotate(88.83 173.98 98.48)">I</text><text x="173.45" y="109.02" transform="rotate(97.00 173.45 109.02)">C</text><text x="170.51" y="122.44" transform="rotate(107.66 170.51 122.44)">O</text><text x="165.79" y="133.88" transform="rotate(117.24 165.79 133.88)">L</text><text x="159.78" y="143.62" transform="rotate(126.11 159.78 143.62)">T</text><text x="151.43" y="153.21" transform="rotate(135.97 151.43 153.21)">U</text><text x="141.30" y="161.40" transform="rotate(146.07 141.30 161.40)">R</text><text x="130.23" y="167.54" transform="rotate(155.89 130.23 167.54)">A</text><text x="114.52" y="172.56" transform="rotate(168.68 114.52 172.56)">&#183;</text><text x="98.98" y="173.99" transform="rotate(180.79 98.98 173.99)">L</text><text x="87.22" y="172.89" transform="rotate(189.95 87.22 172.89)">A</text><text x="74.52" y="169.48" transform="rotate(200.14 74.52 169.48)">G</text><text x="62.16" y="163.59" transform="rotate(210.76 62.16 163.59)">O</text><text x="46.53" y="151.16" transform="rotate(226.27 46.53 151.16)">D</text><text x="39.96" y="143.26" transform="rotate(234.23 39.96 143.26)">I</text><text x="31.65" y="128.36" transform="rotate(247.46 31.65 128.36)">C</text><text x="27.58" y="115.23" transform="rotate(258.12 27.58 115.23)">O</text><text x="26.02" y="101.74" transform="rotate(268.65 26.02 101.74)">N</text><text x="26.85" y="88.81" transform="rotate(278.70 26.85 88.81)">Z</text><text x="29.82" y="76.53" transform="rotate(288.49 29.82 76.53)">A</text><text x="36.76" y="61.57" transform="rotate(301.29 36.76 61.57)">&#183;</text></g>
+          <image href="img/marchio-crema.png" x="72" y="72" width="56" height="56"/>
+        </svg>
+        <p class="etichetta" data-rivela>Lista d'attesa</p>
+        <h2 class="titolo" id="titolo-lista" data-rivela><span class="riga" style="--i:0"><span>I piccoli lotti</span></span><span class="riga" style="--i:1"><span>non tornano</span></span></h2>
+        <p data-rivela style="--i:2;margin:0;max-width:48ch;color:var(--chiaro-2)">Quando un'annata finisce, è finita. Se vuoi essere tra i primi a sapere quando apre la prossima raccolta, scrivici: ti avvisiamo noi.</p>
+        <div class="ordina__azioni" data-rivela style="--i:3">
+          <a class="btn btn--pieno" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20entrare%20nella%20lista%20d%27attesa%20per%20la%20prossima%20annata.">WhatsApp <span class="freccia" aria-hidden="true">→</span></a>
+          <a class="btn" href="mailto:info@viedellagoapicoltura.it?subject=Lista%20d%27attesa">Email <span class="freccia" aria-hidden="true">→</span></a>
         </div>
-
       </div>
-    </section>
-
-    <section class="p-section" style="padding-top:0; max-width:1100px; margin:0 auto;">
-      <h2 class="p-h2">Dove Trovarci</h2>
-      <div class="p-divider"></div>
-      <div class="map-consent" data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15259.72145550269!2d15.289115799999999!3d40.925573500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4e13!3m3!1m2!1s0x1338a9a4b3d3957f%3A0x6a0c5c363b9e4a3!2sContrada%20Pescara%2C%2083040%20Conza%20della%20Campania%20AV!5e0!3m2!1sit!2sit!4v1700688000000!5m2!1sit!2sit">
-        <p><strong>Mappa di Google Maps</strong><br>Per proteggere la tua privacy la mappa non viene caricata automaticamente: caricandola, Google riceve il tuo indirizzo IP e può impostare cookie.</p>
-        <button type="button" class="btn-primary" data-map-load>Carica la mappa</button>
-        <a href="https://maps.google.com/?q=Via+Contrada+Pescara+74,+83040+Conza+della+Campania+AV" target="_blank" rel="noopener" class="map-consent__link">oppure apri Google Maps in una nuova scheda</a>
-      </div>
-      <p style="text-align:center; margin-top:12px; font-size:.88rem; opacity:.7;">Ci troviamo a Conza della Campania (AV), in zona rurale vicino al lago.</p>
-    </section>
-
-    <!-- Lista attesa -->
-    <section class="p-section" style="background:#fff; text-align:center; border-top:1px solid rgba(0,0,0,.06);">
-      <h2 class="p-h2" style="text-align:center;">Vie del Lago Private Reserve</h2>
-      <div class="p-divider" style="margin:8px auto 20px;"></div>
-      <p style="max-width:580px; margin:0 auto 24px; font-size:1rem; line-height:1.75; opacity:.9;">
-        I micro-lotti non tornano. Una volta esaurito, quell'annata è storia.
-        Iscriviti alla lista: sei tu a decidere di non perderti la prossima raccolta.
-      </p>
-      <div class="cta-channels">
-        <a href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20entrare%20nella%20lista%20d%27attesa%20per%20la%20prossima%20annata." target="_blank" rel="noopener" class="btn-primary">Lista d'attesa su WhatsApp</a>
-        <a href="mailto:info@viedellagoapicoltura.it?subject=Lista%20d%27attesa" class="btn-secondary">Lista d'attesa via email</a>
-      </div>
-    </section>
-
-  </div>
-
+    </div>
+  </section>
 </main>
 
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-info">
-      <p><img src="img/logo-esteso-bianco.png" alt="Vie del Lago Apicoltura" class="footer-logo" width="160" height="49" loading="lazy"></p>
-      <p>Via Contrada Pescara, 74, 83040 Conza della Campania (AV)</p>
-      <p>P.IVA 10819081216 &nbsp;·&nbsp; <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
-      <ul class="footer-links">
-        <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
-        <li><button type="button" class="footer-cookie-link" data-cookie-settings>Gestisci cookie</button></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-        <li><a href="chi-siamo.html">Chi Siamo</a></li>
-        <li><a href="storia.html">La Nostra Storia</a></li>
-        <li><a href="come-ordinare.html">Come Ordinare</a></li>
-      </ul>
+<footer class="piede">
+  <div class="contenitore">
+    <div class="piede__alto">
+      <a class="piede__marchio" href="/" aria-label="Vie del Lago Apicoltura, home"><img class="piede__logo" src="img/logo-firma-crema.webp" alt="Vie del Lago Apicoltura" width="871" height="261" loading="lazy"></a>
+      <nav aria-label="Link del piè di pagina">
+        <a href="prodotti.html">Tutti i mieli</a>
+        <a href="come-ordinare.html">Come ordinare</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="etichette.html">Le etichette</a>
+        <a href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
     </div>
-    <div class="social-links">
-      <a href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener" aria-label="Seguici su Instagram">
-        <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
-      </a>
+    <div class="piede__basso">
+      <p>Via Contrada Pescara 74, 83040 Conza della Campania (AV)<span class="piede__sep"> · </span><span class="piede__piva">P.IVA 10819081216</span></p>
+      <p><a href="privacy.html">Privacy &amp; Cookie Policy</a> · <button type="button" data-cookie-settings>Gestisci cookie</button></p>
     </div>
   </div>
 </footer>
-<script src="script.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
-  });
-}
-</script>
 
-
-<!-- WhatsApp Floating Button -->
-<a href="contatti.html" data-wa="" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp" class="wa-float">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-<style>
-.wa-float {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  width: 52px;
-  height: 52px;
-  background: #F3E9DA;
-  color: #1a1a1a;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-  z-index: 999;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-decoration: none;
-}
-.wa-float:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
-}
-</style>
-
-
-<!-- Cookie Consent Banner -->
 <div id="cookie-banner" role="dialog" aria-label="Consenso cookie" style="display:none;">
   <div class="cookie-banner__inner">
     <p class="cookie-banner__text">
       Utilizziamo <strong>Google Analytics</strong> per analisi anonime del traffico e migliorare il sito.
-      Puoi accettare o rifiutare i cookie analitici. 
+      Puoi accettare o rifiutare i cookie analitici.
       <a href="/privacy.html">Leggi la Privacy Policy</a>.
     </p>
     <div class="cookie-banner__btns">
@@ -268,56 +193,8 @@ if ('serviceWorker' in navigator) {
   </div>
 </div>
 
-<!-- Torna Su -->
-<button id="back-to-top" aria-label="Torna in cima" title="Torna in cima">
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
-<style>
-#back-to-top {
-  position: fixed;
-  bottom: 96px;
-  right: 34px;
-  width: 42px;
-  height: 42px;
-  background: #F3E9DA;
-  color: #1a1a1a;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
-  cursor: pointer;
-  z-index: 998;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
-  pointer-events: none;
-}
-#back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-#back-to-top:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  transform: translateY(-2px);
-}
-</style>
-<script>
-(function() {
-  var btn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 400) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
-  });
-  btn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-</script>
+<script src="script.js"></script>
+<script src="/vendor/lenis-1.3.27.min.js"></script>
+<script src="/racconto.js"></script>
 </body>
 </html>

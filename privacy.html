@@ -14,10 +14,7 @@
   <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <meta name="msapplication-TileImage" content="img/favicon-48.png">
-  <meta name="theme-color" content="#F3E9DA">
-  <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/playfair-display-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#E6E4D8">
   <meta property="og:image" content="https://www.viedellagoapicoltura.it/img/og-logo.png">
   <meta property="og:image:width" content="800">
   <meta property="og:image:height" content="246">
@@ -39,128 +36,102 @@
       loadGA();
     }
   </script>
-  <link rel="stylesheet" href="/ritocchi.css">
+  <link rel="preload" href="/fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/vendor/lenis-1.3.27.css">
+  <link rel="stylesheet" href="/racconto.css">
+  <meta name="format-detection" content="telephone=no">
 </head>
 <body>
-<header class="site-header" role="banner">
-  <div class="nav-wrap">
-    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home"><picture><source srcset="img/logo-esteso-nero.webp" type="image/webp"><img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59" fetchpriority="high"></picture></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
-      <span class="sr-only">Menu</span>☰
-    </button>
-    <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
-      <ul class="menu">
-        <li><a href="/" data-nav="home">Home</a></li>
-        <li class="has-submenu">
-          <button class="submenu-toggle" aria-expanded="false">Il Nostro Terroir</button>
-          <ul class="submenu" style="min-width:240px;">
-            <li><a href="chi-siamo.html" data-nav="chi-siamo">Chi Siamo</a></li>
-            <li><a href="storia.html">La Nostra Storia</a></li>
-            <li><a href="territorio.html" data-nav="territorio">Scopri il Territorio</a></li>
-            <li><a href="etichette.html" data-nav="etichette">Le Etichette</a></li>
-          </ul>
-        </li>
-        <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
-        <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
-        <li class="has-submenu">
-          <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
-          <ul class="submenu">
-            <li><a href="prodotti.html" data-nav="prodotti" style="font-weight:700;">→ Tutti i Mieli</a></li>
-            <li><a href="come-ordinare.html" data-nav="come-ordinare">Come Ordinare</a></li>
-            <li><a href="millefiori.html" data-nav="millefiori">Miele Millefiori</a></li>
-            <li><a href="acacia.html" data-nav="acacia">Miele di Acacia</a></li>
-            <li><a href="sulla.html" data-nav="sulla">Miele di Sulla</a></li>
-          </ul>
-        </li>
-        <li><a href="contatti.html" data-nav="contatti">Contatti</a></li>
-        <li><a href="come-ordinare.html" class="btn-primary" style="padding:8px 16px; font-size:.85rem; margin-left:6px;">Ordina →</a></li>
-      </ul>
+<a class="sr-only salta" href="#contenuto">Vai al contenuto</a>
+
+<header class="testata testata--chiara">
+  <div class="contenitore">
+    <a class="marca marca--logo" href="/" aria-label="Vie del Lago Apicoltura, home">
+      <img src="img/logo-firma-terra.webp" alt="Vie del Lago Apicoltura" width="871" height="261">
+    </a>
+    <nav class="menu" id="menu-principale" aria-label="Menu principale">
+      <a href="/">Home</a>
+      <a href="territorio.html">Il lago</a>
+      <a href="prodotti.html">I mieli</a>
+      <a href="educazione.html">Il metodo</a>
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="#ordina">Ordina</a>
     </nav>
+    <button type="button" class="menu-apri" aria-expanded="false" aria-controls="menu-principale"><span class="menu-apri__testo">Menu</span><span class="menu-apri__linee" aria-hidden="true"></span></button>
   </div>
 </header>
 
-<main id="main-content">
+<main id="contenuto">
 
-  <!-- Hero -->
-  <header class="privacy-hero">
-    <div class="privacy-hero__inner">
-      <a class="story-back" href="/">← Torna alla home</a>
-      <h1>Privacy &amp; Cookie Policy</h1>
-      <p class="story-lead">Trasparenza totale: come trattiamo i tuoi dati e perché non ne abbiamo quasi nessuno.</p>
-    </div>
-  </header>
-
-  <!-- Summary cards -->
-  <section class="privacy-summary" aria-label="Riepilogo policy">
-    <div class="privacy-summary-grid">
-      <div class="privacy-card privacy-card--green">
-        <h3>Dati minimi</h3>
-        <p>Raccogliamo solo i dati che ci comunichi volontariamente via email o WhatsApp. Nessun database centralizzato.</p>
-      </div>
-      <div class="privacy-card privacy-card--green">
-        <h3>Analisi anonima</h3>
-        <p>Google Analytics 4 si attiva solo se lo accetti, e puoi cambiare idea in ogni momento. Nessun cookie di profilazione o marketing.</p>
-      </div>
-      <div class="privacy-card privacy-card--green">
-        <h3>Zero cessioni a terzi</h3>
-        <p>I tuoi dati non vengono venduti né ceduti a terzi per scopi di marketing o analisi.</p>
-      </div>
-      <div class="privacy-card privacy-card--green">
-        <h3>Controllo totale</h3>
-        <p>Puoi richiedere in qualsiasi momento accesso, rettifica o cancellazione dei tuoi dati scrivendo a <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a>.</p>
-      </div>
+  <section class="intro">
+    <div class="contenitore">
+      <nav class="briciole" aria-label="Percorso"><ol><li><a href="/">Home</a></li><li aria-current="page">Privacy</li></ol></nav>
+      <p class="etichetta" data-rivela>Privacy &amp; Cookie Policy</p>
+      <h1 class="titolo" data-rivela><span class="riga" style="--i:0"><span>Privacy</span></span><span class="riga" style="--i:1"><span>e cookie</span></span></h1>
+      <p class="racconto intro__lead" data-rivela style="--i:2">Trasparenza totale: come trattiamo i tuoi dati e perché non ne abbiamo quasi nessuno.</p>
     </div>
   </section>
 
-  <!-- Full policy -->
-  <div class="privacy-body">
+  <section class="capitolo capitolo--salvia" aria-label="In breve" style="padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(56px,7vw,96px)">
+    <div class="contenitore">
+      <div class="legale__sommario">
+    <div class="privacy-summary-grid">
+      <div><h3>Dati minimi</h3>
+        <p>Raccogliamo solo i dati che ci comunichi volontariamente via email o WhatsApp. Nessun database centralizzato.</p>
+      </div>
+      <div><h3>Analisi anonima</h3>
+        <p>Google Analytics 4 si attiva solo se lo accetti, e puoi cambiare idea in ogni momento. Nessun cookie di profilazione o marketing.</p>
+      </div>
+      <div><h3>Zero cessioni a terzi</h3>
+        <p>I tuoi dati non vengono venduti né ceduti a terzi per scopi di marketing o analisi.</p>
+      </div>
+      <div><h3>Controllo totale</h3>
+        <p>Puoi richiedere in qualsiasi momento accesso, rettifica o cancellazione dei tuoi dati scrivendo a <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a>.</p>
+      </div>
+    </div>
+  </div>
+    </div>
+  </section>
 
-    <article class="privacy-section">
-      <div class="privacy-section-label">01</div>
-      <div class="privacy-section-content">
+  <section class="capitolo legale" aria-label="Informativa completa">
+    <div class="contenitore">
+      <article class="legale__sezione"><span class="punto__num">01</span><div>
         <h2>Titolare del Trattamento</h2>
         <p>Il Titolare del Trattamento è <strong>Vie del Lago Apicoltura</strong>, con sede in Via Contrada Pescara, 74, 83040 Conza della Campania (AV), P.IVA 10819081216.</p>
         <p>Per qualsiasi questione relativa alla privacy puoi contattarci direttamente a: <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
-      </div>
-    </article>
-
-    <article class="privacy-section">
-      <div class="privacy-section-label">02</div>
-      <div class="privacy-section-content">
+      </div></article>
+      <article class="legale__sezione"><span class="punto__num">02</span><div>
         <h2>Dati Raccolti e Finalità</h2>
         <p>Questo sito è progettato per raccogliere il minimo indispensabile. In concreto:</p>
         <div class="privacy-item-list">
           <div class="privacy-item">
-            <span class="privacy-item-tag privacy-item-tag--yes">Sì</span>
+            <span class="stato stato--si">Sì</span>
             <div>
               <strong>Dati comunicati volontariamente</strong>
               <p>Nome, contatti e contenuto dei messaggi che ci invii scrivendo a info@viedellagoapicoltura.it o su WhatsApp. Questi dati vengono usati esclusivamente per rispondere alla richiesta o gestire l'ordine. Se ci scrivi su WhatsApp, il servizio è fornito da WhatsApp/Meta, che tratta i dati secondo la propria informativa.</p>
             </div>
           </div>
           <div class="privacy-item">
-            <span class="privacy-item-tag privacy-item-tag--yes">Sì</span>
+            <span class="stato stato--si">Sì</span>
             <div>
               <strong>Dati di navigazione aggregati (Google Analytics 4)</strong>
               <p>Solo previo tuo consenso tramite il banner cookie, utilizziamo Google Analytics 4 per raccogliere dati statistici anonimi sulla navigazione (pagine visitate, durata della sessione, provenienza geografica). Gli indirizzi IP vengono anonimizzati automaticamente. I dati sono usati esclusivamente per migliorare il sito e non vengono ceduti a terzi per scopi commerciali. Puoi opporti al tracciamento installando il <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">componente aggiuntivo per la disattivazione di Google Analytics</a>.</p>
             </div>
           </div>
           <div class="privacy-item">
-            <span class="privacy-item-tag privacy-item-tag--no">No</span>
+            <span class="stato">No</span>
             <div>
               <strong>Newsletter e marketing automatizzato</strong>
               <p>Non gestiamo mailing list automatizzate. Eventuali comunicazioni sono manuali e su espressa richiesta dell'utente.</p>
             </div>
           </div>
         </div>
-      </div>
-    </article>
-
-    <article class="privacy-section">
-      <div class="privacy-section-label">03</div>
-      <div class="privacy-section-content">
+      </div></article>
+      <article class="legale__sezione"><span class="punto__num">03</span><div>
         <h2>Cookie Policy</h2>
         <p>Il sito utilizza <strong>cookie e archiviazione locale tecnici</strong>, necessari al funzionamento delle pagine e a ricordare la tua scelta sui cookie: per questi non è richiesto il consenso (art. 122 D.Lgs. 196/2003). I <strong>cookie analitici di Google Analytics 4</strong> vengono installati solo se clicchi “Accetto” nel banner; puoi modificare la scelta in qualsiasi momento dal link <button type="button" class="privacy-cookie-link" data-cookie-settings>Gestisci cookie</button>, presente anche nel piede di ogni pagina.</p>
-        <p>I caratteri tipografici sono ospitati direttamente sul nostro sito, senza richieste a server esterni. La mappa di Google Maps nella pagina Contatti viene caricata solo se clicchi “Carica la mappa”: in quel caso Google riceve il tuo indirizzo IP e può impostare propri cookie.</p>
+        <p>I caratteri tipografici sono ospitati direttamente sul nostro sito, senza richieste a server esterni. La mappa di Google Maps nella pagina Contatti viene caricata solo se clicchi “Carica la mappa”: in quel caso Google riceve il tuo indirizzo IP e può impostare propri cookie. Allo stesso modo, la mappa della pagina Il lago carica le tessere di OpenStreetMap solo se clicchi “Carica la mappa”: in quel caso i server di OpenStreetMap ricevono il tuo indirizzo IP; non vengono impostati cookie.</p>
         <table class="privacy-table">
           <thead>
             <tr>
@@ -172,42 +143,43 @@
           <tbody>
             <tr>
               <td>Cookie tecnici essenziali</td>
-              <td><span class="badge-yes">Sì</span></td>
+              <td><span class="stato stato--si">Sì</span></td>
               <td>Corretta navigazione e funzionamento del sito</td>
             </tr>
             <tr>
               <td>Cookie di sessione</td>
-              <td><span class="badge-yes">Sì</span></td>
+              <td><span class="stato stato--si">Sì</span></td>
               <td>Gestione temporanea delle preferenze di navigazione</td>
             </tr>
             <tr>
               <td>Cookie analitici (Google Analytics 4)</td>
-              <td><span class="badge-yes">Sì</span></td>
+              <td><span class="stato stato--si">Sì</span></td>
               <td>Statistiche di navigazione anonimizzate, solo con il tuo consenso</td>
             </tr>
             <tr>
               <td>Cookie di profilazione / marketing</td>
-              <td><span class="badge-no">No</span></td>
+              <td><span class="stato">No</span></td>
               <td>—</td>
             </tr>
             <tr>
               <td>Cookie di terze parti (social, ads)</td>
-              <td><span class="badge-no">No</span></td>
+              <td><span class="stato">No</span></td>
               <td>—</td>
             </tr>
             <tr>
               <td>Google Maps (pagina Contatti)</td>
-              <td><span class="badge-yes">Solo su clic</span></td>
+              <td><span class="stato stato--si">Solo su clic</span></td>
               <td>Mappa interattiva, caricata solo se la richiedi</td>
+            </tr>
+            <tr>
+              <td>OpenStreetMap (pagina Il lago)</td>
+              <td><span class="stato stato--si">Solo su clic</span></td>
+              <td>Tessere della mappa, caricate solo se le richiedi; nessun cookie</td>
             </tr>
           </tbody>
         </table>
-      </div>
-    </article>
-
-    <article class="privacy-section">
-      <div class="privacy-section-label">04</div>
-      <div class="privacy-section-content">
+      </div></article>
+      <article class="legale__sezione"><span class="punto__num">04</span><div>
         <h2>I Tuoi Diritti (GDPR)</h2>
         <p>In qualità di interessato ai sensi del Regolamento UE 2016/679, hai il diritto di:</p>
         <div class="privacy-rights-grid">
@@ -219,92 +191,41 @@
           <div class="privacy-right"><strong>Opposizione</strong><p>Opporti al trattamento per motivi legittimi</p></div>
         </div>
         <p class="privacy-rights-note">Per esercitare uno qualsiasi di questi diritti scrivi a <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a>. Risponderemo entro 30 giorni.</p>
-      </div>
-    </article>
-
-    <article class="privacy-section privacy-section--last">
-      <div class="privacy-section-label">05</div>
-      <div class="privacy-section-content">
+      </div></article>
+      <article class="legale__sezione"><span class="punto__num">05</span><div>
         <h2>Aggiornamenti a questa Policy</h2>
         <p>Questa informativa può essere aggiornata periodicamente per riflettere modifiche normative o operative. La data dell'ultimo aggiornamento è indicata in fondo alla pagina.</p>
         <p class="privacy-update-date">Ultimo aggiornamento: <strong>Novembre 2026</strong></p>
-      </div>
-    </article>
-
-  </div><!-- /privacy-body -->
-
+      </div></article>
+    </div>
+  </section>
 </main>
 
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-info">
-      <p><img src="img/logo-esteso-bianco.png" alt="Vie del Lago Apicoltura" class="footer-logo" width="160" height="49" loading="lazy"></p>
-      <p>Via Contrada Pescara, 74, 83040 Conza della Campania (AV)</p>
-      <p>P.IVA 10819081216 &nbsp;·&nbsp; <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
-      <ul class="footer-links">
-        <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
-        <li><button type="button" class="footer-cookie-link" data-cookie-settings>Gestisci cookie</button></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-        <li><a href="chi-siamo.html">Chi Siamo</a></li>
-        <li><a href="storia.html">La Nostra Storia</a></li>
-        <li><a href="come-ordinare.html">Come Ordinare</a></li>
-      </ul>
+<footer class="piede">
+  <div class="contenitore">
+    <div class="piede__alto">
+      <a class="piede__marchio" href="/" aria-label="Vie del Lago Apicoltura, home"><img class="piede__logo" src="img/logo-firma-crema.webp" alt="Vie del Lago Apicoltura" width="871" height="261" loading="lazy"></a>
+      <nav aria-label="Link del piè di pagina">
+        <a href="prodotti.html">Tutti i mieli</a>
+        <a href="come-ordinare.html">Come ordinare</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="etichette.html">Le etichette</a>
+        <a href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
     </div>
-    <div class="social-links">
-      <a href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener" aria-label="Seguici su Instagram">
-        <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
-      </a>
+    <div class="piede__basso">
+      <p>Via Contrada Pescara 74, 83040 Conza della Campania (AV)<span class="piede__sep"> · </span><span class="piede__piva">P.IVA 10819081216</span></p>
+      <p><a href="privacy.html">Privacy &amp; Cookie Policy</a> · <button type="button" data-cookie-settings>Gestisci cookie</button></p>
     </div>
   </div>
 </footer>
-<script src="script.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
-  });
-}
-</script>
 
-
-<!-- WhatsApp Floating Button -->
-<a href="contatti.html" data-wa="" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp" class="wa-float">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-<style>
-.wa-float {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  width: 52px;
-  height: 52px;
-  background: #F3E9DA;
-  color: #1a1a1a;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-  z-index: 999;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-decoration: none;
-}
-.wa-float:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
-}
-</style>
-
-
-<!-- Cookie Consent Banner -->
 <div id="cookie-banner" role="dialog" aria-label="Consenso cookie" style="display:none;">
   <div class="cookie-banner__inner">
     <p class="cookie-banner__text">
       Utilizziamo <strong>Google Analytics</strong> per analisi anonime del traffico e migliorare il sito.
-      Puoi accettare o rifiutare i cookie analitici. 
+      Puoi accettare o rifiutare i cookie analitici.
       <a href="/privacy.html">Leggi la Privacy Policy</a>.
     </p>
     <div class="cookie-banner__btns">
@@ -314,56 +235,8 @@ if ('serviceWorker' in navigator) {
   </div>
 </div>
 
-<!-- Torna Su -->
-<button id="back-to-top" aria-label="Torna in cima" title="Torna in cima">
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
-<style>
-#back-to-top {
-  position: fixed;
-  bottom: 96px;
-  right: 34px;
-  width: 42px;
-  height: 42px;
-  background: #F3E9DA;
-  color: #1a1a1a;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
-  cursor: pointer;
-  z-index: 998;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
-  pointer-events: none;
-}
-#back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-#back-to-top:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  transform: translateY(-2px);
-}
-</style>
-<script>
-(function() {
-  var btn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 400) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
-  });
-  btn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-</script>
+<script src="script.js"></script>
+<script src="/vendor/lenis-1.3.27.min.js"></script>
+<script src="/racconto.js"></script>
 </body>
 </html>

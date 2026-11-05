@@ -1,39 +1,26 @@
-// Vie del Lago Apicoltura — Service Worker v21
+// Vie del Lago Apicoltura — Service Worker v22
 // Network-first per HTML; stale-while-revalidate per tutto il resto (CSS, JS, immagini, font):
 // la pagina usa subito la copia in cache e intanto scarica la versione nuova, così dopo un
 // aggiornamento del sito i visitatori vedono le modifiche al caricamento successivo anche se
 // la versione della cache qui sotto non viene cambiata.
 
-const CACHE = 'vdl-v21';
+const CACHE = 'vdl-v22';
 const STATIC = [
   '/',
   '/index.html',
-  '/style.css',
-  '/ritocchi.css',
+  '/racconto.css',
+  '/racconto.js',
   '/script.js',
-  '/fonts/inter-latin-400-normal.woff2',
-  '/fonts/playfair-display-latin-600-normal.woff2',
-  '/storia.html',
-  '/territorio.html',
-  '/api.html',
-  '/educazione.html',
-  '/prodotti.html',
-  '/millefiori.html',
-  '/acacia.html',
-  '/sulla.html',
-  '/chi-siamo.html',
-  '/etichette.html',
-  '/contatti.html',
-  '/faq.html',
-  '/privacy.html',
-  '/img/logo-esteso-nero.png',
-  '/img/logo-esteso-bianco.png',
-  '/img/hero-fallback.webp',
-  '/img/storia-fallback.webp',
-  '/img/fiore-botanico.webp',
-  '/img/etichetta-millefiori-flat.webp',
-  '/img/etichetta-acacia-flat.webp',
-  '/img/etichetta-sulla-flat.webp',
+  '/vendor/lenis-1.3.27.css',
+  '/vendor/lenis-1.3.27.min.js',
+  '/fonts/manrope-latin-400-normal.woff2',
+  '/fonts/manrope-latin-500-normal.woff2',
+  '/fonts/manrope-latin-600-normal.woff2',
+  '/fonts/gloock-latin-400-normal.woff2',
+  '/img/logo-firma-terra.webp',
+  '/img/logo-firma-crema.webp',
+  '/img/marchio-crema.png',
+  '/img/marchio-terra.png',
 ];
 
 self.addEventListener('install', e => {

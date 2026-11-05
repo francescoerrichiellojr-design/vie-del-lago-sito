@@ -23,7 +23,7 @@
   <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <meta name="msapplication-TileImage" content="img/favicon-48.png">
-  <meta name="theme-color" content="#F3E9DA">
+  <meta name="theme-color" content="#E6E4D8">
   <!-- Schema.org FAQPage -->
   <script type="application/ld+json">
   {
@@ -35,7 +35,7 @@
         "name": "Cos'è il miele cru?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Il termine 'cru' è mutuato dall'enologia e indica un miele di singola origine geografica, non mescolato con produzioni di altri territori. Il nostro Miele Cru proviene esclusivamente dagli alveari stanziali del Lago di Conza (AV), non viene pastorizzato né filtrato, mantenendo intatte enzimi, pollini e aromi del territorio."
+          "text": "Il termine 'cru' è mutuato dall'enologia e indica un miele di singola origine geografica, non mescolato con produzioni di altri territori. Il nostro Miele Cru proviene esclusivamente dagli alveari stanziali del Lago di Conza (AV), non viene pastorizzato e viene filtrato solo leggermente, così restano intatti enzimi, pollini e aromi del territorio."
         }
       },
       {
@@ -89,9 +89,6 @@
     ]
   }
   </script>
-  <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/playfair-display-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css">
   <!-- Google Analytics (caricato solo dopo consenso cookie) -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -110,196 +107,104 @@
       loadGA();
     }
   </script>
-  <link rel="stylesheet" href="/ritocchi.css">
+  <link rel="preload" href="/fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/vendor/lenis-1.3.27.css">
+  <link rel="stylesheet" href="/racconto.css">
+  <meta name="format-detection" content="telephone=no">
 </head>
 <body>
-<header class="site-header" role="banner">
-  <div class="nav-wrap">
-    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home"><picture><source srcset="img/logo-esteso-nero.webp" type="image/webp"><img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59" fetchpriority="high"></picture></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
-      <span class="sr-only">Menu</span>☰
-    </button>
-    <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
-      <ul class="menu">
-        <li><a href="/" data-nav="home">Home</a></li>
-        <li class="has-submenu">
-          <button class="submenu-toggle" aria-expanded="false">Il Nostro Terroir</button>
-          <ul class="submenu" style="min-width:240px;">
-            <li><a href="chi-siamo.html" data-nav="chi-siamo">Chi Siamo</a></li>
-            <li><a href="storia.html">La Nostra Storia</a></li>
-            <li><a href="territorio.html" data-nav="territorio">Scopri il Territorio</a></li>
-            <li><a href="etichette.html" data-nav="etichette">Le Etichette</a></li>
-          </ul>
-        </li>
-        <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
-        <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
-        <li class="has-submenu">
-          <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
-          <ul class="submenu">
-            <li><a href="prodotti.html" data-nav="prodotti" style="font-weight:700;">→ Tutti i Mieli</a></li>
-            <li><a href="come-ordinare.html" data-nav="come-ordinare">Come Ordinare</a></li>
-            <li><a href="millefiori.html" data-nav="millefiori">Miele Millefiori</a></li>
-            <li><a href="acacia.html" data-nav="acacia">Miele di Acacia</a></li>
-            <li><a href="sulla.html" data-nav="sulla">Miele di Sulla</a></li>
-          </ul>
-        </li>
-        <li><a href="contatti.html" data-nav="contatti">Contatti</a></li>
-        <li><a href="come-ordinare.html" class="btn-primary" style="padding:8px 16px; font-size:.85rem; margin-left:6px;">Ordina →</a></li>
-      </ul>
+<a class="sr-only salta" href="#contenuto">Vai al contenuto</a>
+
+<header class="testata testata--chiara">
+  <div class="contenitore">
+    <a class="marca marca--logo" href="/" aria-label="Vie del Lago Apicoltura, home">
+      <img src="img/logo-firma-terra.webp" alt="Vie del Lago Apicoltura" width="871" height="261">
+    </a>
+    <nav class="menu" id="menu-principale" aria-label="Menu principale">
+      <a href="/">Home</a>
+      <a href="territorio.html">Il lago</a>
+      <a href="prodotti.html">I mieli</a>
+      <a href="educazione.html">Il metodo</a>
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="#ordina">Ordina</a>
     </nav>
+    <button type="button" class="menu-apri" aria-expanded="false" aria-controls="menu-principale"><span class="menu-apri__testo">Menu</span><span class="menu-apri__linee" aria-hidden="true"></span></button>
   </div>
 </header>
 
-<nav class="breadcrumb-nav" aria-label="Breadcrumb">
-  <ol class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><span aria-current="page">FAQ</span></li>
-  </ol>
-</nav>
+<main id="contenuto">
 
-<main id="main-content">
-  <header class="p-hero" style="background-image: url('img/hero-api.webp');" aria-label="FAQ Miele Cru">
-    <div class="p-hero-inner">
-      <h1>Domande Frequenti</h1>
-      <p class="p-sub">Cos'è il miele cru? Perché cristallizza? Come si ordina? Tutto quello che vuoi sapere.</p>
+  <section class="intro">
+    <div class="contenitore">
+      <nav class="briciole" aria-label="Percorso"><ol><li><a href="/">Home</a></li><li aria-current="page">FAQ</li></ol></nav>
+      <p class="etichetta" data-rivela>Domande frequenti</p>
+      <h1 class="titolo" data-rivela><span class="riga" style="--i:0"><span>Le domande</span></span><span class="riga" style="--i:1"><span>che ci fate</span></span></h1>
+      <p class="racconto intro__lead" data-rivela style="--i:2">Cos'è un miele cru, perché cristallizza, come si ordina. Se la tua domanda non c'è, scrivici.</p>
     </div>
-  </header>
+  </section>
 
-  <div class="p-main">
-    <section class="p-section faq-section" style="max-width:860px; margin:0 auto;">
-
-      <div class="faq-list">
-
-        <details class="faq-item">
-          <summary class="faq-question">Cos'è il miele cru?</summary>
-          <div class="faq-answer">
-            <p>Il termine <strong>«cru»</strong> è mutuato dall'enologia e indica un miele di <strong>singola origine geografica</strong>, non mescolato con produzioni di altri territori. Il nostro Miele Cru proviene esclusivamente dagli alveari stanziali del Lago di Conza (AV): non viene pastorizzato né filtrato, mantenendo intatte enzimi, pollini e aromi del territorio.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Perché il miele cristallizza? È un segno di cattiva qualità?</summary>
-          <div class="faq-answer">
-            <p>No: è il contrario. La cristallizzazione è il segnale più affidabile che il miele <strong>non sia stato riscaldato né adulterato</strong>. Tutti i mieli puri cristallizzano nel tempo; la velocità dipende dalla varietà floreale. Il Miele di Acacia cristallizza lentamente (alto fruttosio), mentre il Millefiori cristallizza prima. Per scioglierlo, scaldarlo a bagnomaria a max 40°C.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Cosa significa «apicoltura stanziale»?</summary>
-          <div class="faq-answer">
-            <p>I nostri alveari <strong>rimangono fissi in un unico territorio</strong> per tutta la stagione, senza essere spostati a caccia di diverse fioriture. Questo garantisce mieli con identità territoriale precisa e tracciabile: come un vino <em>single vineyard</em>. La maggior parte dei produttori industriali pratica il «nomadismo», spostando gli alveari per massimizzare la resa a scapito del carattere.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Il vostro miele è biologico?</summary>
-          <div class="faq-answer">
-            <p>I nostri mieli sono prodotti con pratiche che rispettano il benessere dell'alveare: <strong>nessun antibiotico, nessuna pastorizzazione</strong>, alimentazione esclusivamente naturale. L'Oasi di Conza è priva di agricoltura intensiva. La certificazione biologica formale è in valutazione: nel frattempo, il nostro <a href="educazione.html">Manifesto Etico</a> documenta ogni pratica produttiva in dettaglio.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Come posso ordinare?</summary>
-          <div class="faq-answer">
-            <p>Scrivi a <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a> oppure su <a href="contatti.html" data-wa="" target="_blank" rel="noopener">WhatsApp</a>. Risponderemo entro 24 ore con disponibilità e preventivo spedizione. Spediamo in tutta Italia con corriere tracciato 24/48h. <strong>Spedizione gratuita per ordini superiori a €60.</strong></p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Perché Millefiori e Acacia sono esauriti?</summary>
-          <div class="faq-answer">
-            <p>La produzione è volutamente limitata: ogni miele è un <strong>micro-lotto stagionale</strong>. Quando la produzione annuale è esaurita, non produciamo di più: per rispettare l'identità dell'annata. Puoi iscriverti alla <strong>lista d'attesa per la prossima annata</strong> scrivendo dalla pagina <a href="contatti.html">Contatti</a>.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">Quanto dura il miele? Come si conserva?</summary>
-          <div class="faq-answer">
-            <p>Il miele puro, conservato correttamente, <strong>non scade</strong>. L'etichetta riporta per legge «da consumarsi preferibilmente entro» 2 anni. Conservare in luogo fresco e asciutto, lontano da calore e luce diretta. <strong>Non conservare in frigorifero</strong> — l'umidità può favorire la fermentazione.</p>
-          </div>
-        </details>
-
+  <section class="capitolo capitolo--salvia" aria-label="Domande e risposte" style="padding-top:clamp(56px,7vw,100px)">
+    <div class="contenitore">
+      <div class="domande domande--larghe" data-rivela>
+        <details class="domanda"><summary>Cos'è il miele cru?</summary><p>Il termine <strong>«cru»</strong> è mutuato dall'enologia e indica un miele di <strong>singola origine geografica</strong>, non mescolato con produzioni di altri territori. Il nostro Miele Cru proviene esclusivamente dagli alveari stanziali del Lago di Conza (AV): non viene pastorizzato e viene filtrato solo leggermente, così restano intatti enzimi, pollini e aromi del territorio.</p></details>
+        <details class="domanda"><summary>Perché il miele cristallizza? È un segno di cattiva qualità?</summary><p>No: è il contrario. La cristallizzazione è il segnale più affidabile che il miele <strong>non sia stato riscaldato né adulterato</strong>. Tutti i mieli puri cristallizzano nel tempo; la velocità dipende dalla varietà floreale. Il Miele di Acacia cristallizza lentamente (alto fruttosio), mentre il Millefiori cristallizza prima. Per scioglierlo, scaldarlo a bagnomaria a max 40°C.</p></details>
+        <details class="domanda"><summary>Cosa significa «apicoltura stanziale»?</summary><p>I nostri alveari <strong>rimangono fissi in un unico territorio</strong> per tutta la stagione, senza essere spostati a caccia di diverse fioriture. Questo garantisce mieli con identità territoriale precisa e tracciabile: come un vino <em>single vineyard</em>. La maggior parte dei produttori industriali pratica il «nomadismo», spostando gli alveari per massimizzare la resa a scapito del carattere.</p></details>
+        <details class="domanda"><summary>Il vostro miele è biologico?</summary><p>I nostri mieli sono prodotti con pratiche che rispettano il benessere dell'alveare: <strong>nessun antibiotico, nessuna pastorizzazione</strong>, alimentazione esclusivamente naturale. L'Oasi di Conza è priva di agricoltura intensiva. La certificazione biologica formale è in valutazione: nel frattempo, il nostro <a href="educazione.html">pagina sul metodo</a> documenta ogni pratica produttiva in dettaglio.</p></details>
+        <details class="domanda"><summary>Come posso ordinare?</summary><p>Scrivi a <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a> oppure su <a href="contatti.html" data-wa="" target="_blank" rel="noopener">WhatsApp</a>. Risponderemo entro 24 ore con disponibilità e preventivo spedizione. Spediamo in tutta Italia con corriere tracciato 24/48h. <strong>Spedizione gratuita per ordini superiori a €60.</strong></p></details>
+        <details class="domanda"><summary>Perché Millefiori e Acacia sono esauriti?</summary><p>La produzione è volutamente limitata: ogni miele è un <strong>micro-lotto stagionale</strong>. Quando la produzione annuale è esaurita, non produciamo di più: per rispettare l'identità dell'annata. Puoi iscriverti alla <strong>lista d'attesa per la prossima annata</strong> scrivendo dalla pagina <a href="contatti.html">Contatti</a>.</p></details>
+        <details class="domanda"><summary>Quanto dura il miele? Come si conserva?</summary><p>Il miele puro, conservato correttamente, <strong>non scade</strong>. L'etichetta riporta per legge «da consumarsi preferibilmente entro» 2 anni. Conservare in luogo fresco e asciutto, lontano da calore e luce diretta. <strong>Non conservare in frigorifero</strong> — l'umidità può favorire la fermentazione.</p></details>
       </div>
+    </div>
+  </section>
 
-      <div style="text-align:center; margin-top:48px;">
-        <p style="margin-bottom:16px;">Hai altre domande? Siamo felici di risponderti.</p>
-        <a href="contatti.html" class="btn-primary">Scrivici</a>
+  <section class="capitolo capitolo--scuro ordina" id="ordina" aria-labelledby="titolo-ordina">
+    <div class="contenitore">
+      <div class="capitolo__testa">
+        <svg class="sigillo" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="98" fill="none" stroke="#D8D6C4" stroke-width="1"/>
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#D8D6C4" stroke-width=".6" opacity=".5"/>
+          <g fill="#D8D6C4" font-family="Manrope, sans-serif" font-weight="600" font-size="13.5" text-anchor="middle"><text x="46.71" y="48.66" transform="rotate(-46.07 46.71 48.66)">V</text><text x="54.01" y="42.03" transform="rotate(-38.43 54.01 42.03)">I</text><text x="61.84" y="36.60" transform="rotate(-31.04 61.84 36.60)">E</text><text x="79.14" y="29.00" transform="rotate(-16.37 79.14 29.00)">D</text><text x="91.29" y="26.51" transform="rotate(-6.76 91.29 26.51)">E</text><text x="102.57" y="26.04" transform="rotate(1.99 102.57 26.04)">L</text><text x="119.79" y="28.70" transform="rotate(15.51 119.79 28.70)">L</text><text x="130.89" y="32.75" transform="rotate(24.67 130.89 32.75)">A</text><text x="142.30" y="39.28" transform="rotate(34.86 142.30 39.28)">G</text><text x="152.76" y="48.12" transform="rotate(45.48 152.76 48.12)">O</text><text x="163.24" y="61.57" transform="rotate(58.71 163.24 61.57)">&#183;</text><text x="170.18" y="76.53" transform="rotate(71.51 170.18 76.53)">A</text><text x="173.13" y="88.67" transform="rotate(81.20 173.13 88.67)">P</text><text x="173.98" y="98.48" transform="rotate(88.83 173.98 98.48)">I</text><text x="173.45" y="109.02" transform="rotate(97.00 173.45 109.02)">C</text><text x="170.51" y="122.44" transform="rotate(107.66 170.51 122.44)">O</text><text x="165.79" y="133.88" transform="rotate(117.24 165.79 133.88)">L</text><text x="159.78" y="143.62" transform="rotate(126.11 159.78 143.62)">T</text><text x="151.43" y="153.21" transform="rotate(135.97 151.43 153.21)">U</text><text x="141.30" y="161.40" transform="rotate(146.07 141.30 161.40)">R</text><text x="130.23" y="167.54" transform="rotate(155.89 130.23 167.54)">A</text><text x="114.52" y="172.56" transform="rotate(168.68 114.52 172.56)">&#183;</text><text x="98.98" y="173.99" transform="rotate(180.79 98.98 173.99)">L</text><text x="87.22" y="172.89" transform="rotate(189.95 87.22 172.89)">A</text><text x="74.52" y="169.48" transform="rotate(200.14 74.52 169.48)">G</text><text x="62.16" y="163.59" transform="rotate(210.76 62.16 163.59)">O</text><text x="46.53" y="151.16" transform="rotate(226.27 46.53 151.16)">D</text><text x="39.96" y="143.26" transform="rotate(234.23 39.96 143.26)">I</text><text x="31.65" y="128.36" transform="rotate(247.46 31.65 128.36)">C</text><text x="27.58" y="115.23" transform="rotate(258.12 27.58 115.23)">O</text><text x="26.02" y="101.74" transform="rotate(268.65 26.02 101.74)">N</text><text x="26.85" y="88.81" transform="rotate(278.70 26.85 88.81)">Z</text><text x="29.82" y="76.53" transform="rotate(288.49 29.82 76.53)">A</text><text x="36.76" y="61.57" transform="rotate(301.29 36.76 61.57)">&#183;</text></g>
+          <image href="img/marchio-crema.png" x="72" y="72" width="56" height="56"/>
+        </svg>
+        <p class="etichetta" data-rivela>Per ordinare</p>
+        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Hai un'altra domanda?</span></span><span class="riga" style="--i:1"><span>Scrivici</span></span></h2>
+        <p data-rivela style="--i:2;margin:0;max-width:48ch;color:var(--chiaro-2)">Dicci quale miele, quanti vasetti e dove spedirlo. Ti rispondiamo entro 24 ore nei giorni feriali con disponibilità e costi di spedizione.</p>
+        <div class="ordina__azioni" data-rivela style="--i:3">
+          <a class="btn btn--pieno" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20ordinare%3A%20">WhatsApp <span class="freccia" aria-hidden="true">→</span></a>
+          <a class="btn" href="mailto:info@viedellagoapicoltura.it?subject=Richiesta%20ordine">Email <span class="freccia" aria-hidden="true">→</span></a>
+        </div>
       </div>
+    </div>
+  </section>
 
-    </section>
-  </div>
 </main>
 
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-info">
-      <p><img src="img/logo-esteso-bianco.png" alt="Vie del Lago Apicoltura" class="footer-logo" width="160" height="49" loading="lazy"></p>
-      <p>Via Contrada Pescara, 74, 83040 Conza della Campania (AV)</p>
-      <p>P.IVA 10819081216 &nbsp;·&nbsp; <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
-      <ul class="footer-links">
-        <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
-        <li><button type="button" class="footer-cookie-link" data-cookie-settings>Gestisci cookie</button></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-        <li><a href="chi-siamo.html">Chi Siamo</a></li>
-        <li><a href="storia.html">La Nostra Storia</a></li>
-        <li><a href="come-ordinare.html">Come Ordinare</a></li>
-      </ul>
+<footer class="piede">
+  <div class="contenitore">
+    <div class="piede__alto">
+      <a class="piede__marchio" href="/" aria-label="Vie del Lago Apicoltura, home"><img class="piede__logo" src="img/logo-firma-crema.webp" alt="Vie del Lago Apicoltura" width="871" height="261" loading="lazy"></a>
+      <nav aria-label="Link del piè di pagina">
+        <a href="prodotti.html">Tutti i mieli</a>
+        <a href="come-ordinare.html">Come ordinare</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="etichette.html">Le etichette</a>
+        <a href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
     </div>
-    <div class="social-links">
-      <a href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener" aria-label="Seguici su Instagram">
-        <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
-      </a>
+    <div class="piede__basso">
+      <p>Via Contrada Pescara 74, 83040 Conza della Campania (AV)<span class="piede__sep"> · </span><span class="piede__piva">P.IVA 10819081216</span></p>
+      <p><a href="privacy.html">Privacy &amp; Cookie Policy</a> · <button type="button" data-cookie-settings>Gestisci cookie</button></p>
     </div>
   </div>
 </footer>
-<script src="script.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
-  });
-}
-</script>
 
-
-<!-- WhatsApp Floating Button -->
-<a href="contatti.html" data-wa="" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp" class="wa-float">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-<style>
-.wa-float {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  width: 52px;
-  height: 52px;
-  background: #F3E9DA;
-  color: #1a1a1a;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-  z-index: 999;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-decoration: none;
-}
-.wa-float:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
-}
-</style>
-
-
-<!-- Cookie Consent Banner -->
 <div id="cookie-banner" role="dialog" aria-label="Consenso cookie" style="display:none;">
   <div class="cookie-banner__inner">
     <p class="cookie-banner__text">
       Utilizziamo <strong>Google Analytics</strong> per analisi anonime del traffico e migliorare il sito.
-      Puoi accettare o rifiutare i cookie analitici. 
+      Puoi accettare o rifiutare i cookie analitici.
       <a href="/privacy.html">Leggi la Privacy Policy</a>.
     </p>
     <div class="cookie-banner__btns">
@@ -309,56 +214,8 @@ if ('serviceWorker' in navigator) {
   </div>
 </div>
 
-<!-- Torna Su -->
-<button id="back-to-top" aria-label="Torna in cima" title="Torna in cima">
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
-<style>
-#back-to-top {
-  position: fixed;
-  bottom: 96px;
-  right: 34px;
-  width: 42px;
-  height: 42px;
-  background: #F3E9DA;
-  color: #1a1a1a;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
-  cursor: pointer;
-  z-index: 998;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
-  pointer-events: none;
-}
-#back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-#back-to-top:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  transform: translateY(-2px);
-}
-</style>
-<script>
-(function() {
-  var btn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 400) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
-  });
-  btn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-</script>
+<script src="script.js"></script>
+<script src="/vendor/lenis-1.3.27.min.js"></script>
+<script src="/racconto.js"></script>
 </body>
 </html>
