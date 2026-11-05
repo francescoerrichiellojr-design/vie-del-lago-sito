@@ -439,3 +439,48 @@ a{color:inherit}
 .menu-aperto .torna-su{opacity:0;visibility:hidden}
 @media (prefers-reduced-motion:reduce){.torna-su{transition:none}}
 .marca:focus:not(:focus-visible),.torna-su:focus:not(:focus-visible){outline:none}
+
+/* ══ Sistema del marchio: tre caratteri, un ruolo ciascuno (come sull'etichetta) ══
+   Gloock      → titoli e numeri (il nome del miele sull'etichetta)
+   EB Garamond → frasi d'apertura, citazioni, motti (i titoli a destra dell'etichetta)
+   Manrope     → testo, menu, pulsanti, etichette piccole                              */
+@font-face{font-family:"EB Garamond";src:url("/fonts/eb-garamond-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"EB Garamond";src:url("/fonts/eb-garamond-latin-500-italic.woff2") format("woff2");font-weight:500;font-style:italic;font-display:swap}
+:root{--display:"Gloock",Georgia,serif;--serif:"EB Garamond",Garamond,Georgia,serif}
+
+.titolo{font-family:var(--display);font-weight:400;letter-spacing:-.012em;line-height:1.04}
+.riga{padding-bottom:.1em;margin-bottom:-.04em}
+.numeri dd,.passo__num,.canale__nome,.miele__prezzo,.grafico h3{font-family:var(--display);font-weight:400;letter-spacing:0}
+.miele__prezzo{font-size:26px}
+
+.racconto{font-family:var(--serif);font-weight:500;font-size:clamp(25px,2.5vw,38px);line-height:1.28;letter-spacing:0}
+.citazione p{font-family:var(--serif);font-weight:500;font-style:italic;letter-spacing:0;line-height:1.18}
+.apertura__sotto p{font-family:var(--serif);font-weight:500;font-size:clamp(20px,1.6vw,25px);line-height:1.35}
+
+/* ══ Il colore di ogni miele, preso dalla sua etichetta ══
+   --accento: il colore dell'etichetta, per superfici e grandi segni
+   --accento-testo: la stessa tinta scurita quanto basta per essere leggibile come testo */
+[data-miele="millefiori"]{--accento:#C64824;--accento-testo:#A63A18}
+[data-miele="acacia"]{--accento:#465E4A;--accento-testo:#465E4A}
+[data-miele="sulla"]{--accento:#C066A2;--accento-testo:#8E4478}
+
+[data-miele] .miele__testo .titolo,[data-miele] .prodotto h1.titolo,.correlato[data-miele] h3,.confronto th[data-miele] .nome{color:var(--accento-testo)}
+[data-miele] .miele__vaso{background:color-mix(in srgb,var(--accento) 14%,#EFEDE3)}
+[data-miele] .contatore,[data-miele] .etichetta{color:var(--accento-testo)}
+[data-miele] .btn--pieno{background:var(--accento-testo);border-color:var(--accento-testo);color:#FBFAF5}
+[data-miele] .btn--pieno:hover{background:transparent;color:var(--accento-testo)}
+[data-miele] .stato--si{color:var(--accento-testo)}
+[data-miele] .nota-annata{background:color-mix(in srgb,var(--accento) 12%,#E6E4D8);border-left:3px solid var(--accento)}
+[data-miele] .capitolo--salvia .punto__num,[data-miele] .passo__num{color:var(--accento-testo)}
+[data-miele] .capitolo--salvia{background:color-mix(in srgb,var(--accento) 9%,var(--salvia))}
+.correlato[data-miele] img{background:color-mix(in srgb,var(--accento) 14%,#EFEDE3)}
+.confronto th[data-miele]{border-bottom:3px solid var(--accento)}
+[data-miele].capitolo .lista-note li{border-top-color:color-mix(in srgb,var(--accento) 45%,transparent)}
+
+.motto{margin:-6px 0 0;font-family:var(--serif);font-weight:500;font-style:italic;font-size:clamp(24px,2.3vw,34px);line-height:1.2;color:var(--accento-testo,var(--miele))}
+
+/* La frase verticale del gambo dell'etichetta, accanto al vasetto */
+.miele__vaso{position:relative}
+.tripletta{position:absolute;top:clamp(20px,3vw,36px);right:clamp(16px,2.4vw,30px);writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--serif);font-weight:500;font-size:clamp(14px,1.1vw,17px);letter-spacing:.04em;color:var(--accento-testo,var(--terra));opacity:.85;white-space:nowrap}
+.titolo{letter-spacing:-.004em}
+.miele__prezzo .secondario{font-family:'Manrope',system-ui,sans-serif}
