@@ -34,7 +34,7 @@ document.querySelectorAll('[data-nav]').forEach((el) => {
 if (el.getAttribute('data-nav') === currentKey) {
 el.classList.add('nav-active');
 const li = el.closest('.has-submenu');
-if (li) { const btn = li.querySelector('.submenu-toggle'); if (btn) btn.style.color = 'var(--honey-yellow)'; }
+if (li) { const btn = li.querySelector('.submenu-toggle'); if (btn) btn.style.color = 'var(--honey-text)'; }
 }
 });
 })();

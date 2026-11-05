@@ -1,0 +1,106 @@
+/* ─────────────────────────────────────────────────────────────
+   Ritocchi di leggibilità e tipografia (novembre 2026)
+   Caricato per ultimo in ogni pagina, così prevale sugli stili
+   precedenti senza doverli riscrivere.
+   ───────────────────────────────────────────────────────────── */
+
+/* 1. Oro per il testo
+   Il giallo miele #D4A017 resta per pulsanti, bordi e fondi.
+   Come colore del TESTO su fondi chiari non si legge (contrasto 2:1),
+   quindi lì si usa una versione più scura dello stesso miele (4,8:1 sul beige).
+   Nelle sezioni scure e sulle foto resta l'oro brillante. */
+:root { --honey-text: #82600F; }
+
+[class*="hero"],
+.site-footer, footer,
+.ig-teaser,
+.edu-cta-section, .kpi-section,
+.apg-s--dark, .terr-section--dark, .terr-map-section,
+.anatomy-section, .et-cta,
+.story-sensory,
+.ciclo-step__dot, .timeline-item__dot,
+#cookie-banner {
+  --honey-text: var(--honey-yellow);
+}
+
+.menu a:hover,
+.submenu-toggle:hover,
+.menu a.nav-active { color: var(--honey-text); }
+.menu a.nav-active { border-bottom-color: var(--honey-text); }
+.site-footer a:hover, footer a:hover { color: var(--honey-yellow); }
+
+/* Testo scuro sui pulsanti oro: il bianco aveva contrasto 2,4:1, il marrone 6:1 */
+.btn-primary,
+.btn-primary:hover,
+.compare-link,
+.compare-link:hover { color: var(--dark-brown); }
+
+/* 2. Pulsanti un po' più grandi e comodi da toccare */
+.btn-primary,
+.btn-secondary { font-size: 1rem; }
+.btn-primary { padding: 13px 28px; }
+.btn-secondary { padding: 11px 24px; }
+
+/* 3. Titoli nel peso reale del carattere.
+   Il sito carica Playfair Display 400 e 600: il 700 richiesto prima
+   veniva "ingrassato" artificialmente dal browser. */
+h1, h2, h3, h4, h5, h6,
+h1 :is(strong, b, em), h2 :is(strong, b, em), h3 :is(strong, b, em),
+.ciclo-step__dot { font-weight: 600; }
+
+/* 4. Numeri tutti alla stessa altezza (prezzi, pesi, date).
+   Playfair usa di default cifre "all'antica": "500g" sembrava "5oog". */
+body { font-variant-numeric: lining-nums; }
+
+/* 5. Un solo stile per i titoli: maiuscolo/minuscolo.
+   Il maiuscolo resta solo per le piccole etichette in Inter. */
+h1, h2, h3, .p-h2 { text-transform: none; letter-spacing: normal; }
+
+/* 6. Testo più pieno: niente peso 300 per frasi da leggere */
+.p-sub, .story-lead, .hero-tagline,
+.apg-hero__lead, .cs-hero__subtitle, .edu-hero__sub,
+.et-hero__lead, .prodotti-hero__lead, .terr-hero__lead,
+.apg-hero__lead em { font-weight: 400; }
+
+/* 7. Paragrafi delle card: da 12,8–14 px a 15 px */
+.design-choice__text, .etica-card__desc, .shared-card__body, .bio-card__body,
+.ciclo-step__text, .anatomy-note__body, .lig-card__body, .mpill__body,
+.pstep__body, .stagione-card__body, .sci-pillar__body, .filo-el__body,
+.ruolo__body, .phome-desc, .prodotti-card__abbinamenti,
+.cs-value-card__body {
+  font-size: .95rem;
+  line-height: 1.6;
+}
+
+/* 8. Vasetti più grandi nelle card della home */
+.phome-img-wrap { min-height: 260px; padding: 12px; }
+.phome-img-wrap picture { display: block; width: 85%; max-width: 280px; }
+.phome-img-wrap img { display: block; width: 100%; max-width: none; height: auto; }
+@media (max-width: 860px) {
+  .phome-img-wrap { min-height: 220px; }
+}
+
+/* 9. Testi secondari troppo chiari (contrasto sotto 4,5:1) */
+.breadcrumb, .breadcrumb a { color: rgba(47,42,38,.78); }
+.p-price small, .related-card-info span, .prodotti-card__unit,
+.compare-table tbody th { color: rgba(47,42,38,.75) !important; }
+.testimonial-note, .testimonials-note, .label-num__name,
+.chart-block__sub, cite, .cs-pullquote cite { color: #66615c !important; }
+.stagione-card__season { filter: brightness(.8); }
+.apg-eyebrow--dim, .edu-eyebrow--dim, .et-eyebrow--dim,
+.etica-card__label, .kpi-card__label, .kpi-badge { color: var(--honey-yellow); }
+.kpi-card__note, .dato-card__label { color: rgba(255,255,255,.7); }
+.error-page__text, .error-page p:not([class]) { color: #5f5a55 !important; }
+/* etichette dei passi in "Come ordinare", con stile scritto nella pagina */
+[style*="color:rgba(47,42,38,.4)"] { color: rgba(47,42,38,.72) !important; }
+[style*="color:rgba(243,233,218,.4)"] { color: rgba(243,233,218,.75) !important; }
+
+/* Pulsante WhatsApp nella pagina Contatti: testo scuro sul verde
+   (il bianco sul verde WhatsApp aveva contrasto 2:1) */
+.contact-channel--wa { color: #0b3d23; }
+.contact-channel--wa svg { fill: #0b3d23; }
+
+/* Regole delle pagine con selettori più specifici:
+   per titoli e prezzi serve !important */
+h1, h2, h3, .p-h2 { text-transform: none !important; }
+.p-price strong, .p-price b, .related-card-info strong { font-weight: 600; }
