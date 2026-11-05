@@ -13,13 +13,16 @@ def call(path, **params):
     except urllib.error.HTTPError as e:
         return {"ERRORE": e.read().decode()[:250]}
 print("lunghezza codice:", len(T), "| inizio:", T[:4])
-for path, p in [("me", {"fields": "id,name"}),
-                ("me/accounts", {"fields": "id,name,instagram_business_account"}),
-                ("me/businesses", {"fields": "id,name"}),
-                ("me", {"fields": "instagram_business_account"}),
-                ("17841401629302753", {"fields": "id,username"}),
-                ("me/permissions", {})]:
-    print(path, p.get("fields", ""), "→", json.dumps(call(path, **p))[:400])
+for path, p in [("me/instagram_accounts", {"fields": "id,username"}),
+                ("me/assigned_instagram_accounts", {}),
+                ("me/assigned_pages", {"fields": "id,name,instagram_business_account"}),
+                ("me/assigned_business_asset_groups", {}),
+                ("122104635597530629/assigned_instagram_accounts", {}),
+                ("me", {"fields": "id,name,assigned_business_asset_groups"}),
+                ("17841401629302753", {}),
+                ("17841401629302753/media", {"fields": "id"}),
+                ("v23.0/me/accounts", {})]:
+    print(path, p.get("fields", ""), "→", json.dumps(call(path, **p))[:350])
 for host in ["https://graph.instagram.com", "https://graph.instagram.com/v23.0"]:
     try:
         with urllib.request.urlopen(f"{host}/me?fields=id,username&access_token={urllib.parse.quote(T)}", timeout=30) as r:
