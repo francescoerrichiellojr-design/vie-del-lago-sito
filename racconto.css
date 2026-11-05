@@ -438,3 +438,4 @@ a{color:inherit}
 .torna-su:focus-visible{outline:2px solid var(--miele);outline-offset:3px}
 .menu-aperto .torna-su{opacity:0;visibility:hidden}
 @media (prefers-reduced-motion:reduce){.torna-su{transition:none}}
+.marca:focus:not(:focus-visible),.torna-su:focus:not(:focus-visible){outline:none}

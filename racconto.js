@@ -14,11 +14,16 @@
   }
   window.addEventListener('scroll', controlla, { passive: true });
   controlla();
-  btn.addEventListener('click', function () {
+  btn.addEventListener('click', function (e) {
     if (window.vdlLenis && !ridotto) window.vdlLenis.scrollTo(0, { duration: 1.4 });
     else window.scrollTo({ top: 0, behavior: ridotto ? 'auto' : 'smooth' });
-    var logo = document.querySelector('.marca');
-    if (logo) logo.focus({ preventScroll: true });
+    btn.blur();
+    // solo con la tastiera (Invio/Spazio: e.detail === 0) il focus torna al logo in alto;
+    // al tocco o al clic no, altrimenti il telefono disegna un contorno intorno al logo
+    if (e.detail === 0) {
+      var logo = document.querySelector('.marca');
+      if (logo) logo.focus({ preventScroll: true });
+    }
   });
 })();
 
