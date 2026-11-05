@@ -9,6 +9,7 @@ const STATIC = [
   '/',
   '/index.html',
   '/style.css',
+  '/ritocchi.css',
   '/script.js',
   '/fonts/inter-latin-400-normal.woff2',
   '/fonts/playfair-display-latin-600-normal.woff2',
