@@ -1,0 +1,85 @@
+# Aggiorna ogni giorno la griglia Instagram della home con le ultime 6 foto
+# di @viedellagoapicoltura, e ogni lunedì rinnova il codice di accesso a
+# Instagram (dura 60 giorni).
+#
+# Segreti richiesti (Settings → Secrets and variables → Actions):
+#   IG_TOKEN  codice di accesso all'API di Instagram
+#   GH_PAT    token GitHub con permesso "Secrets: Read and write" su questo
+#             repository, serve solo per salvare il codice rinnovato
+#
+# Se qualcosa non funziona, GitHub manda un'email al proprietario del
+# repository e il sito resta con le ultime foto scaricate.
+
+name: Aggiorna foto Instagram
+
+on:
+  schedule:
+    - cron: "17 5 * * *"   # ogni giorno alle 5:17 UTC
+    - cron: "43 4 * * 1"   # ogni lunedì alle 4:43 UTC: rinnovo del codice
+  workflow_dispatch:       # avvio manuale dalla scheda Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram
+  cancel-in-progress: false
+
+jobs:
+  rinnovo-codice:
+    if: github.event.schedule == '43 4 * * 1' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet Pillow
+      - name: Rinnova il codice di accesso
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          NEW_TOKEN_FILE: ${{ runner.temp }}/new_token
+        run: python scripts/instagram_sync.py --refresh
+      - name: Salva il codice nuovo nei segreti (solo se è cambiato)
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          NEW_TOKEN_FILE: ${{ runner.temp }}/new_token
+        run: |
+          if [ ! -s "$NEW_TOKEN_FILE" ]; then
+            echo "Il codice non è cambiato: niente da salvare."
+            exit 0
+          fi
+          echo "::add-mask::$(cat "$NEW_TOKEN_FILE")"
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::Instagram ha restituito un codice nuovo ma manca il segreto GH_PAT per salvarlo."
+            exit 1
+          fi
+          gh secret set IG_TOKEN --repo "$GITHUB_REPOSITORY" < "$NEW_TOKEN_FILE"
+          rm -f "$NEW_TOKEN_FILE"
+          echo "Codice nuovo salvato nel segreto IG_TOKEN."
+
+  foto:
+    needs: rinnovo-codice
+    if: always() && (github.event.schedule == '17 5 * * *' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet Pillow
+      - name: Scarica le ultime foto
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python scripts/instagram_sync.py
+      - name: Pubblica se ci sono foto nuove
+        run: |
+          if git diff --quiet; then
+            echo "Nessuna modifica da pubblicare."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html img/ig-photo-*
+          git commit -m "Foto Instagram aggiornate"
+          git push
