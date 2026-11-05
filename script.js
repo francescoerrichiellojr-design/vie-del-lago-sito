@@ -239,3 +239,18 @@ v.querySelectorAll('source').forEach((s) => s.remove());
 v.load(); // resta visibile solo l'immagine "poster"
 });
 })();
+
+/* ── Link WhatsApp: il numero non compare nell'HTML, così i bot che raccolgono
+   numeri dalle pagine non lo trovano. Il link viene composto qui al caricamento.
+   Senza JavaScript il link porta alla pagina Contatti. ── */
+function initWhatsAppLinks() {
+const wa = ['39', '329', '349', '6354'].join('');
+document.querySelectorAll('a[data-wa]').forEach((a) => {
+a.href = 'https://wa.me/' + wa + (a.getAttribute('data-wa') || '');
+a.target = '_blank';
+a.rel = 'noopener';
+});
+}
+// Alcuni link (es. il pulsante flottante) sono dopo questo script: si attende il DOM
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initWhatsAppLinks);
+else initWhatsAppLinks();
