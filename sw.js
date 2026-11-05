@@ -16,6 +16,7 @@ const STATIC = [
   '/fonts/manrope-latin-400-normal.woff2',
   '/fonts/manrope-latin-500-normal.woff2',
   '/fonts/manrope-latin-600-normal.woff2',
+  '/fonts/gloock-latin-400-normal.woff2',
   '/img/logo-firma-terra.webp',
   '/img/logo-firma-crema.webp',
   '/img/marchio-crema.png',

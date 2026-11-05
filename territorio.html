@@ -91,6 +91,7 @@
       <img src="img/logo-firma-terra.webp" alt="Vie del Lago Apicoltura" width="871" height="261">
     </a>
     <nav class="menu" aria-label="Menu principale">
+      <a href="/">Home</a>
       <a href="territorio.html" aria-current="page">Il lago</a>
       <a href="prodotti.html">I mieli</a>
       <a href="educazione.html">Il metodo</a>
@@ -226,7 +227,6 @@
           <a class="btn btn--pieno" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20ordinare%3A%20">WhatsApp <span class="freccia" aria-hidden="true">→</span></a>
           <a class="btn" href="mailto:info@viedellagoapicoltura.it?subject=Richiesta%20ordine">Email <span class="freccia" aria-hidden="true">→</span></a>
         </div>
-        <button type="button" class="copia" data-copy="info@viedellagoapicoltura.it">Copia l'indirizzo: info@viedellagoapicoltura.it</button>
       </div>
     </div>
   </section>
@@ -236,19 +236,21 @@
 <script src="/mappa.js"></script>
 <footer class="piede">
   <div class="contenitore">
-    <div style="display:flex;flex-direction:column;gap:20px">
-      <img class="piede__logo" src="img/logo-firma-crema.webp" alt="Vie del Lago Apicoltura" width="871" height="261" loading="lazy">
-      <p>Via Contrada Pescara 74, 83040 Conza della Campania (AV)<br>P.IVA 10819081216</p>
+    <div class="piede__alto">
+      <a class="piede__marchio" href="/" aria-label="Vie del Lago Apicoltura, home"><img class="piede__logo" src="img/logo-firma-crema.webp" alt="Vie del Lago Apicoltura" width="871" height="261" loading="lazy"></a>
+      <nav aria-label="Link del piè di pagina">
+        <a href="prodotti.html">Tutti i mieli</a>
+        <a href="come-ordinare.html">Come ordinare</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="etichette.html">Le etichette</a>
+        <a href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
     </div>
-    <nav aria-label="Link del piè di pagina">
-      <a href="prodotti.html">Tutti i mieli</a>
-      <a href="come-ordinare.html">Come ordinare</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contatti.html">Contatti</a>
-      <a href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener">Instagram</a>
-      <a href="privacy.html">Privacy &amp; Cookie Policy</a>
-      <button type="button" data-cookie-settings>Gestisci cookie</button>
-    </nav>
+    <div class="piede__basso">
+      <p>Via Contrada Pescara 74, 83040 Conza della Campania (AV) · P.IVA 10819081216</p>
+      <p><a href="privacy.html">Privacy &amp; Cookie Policy</a> · <button type="button" data-cookie-settings>Gestisci cookie</button></p>
+    </div>
   </div>
 </footer>
 
