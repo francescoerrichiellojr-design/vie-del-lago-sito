@@ -50,8 +50,6 @@
     }
   }
   </script>
-  <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/playfair-display-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
@@ -59,8 +57,7 @@
   <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <meta name="msapplication-TileImage" content="img/favicon-48.png">
-  <meta name="theme-color" content="#F3E9DA">
-  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#E6E4D8">
   <!-- Google Analytics (caricato solo dopo consenso cookie) -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -79,232 +76,173 @@
       loadGA();
     }
   </script>
-  <link rel="stylesheet" href="/ritocchi.css">
+  <link rel="preload" href="/fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/vendor/lenis-1.3.27.css">
+  <link rel="stylesheet" href="/racconto.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.viedellagoapicoltura.it/"},{"@type":"ListItem","position":2,"name":"Prodotti","item":"https://www.viedellagoapicoltura.it/prodotti.html"},{"@type":"ListItem","position":3,"name":"Miele Millefiori","item":"https://www.viedellagoapicoltura.it/millefiori.html"}]}
+  </script>
 </head>
 <body>
-<header class="site-header" role="banner">
-  <div class="nav-wrap">
-    <a class="brand" href="/" aria-label="Vie del Lago Apicoltura — Home"><picture><source srcset="img/logo-esteso-nero.webp" type="image/webp"><img src="img/logo-esteso-nero.png" alt="Vie del Lago Apicoltura — Miele Artigianale Campania" class="brand-logo" width="190" height="59" fetchpriority="high"></picture></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav">
-      <span class="sr-only">Menu</span>☰
-    </button>
-    <nav id="mainnav" class="nav" role="navigation" aria-label="Navigazione principale">
-      <ul class="menu">
-        <li><a href="/" data-nav="home">Home</a></li>
-        <li class="has-submenu">
-          <button class="submenu-toggle" aria-expanded="false">Il Nostro Terroir</button>
-          <ul class="submenu" style="min-width:240px;">
-            <li><a href="chi-siamo.html" data-nav="chi-siamo">Chi Siamo</a></li>
-            <li><a href="storia.html">La Nostra Storia</a></li>
-            <li><a href="territorio.html" data-nav="territorio">Scopri il Territorio</a></li>
-            <li><a href="etichette.html" data-nav="etichette">Le Etichette</a></li>
-          </ul>
-        </li>
-        <li><a href="api.html" data-nav="api">Le Nostre Api</a></li>
-        <li><a href="educazione.html" data-nav="educazione">Educazione &amp; Trasparenza</a></li>
-        <li class="has-submenu">
-          <button class="submenu-toggle" aria-expanded="false">Prodotti</button>
-          <ul class="submenu">
-            <li><a href="prodotti.html" data-nav="prodotti" style="font-weight:700;">→ Tutti i Mieli</a></li>
-            <li><a href="come-ordinare.html" data-nav="come-ordinare">Come Ordinare</a></li>
-            <li><a href="millefiori.html" data-nav="millefiori">Miele Millefiori</a></li>
-            <li><a href="acacia.html" data-nav="acacia">Miele di Acacia</a></li>
-            <li><a href="sulla.html" data-nav="sulla">Miele di Sulla</a></li>
-          </ul>
-        </li>
-        <li><a href="contatti.html" data-nav="contatti">Contatti</a></li>
-        <li><a href="come-ordinare.html" class="btn-primary" style="padding:8px 16px; font-size:.85rem; margin-left:6px;">Ordina →</a></li>
-      </ul>
+<a class="sr-only salta" href="#contenuto">Vai al contenuto</a>
+
+<header class="testata testata--chiara">
+  <div class="contenitore">
+    <a class="marca marca--logo" href="/" aria-label="Vie del Lago Apicoltura, home">
+      <img src="img/logo-firma-terra.webp" alt="Vie del Lago Apicoltura" width="871" height="261">
+    </a>
+    <nav class="menu" aria-label="Menu principale">
+      <a href="territorio.html">Il lago</a>
+      <a href="prodotti.html" aria-current="page">I mieli</a>
+      <a href="educazione.html">Il metodo</a>
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="#ordina">Ordina</a>
     </nav>
   </div>
 </header>
-<nav class="breadcrumb-nav" aria-label="Breadcrumb">
-  <ol class="breadcrumb"><li><a href="/">Home</a></li><li><span aria-current="page">Prodotti</span></li><li><span aria-current="page">Miele Millefiori</span></li></ol>
-</nav>
-<script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.viedellagoapicoltura.it/"},{"@type":"ListItem","position":2,"name":"Prodotti","item":"https://www.viedellagoapicoltura.it/prodotti.html"},{"@type":"ListItem","position":3,"name":"Miele Millefiori","item":"https://www.viedellagoapicoltura.it/millefiori.html"}]}
-  </script>
 
-<main id="main-content">
+<main id="contenuto">
 
-  <header class="p-hero" style="background-image: url('img/hero-millefiori.webp');">
-    <div class="p-hero-inner">
-      <h1>Cuvée delle Colline</h1>
-      <p class="p-sub">Millefiori Selvatico — Annata 2026</p>
-      <a class="btn-primary" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20essere%20avvisato%20quando%20torna%20il%20Miele%20Millefiori.">Avvisami per la prossima annata →</a>
-    </div>
-  </header>
-
-  <div class="p-main">
-    <section class="p-section">
-      <img src="img/fiore-botanico.webp" alt="" class="p-flower" aria-hidden="true">
-
-      <div class="p-grid">
-        <div style="position:relative;">
-          <img class="p-jar" src="img/millefiori.png" alt="Vasetto Miele Millefiori Cru 500g — Vie del Lago Apicoltura, Conza della Campania" width="480" height="480" loading="lazy">
+  <section class="prodotto">
+    <div class="contenitore">
+      <nav class="briciole" aria-label="Percorso"><ol><li><a href="/">Home</a></li><li><a href="prodotti.html">I mieli</a></li><li aria-current="page">Millefiori</li></ol></nav>
+      <div class="miele">
+        <div class="miele__testo">
+          <p class="etichetta" data-rivela>Cuvée delle Colline · Polifiora</p>
+          <h1 class="titolo" data-rivela><span class="riga" style="--i:0"><span>Millefiori</span></span></h1>
+          <p class="miele__note" data-rivela style="--i:2">Le fioriture selvatiche dei pendii argillosi del lago, raccolte tra maggio e luglio.</p>
+          <div class="miele__dati" data-rivela style="--i:3">
+            <span class="miele__prezzo">€16 <span class="secondario" style="font-weight:400;font-size:16px">· 500 g</span></span>
+            <span class="stato">Annata 2026 esaurita</span>
+          </div>
+          <div data-rivela style="--i:4"><a class="btn btn--pieno" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20essere%20avvisato%20quando%20torna%20il%20Miele%20Millefiori.">Avvisami per la prossima annata <span class="freccia" aria-hidden="true">→</span></a></div>
         </div>
+        <div class="miele__vaso svela"><img src="img/millefiori-vaso.webp" alt="Vasetto di Miele Millefiori Vie del Lago" width="697" height="1007" fetchpriority="high" data-profondita="0.06"></div>
+      </div>
+    </div>
+  </section>
 
-        <div>
-          <h2 class="p-h2">Il Carattere</h2>
-          <div class="p-divider"></div>
-          <p>
-            Il nostro Millefiori non è una semplice miscela, ma una <strong>complessa polifonia botanica</strong>.
-            Nasce dall'incontro spontaneo delle fioriture selvatiche che ricoprono i pendii argillosi del Lago di Conza.
-            Come una <em>cuvée</em> d'annata, il suo sapore è una «lettura liquida» della biodiversità dell'anno di raccolta:
-            un miele di struttura, ricco e avvolgente, specchio fedele del nostro terroir.
-          </p>
-
-          <div class="p-annata-note">
-            <span class="annata-label">Annata 2026: Il Clima</span>
-            <p>La primavera particolarmente lunga e umida ha prolungato la fioritura di leguminose e cardi, conferendo a questa Cuvée una maggiore persistenza al palato e una dominante di note maltate e di frutta cotta rispetto alle annate precedenti.</p>
-          </div>
-
-          <h3 class="p-h2">Scheda di Degustazione</h3>
-          <div class="p-divider"></div>
-          <ul class="tasting-notes">
-            <li><strong>Esame Visivo</strong>Ambra profondo con riflessi ramati luminosi.</li>
-            <li><strong>Bouquet Olfattivo</strong>Note calde di fiori secchi, caramello bruno e leggeri sentori di macchia mediterranea.</li>
-            <li><strong>Palato</strong>Ingresso dolce che evolve verso note di frutta cotta e malto. Finale persistente con leggera vena tannica.</li>
-            <li><strong>Cristallizzazione</strong>Spontanea e irregolare: segno di assoluta integrità e assenza di trattamenti termici.</li>
-          </ul>
-
-          <h3 class="p-h2">Abbinamenti Gourmet</h3>
-          <div class="p-divider"></div>
-          <p>La sua struttura robusta lo rende ideale per contrasti decisi: perfetto su <strong>Pecorino Irpino stagionato</strong>, per laccare arrosti di maiale, o in abbinamento a pane nero di segale e burro salato.</p>
-
-          <div class="technical-info">
-            <span><strong>Formato:</strong> 500 g</span>
-            <span><strong>Origine:</strong> Oasi di Conza (AV)</span>
-            <span><strong>Raccolta:</strong> Maggio–Luglio</span>
-            <span><strong>Trattamento:</strong> Non pastorizzato</span>
-          </div>
-
-          <p class="stock-urgency">Annata 2026 esaurita: lista d'attesa per la prossima raccolta</p>
-          <span class="p-price">€16,00 <small>/ 500g</small></span>
-
-          <div class="p-cta">
-            <a class="btn-primary" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20essere%20avvisato%20quando%20torna%20il%20Miele%20Millefiori.">Avvisami per la prossima annata →</a>
-            <a class="btn-secondary" href="contatti.html">Contattaci</a>
-          </div>
+  <section class="capitolo" style="padding-top:0" aria-labelledby="titolo-carattere">
+    <div class="contenitore due" style="align-items:start">
+      <div class="capitolo__testa" style="margin-bottom:0">
+        <p class="etichetta" data-rivela>Il carattere</p>
+        <h2 class="titolo titolo--medio" id="titolo-carattere" data-rivela><span class="riga" style="--i:0"><span>Un luogo,</span></span><span class="riga" style="--i:1"><span>una stagione</span></span></h2>
+      </div>
+      <div class="testo-lungo">
+        <p class="racconto" data-rivela style="max-width:none">Nasce dall'incontro spontaneo delle fioriture selvatiche che ricoprono i pendii argillosi del Lago di Conza.</p>
+        <p class="secondario" data-rivela style="--i:1">Come una cuvée d'annata cambia ogni anno, con le piante che fioriscono: è un miele di struttura, ricco e avvolgente.</p>
+        <div class="nota-annata" data-rivela style="--i:2">
+          <p class="etichetta">Annata 2026 · il clima</p>
+          <p>La primavera particolarmente lunga e umida ha prolungato la fioritura di leguminose e cardi, conferendo a questa cuvée una maggiore persistenza al palato e una dominante di note maltate e di frutta cotta rispetto alle annate precedenti.</p>
         </div>
       </div>
-    </section>
-
-    <div class="p-trust-info">
-  <div class="p-shipping">
-    <h4 class="p-trust-h4">Spedizioni e Logistica</h4>
-    <ul>
-      <li>Imballaggio sicuro garantito per vasi in vetro</li>
-      <li>Spedizione tracciata 24/48h in tutta Italia</li>
-      <li>Spedizione gratuita per ordini superiori a €60</li>
-    </ul>
-  </div>
-  <div class="p-certifications">
-    <h4 class="p-trust-h4">I Nostri Standard</h4>
-    <p class="trust-note">
-      Api senza trattamenti antibiotici. Miele non pastorizzato e non filtrato.
-      <a href="educazione.html">Scopri il nostro Manifesto Etico →</a>
-    </p>
-  </div>
-</div>
-
-
-    <section class="related-products" aria-labelledby="related-heading">
-  <h2 id="related-heading">Scopri anche</h2>
-  <div class="related-divider"></div>
-  <div class="related-grid">
-  <a class="related-card" href="acacia.html">
-    <picture><source srcset="img/acacia.webp" type="image/webp"><img src="img/acacia.png" alt="Miele di Acacia" width="80" height="80" loading="lazy"></picture>
-    <div class="related-card-info">
-      <strong>Miele di Acacia</strong>
-      <span>Cru dei Valloni — Monoflora</span>
-      <span class="related-price">Esaurito · €22,00 / 500g</span>
     </div>
-  </a>
-  <a class="related-card" href="sulla.html">
-    <picture><source srcset="img/sulla.webp" type="image/webp"><img src="img/sulla.png" alt="Miele di Sulla" width="80" height="80" loading="lazy"></picture>
-    <div class="related-card-info">
-      <strong>Miele di Sulla</strong>
-      <span>Cru delle Argille — Monoflora</span>
-      <span class="related-price">€20,00 / 500g</span>
+  </section>
+
+  <section class="capitolo capitolo--salvia" aria-labelledby="titolo-degustazione">
+    <div class="contenitore">
+      <div class="capitolo__testa" style="margin-bottom:0">
+        <p class="etichetta" data-rivela>Scheda di degustazione</p>
+        <h2 class="titolo titolo--medio" id="titolo-degustazione" data-rivela><span class="riga" style="--i:0"><span>Come si presenta</span></span></h2>
+      </div>
+      <div class="punti">
+        <div class="punto" data-rivela style="--i:0"><span class="punto__num">01</span><h3>Vista</h3><p>Ambra profondo con riflessi ramati luminosi.</p></div>
+        <div class="punto" data-rivela style="--i:1"><span class="punto__num">02</span><h3>Olfatto</h3><p>Note calde di fiori secchi, caramello bruno e leggeri sentori di macchia mediterranea.</p></div>
+        <div class="punto" data-rivela style="--i:2"><span class="punto__num">03</span><h3>Palato</h3><p>Ingresso dolce che evolve verso frutta cotta e malto. Finale persistente con una leggera vena tannica.</p></div>
+        <div class="punto" data-rivela style="--i:3"><span class="punto__num">04</span><h3>Cristallizzazione</h3><p>Spontanea e irregolare: il segno che il miele non ha subito trattamenti termici.</p></div>
+      </div>
+      <dl class="scheda" data-rivela>
+        <div><dt>Formato</dt><dd>500 g</dd></div>
+        <div><dt>Origine</dt><dd>Oasi di Conza (AV)</dd></div>
+        <div><dt>Raccolta</dt><dd>Maggio – Luglio</dd></div>
+        <div><dt>Lavorazione</dt><dd>Non pastorizzato</dd></div>
+      </dl>
     </div>
-  </a>
-  </div>
-</section>
-  </div>
+  </section>
+
+  <section class="capitolo" aria-labelledby="titolo-abbinamenti">
+    <div class="contenitore due" style="align-items:start">
+      <div class="capitolo__testa" style="margin-bottom:0">
+        <p class="etichetta" data-rivela>A tavola</p>
+        <h2 class="titolo titolo--medio" id="titolo-abbinamenti" data-rivela><span class="riga" style="--i:0"><span>Con cosa</span></span><span class="riga" style="--i:1"><span>gustarlo</span></span></h2>
+      </div>
+      <p class="racconto" data-rivela style="max-width:none">Pecorino irpino stagionato, arrosti di maiale laccati, pane nero di segale con burro salato.</p>
+    </div>
+    <div class="contenitore" style="margin-top:clamp(72px,9vw,130px)">
+      <div class="garanzie">
+        <div data-rivela><h3>Spedizione</h3><ul><li>Imballaggio sicuro per vasetti in vetro</li><li>Spedizione tracciata in 24/48 ore in tutta Italia</li><li>Gratuita per ordini sopra i €60</li></ul></div>
+        <div data-rivela style="--i:1"><h3>Le nostre regole</h3><ul><li>Api senza trattamenti antibiotici</li><li>Miele non pastorizzato, filtraggio leggero</li><li>Un'analisi melissopalinologica per ogni lotto</li></ul><p style="margin:18px 0 0"><a href="educazione.html">Come lavoriamo</a></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="capitolo capitolo--salvia" style="padding-top:clamp(72px,9vw,120px);padding-bottom:clamp(72px,9vw,120px)" aria-labelledby="titolo-altri">
+    <div class="contenitore">
+      <div class="capitolo__testa" style="margin-bottom:40px">
+        <p class="etichetta" data-rivela>Gli altri mieli</p>
+        <h2 class="titolo titolo--medio" id="titolo-altri" data-rivela><span class="riga" style="--i:0"><span>Scopri anche</span></span></h2>
+      </div>
+      <div class="correlati">
+        <a class="correlato" href="acacia.html" data-rivela>
+          <img src="img/acacia-vaso.webp" alt="" width="101" height="140" loading="lazy">
+          <div><p class="etichetta etichetta--nuda" style="margin-bottom:6px">Cru dei Valloni</p><h3>Acacia</h3><p>€22 · 500 g · Esaurito</p></div>
+        </a>
+        <a class="correlato" href="sulla.html" data-rivela>
+          <img src="img/sulla-vaso.webp" alt="" width="100" height="140" loading="lazy">
+          <div><p class="etichetta etichetta--nuda" style="margin-bottom:6px">Cru delle Argille</p><h3>Sulla</h3><p>€20 · 500 g · Disponibile</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="capitolo capitolo--scuro ordina" id="ordina" aria-labelledby="titolo-ordina">
+    <div class="contenitore">
+      <div class="capitolo__testa">
+        <svg class="sigillo" viewBox="0 0 200 200" aria-hidden="true">
+          <defs><path id="giro" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+          <circle cx="100" cy="100" r="98" fill="none" stroke="#D8D6C4" stroke-width="1"/>
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#D8D6C4" stroke-width=".6" opacity=".5"/>
+          <text fill="#D8D6C4" font-family="Manrope, sans-serif" font-weight="600" font-size="13.5" letter-spacing="3.2"><textPath href="#giro">VIE DEL LAGO · APICOLTURA · LAGO DI CONZA ·</textPath></text>
+          <image href="img/marchio-crema.png" x="72" y="72" width="56" height="56"/>
+        </svg>
+        <p class="etichetta" data-rivela>Per ordinare</p>
+        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Scrivici,</span></span><span class="riga" style="--i:1"><span>ti rispondiamo noi</span></span></h2>
+        <p data-rivela style="--i:2;margin:0;max-width:48ch;color:var(--chiaro-2)">Dicci quale miele, quanti vasetti e dove spedirlo. Ti rispondiamo entro 24 ore nei giorni feriali con disponibilità e costi di spedizione.</p>
+        <div class="ordina__azioni" data-rivela style="--i:3">
+          <a class="btn btn--pieno" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20ordinare%3A%20">WhatsApp <span class="freccia" aria-hidden="true">→</span></a>
+          <a class="btn" href="mailto:info@viedellagoapicoltura.it?subject=Richiesta%20ordine">Email <span class="freccia" aria-hidden="true">→</span></a>
+        </div>
+        <button type="button" class="copia" data-copy="info@viedellagoapicoltura.it">Copia l'indirizzo: info@viedellagoapicoltura.it</button>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-info">
-      <p><img src="img/logo-esteso-bianco.png" alt="Vie del Lago Apicoltura" class="footer-logo" width="160" height="49" loading="lazy"></p>
-      <p>Via Contrada Pescara, 74, 83040 Conza della Campania (AV)</p>
-      <p>P.IVA 10819081216 &nbsp;·&nbsp; <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
-      <ul class="footer-links">
-        <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
-        <li><button type="button" class="footer-cookie-link" data-cookie-settings>Gestisci cookie</button></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-        <li><a href="chi-siamo.html">Chi Siamo</a></li>
-        <li><a href="storia.html">La Nostra Storia</a></li>
-        <li><a href="come-ordinare.html">Come Ordinare</a></li>
-      </ul>
+<footer class="piede">
+  <div class="contenitore">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <img class="piede__logo" src="img/logo-firma-crema.webp" alt="Vie del Lago Apicoltura" width="871" height="261" loading="lazy">
+      <p>Via Contrada Pescara 74, 83040 Conza della Campania (AV)<br>P.IVA 10819081216</p>
     </div>
-    <div class="social-links">
-      <a href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener" aria-label="Seguici su Instagram">
-        <img src="img/instagram-icon.svg" alt="Instagram" class="social-icon">
-      </a>
-    </div>
+    <nav aria-label="Link del piè di pagina">
+      <a href="prodotti.html">Tutti i mieli</a>
+      <a href="come-ordinare.html">Come ordinare</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener">Instagram</a>
+      <a href="privacy.html">Privacy &amp; Cookie Policy</a>
+      <button type="button" data-cookie-settings>Gestisci cookie</button>
+    </nav>
   </div>
 </footer>
-<script src="script.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
-  });
-}
-</script>
 
-
-<!-- WhatsApp Floating Button -->
-<a href="contatti.html" data-wa="" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp" class="wa-float">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-<style>
-.wa-float {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  width: 52px;
-  height: 52px;
-  background: #F3E9DA;
-  color: #1a1a1a;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-  z-index: 999;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-decoration: none;
-}
-.wa-float:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
-}
-</style>
-
-
-<!-- Cookie Consent Banner -->
 <div id="cookie-banner" role="dialog" aria-label="Consenso cookie" style="display:none;">
   <div class="cookie-banner__inner">
     <p class="cookie-banner__text">
       Utilizziamo <strong>Google Analytics</strong> per analisi anonime del traffico e migliorare il sito.
-      Puoi accettare o rifiutare i cookie analitici. 
+      Puoi accettare o rifiutare i cookie analitici.
       <a href="/privacy.html">Leggi la Privacy Policy</a>.
     </p>
     <div class="cookie-banner__btns">
@@ -314,56 +252,8 @@ if ('serviceWorker' in navigator) {
   </div>
 </div>
 
-<!-- Torna Su -->
-<button id="back-to-top" aria-label="Torna in cima" title="Torna in cima">
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
-<style>
-#back-to-top {
-  position: fixed;
-  bottom: 96px;
-  right: 34px;
-  width: 42px;
-  height: 42px;
-  background: #F3E9DA;
-  color: #1a1a1a;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
-  cursor: pointer;
-  z-index: 998;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
-  pointer-events: none;
-}
-#back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-#back-to-top:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  transform: translateY(-2px);
-}
-</style>
-<script>
-(function() {
-  var btn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 400) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
-  });
-  btn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-</script>
+<script src="script.js"></script>
+<script src="/vendor/lenis-1.3.27.min.js"></script>
+<script src="/racconto.js"></script>
 </body>
 </html>

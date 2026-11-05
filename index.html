@@ -99,9 +99,8 @@
 
 <header class="testata">
   <div class="contenitore">
-    <a class="marca" href="/" aria-label="Vie del Lago Apicoltura, home">
-      <img src="img/marchio-crema.webp" alt="" width="44" height="44">
-      <span aria-hidden="true">Vie del Lago<br><span style="font-weight:400;font-size:13px;letter-spacing:.16em;text-transform:uppercase">Apicoltura</span></span>
+    <a class="marca marca--logo" href="/" aria-label="Vie del Lago Apicoltura, home">
+      <img src="img/logo-firma-crema.webp" alt="Vie del Lago Apicoltura" width="871" height="261">
     </a>
     <nav class="menu" aria-label="Menu principale">
       <a href="#territorio">Il lago</a>
@@ -228,7 +227,8 @@
         <h2 class="titolo titolo--medio" id="titolo-noi" data-rivela><span class="riga" style="--i:0"><span>Francesco</span></span><span class="riga" style="--i:1"><span>e Rosanna</span></span></h2>
         <p data-rivela style="--i:2">Siamo arrivati in Irpinia per scelta, attratti dalla Valle dell'Ofanto e da un ecosistema che pochi conoscono.</p>
         <p data-rivela style="--i:3" class="secondario">Abbiamo portato con noi la scienza, un dottorato in Food Science e anni di ricerca su biodiversità e sostenibilità, e ci siamo stabiliti dove oggi sono gli apiari.</p>
-        <div data-rivela style="--i:4"><a class="btn" href="chi-siamo.html">La nostra storia <span class="freccia" aria-hidden="true">→</span></a></div>
+        <div class="firma" data-rivela style="--i:4"><img src="img/logo-firma-terra.webp" alt="Firma: Vie del Lago Apicoltura" width="871" height="261" loading="lazy"></div>
+        <div data-rivela style="--i:5"><a class="btn" href="chi-siamo.html">La nostra storia <span class="freccia" aria-hidden="true">→</span></a></div>
       </div>
     </div>
   </section>
@@ -270,6 +270,13 @@
   <section class="capitolo capitolo--scuro ordina" id="ordina" aria-labelledby="titolo-ordina">
     <div class="contenitore">
       <div class="capitolo__testa">
+        <svg class="sigillo" viewBox="0 0 200 200" aria-hidden="true">
+          <defs><path id="giro" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+          <circle cx="100" cy="100" r="98" fill="none" stroke="#D8D6C4" stroke-width="1"/>
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#D8D6C4" stroke-width=".6" opacity=".5"/>
+          <text fill="#D8D6C4" font-family="Manrope, sans-serif" font-weight="600" font-size="13.5" letter-spacing="3.2"><textPath href="#giro">VIE DEL LAGO · APICOLTURA · LAGO DI CONZA ·</textPath></text>
+          <image href="img/marchio-crema.png" x="72" y="72" width="56" height="56"/>
+        </svg>
         <p class="etichetta" data-rivela>Per ordinare</p>
         <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Scrivici,</span></span><span class="riga" style="--i:1"><span>ti rispondiamo noi</span></span></h2>
         <p data-rivela style="--i:2;margin:0;max-width:48ch;color:var(--chiaro-2)">Dicci quale miele, quanti vasetti e dove spedirlo. Ti rispondiamo entro 24 ore nei giorni feriali con disponibilità e costi di spedizione.</p>
@@ -286,8 +293,8 @@
 
 <footer class="piede">
   <div class="contenitore">
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <p class="piede__marca"><img src="img/marchio-crema.webp" alt="" width="40" height="40" loading="lazy">Vie del Lago Apicoltura</p>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <img class="piede__logo" src="img/logo-firma-crema.webp" alt="Vie del Lago Apicoltura" width="871" height="261" loading="lazy">
       <p>Via Contrada Pescara 74, 83040 Conza della Campania (AV)<br>P.IVA 10819081216</p>
     </div>
     <nav aria-label="Link del piè di pagina">
@@ -295,6 +302,7 @@
       <a href="come-ordinare.html">Come ordinare</a>
       <a href="faq.html">FAQ</a>
       <a href="contatti.html">Contatti</a>
+      <a href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener">Instagram</a>
       <a href="privacy.html">Privacy &amp; Cookie Policy</a>
       <button type="button" data-cookie-settings>Gestisci cookie</button>
     </nav>
