@@ -55,23 +55,29 @@ def get_json(url: str) -> dict:
         raise ApiError(f"errore {e.code}: {body}") from None
 
 
+def discover_ig_ids(token: str) -> list:
+    """ID del profilo Instagram collegato alle Pagine Facebook accessibili al codice."""
+    q = urllib.parse.urlencode({"fields": "instagram_business_account", "access_token": token})
+    try:
+        pages = get_json(f"{FB_API}/me/accounts?{q}").get("data", [])
+    except ApiError:
+        return []
+    return [p["instagram_business_account"]["id"] for p in pages if p.get("instagram_business_account")]
+
+
 def fetch_media(token: str) -> list:
-    """Prova prima l'API Instagram, poi l'API Graph di Facebook (codici di sistema)."""
+    """Prova l'API Instagram, poi l'API Graph di Facebook (codici di sistema)."""
     fields = "id,media_type,media_url,thumbnail_url,permalink,caption,timestamp"
     q = urllib.parse.urlencode({"fields": fields, "limit": 25, "access_token": token})
     errors = []
-    for url in (f"{API}/me/media?{q}", f"{FB_API}/{IG_USER_ID}/media?{q}"):
+    urls = [f"{API}/me/media?{q}", f"{FB_API}/{IG_USER_ID}/media?{q}"]
+    urls += [f"{FB_API}/{ig}/media?{q}" for ig in discover_ig_ids(token) if ig != IG_USER_ID]
+    for url in urls:
         try:
             return get_json(url).get("data", [])
         except ApiError as e:
             errors.append(f"{url.split('?')[0]} → {e}")
     sys.exit("Impossibile leggere i post:\n" + "\n".join(errors))
-
-
-def download(url: str) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": "vie-del-lago-sito/instagram-sync"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return r.read()
 
 
 def alt_text(caption: str | None, i: int) -> str:

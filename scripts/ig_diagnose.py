@@ -16,7 +16,7 @@ print("lunghezza codice:", len(T), "| inizio:", T[:4])
 for path, p in [("me/permissions", {}),
                 ("me", {"fields": "id,name"}),
                 ("17841401629302753", {"fields": "id,username,media_count"}),
-                ("me/accounts", {"fields": "id,name,instagram_business_account"})]:
+                ("me/accounts", {"fields": "id,name,instagram_business_account{id,username}"})]:
     print(path, p.get("fields", ""), "→", json.dumps(call(path, **p))[:400])
 for host in ["https://graph.instagram.com", "https://graph.instagram.com/v23.0"]:
     try:
