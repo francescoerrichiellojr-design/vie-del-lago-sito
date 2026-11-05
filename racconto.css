@@ -484,3 +484,9 @@ a{color:inherit}
 .tripletta{position:absolute;top:clamp(20px,3vw,36px);right:clamp(16px,2.4vw,30px);writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--serif);font-weight:500;font-size:clamp(14px,1.1vw,17px);letter-spacing:.04em;color:var(--accento-testo,var(--terra));opacity:.85;white-space:nowrap}
 .titolo{letter-spacing:-.004em}
 .miele__prezzo .secondario{font-family:'Manrope',system-ui,sans-serif}
+
+/* ── Foto nelle schede (biodiversità) ── */
+.punto__foto{margin:0 0 6px;aspect-ratio:4/3;overflow:hidden;background:#2A251B}
+.punto__foto img{width:100%;height:100%;object-fit:cover;display:block}
+.punto__foto--attesa{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;border:1px dashed rgba(216,214,196,.35);color:var(--chiaro-2);font-size:13px;letter-spacing:.06em}
+.punti:has(.punto__foto){grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
