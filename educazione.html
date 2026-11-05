@@ -50,10 +50,8 @@
     }
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/playfair-display-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 
   <style>
@@ -318,18 +316,8 @@
     .edu-cta-form {
       display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
     }
-    .edu-cta-form input[type="email"] {
-      flex: 1 1 260px; max-width: 300px;
-      padding: 11px 16px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 8px; color: #fff;
-      font-size: .95rem; font-family: inherit;
-    }
-    .edu-cta-form input[type="email"]::placeholder { color: rgba(255,255,255,.35); }
-    .edu-cta-form input[type="email"]:focus {
-      outline: none; border-color: var(--honey-yellow);
-    }
+    .edu-cta-form .edu-cta-alt { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.35); }
+    .edu-cta-form .edu-cta-alt:hover { border-color: var(--honey-yellow); color: var(--honey-yellow); }
 
     /* RESPONSIVE */
     @media (max-width: 1000px) {
@@ -720,15 +708,13 @@
       <h2 id="edu-cta-h2">Diventa parte<br>della nostra community</h2>
       <div class="edu-rule" style="margin:14px auto 24px;"></div>
       <p>
-        Una volta al mese: fioriture in arrivo, dati dall'alveare Priscilla,
-        e la storia di cosa sta accadendo nell'Oasi di Conza.
-        Nessuno spam. Solo apiario.
+        Vuoi sapere quando apre la prossima annata, o seguire fioriture e raccolti
+        dall'Oasi di Conza? Scrivici e ti avvisiamo noi. Nessuno spam. Solo apiario.
       </p>
-      <form class="edu-cta-form" action="/iscrizione-newsletter" method="post" aria-label="Iscrizione newsletter">
-        <label class="sr-only" for="ctaEmail">Email</label>
-        <input id="ctaEmail" name="email" type="email" placeholder="La tua migliore email" required autocomplete="email">
-        <button type="submit" class="btn-primary">Iscrivimi →</button>
-      </form>
+      <div class="edu-cta-form">
+        <a href="https://wa.me/393293496354?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20essere%20avvisato%20sulle%20prossime%20annate." target="_blank" rel="noopener" class="btn-primary">Avvisami su WhatsApp →</a>
+        <a href="mailto:info@viedellagoapicoltura.it?subject=Avvisami%20sulle%20prossime%20annate" class="btn-primary edu-cta-alt">Avvisami via email</a>
+      </div>
     </div>
   </section>
 
@@ -750,6 +736,7 @@
       <p>P.IVA 10819081216 &nbsp;·&nbsp; <a href="mailto:info@viedellagoapicoltura.it">info@viedellagoapicoltura.it</a></p>
       <ul class="footer-links">
         <li><a href="privacy.html">Privacy &amp; Cookie Policy</a></li>
+        <li><button type="button" class="footer-cookie-link" data-cookie-settings>Gestisci cookie</button></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="contatti.html">Contatti</a></li>
         <li><a href="chi-siamo.html">Chi Siamo</a></li>
@@ -878,96 +865,5 @@ if ('serviceWorker' in navigator) {
     </div>
   </div>
 </div>
-<style>
-#cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  background: #2F2A26;
-  border-top: 2px solid #D4A017;
-  padding: 16px 5%;
-  box-shadow: 0 -4px 24px rgba(0,0,0,0.18);
-}
-.cookie-banner__inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.cookie-banner__text {
-  margin: 0;
-  font-size: .88rem;
-  line-height: 1.6;
-  color: rgba(243,233,218,0.85);
-  flex: 1;
-}
-.cookie-banner__text strong {
-  color: #F3E9DA;
-}
-.cookie-banner__text a {
-  color: #D4A017;
-  font-weight: 600;
-  text-decoration: none;
-}
-.cookie-banner__text a:hover {
-  text-decoration: underline;
-}
-.cookie-banner__btns {
-  display: flex;
-  gap: 10px;
-  flex-shrink: 0;
-}
-.cookie-btn {
-  padding: 9px 22px;
-  border-radius: 4px;
-  font-size: .85rem;
-  font-weight: 700;
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  transition: opacity .2s, transform .15s;
-  letter-spacing: .02em;
-}
-.cookie-btn:hover {
-  opacity: .88;
-  transform: translateY(-1px);
-}
-.cookie-btn--accept {
-  background: #F3E9DA;
-  color: #2F2A26;
-}
-.cookie-btn--reject {
-  background: transparent;
-  color: rgba(243,233,218,0.6);
-  border: 1px solid rgba(243,233,218,0.25);
-}
-@media (max-width: 600px) {
-  .cookie-banner__inner { flex-direction: column; align-items: flex-start; }
-  .cookie-banner__btns { width: 100%; }
-  .cookie-btn { flex: 1; text-align: center; }
-}
-</style>
-<script>
-(function() {
-  var consent = localStorage.getItem('cookie_consent');
-  if (!consent) {
-    document.getElementById('cookie-banner').style.display = 'block';
-  }
-  document.getElementById('cookie-accept').addEventListener('click', function() {
-    localStorage.setItem('cookie_consent', 'accepted');
-    document.getElementById('cookie-banner').style.display = 'none';
-    loadGA();
-  });
-  document.getElementById('cookie-reject').addEventListener('click', function() {
-    localStorage.setItem('cookie_consent', 'rejected');
-    document.getElementById('cookie-banner').style.display = 'none';
-  });
-})();
-</script>
 </body>
 </html>
