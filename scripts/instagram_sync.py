@@ -30,10 +30,18 @@ ROOT = Path(__file__).resolve().parent.parent
 INDEX = ROOT / "index.html"
 IMG_DIR = ROOT / "img"
 API = "https://graph.instagram.com"
+# Codici "utente di sistema" (Unified login): passano da graph.facebook.com
+# con l'ID numerico del profilo Instagram professionale.
+FB_API = "https://graph.facebook.com/" + os.environ.get("IG_GRAPH_VERSION", "v23.0")
+IG_USER_ID = os.environ.get("IG_USER_ID", "17841401629302753")  # @viedellagoapicoltura
 PROFILE = "https://www.instagram.com/viedellagoapicoltura/"
 N_PHOTOS = 6
 SIZE = 480
 START, END = "<!-- IG:START -->", "<!-- IG:END -->"
+
+
+class ApiError(Exception):
+    pass
 
 
 def get_json(url: str) -> dict:
@@ -42,9 +50,22 @@ def get_json(url: str) -> dict:
         with urllib.request.urlopen(req, timeout=30) as r:
             return json.load(r)
     except urllib.error.HTTPError as e:
-        # Il messaggio di Instagram non contiene il codice di accesso.
-        body = e.read().decode("utf-8", "replace")[:500]
-        sys.exit(f"Instagram ha risposto con errore {e.code}: {body}")
+        # Il messaggio di Meta non contiene il codice di accesso.
+        body = e.read().decode("utf-8", "replace")[:300]
+        raise ApiError(f"errore {e.code}: {body}") from None
+
+
+def fetch_media(token: str) -> list:
+    """Prova prima l'API Instagram, poi l'API Graph di Facebook (codici di sistema)."""
+    fields = "id,media_type,media_url,thumbnail_url,permalink,caption,timestamp"
+    q = urllib.parse.urlencode({"fields": fields, "limit": 25, "access_token": token})
+    errors = []
+    for url in (f"{API}/me/media?{q}", f"{FB_API}/{IG_USER_ID}/media?{q}"):
+        try:
+            return get_json(url).get("data", [])
+        except ApiError as e:
+            errors.append(f"{url.split('?')[0]} → {e}")
+    sys.exit("Impossibile leggere i post:\n" + "\n".join(errors))
 
 
 def download(url: str) -> bytes:
@@ -65,7 +86,12 @@ def alt_text(caption: str | None, i: int) -> str:
 
 def refresh(token: str) -> None:
     q = urllib.parse.urlencode({"grant_type": "ig_refresh_token", "access_token": token})
-    data = get_json(f"{API}/refresh_access_token?{q}")
+    try:
+        data = get_json(f"{API}/refresh_access_token?{q}")
+    except ApiError:
+        # I codici "utente di sistema" non scadono e non si rinnovano: va bene così.
+        print("Il codice non è rinnovabile con questo metodo (probabilmente non scade): nessuna azione.")
+        return
     new = data.get("access_token")
     days = int(data.get("expires_in", 0)) // 86400
     print(f"Codice di accesso rinnovato: valido per altri {days} giorni.")
@@ -76,9 +102,7 @@ def refresh(token: str) -> None:
 
 
 def sync(token: str) -> None:
-    fields = "id,media_type,media_url,thumbnail_url,permalink,caption,timestamp"
-    q = urllib.parse.urlencode({"fields": fields, "limit": 25, "access_token": token})
-    items = get_json(f"{API}/me/media?{q}").get("data", [])
+    items = fetch_media(token)
 
     posts = []
     for it in items:
