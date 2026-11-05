@@ -2,6 +2,28 @@
    Scorrimento morbido (Lenis, ospitato in /vendor), testi che compaiono riga per riga,
    immagini che si svelano e leggero effetto di profondità.
    Con "riduci movimento" attivo nel sistema, o senza JavaScript, tutto resta fermo e leggibile. */
+/* Menu su telefono: pulsante "Menu" che apre le voci a tutto schermo. Funziona anche con "riduci movimento". */
+(function () {
+  var btn = document.querySelector('.menu-apri');
+  var nav = document.getElementById('menu-principale');
+  if (!btn || !nav) return;
+  document.documentElement.classList.add('js-menu');
+  var etichetta = btn.querySelector('.menu-apri__testo');
+  function imposta(aperto) {
+    document.documentElement.classList.toggle('menu-aperto', aperto);
+    btn.setAttribute('aria-expanded', aperto ? 'true' : 'false');
+    if (etichetta) etichetta.textContent = aperto ? 'Chiudi' : 'Menu';
+    if (window.vdlLenis) { aperto ? window.vdlLenis.stop() : window.vdlLenis.start(); }
+    if (aperto) { var primo = nav.querySelector('a'); if (primo) primo.focus(); }
+  }
+  btn.addEventListener('click', function () { imposta(btn.getAttribute('aria-expanded') !== 'true'); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) imposta(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { imposta(false); btn.focus(); }
+  });
+  window.addEventListener('resize', function () { if (window.innerWidth > 720) imposta(false); });
+})();
+
 (function () {
   var root = document.documentElement;
   var ridotto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -11,6 +33,7 @@
   var lenis = null;
   if (window.Lenis) {
     lenis = new window.Lenis({ lerp: 0.075, smoothWheel: true });
+    window.vdlLenis = lenis;
     var raf = function (t) { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {

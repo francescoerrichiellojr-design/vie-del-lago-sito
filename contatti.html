@@ -65,6 +65,7 @@
   <link rel="preload" href="/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/vendor/lenis-1.3.27.css">
   <link rel="stylesheet" href="/racconto.css">
+  <meta name="format-detection" content="telephone=no">
 </head>
 <body>
 <a class="sr-only salta" href="#contenuto">Vai al contenuto</a>
@@ -74,7 +75,7 @@
     <a class="marca marca--logo" href="/" aria-label="Vie del Lago Apicoltura, home">
       <img src="img/logo-firma-terra.webp" alt="Vie del Lago Apicoltura" width="871" height="261">
     </a>
-    <nav class="menu" aria-label="Menu principale">
+    <nav class="menu" id="menu-principale" aria-label="Menu principale">
       <a href="/">Home</a>
       <a href="territorio.html">Il lago</a>
       <a href="prodotti.html">I mieli</a>
@@ -82,6 +83,7 @@
       <a href="chi-siamo.html">Chi siamo</a>
       <a href="#ordina">Ordina</a>
     </nav>
+    <button type="button" class="menu-apri" aria-expanded="false" aria-controls="menu-principale"><span class="menu-apri__testo">Menu</span><span class="menu-apri__linee" aria-hidden="true"></span></button>
   </div>
 </header>
 
@@ -172,7 +174,7 @@
       </nav>
     </div>
     <div class="piede__basso">
-      <p>Via Contrada Pescara 74, 83040 Conza della Campania (AV) · P.IVA 10819081216</p>
+      <p>Via Contrada Pescara 74, 83040 Conza della Campania (AV)<span class="piede__sep"> · </span><span class="piede__piva">P.IVA 10819081216</span></p>
       <p><a href="privacy.html">Privacy &amp; Cookie Policy</a> · <button type="button" data-cookie-settings>Gestisci cookie</button></p>
     </div>
   </div>
