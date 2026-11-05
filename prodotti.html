@@ -61,6 +61,8 @@
   </script>
   <link rel="preload" href="/fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/vendor/lenis-1.3.27.css">
   <link rel="stylesheet" href="/racconto.css">
   <script>document.documentElement.classList.add('js-menu')</script>
@@ -102,12 +104,13 @@
 
   <section class="capitolo capitolo--salvia" aria-label="I tre mieli">
     <div class="contenitore">
-      <article class="miele" id="millefiori" aria-labelledby="m-millefiori">
+      <article class="miele" id="millefiori" data-miele="millefiori" aria-labelledby="m-millefiori">
         <a class="miele__vaso svela" href="millefiori.html" tabindex="-1" aria-hidden="true"><img src="img/millefiori-vaso.webp" alt="" width="697" height="1007" loading="lazy" data-profondita="0.06"></a>
         <div class="miele__testo">
           <p class="contatore" data-rivela>01 / 03</p>
           <p class="etichetta" data-rivela style="--i:1">Cuvée delle Colline · Polifiora</p>
           <h2 class="titolo" id="m-millefiori" data-rivela><span class="riga" style="--i:0"><span>Millefiori</span></span></h2>
+          <p class="motto" data-rivela style="--i:1">Complessa polifonia botanica</p>
           <p class="miele__note" data-rivela style="--i:2">Le fioriture selvatiche dei pendii argillosi del lago, raccolte tra maggio e luglio. Note calde di fiori secchi, caramello bruno e leggeri sentori di macchia mediterranea.</p>
           <p class="secondario" data-rivela style="--i:3;margin:0">Pecorino irpino stagionato, arrosti di maiale laccati, pane nero di segale con burro salato.</p>
           <div class="miele__dati" data-rivela style="--i:4">
@@ -117,12 +120,13 @@
           <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20essere%20avvisato%20quando%20torna%20il%20Miele%20Millefiori.">Avvisami <span class="freccia" aria-hidden="true">→</span></a><a class="btn" href="millefiori.html">Scheda completa <span class="freccia" aria-hidden="true">→</span></a></div>
         </div>
       </article>
-      <article class="miele miele--invertito" id="acacia" aria-labelledby="m-acacia">
+      <article class="miele miele--invertito" id="acacia" data-miele="acacia" aria-labelledby="m-acacia">
         <a class="miele__vaso svela" href="acacia.html" tabindex="-1" aria-hidden="true"><img src="img/acacia-vaso.webp" alt="" width="571" height="795" loading="lazy" data-profondita="0.06"></a>
         <div class="miele__testo">
           <p class="contatore" data-rivela>02 / 03</p>
           <p class="etichetta" data-rivela style="--i:1">Cru dei Valloni · Monoflora</p>
           <h2 class="titolo" id="m-acacia" data-rivela><span class="riga" style="--i:0"><span>Acacia</span></span></h2>
+          <p class="motto" data-rivela style="--i:1">Eleganza monoflora cristallina</p>
           <p class="miele__note" data-rivela style="--i:2">La robinia dei valloni umidi intorno al lago, raccolta tra aprile e maggio. Delicato e floreale, con ricordi di vaniglia, confetto alla mandorla e fiori di sambuco.</p>
           <p class="secondario" data-rivela style="--i:3;margin:0">Erborinati come gorgonzola e roquefort per contrasto; ricotta fresca di bufala, fragole al naturale, tè bianchi.</p>
           <div class="miele__dati" data-rivela style="--i:4">
@@ -132,12 +136,13 @@
           <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20essere%20avvisato%20quando%20torna%20il%20Miele%20di%20Acacia.">Avvisami <span class="freccia" aria-hidden="true">→</span></a><a class="btn" href="acacia.html">Scheda completa <span class="freccia" aria-hidden="true">→</span></a></div>
         </div>
       </article>
-      <article class="miele" id="sulla" aria-labelledby="m-sulla">
+      <article class="miele" id="sulla" data-miele="sulla" aria-labelledby="m-sulla">
         <a class="miele__vaso svela" href="sulla.html" tabindex="-1" aria-hidden="true"><img src="img/sulla-vaso.webp" alt="" width="689" height="960" loading="lazy" data-profondita="0.06"></a>
         <div class="miele__testo">
           <p class="contatore" data-rivela>03 / 03</p>
           <p class="etichetta" data-rivela style="--i:1">Cru delle Argille · Monoflora</p>
           <h2 class="titolo" id="m-sulla" data-rivela><span class="riga" style="--i:0"><span>Sulla</span></span></h2>
+          <p class="motto" data-rivela style="--i:1">La mineralità dell'argilla</p>
           <p class="miele__note" data-rivela style="--i:2">La fioritura rossa delle praterie argillose irpine, raccolta a maggio. Tenue ma riconoscibile: paglia fresca, erbe aromatiche e un leggero sentore agrumato.</p>
           <p class="secondario" data-rivela style="--i:3;margin:0">Caprino fresco alle erbe, yogurt greco, tisane che vuoi addolcire senza coprirne il profumo.</p>
           <div class="miele__dati" data-rivela style="--i:4">
@@ -159,7 +164,7 @@
       <div class="tabella-box" data-rivela>
         <table class="confronto">
           <caption class="sr-only">Confronto tra Millefiori, Acacia e Sulla</caption>
-          <thead><tr><td></td><th scope="col"><a href="millefiori.html" style="text-decoration:none"><span class="nome">Millefiori</span><span class="cru">Cuvée delle Colline</span></a></th><th scope="col"><a href="acacia.html" style="text-decoration:none"><span class="nome">Acacia</span><span class="cru">Cru dei Valloni</span></a></th><th scope="col"><a href="sulla.html" style="text-decoration:none"><span class="nome">Sulla</span><span class="cru">Cru delle Argille</span></a></th></tr></thead>
+          <thead><tr><td></td><th scope="col" data-miele="millefiori"><a href="millefiori.html" style="text-decoration:none"><span class="nome">Millefiori</span><span class="cru">Cuvée delle Colline</span></a></th><th scope="col" data-miele="acacia"><a href="acacia.html" style="text-decoration:none"><span class="nome">Acacia</span><span class="cru">Cru dei Valloni</span></a></th><th scope="col" data-miele="sulla"><a href="sulla.html" style="text-decoration:none"><span class="nome">Sulla</span><span class="cru">Cru delle Argille</span></a></th></tr></thead>
           <tbody>
           <tr><th scope="row">Tipo</th><td>Polifiora</td><td>Monoflora</td><td>Monoflora rara</td></tr>
           <tr><th scope="row">Colore</th><td>Ambra profondo</td><td>Giallo paglierino</td><td>Quasi incolore, poi avorio</td></tr>
