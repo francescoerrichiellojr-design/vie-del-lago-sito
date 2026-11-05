@@ -68,12 +68,6 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install --quiet Pillow
-      - name: Diagnostica codice (temporanea)
-        if: github.event_name == 'workflow_dispatch'
-        continue-on-error: true
-        env:
-          IG_TOKEN: ${{ secrets.IG_TOKEN }}
-        run: python scripts/ig_diagnose.py
       - name: Scarica le ultime foto
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}

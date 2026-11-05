@@ -80,6 +80,12 @@ def fetch_media(token: str) -> list:
     sys.exit("Impossibile leggere i post:\n" + "\n".join(errors))
 
 
+def download(url: str) -> bytes:
+    req = urllib.request.Request(url, headers={"User-Agent": "vie-del-lago-sito/instagram-sync"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        return r.read()
+
+
 def alt_text(caption: str | None, i: int) -> str:
     if not caption:
         return f"Foto dal profilo Instagram di Vie del Lago Apicoltura ({i})"
