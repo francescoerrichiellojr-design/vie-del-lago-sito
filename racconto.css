@@ -484,3 +484,12 @@ a{color:inherit}
 .tripletta{position:absolute;top:clamp(20px,3vw,36px);right:clamp(16px,2.4vw,30px);writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--serif);font-weight:500;font-size:clamp(14px,1.1vw,17px);letter-spacing:.04em;color:var(--accento-testo,var(--terra));opacity:.85;white-space:nowrap}
 .titolo{letter-spacing:-.004em}
 .miele__prezzo .secondario{font-family:'Manrope',system-ui,sans-serif}
+
+/* ── Galleria dell'Oasi (foto di Ilaria Cammarata © VeNature) ── */
+.galleria{columns:3 260px;column-gap:clamp(14px,1.6vw,22px)}
+.galleria__voce{position:relative;margin:0 0 clamp(14px,1.6vw,22px);break-inside:avoid;overflow:hidden;background:var(--salvia)}
+.galleria__voce img{display:block;width:100%;height:auto}
+.galleria__nome{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 10px;background:linear-gradient(transparent,rgba(30,26,18,.62));color:#F2F0E6;font-size:13px;font-weight:500;letter-spacing:.02em}
+.galleria__nome i{font-family:var(--serif);font-size:15px;opacity:.85;margin-left:4px}
+.galleria__credito{margin:18px 0 0;font-size:13px;color:var(--grigio)}
+@media (max-width:640px){.galleria{columns:2}.galleria__nome{font-size:12px;padding:22px 10px 8px}.galleria__nome i{display:none}}
