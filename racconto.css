@@ -261,3 +261,44 @@ a{color:inherit}
 .domanda summary::after{content:"+";font-weight:400;font-size:32px;line-height:1;color:var(--miele);transition:transform .3s}
 .domanda[open] summary::after{transform:rotate(45deg)}
 .domanda p{margin:0 0 26px;max-width:60ch;color:var(--grigio)}
+
+/* ── Citazione ── */
+.citazione{margin:0}
+.citazione p{margin:0;font-weight:500;font-size:clamp(30px,3.6vw,54px);line-height:1.15;letter-spacing:-.015em;max-width:22em}
+.citazione footer{margin-top:24px;font-size:15px;color:var(--grigio)}
+.capitolo--scuro .citazione footer{color:var(--chiaro-2)}
+
+/* ── Numeri ── */
+.numeri{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:28px 40px;margin:clamp(40px,5vw,64px) 0 0;padding-top:28px;border-top:1px solid rgba(30,26,18,.22)}
+.numeri div{display:flex;flex-direction:column;gap:6px}
+.numeri dt{order:2;font-size:14px;color:var(--grigio)}
+.numeri dd{order:1;margin:0;font-weight:500;font-size:clamp(40px,4.6vw,68px);line-height:1;letter-spacing:-.02em}
+.capitolo--scuro .numeri{border-top-color:rgba(216,214,196,.3)}
+.capitolo--scuro .numeri dt{color:var(--chiaro-2)}
+.capitolo--scuro .numeri dd{color:#EDEBDD}
+.numeri--racconto dd{color:var(--miele)}
+.numeri--racconto p{margin:6px 0 0;order:3;font-size:15px;color:var(--grigio);max-width:34ch}
+
+/* ── Stagioni ── */
+.stagioni{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(28px,3vw,48px);margin-top:clamp(40px,5vw,64px)}
+.stagione{padding-top:22px;border-top:1px solid rgba(30,26,18,.22)}
+.stagione h3{margin:0;font-weight:500;font-size:clamp(26px,2.4vw,36px)}
+.stagione .mesi{margin:4px 0 14px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--miele)}
+.stagione ul{margin:0;padding-left:1.1em;color:var(--grigio)}
+.stagione li+li{margin-top:4px}
+
+/* ── Mappa caricata su richiesta ── */
+.mappa{position:relative;min-height:clamp(380px,50vw,620px);background:var(--salvia);display:flex;align-items:center;justify-content:center;text-align:center;padding:32px}
+.mappa__invito{display:flex;flex-direction:column;align-items:center;gap:18px;max-width:520px}
+.mappa__invito p{margin:0;color:var(--grigio);font-size:16px}
+.mappa__carta{position:absolute;inset:0}
+.mappa.is-loaded{padding:0}
+.legenda{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:20px;font-size:15px;color:var(--grigio);list-style:none;padding:0}
+.legenda li{display:flex;align-items:center;gap:10px}
+.puntino{width:14px;height:14px;border-radius:50%;border:2px solid #F2F0E6;box-shadow:0 0 0 1px rgba(30,26,18,.4)}
+.puntino--apiario{background:#7E5410}.puntino--oasi{background:#4C6B3C}.puntino--fiori{background:#8C3B4A}
+.leaflet-popup-content{font-family:'Manrope',sans-serif;font-size:14px;line-height:1.5}
+.leaflet-popup-content strong{display:block;font-size:16px;margin-bottom:4px}
+
+/* ── Apertura con video ── */
+.apertura video{width:100%;height:100%;object-fit:cover;display:block}
