@@ -1,12 +1,17 @@
-// Vie del Lago Apicoltura — Service Worker v20
-// Cache-first per asset statici; stale-while-revalidate per immagini; network-first per HTML
+// Vie del Lago Apicoltura — Service Worker v21
+// Network-first per HTML; stale-while-revalidate per tutto il resto (CSS, JS, immagini, font):
+// la pagina usa subito la copia in cache e intanto scarica la versione nuova, così dopo un
+// aggiornamento del sito i visitatori vedono le modifiche al caricamento successivo anche se
+// la versione della cache qui sotto non viene cambiata.
 
-const CACHE = 'vdl-v20';
+const CACHE = 'vdl-v21';
 const STATIC = [
   '/',
   '/index.html',
   '/style.css',
   '/script.js',
+  '/fonts/inter-latin-400-normal.woff2',
+  '/fonts/playfair-display-latin-600-normal.woff2',
   '/storia.html',
   '/territorio.html',
   '/api.html',
@@ -59,35 +64,22 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // Immagini: stale-while-revalidate (mostra subito la cache, aggiorna in background)
-  if (request.destination === 'image') {
-    e.respondWith(
-      caches.open(CACHE).then(cache =>
-        cache.match(request).then(cached => {
-          const fetchPromise = fetch(request).then(res => {
-            if (res && res.status === 200 && res.type === 'basic') {
-              cache.put(request, res.clone());
-            }
-            return res;
-          }).catch(() => cached);
-          return cached || fetchPromise;
-        })
-      )
-    );
-    return;
-  }
-
-  // Altri asset statici (CSS, JS, ecc.): cache-first
+  // Tutto il resto (CSS, JS, immagini, font): stale-while-revalidate
   e.respondWith(
-    caches.match(request).then(cached => {
-      if (cached) return cached;
-      return fetch(request).then(res => {
-        if (res && res.status === 200 && res.type === 'basic') {
-          const clone = res.clone();
-          caches.open(CACHE).then(c => c.put(request, clone));
+    caches.open(CACHE).then(cache =>
+      cache.match(request).then(cached => {
+        const fetchPromise = fetch(request).then(res => {
+          if (res && res.status === 200 && res.type === 'basic') {
+            cache.put(request, res.clone());
+          }
+          return res;
+        }).catch(() => cached);
+        if (cached) {
+          e.waitUntil(fetchPromise.catch(() => {}));
+          return cached;
         }
-        return res;
-      });
-    })
+        return fetchPromise;
+      })
+    )
   );
 });

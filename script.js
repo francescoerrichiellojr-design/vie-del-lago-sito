@@ -25,6 +25,8 @@ const pageMap = {
 'educazione.html': 'educazione', 'millefiori.html': 'millefiori',
 'acacia.html': 'acacia', 'sulla.html': 'sulla',
 'contatti.html': 'contatti', 'privacy.html': 'privacy', 'prodotti.html': 'prodotti', 'faq.html': 'faq',
+'chi-siamo.html': 'chi-siamo', 'territorio.html': 'territorio',
+'etichette.html': 'etichette', 'come-ordinare.html': 'come-ordinare',
 };
 const currentKey = pageMap[filename] || null;
 if (!currentKey) return;
@@ -93,23 +95,6 @@ if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
 });
 });
 })();
-(function () {
-const form = document.getElementById('contact-form');
-if (!form) return;
-form.addEventListener('submit', function (e) {
-e.preventDefault();
-const name = form.querySelector('[name="nome"]').value.trim();
-const email = form.querySelector('[name="email"]').value.trim();
-const product = form.querySelector('[name="prodotto"]').value;
-const qty = form.querySelector('[name="quantita"]').value.trim();
-const msg = form.querySelector('[name="messaggio"]').value.trim();
-const subject = encodeURIComponent('RICHIESTA ORDINE — ' + (product || 'Informazioni') + ' — ' + name);
-const body = encodeURIComponent('Gentile Vie del Lago,\n\n--- I MIEI DATI ---\nNome: ' + name + '\nEmail: ' + email + '\n\n--- IL MIO ORDINE ---\nProdotto: ' + (product || 'da definire') + '\nQuantità: ' + (qty || 'da definire') + '\n\n--- MESSAGGIO ---\n' + msg + '\n\nCordiali saluti.\n' + name);
-window.location.href = 'mailto:info@viedellagoapicoltura.it?subject=' + subject + '&body=' + body;
-const success = document.getElementById('contact-form-success');
-if (success) { success.style.display = 'block'; form.style.display = 'none'; }
-});
-})();
 const VL_COLORS = {
 honey: getComputedStyle(document.documentElement).getPropertyValue('--honey-yellow')?.trim() || '#D4A017',
 brown: getComputedStyle(document.documentElement).getPropertyValue('--dark-brown')?.trim() || '#2F2A26',
@@ -148,35 +133,6 @@ mkLine('chartWeightTrend', 'Peso totale (kg)', dataTS.weight, 'kg');
 mkLine('chartTempTrend', 'Temperatura (°C)', dataTS.temp, '°C');
 mkLine('chartHumTrend', 'Umidità (%)', dataTS.hum, '%');
 })();
-function avvisamiSubmit(form, prodotto) {
-const emailInput = form.querySelector('input[type="email"]');
-if (!emailInput || !emailInput.validity.valid) {
-emailInput.focus();
-return false;
-}
-const email = emailInput.value.trim();
-const subject = encodeURIComponent('Lista d\'attesa — ' + prodotto);
-const body = encodeURIComponent(
-'Ciao Vie del Lago,\n\n' +
-'Vi scrivo per iscrivermi alla lista d\'attesa per: ' + prodotto + '\n\n' +
-'La mia email: ' + email + '\n\n' +
-'Vi chiedo di avvisarmi non appena il prodotto sarà disponibile per l\'annata 2026.\n\n' +
-'Grazie,\n' + email
-);
-window.location.href = 'mailto:info@viedellagoapicoltura.it?subject=' + subject + '&body=' + body;
-const box = form.closest('.avvisami-box');
-if (box) {
-form.style.display = 'none';
-const sub = box.querySelector('.avvisami-box__sub');
-if (sub) sub.style.display = 'none';
-const ok = document.createElement('p');
-ok.className = 'avvisami-success';
-ok.style.display = 'block';
-ok.innerHTML = '✅ Perfetto! Si aprirà il tuo client email con la richiesta pre-compilata. Inviale e ti avviseremo all\'apertura della stagione 2026.';
-box.appendChild(ok);
-}
-return false;
-}
 (function initAnchorHighlight() {
 const nav = document.querySelector('.page-anchors');
 if (!nav) return;
@@ -201,4 +157,85 @@ a.style.borderColor = i === current ? 'var(--honey-yellow)' : '';
 }
 window.addEventListener('scroll', update, { passive: true });
 update();
+})();
+/* ── Consenso cookie: mostra il banner, salva la scelta, permette di cambiarla ──
+   Il banner è in fondo alla pagina, dopo questo script: si attende che il DOM sia pronto. */
+function initCookieConsent() {
+const banner = document.getElementById('cookie-banner');
+if (!banner) return;
+const read = () => { try { return localStorage.getItem('cookie_consent'); } catch (e) { return null; } };
+const save = (v) => { try { localStorage.setItem('cookie_consent', v); } catch (e) {} };
+const show = () => { banner.style.display = 'block'; };
+const hide = () => { banner.style.display = 'none'; };
+if (!read()) show();
+const accept = document.getElementById('cookie-accept');
+const reject = document.getElementById('cookie-reject');
+if (accept) accept.addEventListener('click', () => {
+save('accepted'); hide();
+if (typeof window.loadGA === 'function') window.loadGA();
+});
+if (reject) reject.addEventListener('click', () => {
+const wasAccepted = read() === 'accepted';
+save('rejected'); hide();
+// Se GA era già attivo, ricarica la pagina per fermarlo e rimuove i cookie _ga
+if (wasAccepted) {
+document.cookie.split(';').map((c) => c.split('=')[0].trim()).filter((n) => n.indexOf('_ga') === 0).forEach((n) => {
+const host = location.hostname.replace(/^www\./, '');
+['', '; domain=' + location.hostname, '; domain=.' + host].forEach((d) => {
+document.cookie = n + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + d;
+});
+});
+location.reload();
+}
+});
+document.querySelectorAll('[data-cookie-settings]').forEach((btn) => btn.addEventListener('click', show));
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initCookieConsent);
+else initCookieConsent();
+
+/* ── Copia indirizzo email ── */
+(function () {
+document.querySelectorAll('[data-copy]').forEach((btn) => {
+btn.addEventListener('click', () => {
+const text = btn.getAttribute('data-copy');
+const done = () => { const old = btn.textContent; btn.textContent = 'Copiato ✓'; setTimeout(() => { btn.textContent = old; }, 2000); };
+if (navigator.clipboard && window.isSecureContext) {
+navigator.clipboard.writeText(text).then(done).catch(() => window.prompt('Copia l\'indirizzo:', text));
+} else {
+window.prompt('Copia l\'indirizzo:', text);
+}
+});
+});
+})();
+
+/* ── Mappa Google caricata solo su richiesta dell'utente ── */
+(function () {
+document.querySelectorAll('[data-map-load]').forEach((btn) => {
+btn.addEventListener('click', () => {
+const box = btn.closest('.map-consent');
+if (!box) return;
+const iframe = document.createElement('iframe');
+iframe.src = box.getAttribute('data-map-src');
+iframe.title = 'Mappa della sede di Vie del Lago Apicoltura, Conza della Campania';
+iframe.setAttribute('allowfullscreen', '');
+iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+box.innerHTML = '';
+box.appendChild(iframe);
+box.classList.add('is-loaded');
+});
+});
+})();
+
+/* ── Video hero: niente download se l'utente ha attivo il risparmio dati o preferisce meno movimento ── */
+(function () {
+const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+const saveData = conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ''));
+const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!saveData && !reduced) return;
+document.querySelectorAll('video.hero-video, video.story-hero-video').forEach((v) => {
+v.removeAttribute('autoplay');
+v.pause();
+v.querySelectorAll('source').forEach((s) => s.remove());
+v.load(); // resta visibile solo l'immagine "poster"
+});
 })();
