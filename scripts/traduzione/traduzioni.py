@@ -885,6 +885,7 @@ T = {
 "Oggi il lago è il centro di un corridoio ecologico che collega l'Appennino lucano al Sele. Sulle rive crescono canneti, saliceti e prati umidi, dove vivono la natrice tassellata, il falco pescatore, l'airone cenerino.": "Today the lake is the centre of an ecological corridor linking the Lucanian Apennines to the Sele valley. Reed beds, willow groves and wet meadows grow along its shores, home to the dice snake, the osprey and the grey heron.",
 "Il lago regola anche le stagioni del miele: la massa d'acqua ammorbidisce le gelate di primavera, allunga le fioriture estive e favorisce la raccolta tardiva.": "The lake also shapes the honey seasons: the body of water softens spring frosts, lengthens the summer blooms and favours a late harvest.",
 "Api in volo": "Bees in flight",
+"Terra argillosa spaccata dal sole sui campi di Conza della Campania": "Clay soil cracked by the sun in the fields of Conza della Campania",
 "Il suolo": "The soil",
 "Le argille": "The clay",
 "che si sentono": "you can taste",
