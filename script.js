@@ -198,7 +198,7 @@ else initCookieConsent();
 document.querySelectorAll('[data-copy]').forEach((btn) => {
 btn.addEventListener('click', () => {
 const text = btn.getAttribute('data-copy');
-const done = () => { const old = btn.textContent; btn.textContent = 'Copiato ✓'; setTimeout(() => { btn.textContent = old; }, 2000); };
+const done = () => { const old = btn.textContent; btn.textContent = document.documentElement.lang === 'en' ? 'Copied ✓' : 'Copiato ✓'; setTimeout(() => { btn.textContent = old; }, 2000); };
 if (navigator.clipboard && window.isSecureContext) {
 navigator.clipboard.writeText(text).then(done).catch(() => window.prompt('Copia l\'indirizzo:', text));
 } else {

@@ -67,7 +67,7 @@
   function imposta(aperto) {
     document.documentElement.classList.toggle('menu-aperto', aperto);
     btn.setAttribute('aria-expanded', aperto ? 'true' : 'false');
-    if (etichetta) etichetta.textContent = aperto ? 'Chiudi' : 'Menu';
+    if (etichetta) etichetta.textContent = aperto ? (document.documentElement.lang === 'en' ? 'Close' : 'Chiudi') : 'Menu';
     if (window.vdlLenis) { aperto ? window.vdlLenis.stop() : window.vdlLenis.start(); }
     if (aperto) { var primo = nav.querySelector('a'); if (primo) primo.focus(); }
   }
@@ -76,7 +76,7 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { imposta(false); btn.focus(); }
   });
-  window.addEventListener('resize', function () { if (window.innerWidth > 880) imposta(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 1000) imposta(false); });
 })();
 
 (function () {
