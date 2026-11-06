@@ -504,3 +504,7 @@ a{color:inherit}
 @keyframes intro-traccia{to{stroke-dashoffset:0}}
 @keyframes intro-riempi{to{fill-opacity:1;stroke-width:0}}
 @keyframes intro-via{to{opacity:0;visibility:hidden}}
+
+/* Video d'apertura (solo telefono, aggiunto da racconto.js) */
+.apertura__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease}
+.apertura__video.visibile{opacity:1}

@@ -2,6 +2,25 @@
    Scorrimento morbido (Lenis, ospitato in /vendor), testi che compaiono riga per riga,
    immagini che si svelano e leggero effetto di profondità.
    Con "riduci movimento" attivo nel sistema, o senza JavaScript, tutto resta fermo e leggibile. */
+/* Apertura della home su telefono: video delle api sul predellino (solo telefono, non con risparmio dati o "riduci movimento"). */
+(function () {
+  var box = document.querySelector('.apertura__foto[data-video]');
+  if (!box || !window.matchMedia) return;
+  var conn = navigator.connection;
+  if (!matchMedia('(max-width: 720px)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || (conn && conn.saveData)) return;
+  var v = document.createElement('video');
+  v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true; v.autoplay = true;
+  v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+  v.className = 'apertura__video';
+  v.preload = 'auto';
+  v.src = box.getAttribute('data-video');
+  v.addEventListener('playing', function () { v.classList.add('visibile'); });
+  box.appendChild(v);
+  var p = v.play();
+  if (p && p.catch) p.catch(function () {}); // es. risparmio energetico dell'iPhone: resta il fotogramma fisso
+})();
+
 /* Intro alla prima visita: la si segna come vista e si toglie dopo l'animazione (o al tocco). */
 (function () {
   var root = document.documentElement;
