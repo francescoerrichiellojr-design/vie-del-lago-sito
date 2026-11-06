@@ -28,6 +28,7 @@ from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
 INDEX = ROOT / "index.html"
+INDEXES = [INDEX, ROOT / "en" / "index.html"]   # home italiana e inglese
 IMG_DIR = ROOT / "img"
 API = "https://graph.instagram.com"
 # Codici "utente di sistema" (Unified login): passano da graph.facebook.com
@@ -133,17 +134,22 @@ def sync(token: str) -> None:
         href = html.escape(it.get("permalink") or PROFILE, quote=True)
         links.append(
             f'        <a href="{href}" target="_blank" rel="noopener" class="ig-photo-link">\n'
-            f'          <picture><source srcset="img/ig-photo-{i}.webp?v={v}" type="image/webp">'
-            f'<img src="img/ig-photo-{i}.jpg?v={v}" alt="{alt}" width="240" height="240" loading="lazy"></picture>\n'
+            f'          <picture><source srcset="/img/ig-photo-{i}.webp?v={v}" type="image/webp">'
+            f'<img src="/img/ig-photo-{i}.jpg?v={v}" alt="{alt}" width="240" height="240" loading="lazy"></picture>\n'
             f'        </a>'
         )
 
-    page = INDEX.read_text(encoding="utf-8")
-    if START not in page or END not in page:
-        sys.exit("Segnaposto IG:START / IG:END non trovati in index.html.")
     block = START + "\n" + "\n".join(links) + "\n        " + END
-    current = re.search(re.escape(START) + r".*?" + re.escape(END), page, flags=re.S).group(0)
-    if current == block:
+    pages = {}
+    for f in INDEXES:
+        if not f.exists():
+            continue
+        page = f.read_text(encoding="utf-8")
+        if START not in page or END not in page:
+            sys.exit(f"Segnaposto IG:START / IG:END non trovati in {f.relative_to(ROOT)}.")
+        pages[f] = page
+    current = {f: re.search(re.escape(START) + r".*?" + re.escape(END), p, flags=re.S).group(0) for f, p in pages.items()}
+    if all(c == block for c in current.values()):
         print("Nessun post nuovo: la griglia è già aggiornata.")
         return
 
@@ -158,8 +164,8 @@ def sync(token: str) -> None:
         im.save(IMG_DIR / f"ig-photo-{i}.webp", "WEBP", quality=80, method=6)
         im.save(IMG_DIR / f"ig-photo-{i}.jpg", "JPEG", quality=82, optimize=True, progressive=True)
 
-    page = page.replace(current, block, 1)
-    INDEX.write_text(page, encoding="utf-8")
+    for f, page in pages.items():
+        f.write_text(page.replace(current[f], block, 1), encoding="utf-8")
     print(f"Griglia aggiornata con {N_PHOTOS} foto (la più recente: {posts[0][0].get('timestamp', '?')}).")
 
 
