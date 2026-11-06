@@ -76,7 +76,7 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { imposta(false); btn.focus(); }
   });
-  window.addEventListener('resize', function () { if (window.innerWidth > 720) imposta(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 880) imposta(false); });
 })();
 
 (function () {
