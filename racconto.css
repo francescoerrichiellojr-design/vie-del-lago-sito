@@ -536,3 +536,13 @@ a{color:inherit}
 .ig .titolo--handle{font-size:clamp(26px,2.6vw,40px)}
 .ig .ig-photo-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(6px,.8vw,12px)}
 @media (max-width:760px){.ig .ig-photo-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}}
+
+/* ── Informazioni per l'acquisto (schede dei mieli) ── */
+.info-acquisto{margin-top:clamp(28px,3vw,44px);max-width:none}
+.info-acquisto summary{font-size:clamp(18px,1.4vw,21px)}
+.info-acquisto__dati{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px 32px;margin:4px 0 20px}
+.info-acquisto__dati dt{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--grigio)}
+.info-acquisto__dati dd{margin:4px 0 0}
+.info-acquisto p{font-size:15px}
+.legale__sezione ul{margin:0 0 16px;padding-left:1.1em;color:var(--grigio)}
+.legale__sezione li+li{margin-top:6px}
