@@ -495,3 +495,12 @@ a{color:inherit}
 .galleria__nome i{font-family:var(--serif);font-size:15px;opacity:.85;margin-left:4px}
 .galleria__credito{margin:18px 0 0;font-size:13px;color:var(--grigio)}
 @media (max-width:640px){.galleria{columns:2}.galleria__nome{font-size:12px;padding:22px 10px 8px}.galleria__nome i{display:none}}
+
+/* ── Intro alla prima visita: il marchio si disegna, si riempie e svanisce (~1,5 s) ── */
+.intro-marchio{display:none}
+.intro .intro-marchio{display:flex;position:fixed;inset:0;z-index:300;align-items:center;justify-content:center;background:var(--carta);animation:intro-via .5s ease 1.05s forwards}
+.intro-marchio svg{width:clamp(96px,11vw,132px);height:auto;overflow:visible}
+.intro-tratto{fill:var(--terra);fill-opacity:0;stroke:var(--terra);stroke-width:5;stroke-dasharray:1;stroke-dashoffset:1;animation:intro-traccia .75s cubic-bezier(.65,0,.35,1) .05s forwards,intro-riempi .35s ease .6s forwards}
+@keyframes intro-traccia{to{stroke-dashoffset:0}}
+@keyframes intro-riempi{to{fill-opacity:1;stroke-width:0}}
+@keyframes intro-via{to{opacity:0;visibility:hidden}}
