@@ -172,10 +172,12 @@ a{color:inherit}
 .marca--logo img{width:clamp(150px,13vw,200px);height:auto}
 .firma{margin-top:8px}
 .firma img{width:clamp(180px,18vw,260px);height:auto}
-.sigillo{width:clamp(120px,12vw,160px);height:auto;margin:0 auto 8px;animation:sigillo 40s linear infinite}
+.sigillo{width:clamp(120px,12vw,160px);height:auto;margin:0 auto 8px}
+/* gira solo la scritta: il marchio al centro resta fermo e dritto */
+.sigillo__anello{transform-box:view-box;transform-origin:50% 50%;animation:sigillo 40s linear infinite}
 @keyframes sigillo{to{transform:rotate(360deg)}}
-.statico .sigillo{animation:none}
-@media (prefers-reduced-motion:reduce){.sigillo{animation:none}}
+.statico .sigillo__anello{animation:none}
+@media (prefers-reduced-motion:reduce){.sigillo__anello{animation:none}}
 
 /* ── Pagine interne ── */
 .testata--chiara{position:relative;color:var(--terra)}
