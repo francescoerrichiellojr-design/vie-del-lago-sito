@@ -2,6 +2,17 @@
    Scorrimento morbido (Lenis, ospitato in /vendor), testi che compaiono riga per riga,
    immagini che si svelano e leggero effetto di profondità.
    Con "riduci movimento" attivo nel sistema, o senza JavaScript, tutto resta fermo e leggibile. */
+/* Intro alla prima visita: la si segna come vista e si toglie dopo l'animazione (o al tocco). */
+(function () {
+  var root = document.documentElement;
+  if (!root.classList.contains('intro')) return;
+  try { localStorage.setItem('vdl-intro', '1'); } catch (e) {}
+  var el = document.querySelector('.intro-marchio');
+  function via() { root.classList.remove('intro'); }
+  if (el) el.addEventListener('click', via);
+  setTimeout(via, 1700);
+})();
+
 /* Pulsante "torna su": compare dopo aver scorso un po' e riporta all'inizio della pagina. */
 (function () {
   var btn = document.querySelector('.torna-su');
