@@ -2,6 +2,25 @@
    Scorrimento morbido (Lenis, ospitato in /vendor), testi che compaiono riga per riga,
    immagini che si svelano e leggero effetto di profondità.
    Con "riduci movimento" attivo nel sistema, o senza JavaScript, tutto resta fermo e leggibile. */
+/* Video nel testo: si caricano e partono solo quando entrano sullo schermo, si fermano quando escono.
+   Con "riduci movimento" o risparmio dati resta l'immagine fissa. */
+(function () {
+  var clips = document.querySelectorAll('video[data-src]');
+  if (!clips.length || !('IntersectionObserver' in window)) return;
+  var conn = navigator.connection;
+  if ((window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) || (conn && conn.saveData)) return;
+  var io = new IntersectionObserver(function (voci) {
+    voci.forEach(function (v) {
+      var el = v.target;
+      if (v.isIntersecting) {
+        if (!el.src) { el.src = el.getAttribute('data-src'); }
+        var p = el.play(); if (p && p.catch) p.catch(function () {});
+      } else if (!el.paused) { el.pause(); }
+    });
+  }, { rootMargin: '150px 0px', threshold: 0.15 });
+  clips.forEach(function (el) { el.muted = true; io.observe(el); });
+})();
+
 /* Intro alla prima visita: la si segna come vista e si toglie dopo l'animazione (o al tocco). */
 (function () {
   var root = document.documentElement;

@@ -504,3 +504,18 @@ a{color:inherit}
 @keyframes intro-traccia{to{stroke-dashoffset:0}}
 @keyframes intro-riempi{to{fill-opacity:1;stroke-width:0}}
 @keyframes intro-via{to{opacity:0;visibility:hidden}}
+
+/* ── Video nel testo (pagina Le api): riquadri 4:5 che partono solo quando sono sullo schermo ── */
+.ciclo{display:grid;gap:clamp(64px,8vw,120px);margin-top:clamp(40px,5vw,64px)}
+.ciclo__blocco{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
+.ciclo__blocco--inv>.clip{order:2}
+.clip{margin:0;position:sticky;top:110px;aspect-ratio:4/5;overflow:hidden;background:var(--salvia)}
+.clip__video{display:block;width:100%;height:100%;object-fit:cover}
+.ciclo .passi{margin-top:18px}
+@media (max-width:860px){
+  .ciclo__blocco{grid-template-columns:1fr}
+  .ciclo__blocco--inv>.clip{order:0}
+  .clip{position:relative;top:auto;max-width:440px}
+}
+.ciclo__blocco--inv{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+@media (max-width:860px){.ciclo__blocco--inv{grid-template-columns:1fr}}
