@@ -190,6 +190,70 @@
     </div>
   </section>
 
+  <section class="capitolo capitolo--salvia" id="esplora" aria-labelledby="titolo-ape3d">
+    <div class="contenitore">
+      <div class="capitolo__testa">
+        <p class="etichetta" data-rivela>Up close</p>
+        <h2 class="titolo titolo--medio" id="titolo-ape3d" data-rivela><span class="riga" style="--i:0"><span>Explore</span></span><span class="riga" style="--i:1"><span>the worker bee</span></span></h2>
+        <p class="racconto" data-rivela style="--i:2">Turn it any way you like and tap the numbered points: every part of its body has a precise job in bringing nectar all the way to the jar.</p>
+      </div>
+      <div class="ape3d" data-ape3d>
+        <div class="ape3d__scena">
+          <img class="ape3d__statica" src="/img/ape3d/ape-statica.webp" alt="A worker bee rebuilt in 3D, seen in three-quarter view" width="1200" height="900" loading="lazy">
+          <button type="button" class="ape3d__punto" data-parte="occhi" aria-label="Compound eyes">1</button>
+          <button type="button" class="ape3d__punto" data-parte="antenne" aria-label="Antennae">2</button>
+          <button type="button" class="ape3d__punto" data-parte="ligula" aria-label="Tongue (ligula)">3</button>
+          <button type="button" class="ape3d__punto" data-parte="peli" aria-label="Hairs">4</button>
+          <button type="button" class="ape3d__punto" data-parte="ali" aria-label="Wings">5</button>
+          <button type="button" class="ape3d__punto" data-parte="cestella" aria-label="Pollen basket">6</button>
+          <button type="button" class="ape3d__punto" data-parte="addome" aria-label="Abdomen">7</button>
+          <button type="button" class="ape3d__punto" data-parte="pungiglione" aria-label="Sting">8</button>
+          <p class="ape3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Tap the bee to rotate it</span><span class="ape3d__aiuto-mouse">Drag to rotate · scroll to zoom</span></p>
+        </div>
+        <div class="ape3d__pannello">
+          <ol class="ape3d__elenco">
+            <li><button type="button" data-scegli="occhi" aria-pressed="false"><span class="ape3d__n">1</span>Compound eyes</button></li>
+            <li><button type="button" data-scegli="antenne" aria-pressed="false"><span class="ape3d__n">2</span>Antennae</button></li>
+            <li><button type="button" data-scegli="ligula" aria-pressed="false"><span class="ape3d__n">3</span>Tongue (ligula)</button></li>
+            <li><button type="button" data-scegli="peli" aria-pressed="false"><span class="ape3d__n">4</span>Hairs</button></li>
+            <li><button type="button" data-scegli="ali" aria-pressed="false"><span class="ape3d__n">5</span>Wings</button></li>
+            <li><button type="button" data-scegli="cestella" aria-pressed="false"><span class="ape3d__n">6</span>Pollen basket</button></li>
+            <li><button type="button" data-scegli="addome" aria-pressed="false"><span class="ape3d__n">7</span>Abdomen</button></li>
+            <li><button type="button" data-scegli="pungiglione" aria-pressed="false"><span class="ape3d__n">8</span>Sting</button></li>
+          </ol>
+          <div class="ape3d__scheda" aria-live="polite">
+            <p class="ape3d__invito" data-scheda="">Choose a part of the body to find out what it does.</p>
+            <article class="ape3d__testo" data-scheda="occhi" hidden><h3>Compound eyes</h3><p>Each eye is made of thousands of tiny lenses called ommatidia. Bees see ultraviolet but not red: many flowers carry ultraviolet patterns, invisible to us, that show them where the nectar is. On its forehead the bee also has three simple eyes, the ocelli, which measure light.</p></article>
+            <article class="ape3d__testo" data-scheda="antenne" hidden><h3>Antennae</h3><p>They are its nose and its fingers. With thousands of sensors it recognises the scent of flowers, its hive mates and the queen's chemical messages. The elbow lets it point them in any direction.</p></article>
+            <article class="ape3d__testo" data-scheda="ligula" hidden><h3>Tongue (ligula)</h3><p>A hairy tongue, about 6 millimetres long, that stays folded under the head at rest. It stretches out to suck nectar from deep inside flowers: watch it come out.</p></article>
+            <article class="ape3d__testo" data-scheda="peli" hidden><h3>Hairs</h3><p>The body is covered in branched hairs, like tiny feathers. In flight the bee builds up static electricity and pollen sticks to it: moving from flower to flower, it carries the pollen and pollinates them.</p></article>
+            <article class="ape3d__testo" data-scheda="ali" hidden><h3>Wings</h3><p>There are four: in flight they hook together in pairs with a row of tiny hooks and beat more than 200 times a second. That beat is what makes the buzz. Inside the hive, bees fan their wings to evaporate water from the nectar.</p></article>
+            <article class="ape3d__testo" data-scheda="cestella" hidden><h3>Pollen basket</h3><p>On the hind legs there is a small hollow ringed with stiff hairs. The bee brushes pollen off its body, kneads it with a little nectar and carries it home in two pellets. Their colour changes with the flower.</p></article>
+            <article class="ape3d__testo" data-scheda="addome" hidden><h3>Abdomen</h3><p>Inside is the honey stomach, a special crop where the bee carries nectar and starts transforming it by adding enzymes. Under the abdomen, wax glands produce the flakes used to build the combs.</p></article>
+            <article class="ape3d__testo" data-scheda="pungiglione" hidden><h3>Sting</h3><p>Only females have one. The worker's sting is barbed: if it stings a mammal's skin it stays stuck and the bee dies. That is why it only stings to defend the hive.</p></article>
+          </div>
+        </div>
+      </div>
+      <p class="ape3d__nota">An illustrative model of an Italian (ligustica) worker bee, built by us: proportions are simplified.</p>
+    </div>
+  </section>
+  <script type="module">
+    const box = document.querySelector('[data-ape3d]');
+    const schede = [...box.querySelectorAll('[data-scheda]')], scelte = [...box.querySelectorAll('[data-scegli]')];
+    let ape = null;
+    const mostra = (parte) => {
+      schede.forEach(s => { s.hidden = s.dataset.scheda !== parte; });
+      scelte.forEach(b => b.setAttribute('aria-pressed', b.dataset.scegli === parte ? 'true' : 'false'));
+    };
+    scelte.forEach(b => b.addEventListener('click', () => { mostra(b.dataset.scegli); if (ape) ape.seleziona(b.dataset.scegli); }));
+    const gl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+    if (gl) new IntersectionObserver((voci, oss) => {
+      if (!voci[0].isIntersecting) return;
+      oss.disconnect();
+      import('/js/ape3d.js').then(m => { ape = m.avvia(box.querySelector('.ape3d__scena'), { onSeleziona: mostra }); }).catch(() => {});
+    }, { rootMargin: '300px' }).observe(box);
+  </script>
+
   <section class="capitolo" aria-labelledby="titolo-ciclo">
     <div class="contenitore">
       <div class="capitolo__testa">

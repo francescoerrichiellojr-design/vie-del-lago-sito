@@ -170,6 +170,70 @@
     </div>
   </section>
 
+  <section class="capitolo capitolo--salvia" id="esplora" aria-labelledby="titolo-ape3d">
+    <div class="contenitore">
+      <div class="capitolo__testa">
+        <p class="etichetta" data-rivela>Da vicino</p>
+        <h2 class="titolo titolo--medio" id="titolo-ape3d" data-rivela><span class="riga" style="--i:0"><span>Esplora</span></span><span class="riga" style="--i:1"><span>l'ape operaia</span></span></h2>
+        <p class="racconto" data-rivela style="--i:2">Girala come vuoi e tocca i punti numerati: ogni parte del corpo ha un compito preciso nel portare il nettare fino al vasetto.</p>
+      </div>
+      <div class="ape3d" data-ape3d>
+        <div class="ape3d__scena">
+          <img class="ape3d__statica" src="img/ape3d/ape-statica.webp" alt="Un'ape operaia ricostruita in 3D, vista di tre quarti" width="1200" height="900" loading="lazy">
+          <button type="button" class="ape3d__punto" data-parte="occhi" aria-label="Occhi composti">1</button>
+          <button type="button" class="ape3d__punto" data-parte="antenne" aria-label="Antenne">2</button>
+          <button type="button" class="ape3d__punto" data-parte="ligula" aria-label="Ligula">3</button>
+          <button type="button" class="ape3d__punto" data-parte="peli" aria-label="Peli">4</button>
+          <button type="button" class="ape3d__punto" data-parte="ali" aria-label="Ali">5</button>
+          <button type="button" class="ape3d__punto" data-parte="cestella" aria-label="Cestella del polline">6</button>
+          <button type="button" class="ape3d__punto" data-parte="addome" aria-label="Addome">7</button>
+          <button type="button" class="ape3d__punto" data-parte="pungiglione" aria-label="Pungiglione">8</button>
+          <p class="ape3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Tocca l'ape per ruotarla</span><span class="ape3d__aiuto-mouse">Trascina per ruotare · rotella per ingrandire</span></p>
+        </div>
+        <div class="ape3d__pannello">
+          <ol class="ape3d__elenco">
+            <li><button type="button" data-scegli="occhi" aria-pressed="false"><span class="ape3d__n">1</span>Occhi composti</button></li>
+            <li><button type="button" data-scegli="antenne" aria-pressed="false"><span class="ape3d__n">2</span>Antenne</button></li>
+            <li><button type="button" data-scegli="ligula" aria-pressed="false"><span class="ape3d__n">3</span>Ligula</button></li>
+            <li><button type="button" data-scegli="peli" aria-pressed="false"><span class="ape3d__n">4</span>Peli</button></li>
+            <li><button type="button" data-scegli="ali" aria-pressed="false"><span class="ape3d__n">5</span>Ali</button></li>
+            <li><button type="button" data-scegli="cestella" aria-pressed="false"><span class="ape3d__n">6</span>Cestella del polline</button></li>
+            <li><button type="button" data-scegli="addome" aria-pressed="false"><span class="ape3d__n">7</span>Addome</button></li>
+            <li><button type="button" data-scegli="pungiglione" aria-pressed="false"><span class="ape3d__n">8</span>Pungiglione</button></li>
+          </ol>
+          <div class="ape3d__scheda" aria-live="polite">
+            <p class="ape3d__invito" data-scheda="">Scegli una parte del corpo per scoprire a cosa serve.</p>
+            <article class="ape3d__testo" data-scheda="occhi" hidden><h3>Occhi composti</h3><p>Ogni occhio è formato da migliaia di piccole lenti, gli ommatidi. L'ape vede l'ultravioletto ma non il rosso: molti fiori hanno disegni ultravioletti, invisibili per noi, che le indicano dove si trova il nettare. Sulla fronte ha anche tre occhi semplici, gli ocelli, che misurano la luce.</p></article>
+            <article class="ape3d__testo" data-scheda="antenne" hidden><h3>Antenne</h3><p>Sono il suo naso e le sue dita. Con migliaia di sensori riconosce il profumo dei fiori, le compagne dell'alveare e i messaggi chimici della regina. Il gomito le permette di orientarle in ogni direzione.</p></article>
+            <article class="ape3d__testo" data-scheda="ligula" hidden><h3>Ligula</h3><p>Una lingua pelosa, lunga circa 6 millimetri, che a riposo resta ripiegata sotto la testa. Si distende per succhiare il nettare dal fondo dei fiori: guardala uscire.</p></article>
+            <article class="ape3d__testo" data-scheda="peli" hidden><h3>Peli</h3><p>Il corpo è coperto di peli ramificati, come piccole piume. In volo l'ape si carica di elettricità statica e il polline le resta attaccato addosso: passando da un fiore all'altro, lo trasporta e li impollina.</p></article>
+            <article class="ape3d__testo" data-scheda="ali" hidden><h3>Ali</h3><p>Sono quattro: in volo si agganciano a coppie grazie a una fila di minuscoli uncini e battono oltre 200 volte al secondo. È quel battito a produrre il ronzio. Nell'arnia le api ventilano con le ali per far evaporare l'acqua dal nettare.</p></article>
+            <article class="ape3d__testo" data-scheda="cestella" hidden><h3>Cestella del polline</h3><p>Sulle zampe posteriori c'è una piccola conca circondata da peli rigidi. L'ape spazzola il polline dal corpo, lo impasta con un po' di nettare e lo porta a casa in due palline. Il colore cambia a seconda del fiore.</p></article>
+            <article class="ape3d__testo" data-scheda="addome" hidden><h3>Addome</h3><p>Dentro c'è la borsa melaria, uno stomaco speciale dove l'ape trasporta il nettare e comincia a trasformarlo aggiungendo enzimi. Sotto l'addome, le ghiandole della cera producono le scaglie con cui si costruiscono i favi.</p></article>
+            <article class="ape3d__testo" data-scheda="pungiglione" hidden><h3>Pungiglione</h3><p>Lo hanno solo le femmine. Quello dell'operaia è seghettato: se punge la pelle di un mammifero resta conficcato e l'ape muore. Per questo punge solo per difendere l'alveare.</p></article>
+          </div>
+        </div>
+      </div>
+      <p class="ape3d__nota">Modello illustrativo di un'operaia di ape ligustica, costruito da noi: proporzioni semplificate.</p>
+    </div>
+  </section>
+  <script type="module">
+    const box = document.querySelector('[data-ape3d]');
+    const schede = [...box.querySelectorAll('[data-scheda]')], scelte = [...box.querySelectorAll('[data-scegli]')];
+    let ape = null;
+    const mostra = (parte) => {
+      schede.forEach(s => { s.hidden = s.dataset.scheda !== parte; });
+      scelte.forEach(b => b.setAttribute('aria-pressed', b.dataset.scegli === parte ? 'true' : 'false'));
+    };
+    scelte.forEach(b => b.addEventListener('click', () => { mostra(b.dataset.scegli); if (ape) ape.seleziona(b.dataset.scegli); }));
+    const gl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+    if (gl) new IntersectionObserver((voci, oss) => {
+      if (!voci[0].isIntersecting) return;
+      oss.disconnect();
+      import('/js/ape3d.js').then(m => { ape = m.avvia(box.querySelector('.ape3d__scena'), { onSeleziona: mostra }); }).catch(() => {});
+    }, { rootMargin: '300px' }).observe(box);
+  </script>
+
   <section class="capitolo" aria-labelledby="titolo-ciclo">
     <div class="contenitore">
       <div class="capitolo__testa">

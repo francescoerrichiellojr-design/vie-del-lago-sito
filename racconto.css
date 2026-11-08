@@ -546,3 +546,44 @@ a{color:inherit}
 .info-acquisto p{font-size:15px}
 .legale__sezione ul{margin:0 0 16px;padding-left:1.1em;color:var(--grigio)}
 .legale__sezione li+li{margin-top:6px}
+
+/* ── Ape 3D (pagina Le api) ── */
+.ape3d{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(24px,3vw,48px);align-items:center;margin-top:clamp(32px,4vw,56px)}
+.ape3d__scena{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:radial-gradient(ellipse at 50% 58%,#E2E0D2 0%,var(--salvia) 70%)}
+.ape3d__scena canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;outline:none}
+.ape3d__scena canvas:active{cursor:grabbing}
+.ape3d__statica{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .5s}
+.ape3d--pronta .ape3d__statica{opacity:0;pointer-events:none}
+.ape3d__punto{position:absolute;left:0;top:0;display:none;width:32px;height:32px;padding:0;border:2px solid #F2F0E6;border-radius:50%;background:var(--miele);color:#F2F0E6;font-family:inherit;font-size:13px;font-weight:600;line-height:28px;cursor:pointer;box-shadow:0 2px 8px rgba(30,26,18,.25);transition:opacity .25s,background .2s;will-change:transform}
+.ape3d--pronta .ape3d__punto{display:block}
+.ape3d__punto::after{content:"";position:absolute;inset:-8px;border-radius:50%}
+.ape3d__punto:hover,.ape3d__punto[aria-pressed=true]{background:var(--terra)}
+.ape3d__punto.nascosto{opacity:.18;pointer-events:none}
+.ape3d__punto:focus-visible,.ape3d__elenco button:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+.ape3d__aiuto{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);margin:0;padding:7px 14px;border-radius:99px;background:rgba(30,26,18,.72);color:#F2F0E6;font-size:13px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .3s}
+.ape3d--pronta .ape3d__aiuto{opacity:1}
+.ape3d--attiva .ape3d__aiuto,.ape3d--toccata .ape3d__aiuto{opacity:0}
+.ape3d__aiuto-tocco{display:none}
+@media (pointer:coarse){.ape3d__aiuto-tocco{display:inline}.ape3d__aiuto-mouse{display:none}}
+.ape3d__elenco{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
+.ape3d__elenco button{display:flex;align-items:center;gap:10px;width:100%;padding:8px 0;border:0;background:none;color:var(--terra);font:inherit;font-size:15px;text-align:left;cursor:pointer}
+.ape3d__n{flex:none;display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--miele);color:var(--miele);font-size:12px;font-weight:600;transition:background .2s,color .2s}
+.ape3d__elenco button:hover .ape3d__n,.ape3d__elenco [aria-pressed=true] .ape3d__n{background:var(--miele);color:#F2F0E6}
+.ape3d__elenco [aria-pressed=true]{font-weight:600}
+.ape3d__scheda{min-height:10.5em;padding-top:18px;border-top:1px solid rgba(30,26,18,.18)}
+.ape3d__scheda h3{margin:0 0 8px;font-family:var(--display);font-weight:400;font-size:clamp(26px,2.2vw,32px);line-height:1.05}
+.ape3d__scheda p{margin:0;font-size:16px;line-height:1.55;color:var(--grigio)}
+.ape3d__invito{font-family:var(--serif);font-style:italic;font-size:19px!important}
+.ape3d__nota{margin:18px 0 0;font-size:13px;color:var(--grigio)}
+@media (max-width:860px){.ape3d{grid-template-columns:1fr}.ape3d__scena{aspect-ratio:1/1}}
+@media (max-width:420px){.ape3d__elenco{grid-template-columns:1fr 1fr;gap:2px 10px}.ape3d__elenco button{font-size:14px}}
+/* richiamo all'ape 3D nella home */
+.richiamo-ape{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:clamp(16px,3vw,48px);margin-top:clamp(56px,7vw,96px);padding:clamp(16px,2.6vw,36px);border:1px solid rgba(216,214,196,.22);border-radius:4px;color:inherit;text-decoration:none;transition:border-color .3s,background .3s}
+.richiamo-ape:hover{border-color:rgba(216,214,196,.55);background:rgba(255,255,255,.03)}
+.richiamo-ape img{display:block;width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.richiamo-ape:hover img{transform:scale(1.04) rotate(-1.5deg)}
+.richiamo-ape__testo{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.richiamo-ape__titolo{font-family:var(--display);font-size:clamp(30px,3.4vw,50px);line-height:1.04;color:var(--chiaro)}
+.richiamo-ape__sotto{font-size:17px;line-height:1.5;color:var(--chiaro-2);max-width:34ch}
+.richiamo-ape .btn{margin-top:6px}
+@media (max-width:760px){.richiamo-ape{grid-template-columns:1fr}.richiamo-ape img{max-width:420px;margin:0 auto}}
