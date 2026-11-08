@@ -1117,4 +1117,8 @@ T = {
 "Dentro c'è la borsa melaria, uno stomaco speciale dove l'ape trasporta il nettare e comincia a trasformarlo aggiungendo enzimi. Sotto l'addome, le ghiandole della cera producono le scaglie con cui si costruiscono i favi.": 'Inside is the honey stomach, a special crop where the bee carries nectar and starts transforming it by adding enzymes. Under the abdomen, wax glands produce the flakes used to build the combs.',
 "Lo hanno solo le femmine. Quello dell'operaia è seghettato: se punge la pelle di un mammifero resta conficcato e l'ape muore. Per questo punge solo per difendere l'alveare.": "Only females have one. The worker's sting is barbed: if it stings a mammal's skin it stays stuck and the bee dies. That is why it only stings to defend the hive.",
 "Modello illustrativo di un'operaia di ape ligustica, costruito da noi: proporzioni semplificate.": 'An illustrative model of an Italian (ligustica) worker bee, built by us: proportions are simplified.',
+
+# ───────── Richiamo ape 3D in home
+"Esplora l'ape operaia in 3D": 'Explore the worker bee in 3D',
+'Girala, ingrandiscila e scopri a cosa serve ogni parte del suo corpo, dagli occhi alla cestella del polline.': 'Turn it, zoom in and find out what every part of its body does, from the eyes to the pollen basket.',
 }

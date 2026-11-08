@@ -27,9 +27,18 @@ function ellissoide(sx, sy, sz, seg = 40) {
   return g;
 }
 
-function segmento(a, b, r0, r1, mat, piatto = 1) {
-  const d = new THREE.Vector3().subVectors(b, a);
-  const g = new THREE.CylinderGeometry(r1, r0, d.length(), 12, 1);
+function segmento(a, b, r0, r1, mat, piatto = 1, gonfio = 0) {
+  const d = new THREE.Vector3().subVectors(b, a), L = d.length();
+  let g;
+  if (gonfio) {
+    const pts = [];
+    for (let i = 0; i <= 14; i++) {
+      const t = i / 14, r = (r0 + (r1 - r0) * t) * (0.78 + 0.22 * Math.sin(Math.PI * Math.min(1, t * 1.15)) + gonfio * Math.sin(Math.PI * t));
+      pts.push(new THREE.Vector2(Math.max(r, 0.004), -L / 2 + t * L));
+    }
+    g = new THREE.LatheGeometry(pts, 14);
+  } else g = new THREE.CylinderGeometry(r1, r0, L, 12, 1);
+  g.userData = { L };
   g.scale(piatto, 1, 1);
   const m = new THREE.Mesh(g, mat);
   m.position.copy(a).add(b).multiplyScalar(0.5);
@@ -37,14 +46,23 @@ function segmento(a, b, r0, r1, mat, piatto = 1) {
   return m;
 }
 
+function peloCurvo() {
+  const pos = [], idx = [], A = [0, 2.094, 4.189];
+  const anello = (y, r) => A.forEach(a => pos.push(0.32 * y * y + Math.cos(a) * r, y, Math.sin(a) * r));
+  anello(0, 1); anello(0.55, 0.6); pos.push(0.32, 1, 0);
+  for (let k = 0; k < 3; k++) { const n = (k + 1) % 3; idx.push(k, n, 3 + k, n, 3 + n, 3 + k, 3 + k, 3 + n, 6); }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx); g.computeVertexNormals();
+  return g;
+}
+
 // peli: tanti coni sottilissimi, orientati lungo la normale e piegati all'indietro
 function peli(punti, colori, materiale) {
-  const g = new THREE.ConeGeometry(1, 1, 4, 1, true);
-  g.translate(0, 0.5, 0);
+  const g = peloCurvo();
   const im = new THREE.InstancedMesh(g, materiale, punti.length);
-  const m = new THREE.Matrix4(), q = new THREE.Quaternion(), s = new THREE.Vector3(), c = new THREE.Color();
+  const m = new THREE.Matrix4(), q = new THREE.Quaternion(), qr = new THREE.Quaternion(), s = new THREE.Vector3(), c = new THREE.Color(), Y = V(0, 1, 0);
   punti.forEach((p, i) => {
-    q.setFromUnitVectors(V(0, 1, 0), p.dir);
+    q.setFromUnitVectors(Y, p.dir).multiply(qr.setFromAxisAngle(Y, p.v * 6.283 * 7.3));
     s.set(p.r, p.len, p.r);
     m.compose(p.pos, q, s);
     im.setMatrixAt(i, m);
@@ -166,7 +184,7 @@ function zampa(punti, seg, tarsoMat, peliOut, rand) {
   for (let i = 0; i < punti.length - 1; i++) {
     let [r0, r1, mat, piatto = 1, dens = 0, lp = 0.08] = seg[i]; r0 *= 1.25; r1 *= 1.25;
     const a = punti[i], b = punti[i + 1];
-    g.add(segmento(a, b, r0, r1, mat, piatto));
+    g.add(segmento(a, b, r0, r1, mat, piatto, 0.16));
     const j = new THREE.Mesh(new THREE.SphereGeometry(Math.min(r0, r1) * 1.02, 12, 10), mat); j.position.copy(b); g.add(j);
     // peli: escono in tutte le direzioni dal segmento, un po' verso il basso e verso la punta
     const ax = new THREE.Vector3().subVectors(b, a), L = ax.length(); ax.normalize();
@@ -209,7 +227,7 @@ export function costruisciApe() {
   const TC = V(0.45, 0.05, 0), TS = V(0.55, 0.5, 0.48);
   const torace = new THREE.Mesh(ellissoide(TS.x, TS.y, TS.z), cut); torace.position.copy(TC); ape.add(torace); corpo.push(torace);
   const scut = new THREE.Mesh(ellissoide(0.17, 0.1, 0.26), cut); scut.position.set(0.0, 0.36, 0); ape.add(scut);
-  ape.add(peli(puntiSuEllissoide(11000, TC, TS.clone().multiplyScalar(0.99), 0.14, null, rand, 0.22), ORO, peloMat));
+  ape.add(peli(puntiSuEllissoide(9500, TC, TS.clone().multiplyScalar(0.99), 0.14, null, rand, 0.22), ORO, peloMat));
   ape.add(peli(puntiSuEllissoide(700, V(0.0, 0.36, 0), V(0.17, 0.1, 0.26), 0.1, d => d.y > -0.2, rand, 0.35), ORO, peloMat));
 
   // peziolo e addome
@@ -220,7 +238,7 @@ export function costruisciApe() {
   add.rotation.z = -Math.PI / 2; gAdd.add(add); corpo.push(add);
   // peluria su tutto l'addome: dorata davanti, bruna sui segmenti scuri, fasce chiare all'inizio di ogni tergite
   const pDav = [], pDie = [];
-  for (let i = 0; i < 9000; i++) {
+  for (let i = 0; i < 8000; i++) {
     const t = 0.03 + rand() * 0.95, s = (t * ADDOME.N) % 1, seg = Math.floor(t * ADDOME.N), phi = rand() * Math.PI * 2, r = raggioAddome(t);
     const pos = V(-t * ADDOME.L, Math.cos(phi) * r * 0.99, Math.sin(phi) * r * 0.99);
     const dir = V(-0.9 - rand() * 0.4, Math.cos(phi), Math.sin(phi)).add(V(0, rand() - .5, rand() - .5).multiplyScalar(0.3)).normalize();
