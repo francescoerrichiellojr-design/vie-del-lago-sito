@@ -11,12 +11,12 @@ const COL = {
   cuticola: 0x241a12,
   zampe: 0x2a1f16,
   occhio: 0x17110d,
-  ambra: 0xc0802e,
-  ambraScuro: 0x8a5520,
-  banda: 0x2a1c12,
+  ambra: 0xcf7a20,
+  ambraScuro: 0x9a5418,
+  banda: 0x3a2412,
   peloTorace: [0xc49455, 0xd8b077, 0xa77a41],
   peloTesta: [0x9c7a4f, 0xb79466, 0x6f5638],
-  peloAddome: [0xd9c49a, 0xc9b183],
+  peloAddome: [0xd9a33a, 0xc99030],
   polline: 0xe3a136,
 };
 
@@ -87,7 +87,7 @@ function addome() {
   const amb = new THREE.Color(COL.ambra), ambS = new THREE.Color(COL.ambraScuro), ban = new THREE.Color(COL.banda), pel = new THREE.Color(COL.peloAddome[0]);
   for (let i = 0; i < pos.count; i++) {
     const t = -pos.getY(i) / ADDOME.L, s = (t * ADDOME.N) % 1, seg = Math.floor(t * ADDOME.N);
-    if (seg <= 2) c.copy(amb).lerp(ambS, seg * 0.25);   // ligustica: tre bande ambrate
+    if (seg <= 1) c.copy(amb).lerp(ambS, seg * 0.3); else if (seg === 2) c.copy(ambS).lerp(ban, 0.45);   // ligustica: tre bande ambrate
     else c.copy(ban).lerp(ambS, 0.12);
     if (s > 0.72) c.lerp(ban, Math.min(1, (s - 0.72) / 0.12));                 // margine scuro del tergite
     if (s < 0.16 && seg >= 1 && seg <= 4) c.lerp(pel, 0.55 * (1 - s / 0.16));  // fascia di peli chiari
@@ -103,7 +103,9 @@ function texturaAla(ant) {
   cv.width = W; cv.height = H;
   const x = cv.getContext('2d');
   x.clearRect(0, 0, W, H);
-  x.strokeStyle = 'rgba(60,42,26,1)'; x.lineCap = 'round'; x.lineJoin = 'round';
+  x.fillStyle = 'rgba(214,160,70,0.28)'; x.fillRect(0, 0, W, H);
+  for (let i = 0; i < 2600; i++) { x.fillStyle = 'rgba(150,100,40,0.18)'; x.fillRect(Math.random() * W, Math.random() * H, 1.5, 1.5); }
+  x.strokeStyle = 'rgba(112,62,24,1)'; x.lineCap = 'round'; x.lineJoin = 'round';
   const L = (w, pts) => { x.lineWidth = w; x.beginPath(); pts.forEach(([a, b], i) => (i ? x.lineTo(a * W, b * H) : x.moveTo(a * W, b * H))); x.stroke(); };
   if (ant) {
     L(7, [[0, .5], [.12, .2], [.45, .1], [.66, .13]]);            // costa
@@ -147,150 +149,163 @@ function formaAla(L, W, ant) {
 
 function ala(L, W, ant) {
   const m = new THREE.MeshPhysicalMaterial({
-    color: 0xf3ecdc, map: texturaAla(ant), transparent: true, opacity: 1, roughness: 0.25, metalness: 0,
+    color: 0xffffff, map: texturaAla(ant), transparent: true, opacity: 1, roughness: 0.22, metalness: 0,
     side: THREE.DoubleSide, depthWrite: false, iridescence: 0.9, iridescenceIOR: 1.35, iridescenceThicknessRange: [180, 520],
   });
   // membrana leggermente velata dietro le nervature
-  const veli = new THREE.MeshPhysicalMaterial({ color: 0xd9d2c0, transparent: true, opacity: 0.38, roughness: 0.2, side: THREE.DoubleSide, depthWrite: false, iridescence: 1, iridescenceIOR: 1.3, iridescenceThicknessRange: [200, 600] });
+  const veli = new THREE.MeshPhysicalMaterial({ color: 0xe9b863, transparent: true, opacity: 0.22, roughness: 0.2, side: THREE.DoubleSide, depthWrite: false, iridescence: 1, iridescenceIOR: 1.3, iridescenceThicknessRange: [200, 600] });
   const geo = formaAla(L, W, ant), gr = new THREE.Group();
   gr.add(new THREE.Mesh(geo, veli), new THREE.Mesh(geo, m));
   return gr;
 }
 
 // ---------- zampe ----------
-function zampa(punti, raggi, mat, opzioni = {}) {
+// punti: articolazioni; seg: per ogni segmento [raggio0, raggio1, materiale, piatto, densità peli, lunghezza peli]
+function zampa(punti, seg, tarsoMat, peliOut, rand) {
   const g = new THREE.Group();
   for (let i = 0; i < punti.length - 1; i++) {
-    const piatto = opzioni.piatte && opzioni.piatte.includes(i) ? 1.55 : 1;
-    const s = segmento(punti[i], punti[i + 1], raggi[i], raggi[i + 1] * (opzioni.allarga && opzioni.allarga.includes(i) ? 1.35 : 1), mat, piatto);
-    g.add(s);
-    const j = new THREE.Mesh(new THREE.SphereGeometry(raggi[i + 1] * 1.05, 12, 10), mat);
-    j.position.copy(punti[i + 1]); g.add(j);
+    let [r0, r1, mat, piatto = 1, dens = 0, lp = 0.08] = seg[i]; r0 *= 1.25; r1 *= 1.25;
+    const a = punti[i], b = punti[i + 1];
+    g.add(segmento(a, b, r0, r1, mat, piatto));
+    const j = new THREE.Mesh(new THREE.SphereGeometry(Math.min(r0, r1) * 1.02, 12, 10), mat); j.position.copy(b); g.add(j);
+    // peli: escono in tutte le direzioni dal segmento, un po' verso il basso e verso la punta
+    const ax = new THREE.Vector3().subVectors(b, a), L = ax.length(); ax.normalize();
+    const u = new THREE.Vector3().crossVectors(ax, V(0, 1, 0)); if (u.lengthSq() < 1e-4) u.set(1, 0, 0); u.normalize();
+    const w = new THREE.Vector3().crossVectors(ax, u).normalize();
+    const n = Math.round(dens * L);
+    for (let k = 0; k < n; k++) {
+      const t = rand(), phi = rand() * Math.PI * 2, r = (r0 + (r1 - r0) * t);
+      const rad = u.clone().multiplyScalar(Math.cos(phi) * piatto).addScaledVector(w, Math.sin(phi)).normalize();
+      const pos = a.clone().addScaledVector(ax, t * L).addScaledVector(rad, r * 0.9);
+      const dir = rad.clone().multiplyScalar(0.85).addScaledVector(ax, 0.45).add(V(0, -0.25, 0)).add(V(rand() - .5, rand() - .5, rand() - .5).multiplyScalar(0.35)).normalize();
+      peliOut.push({ pos, dir, len: lp * (0.6 + rand() * 0.7), r: 0.0035 + rand() * 0.002, v: rand() });
+    }
   }
-  // tarsi finali: cinque piccoli segmenti e due unghie
+  // tarsi finali: quattro piccoli segmenti e due unghie
   const a = punti[punti.length - 2], b = punti[punti.length - 1], d = new THREE.Vector3().subVectors(b, a).normalize();
   let p = b.clone();
-  for (let k = 0; k < 4; k++) { const q = p.clone().addScaledVector(d, 0.07).add(V(0, -0.012, 0)); g.add(segmento(p, q, 0.017, 0.015, mat)); p = q; }
-  g.add(segmento(p, p.clone().add(V(d.x * .04, -.05, .025)), 0.008, 0.003, mat), segmento(p, p.clone().add(V(d.x * .04, -.05, -.025)), 0.008, 0.003, mat));
+  for (let k = 0; k < 4; k++) { const q = p.clone().addScaledVector(d, 0.04).add(V(0, -0.012, 0)); g.add(segmento(p, q, 0.028 - k * .002, 0.024 - k * .002, tarsoMat)); const jj = new THREE.Mesh(new THREE.SphereGeometry(0.026 - k * .002, 10, 8), tarsoMat); jj.position.copy(q); g.add(jj); p = q; }
+  g.add(segmento(p, p.clone().add(V(d.x * .04, -.05, .028)), 0.009, 0.003, tarsoMat), segmento(p, p.clone().add(V(d.x * .04, -.05, -.028)), 0.009, 0.003, tarsoMat));
   return g;
 }
 
+const ORO = [0xe2aa24, 0xd69b1c, 0xf0c03e, 0xc48a16, 0xe8b430, 0x6a4818];   // l'ultimo è il sottopelo scuro
+const ORO_SCURO = [0x8a6424, 0x6b4a1e, 0xa87c2c, 0x4e3416, 0xc89a34];
+
 // ---------- l'ape ----------
 export function costruisciApe() {
-  const rand = rng(20260708);
+  const rand = rng(20261108);
   const ape = new THREE.Group();
-  const cut = new THREE.MeshPhysicalMaterial({ color: COL.cuticola, roughness: 0.55, clearcoat: 0.35, clearcoatRoughness: 0.5, sheen: 0.6, sheenColor: new THREE.Color(0x6b5236), sheenRoughness: 0.6 });
-  const legMat = new THREE.MeshPhysicalMaterial({ color: COL.zampe, roughness: 0.5, clearcoat: 0.4, clearcoatRoughness: 0.45 });
-  const peloMat = new THREE.MeshStandardMaterial({ roughness: 0.85, metalness: 0 });
-  const corpo = [];   // mesh usate per capire se un punto è nascosto
+  const mat = (color, o = {}) => new THREE.MeshPhysicalMaterial({ color, roughness: 0.6, ...o });
+  const cut = mat(0x3a2816, { roughness: 0.75 });
+  const nero = mat(0x2a1a10, { roughness: 0.4, clearcoat: 0.6, clearcoatRoughness: 0.35 });
+  const rosso = mat(0x9c4422, { roughness: 0.38, clearcoat: 0.7, clearcoatRoughness: 0.3 });
+  const arancio = mat(0xc4602a, { roughness: 0.4, clearcoat: 0.6, clearcoatRoughness: 0.3 });
+  const tarso = mat(0xd2722e, { roughness: 0.45, clearcoat: 0.5 });
+  const peloMat = new THREE.MeshStandardMaterial({ roughness: 0.75, metalness: 0 });
+  const corpo = [];
 
-  // torace
+  // torace: base scura sotto una pelliccia dorata fitta
   const TC = V(0.45, 0.05, 0), TS = V(0.55, 0.5, 0.48);
   const torace = new THREE.Mesh(ellissoide(TS.x, TS.y, TS.z), cut); torace.position.copy(TC); ape.add(torace); corpo.push(torace);
-  // scutello, la piccola gobba dietro il torace
   const scut = new THREE.Mesh(ellissoide(0.17, 0.1, 0.26), cut); scut.position.set(0.0, 0.36, 0); ape.add(scut);
-  ape.add(peli(puntiSuEllissoide(500, V(0.0, 0.36, 0), V(0.17, 0.1, 0.26), 0.07, d => d.y > -0.2, rand, 0.4), COL.peloTorace, peloMat));
-  ape.add(peli(puntiSuEllissoide(7000, TC, TS.clone().multiplyScalar(0.99), 0.1, null, rand, 0.3), COL.peloTorace, peloMat));
+  ape.add(peli(puntiSuEllissoide(11000, TC, TS.clone().multiplyScalar(0.99), 0.14, null, rand, 0.22), ORO, peloMat));
+  ape.add(peli(puntiSuEllissoide(700, V(0.0, 0.36, 0), V(0.17, 0.1, 0.26), 0.1, d => d.y > -0.2, rand, 0.35), ORO, peloMat));
 
   // peziolo e addome
   const pez = new THREE.Mesh(ellissoide(0.12, 0.1, 0.11, 20), cut); pez.position.set(-0.12, -0.02, 0); ape.add(pez);
-  const addomeMat = new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.62, clearcoat: 0.2, clearcoatRoughness: 0.55, sheen: 0.5, sheenColor: new THREE.Color(0xe0c08a), sheenRoughness: 0.5 });
+  const addomeMat = new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.5, clearcoat: 0.35, clearcoatRoughness: 0.4, sheen: 0.7, sheenColor: new THREE.Color(0xe8b040), sheenRoughness: 0.45 });
   const add = new THREE.Mesh(addome(), addomeMat);
   const gAdd = new THREE.Group(); gAdd.position.set(-0.16, -0.02, 0); gAdd.rotation.z = 0.24; ape.add(gAdd);
-  add.rotation.z = -Math.PI / 2;   // asse dell'addome lungo -x
-  gAdd.add(add); corpo.push(add);
-  // peli corti sulle fasce chiare dell'addome
-  const pAdd = [];
-  for (let i = 0; i < 2600; i++) {
-    const fascia = rand() < 0.6, seg = fascia ? 1 + Math.floor(rand() * 4) : Math.floor(rand() * 6), t = (seg + rand() * (fascia ? 0.15 : 0.9)) / ADDOME.N, phi = rand() * Math.PI * 2, r = raggioAddome(t);
-    const pos = V(-t * ADDOME.L, Math.cos(phi) * r, Math.sin(phi) * r);
-    const dir = V(-0.6, Math.cos(phi), Math.sin(phi)).normalize();
-    pAdd.push({ pos, dir, len: fascia ? 0.045 + rand() * 0.03 : 0.02 + rand() * 0.02, r: fascia ? 0.0045 : 0.003, v: rand() });
+  add.rotation.z = -Math.PI / 2; gAdd.add(add); corpo.push(add);
+  // peluria su tutto l'addome: dorata davanti, bruna sui segmenti scuri, fasce chiare all'inizio di ogni tergite
+  const pDav = [], pDie = [];
+  for (let i = 0; i < 9000; i++) {
+    const t = 0.03 + rand() * 0.95, s = (t * ADDOME.N) % 1, seg = Math.floor(t * ADDOME.N), phi = rand() * Math.PI * 2, r = raggioAddome(t);
+    const pos = V(-t * ADDOME.L, Math.cos(phi) * r * 0.99, Math.sin(phi) * r * 0.99);
+    const dir = V(-0.9 - rand() * 0.4, Math.cos(phi), Math.sin(phi)).add(V(0, rand() - .5, rand() - .5).multiplyScalar(0.3)).normalize();
+    const fascia = s < 0.2;
+    const p = { pos, dir, len: (t > 0.9 ? 0.09 : fascia ? 0.07 : 0.045) * (0.6 + rand() * 0.8), r: 0.003 + rand() * 0.0018, v: rand() };
+    (seg <= 1 || fascia ? pDav : pDie).push(p);
   }
-  const pa = peli(pAdd, COL.peloAddome, peloMat); gAdd.add(pa);
-  // pungiglione
-  const pung = new THREE.Mesh(new THREE.ConeGeometry(0.022, 0.16, 10), new THREE.MeshStandardMaterial({ color: 0x3a2a1a, roughness: 0.4 }));
+  gAdd.add(peli(pDav, [0xe0a02a, 0xd08e22, 0xeeb840, 0xc07a1c], peloMat), peli(pDie, ORO_SCURO, peloMat));
+  const pung = new THREE.Mesh(new THREE.ConeGeometry(0.02, 0.17, 10), mat(0xc0602a, { roughness: 0.35 }));
   pung.rotation.z = Math.PI / 2; pung.position.set(-ADDOME.L - 0.06, 0, 0); gAdd.add(pung);
 
   // testa
   const HC = V(1.13, 0.02, 0), HS = V(0.3, 0.42, 0.46);
   const testa = new THREE.Mesh(ellissoide(HS.x, HS.y, HS.z), cut); testa.position.copy(HC); testa.rotation.z = -0.15; ape.add(testa); corpo.push(testa);
-  ape.add(peli(puntiSuEllissoide(1400, HC, HS, 0.06, d => d.x < 0.55 && Math.abs(d.z) < 0.55, rand, 0.1), COL.peloTesta, peloMat));
-  // occhi composti con la trama degli ommatidi
-  const occhioMat = new THREE.MeshPhysicalMaterial({ color: COL.occhio, roughness: 0.35, clearcoat: 0.7, clearcoatRoughness: 0.25, sheen: 0.4, sheenColor: new THREE.Color(0x5a4a3a), normalMap: texturaOmmatidi(), normalScale: new THREE.Vector2(0.6, 0.6) });
+  ape.add(peli(puntiSuEllissoide(3200, HC, HS.clone().multiplyScalar(1.0), 0.11, d => !(d.x > 0.5 && d.y < -0.05 && Math.abs(d.z) < 0.4) && Math.abs(d.z) < 0.66, rand, 0.05), ORO, peloMat));
+  // occhi: grandi, grigio scuro opaco, con la trama fine degli ommatidi
+  const occhioMat = new THREE.MeshPhysicalMaterial({ color: 0x3a3d41, roughness: 0.62, clearcoat: 0.18, clearcoatRoughness: 0.5, normalMap: texturaOmmatidi(), normalScale: new THREE.Vector2(0.45, 0.45) });
   for (const z of [1, -1]) {
-    const o = new THREE.Mesh(ellissoide(0.17, 0.33, 0.13, 48), occhioMat);
-    o.position.set(1.16, 0.06, 0.37 * z); o.rotation.set(0.12 * z, -0.35 * z, -0.12); ape.add(o); corpo.push(o);
+    const o = new THREE.Mesh(ellissoide(0.17, 0.35, 0.13, 56), occhioMat);
+    o.position.set(1.17, 0.05, 0.355 * z); o.rotation.set(0.12 * z, -0.35 * z, -0.12); ape.add(o); corpo.push(o);
   }
-  // ocelli
   for (const [x, y, z] of [[1.1, 0.42, 0], [1.03, 0.39, 0.09], [1.03, 0.39, -0.09]]) {
     const oc = new THREE.Mesh(new THREE.SphereGeometry(0.032, 16, 12), occhioMat); oc.position.set(x, y, z); ape.add(oc);
   }
-  // clipeo e mandibole
-  const clip = new THREE.Mesh(ellissoide(0.08, 0.13, 0.15), cut); clip.position.set(1.38, -0.17, 0); ape.add(clip);
-  for (const z of [1, -1]) ape.add(segmento(V(1.38, -0.3, 0.09 * z), V(1.45, -0.42, 0.03 * z), 0.035, 0.018, legMat));
-  // antenne: scapo lungo, gomito, flagello segmentato
-  const antenne = new THREE.Group();
+  // faccia: clipeo chiaro e lucido, labbro, mandibole arancio
+  const clip = new THREE.Mesh(ellissoide(0.05, 0.13, 0.1), mat(0xa39275, { roughness: 0.3, clearcoat: 0.8, clearcoatRoughness: 0.2 }));
+  clip.position.set(1.4, -0.17, 0); ape.add(clip);
+  const labbro = new THREE.Mesh(ellissoide(0.05, 0.04, 0.11), mat(0x5a3a22, { roughness: 0.4, clearcoat: 0.5 })); labbro.position.set(1.43, -0.32, 0); ape.add(labbro);
+  const mand = mat(0xb4542a, { roughness: 0.35, clearcoat: 0.7 });
+  for (const z of [1, -1]) ape.add(segmento(V(1.4, -0.32, 0.1 * z), V(1.47, -0.45, 0.04 * z), 0.04, 0.016, mand));
+  // antenne: scapo rossiccio, flagello bruno segmentato con la punta chiara
+  const antenne = new THREE.Group(), flag = mat(0x5e3020, { roughness: 0.45, clearcoat: 0.4 }), punta = mat(0xc4602a, { roughness: 0.4 });
   for (const z of [1, -1]) {
-    const a0 = V(1.4, 0.13, 0.07 * z), gom = V(1.62, 0.44, 0.15 * z);
-    antenne.add(segmento(a0, gom, 0.03, 0.026, legMat));
-    const fl = new THREE.CatmullRomCurve3([gom, V(1.84, 0.5, 0.24 * z), V(2.02, 0.4, 0.33 * z), V(2.1, 0.22, 0.38 * z)]);
-    for (let k = 0; k < 11; k++) {
-      const p0 = fl.getPoint(k / 11), p1 = fl.getPoint((k + 0.92) / 11);
-      antenne.add(segmento(p0, p1, 0.022, 0.024, legMat));
-    }
+    const a0 = V(1.42, 0.08, 0.07 * z), gom = V(1.62, 0.42, 0.14 * z);
+    antenne.add(segmento(a0, gom, 0.025, 0.022, rosso));
+    const fl = new THREE.CatmullRomCurve3([gom, V(1.84, 0.48, 0.22 * z), V(2.02, 0.38, 0.3 * z), V(2.1, 0.2, 0.35 * z)]);
+    for (let k = 0; k < 11; k++) antenne.add(segmento(fl.getPoint(k / 11), fl.getPoint((k + 0.94) / 11), 0.021, 0.023, k === 10 ? punta : flag));
   }
   ape.add(antenne);
-  // ligula: la lingua, ripiegata sotto la testa; si distende a comando
-  const ligMat = new THREE.MeshStandardMaterial({ color: 0x4a3420, roughness: 0.6 });
-  const ligula = new THREE.Mesh(new THREE.BufferGeometry(), ligMat); ape.add(ligula);
+  // ligula
+  const ligula = new THREE.Mesh(new THREE.BufferGeometry(), mat(0xa85a2a, { roughness: 0.5, clearcoat: 0.3 })); ape.add(ligula);
   const curvaLigula = (k) => new THREE.CatmullRomCurve3([
-    V(1.42, -0.4, 0), V(1.37 + 0.45 * k, -0.46 - 0.12 * k, 0), V(1.26 + 0.95 * k, -0.48 - 0.2 * k, 0), V(1.13 + 1.3 * k, -0.43 - 0.35 * k, 0)]);
-  const setLigula = (k) => { ligula.geometry.dispose(); ligula.geometry = new THREE.TubeGeometry(curvaLigula(k), 40, 0.022, 8); };
+    V(1.44, -0.38, 0), V(1.39 + 0.45 * k, -0.46 - 0.12 * k, 0), V(1.28 + 0.95 * k, -0.48 - 0.2 * k, 0), V(1.15 + 1.3 * k, -0.43 - 0.35 * k, 0)]);
+  const setLigula = (k) => { ligula.geometry.dispose(); ligula.geometry = new THREE.TubeGeometry(curvaLigula(k), 40, 0.02, 8); };
   setLigula(0);
 
-  // ali (lato destro z>0, specchiate a sinistra)
+  // ali ambrate, sollevate come nelle foto
   const ali = [];
   for (const z of [1, -1]) {
-    for (const [ant, L, W, y, rot] of [[true, 1.6, 0.52, 0.47, 0.42], [false, 1.12, 0.36, 0.43, 0.62]]) {
+    for (const [ant, L, W, y, rot, alza] of [[true, 1.62, 0.54, 0.47, 0.5, 0.55], [false, 1.14, 0.37, 0.43, 0.72, 0.42]]) {
       const pivot = new THREE.Group(); pivot.position.set(0.55, y, 0.2 * z);
-      const a = ala(L, W, ant); a.rotation.y = Math.PI + rot;   // punta verso dietro e in fuori
-      pivot.add(a); pivot.scale.z = z;                           // il lato sinistro è lo specchio del destro
-      const alza = ant ? 0.34 : 0.26; pivot.rotation.x = -alza * z; pivot.userData = { z, base: -alza * z, ant };
+      const a = ala(L, W, ant); a.rotation.y = Math.PI + rot;
+      pivot.add(a); pivot.scale.z = z;
+      pivot.rotation.x = -alza * z; pivot.userData = { z, base: -alza * z, ant };
       ape.add(pivot); ali.push(pivot);
     }
   }
 
-  // zampe
-  const zamp = new THREE.Group(); let cestella = null;
+  // zampe: femore scuro con frangia dorata, tibia rossiccia, basitarso arancio
+  const zamp = new THREE.Group(), pZ = []; let cestella = null;
   for (const z of [1, -1]) {
-    const Z = (p) => V(p[0], p[1] < -0.4 ? -0.4 + (p[1] + 0.4) * 0.68 : p[1], p[2] * z * 0.92);
-    zamp.add(zampa([[0.78, -0.3, 0.1], [0.84, -0.5, 0.2], [1.07, -0.62, 0.42], [1.16, -0.95, 0.5], [1.32, -1.12, 0.56]].map(Z), [0.05, 0.046, 0.04, 0.032, 0.025], legMat));
-    zamp.add(zampa([[0.45, -0.38, 0.15], [0.45, -0.55, 0.3], [0.5, -0.64, 0.74], [0.44, -1.04, 0.94], [0.34, -1.24, 1.02]].map(Z), [0.052, 0.048, 0.042, 0.034, 0.026], legMat));
-    // zampa posteriore: tibia e basitarso larghi, la cestella del polline
-    zamp.add(zampa([[0.2, -0.35, 0.15], [0.1, -0.55, 0.32], [-0.2, -0.6, 0.8], [-0.64, -0.98, 0.95], [-0.9, -1.2, 1.0]].map(Z), [0.06, 0.055, 0.05, 0.055, 0.04], legMat, { piatte: [2, 3], allarga: [2] }));
-    // pallottola di polline sulla tibia
-    const pg = new THREE.IcosahedronGeometry(0.13, 3), pp = pg.attributes.position;
-    for (let i = 0; i < pp.count; i++) { const v = V(pp.getX(i), pp.getY(i), pp.getZ(i)); v.multiplyScalar(1 + (rand() - 0.5) * 0.12); pp.setXYZ(i, v.x, v.y, v.z); }
-    pg.computeVertexNormals(); pg.scale(1.25, 0.95, 0.85);
-    const pol = new THREE.Mesh(pg, new THREE.MeshStandardMaterial({ color: COL.polline, roughness: 0.95 }));
-    pol.position.set(-0.43, -0.67, 0.92 * z); pol.rotation.z = 0.7; zamp.add(pol);
+    const Z = (p) => V(p[0], p[1] < -0.4 ? -0.4 + (p[1] + 0.4) * 0.62 : p[1], p[2] * z * 0.92);
+    zamp.add(zampa([[0.78, -0.3, 0.1], [0.84, -0.5, 0.2], [1.07, -0.62, 0.42], [1.16, -0.95, 0.5], [1.32, -1.12, 0.56]].map(Z),
+      [[0.062, 0.058, nero, 1, 120, 0.06], [0.058, 0.052, nero, 1.25, 420, 0.1], [0.052, 0.048, nero, 1.2, 380, 0.09], [0.046, 0.04, rosso, 1.15, 200, 0.07]], tarso, pZ, rand));
+    zamp.add(zampa([[0.45, -0.38, 0.15], [0.45, -0.55, 0.3], [0.5, -0.64, 0.74], [0.44, -1.04, 0.94], [0.34, -1.24, 1.02]].map(Z),
+      [[0.064, 0.06, nero, 1, 120, 0.06], [0.06, 0.054, nero, 1.3, 420, 0.1], [0.055, 0.05, nero, 1.25, 360, 0.09], [0.048, 0.042, rosso, 1.2, 180, 0.07]], tarso, pZ, rand));
+    const H = [[0.2, -0.35, 0.15], [0.1, -0.55, 0.32], [-0.2, -0.6, 0.8], [-0.64, -0.98, 0.95], [-0.9, -1.2, 1.0]].map(Z);
+    zamp.add(zampa(H, [[0.07, 0.064, nero, 1, 120, 0.06], [0.064, 0.058, nero, 1.3, 380, 0.09], [0.05, 0.066, nero, 1.55, 160, 0.08], [0.058, 0.048, arancio, 1.6, 160, 0.06]], tarso, pZ, rand));
+    // pallottola di polline giallo limone nella cestella della tibia
+    const pg = new THREE.IcosahedronGeometry(0.1, 4), pp = pg.attributes.position;
+    for (let i = 0; i < pp.count; i++) { const v = V(pp.getX(i), pp.getY(i), pp.getZ(i)); v.multiplyScalar(1 + (rand() - 0.5) * 0.06); pp.setXYZ(i, v.x, v.y, v.z); }
+    pg.computeVertexNormals(); pg.scale(1, 1.75, 0.9);
+    const pol = new THREE.Mesh(pg, mat(0xf0d43c, { roughness: 0.55, clearcoat: 0.25, sheen: 0.6, sheenColor: new THREE.Color(0xfff2a0) }));
+    const mid = H[2].clone().lerp(H[3], 0.5), axT = new THREE.Vector3().subVectors(H[3], H[2]).normalize();
+    pol.position.copy(mid).add(V(0.02, 0.03, 0.07 * z)); pol.quaternion.setFromUnitVectors(V(0, 1, 0), axT); zamp.add(pol);
     if (z > 0) cestella = pol;
   }
   ape.add(zamp);
-  // peli sulle zampe
-  const pZ = [];
-  zamp.traverse(o => { if (o.isMesh && o.geometry.type === 'CylinderGeometry') {
-    for (let i = 0; i < 14; i++) {
-      const p = V((rand() - .5) * .05, (rand() - .5) * o.geometry.parameters.height, (rand() - .5) * .05).applyMatrix4(o.matrixWorld.clone().compose(o.position, o.quaternion, o.scale));
-      pZ.push({ pos: p, dir: V(rand() - .7, -rand(), rand() - .5).normalize(), len: 0.04 + rand() * .04, r: 0.004, v: rand() });
-    } } });
-  ape.add(peli(pZ, COL.peloTesta, peloMat));
+  ape.add(peli(pZ, [0xe8b428, 0xf0c440, 0xd8a020, 0xc89418], peloMat));
 
   ape.position.set(-0.15, 0.25, 0);
+  const pc = cestella.position;
   return { ape, corpo, ali, setLigula, cestella, punti: {
-    occhi: V(1.22, 0.14, 0.56), antenne: V(1.62, 0.44, 0.17), ligula: V(1.42, -0.48, 0.05), peli: V(0.5, 0.62, 0.1),
-    ali: V(-0.15, 0.55, 0.6), cestella: V(-0.43, -0.67, 1.06), addome: V(-0.9, 0.2, 0.42), pungiglione: V(-1.72, -0.42, 0) } };
+    occhi: V(1.22, 0.14, 0.58), antenne: V(1.62, 0.42, 0.17), ligula: V(1.44, -0.48, 0.05), peli: V(0.5, 0.68, 0.1),
+    ali: V(-0.1, 0.75, 0.6), cestella: V(pc.x, pc.y, pc.z + 0.14), addome: V(-0.9, 0.25, 0.46), pungiglione: V(-1.72, -0.42, 0) } };
 }
 
 function texturaOmmatidi() {
@@ -303,7 +318,7 @@ function texturaOmmatidi() {
     g.addColorStop(0, 'rgb(110,110,255)'); g.addColorStop(0.7, 'rgb(150,150,255)'); g.addColorStop(1, 'rgb(128,128,230)');
     x.fillStyle = g; x.beginPath(); x.arc(cx, cy, r * 0.95, 0, Math.PI * 2); x.fill();
   }
-  const t = new THREE.CanvasTexture(cv); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(3, 3);
+  const t = new THREE.CanvasTexture(cv); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(6, 6);
   return t;
 }
 
@@ -336,7 +351,7 @@ export function avvia(contenitore, { onSeleziona } = {}) {
   const gr = cx.createRadialGradient(64, 64, 4, 64, 64, 64); gr.addColorStop(0, 'rgba(40,30,15,0.35)'); gr.addColorStop(1, 'rgba(40,30,15,0)');
   cx.fillStyle = gr; cx.fillRect(0, 0, 128, 128);
   const ombra = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 2.6), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(cv), transparent: true, depthWrite: false }));
-  ombra.rotation.x = -Math.PI / 2; ombra.position.set(0, -0.78, 0.1); scena.add(ombra);
+  ombra.rotation.x = -Math.PI / 2; ombra.position.set(0, -0.68, 0.1); scena.add(ombra);
 
   const ctr = new OrbitControls(cam, renderer.domElement);
   ctr.target.set(0, -0.1, 0); ctr.enableDamping = true; ctr.dampingFactor = 0.08; ctr.enablePan = false;
