@@ -1,6 +1,7 @@
 // Ape operaia (Apis mellifera ligustica) costruita in codice — Vie del Lago Apicoltura
 import * as THREE from './three.module.min.js';
 import { OrbitControls } from './OrbitControls.js';
+import { RoomEnvironment } from './RoomEnvironment.js';
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 
@@ -54,6 +55,76 @@ function peloCurvo() {
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx); g.computeVertexNormals();
   return g;
+}
+
+// ---------- pelliccia a ciocche (hair cards) ----------
+// texture: centinaia di peli sottili, radice scura e punta chiara, su fondo trasparente
+let _tc = null;
+function texturaCiocca() {
+  if (_tc) return _tc;
+  const W = 128, H = 512, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const x = cv.getContext('2d'), r = rng(77);
+  for (let i = 0; i < 26; i++) {
+    const x0 = W * (0.12 + r() * 0.76), lun = H * (0.45 + r() * 0.55), curva = (r() - 0.5) * W * 0.5, lw = 3 + r() * 3.5;
+    const g = x.createLinearGradient(0, H, 0, H - lun);
+    const b = 0.75 + r() * 0.25;
+    g.addColorStop(0, `rgba(${120 * b},${100 * b},${75 * b},0.95)`);
+    g.addColorStop(0.45, `rgba(${200 * b},${180 * b},${150 * b},0.95)`);
+    g.addColorStop(0.85, `rgba(${250 * b},${240 * b},${215 * b},0.8)`);
+    g.addColorStop(1, 'rgba(255,250,235,0)');
+    x.strokeStyle = g; x.lineWidth = lw; x.lineCap = 'round';
+    x.beginPath(); x.moveTo(x0, H); x.quadraticCurveTo(x0 + curva * 0.4, H - lun * 0.5, x0 + curva, H - lun); x.stroke();
+  }
+  _tc = new THREE.CanvasTexture(cv); _tc.colorSpace = THREE.SRGBColorSpace; _tc.anisotropy = 4;
+  return _tc;
+}
+
+// una striscia leggermente piegata: la base sulla pelle, la punta curva in avanti
+function geoCiocca() {
+  const pos = [], uv = [], idx = [], N = 3;
+  for (let j = 0; j <= N; j++) {
+    const y = j / N, z = 0.22 * y * y;
+    for (const u of [0, 1]) { pos.push(u - 0.5, y, z); uv.push(u, y); }
+  }
+  for (let j = 0; j < N; j++) { const a = j * 2; idx.push(a, a + 1, a + 2, a + 1, a + 3, a + 2); }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+  // normali lungo il pelo: la luce cade sulla ciocca come sulla pelle sotto, senza macchie scure
+  const nr = []; for (let i = 0; i < pos.length / 3; i++) nr.push(0, 0.95, 0.3);
+  g.setAttribute('normal', new THREE.Float32BufferAttribute(nr, 3));
+  g.setIndex(idx);
+  return g;
+}
+
+let _matCiocca = null;
+function ciocche(punti, colori) {
+  if (!_matCiocca) _matCiocca = new THREE.MeshStandardMaterial({ map: texturaCiocca(), alphaTest: 0.32, alphaToCoverage: true, side: THREE.DoubleSide, roughness: 0.72, metalness: 0 });
+  const im = new THREE.InstancedMesh(geoCiocca(), _matCiocca, punti.length);
+  const m = new THREE.Matrix4(), q = new THREE.Quaternion(), qr = new THREE.Quaternion(), s = new THREE.Vector3(), c = new THREE.Color(), Y = V(0, 1, 0);
+  punti.forEach((p, i) => {
+    q.setFromUnitVectors(Y, p.dir).multiply(qr.setFromAxisAngle(Y, p.v * 6.283 * 5.1));
+    s.set(p.w || p.len * 0.9, p.len, p.len);
+    m.compose(p.pos, q, s); im.setMatrixAt(i, m);
+    im.setColorAt(i, c.set(colori[i % colori.length]).multiplyScalar(0.9 + p.v * 0.25));
+  });
+  im.instanceMatrix.needsUpdate = true; im.castShadow = true; im.receiveShadow = true;
+  return im;
+}
+
+// puntinatura fine della cuticola, come normal map
+let _np = null;
+function normalePuntini() {
+  if (_np) return _np;
+  const N = 256, cv = document.createElement('canvas'); cv.width = cv.height = N;
+  const x = cv.getContext('2d'), r = rng(31); x.fillStyle = 'rgb(128,128,255)'; x.fillRect(0, 0, N, N);
+  for (let i = 0; i < 900; i++) {
+    const cx = r() * N, cy = r() * N, rr = 1 + r() * 2.6;
+    const g = x.createRadialGradient(cx, cy, 0, cx, cy, rr);
+    g.addColorStop(0, 'rgb(128,128,200)'); g.addColorStop(0.6, 'rgb(150,110,240)'); g.addColorStop(1, 'rgba(128,128,255,0)');
+    x.fillStyle = g; x.beginPath(); x.arc(cx, cy, rr, 0, 7); x.fill();
+  }
+  _np = new THREE.CanvasTexture(cv); _np.wrapS = _np.wrapT = THREE.RepeatWrapping; _np.repeat.set(2, 4);
+  return _np;
 }
 
 // peli: tanti coni sottilissimi, orientati lungo la normale e piegati all'indietro
@@ -216,10 +287,11 @@ export function costruisciApe() {
   const ape = new THREE.Group();
   const mat = (color, o = {}) => new THREE.MeshPhysicalMaterial({ color, roughness: 0.6, ...o });
   const cut = mat(0x3a2816, { roughness: 0.75 });
-  const nero = mat(0x2a1a10, { roughness: 0.4, clearcoat: 0.6, clearcoatRoughness: 0.35 });
-  const rosso = mat(0x9c4422, { roughness: 0.38, clearcoat: 0.7, clearcoatRoughness: 0.3 });
-  const arancio = mat(0xc4602a, { roughness: 0.4, clearcoat: 0.6, clearcoatRoughness: 0.3 });
-  const tarso = mat(0xd2722e, { roughness: 0.45, clearcoat: 0.5 });
+  const pt = { normalMap: normalePuntini(), normalScale: new THREE.Vector2(0.5, 0.5) };
+  const nero = mat(0x2a1a10, { roughness: 0.42, clearcoat: 0.6, clearcoatRoughness: 0.35, ...pt });
+  const rosso = mat(0x9c4422, { roughness: 0.38, clearcoat: 0.7, clearcoatRoughness: 0.3, ...pt });
+  const arancio = mat(0xc4602a, { roughness: 0.4, clearcoat: 0.6, clearcoatRoughness: 0.3, ...pt });
+  const tarso = mat(0xd2722e, { roughness: 0.45, clearcoat: 0.5, ...pt });
   const peloMat = new THREE.MeshStandardMaterial({ roughness: 0.75, metalness: 0 });
   const corpo = [];
 
@@ -227,8 +299,9 @@ export function costruisciApe() {
   const TC = V(0.45, 0.05, 0), TS = V(0.55, 0.5, 0.48);
   const torace = new THREE.Mesh(ellissoide(TS.x, TS.y, TS.z), cut); torace.position.copy(TC); ape.add(torace); corpo.push(torace);
   const scut = new THREE.Mesh(ellissoide(0.17, 0.1, 0.26), cut); scut.position.set(0.0, 0.36, 0); ape.add(scut);
-  ape.add(peli(puntiSuEllissoide(9500, TC, TS.clone().multiplyScalar(0.99), 0.14, null, rand, 0.22), ORO, peloMat));
-  ape.add(peli(puntiSuEllissoide(700, V(0.0, 0.36, 0), V(0.17, 0.1, 0.26), 0.1, d => d.y > -0.2, rand, 0.35), ORO, peloMat));
+  ape.add(ciocche(puntiSuEllissoide(4200, TC, TS.clone().multiplyScalar(0.97), 0.16, null, rand, 0.3).map(p => ({ ...p, w: 0.045 + p.v * 0.02 })), ORO));
+  ape.add(ciocche(puntiSuEllissoide(400, V(0.0, 0.36, 0), V(0.17, 0.1, 0.26), 0.12, d => d.y > -0.2, rand, 0.4).map(p => ({ ...p, w: 0.04 })), ORO));
+  ape.add(peli(puntiSuEllissoide(3000, TC, TS.clone().multiplyScalar(0.99), 0.2, null, rand, 0.2), ORO, peloMat));   // peli lunghi isolati sul contorno
 
   // peziolo e addome
   const pez = new THREE.Mesh(ellissoide(0.12, 0.1, 0.11, 20), cut); pez.position.set(-0.12, -0.02, 0); ape.add(pez);
@@ -238,7 +311,7 @@ export function costruisciApe() {
   add.rotation.z = -Math.PI / 2; gAdd.add(add); corpo.push(add);
   // peluria su tutto l'addome: dorata davanti, bruna sui segmenti scuri, fasce chiare all'inizio di ogni tergite
   const pDav = [], pDie = [];
-  for (let i = 0; i < 8000; i++) {
+  for (let i = 0; i < 3800; i++) {
     const t = 0.03 + rand() * 0.95, s = (t * ADDOME.N) % 1, seg = Math.floor(t * ADDOME.N), phi = rand() * Math.PI * 2, r = raggioAddome(t);
     const pos = V(-t * ADDOME.L, Math.cos(phi) * r * 0.99, Math.sin(phi) * r * 0.99);
     const dir = V(-0.9 - rand() * 0.4, Math.cos(phi), Math.sin(phi)).add(V(0, rand() - .5, rand() - .5).multiplyScalar(0.3)).normalize();
@@ -247,25 +320,42 @@ export function costruisciApe() {
     (seg <= 1 || fascia ? pDav : pDie).push(p);
   }
   gAdd.add(peli(pDav, [0xe0a02a, 0xd08e22, 0xeeb840, 0xc07a1c], peloMat), peli(pDie, ORO_SCURO, peloMat));
+  const cDav = [], cDie = [];
+  for (let i = 0; i < 6800; i++) {
+    const t = i < 1600 ? 0.02 + rand() * 0.32 : 0.02 + rand() * 0.95, s = (t * ADDOME.N) % 1, seg = Math.floor(t * ADDOME.N), phi = rand() * Math.PI * 2, r = raggioAddome(t);
+    const pos = V(-t * ADDOME.L, Math.cos(phi) * r * 0.97, Math.sin(phi) * r * 0.97);
+    const dir = V(-1.1 - rand() * 0.5, Math.cos(phi), Math.sin(phi)).normalize();
+    const fascia = s < 0.22, len = (t > 0.85 ? 0.11 : fascia ? 0.09 : 0.065) * (0.75 + rand() * 0.5);
+    (seg <= 1 || fascia ? cDav : cDie).push({ pos, dir, len, w: len * 0.45, v: rand() });
+  }
+  gAdd.add(ciocche(cDav, [0xe6a830, 0xd8962a, 0xf0bc48]), ciocche(cDie, [0x8a6428, 0x6e4c20, 0xa47a30, 0x5a3c18]));
   const pung = new THREE.Mesh(new THREE.ConeGeometry(0.02, 0.17, 10), mat(0xc0602a, { roughness: 0.35 }));
   pung.rotation.z = Math.PI / 2; pung.position.set(-ADDOME.L - 0.06, 0, 0); gAdd.add(pung);
 
   // testa
   const HC = V(1.13, 0.02, 0), HS = V(0.3, 0.42, 0.46);
-  const testa = new THREE.Mesh(ellissoide(HS.x, HS.y, HS.z), cut); testa.position.copy(HC); testa.rotation.z = -0.15; ape.add(testa); corpo.push(testa);
-  ape.add(peli(puntiSuEllissoide(3200, HC, HS.clone().multiplyScalar(1.0), 0.11, d => !(d.x > 0.5 && d.y < -0.05 && Math.abs(d.z) < 0.4) && Math.abs(d.z) < 0.66, rand, 0.05), ORO, peloMat));
+  const gT = ellissoide(HS.x, HS.y, HS.z), pT = gT.attributes.position;
+  for (let i = 0; i < pT.count; i++) { const y = pT.getY(i); if (y < 0) pT.setZ(i, pT.getZ(i) * (1 - 0.38 * (-y / HS.y))); }
+  gT.computeVertexNormals();
+  const testa = new THREE.Mesh(gT, cut); testa.position.copy(HC); testa.rotation.z = -0.15; ape.add(testa); corpo.push(testa);
+  const fTesta = d => !(d.x > 0.5 && d.y < -0.05 && Math.abs(d.z) < 0.4) && Math.abs(d.z) < 0.66 && !(d.y < -0.2 && Math.abs(d.z) > 0.45);
+  ape.add(ciocche(puntiSuEllissoide(1500, HC, HS.clone().multiplyScalar(0.96), 0.1, fTesta, rand, 0.05).map(p => ({ ...p, w: 0.035 })), ORO));
+  ape.add(peli(puntiSuEllissoide(1400, HC, HS, 0.12, fTesta, rand, 0.05), ORO, peloMat));
   // occhi: grandi, grigio scuro opaco, con la trama fine degli ommatidi
   const occhioMat = new THREE.MeshPhysicalMaterial({ color: 0x3a3d41, roughness: 0.62, clearcoat: 0.18, clearcoatRoughness: 0.5, normalMap: texturaOmmatidi(), normalScale: new THREE.Vector2(0.45, 0.45) });
   for (const z of [1, -1]) {
-    const o = new THREE.Mesh(ellissoide(0.17, 0.35, 0.13, 56), occhioMat);
+    const gO = ellissoide(0.17, 0.35, 0.13, 56), pO = gO.attributes.position;
+    for (let i = 0; i < pO.count; i++) { const y = pO.getY(i); if (y < 0) { const k = 1 - 0.32 * (-y / 0.35); pO.setX(i, pO.getX(i) * k); pO.setZ(i, pO.getZ(i) * (0.85 + 0.15 * k)); } }
+    gO.computeVertexNormals();
+    const o = new THREE.Mesh(gO, occhioMat);
     o.position.set(1.17, 0.05, 0.355 * z); o.rotation.set(0.12 * z, -0.35 * z, -0.12); ape.add(o); corpo.push(o);
   }
   for (const [x, y, z] of [[1.1, 0.42, 0], [1.03, 0.39, 0.09], [1.03, 0.39, -0.09]]) {
     const oc = new THREE.Mesh(new THREE.SphereGeometry(0.032, 16, 12), occhioMat); oc.position.set(x, y, z); ape.add(oc);
   }
   // faccia: clipeo chiaro e lucido, labbro, mandibole arancio
-  const clip = new THREE.Mesh(ellissoide(0.05, 0.13, 0.1), mat(0xa39275, { roughness: 0.3, clearcoat: 0.8, clearcoatRoughness: 0.2 }));
-  clip.position.set(1.4, -0.17, 0); ape.add(clip);
+  const clip = new THREE.Mesh(ellissoide(0.035, 0.13, 0.1), mat(0x8f7c60, { roughness: 0.3, clearcoat: 0.8, clearcoatRoughness: 0.2, ...pt }));
+  clip.position.set(1.385, -0.17, 0); ape.add(clip);
   const labbro = new THREE.Mesh(ellissoide(0.05, 0.04, 0.11), mat(0x5a3a22, { roughness: 0.4, clearcoat: 0.5 })); labbro.position.set(1.43, -0.32, 0); ape.add(labbro);
   const mand = mat(0xb4542a, { roughness: 0.35, clearcoat: 0.7 });
   for (const z of [1, -1]) ape.add(segmento(V(1.4, -0.32, 0.1 * z), V(1.47, -0.45, 0.04 * z), 0.04, 0.016, mand));
@@ -317,7 +407,9 @@ export function costruisciApe() {
     if (z > 0) cestella = pol;
   }
   ape.add(zamp);
-  ape.add(peli(pZ, [0xe8b428, 0xf0c440, 0xd8a020, 0xc89418], peloMat));
+  ape.add(peli(pZ.filter((p, i) => i % 2), [0xe8b428, 0xf0c440, 0xd8a020, 0xc89418], peloMat));
+  ape.add(ciocche(pZ.filter((p, i) => i % 2 === 0).map(p => ({ ...p, len: p.len * 1.1, w: p.len * 0.35 })), [0xe8b428, 0xf0c440, 0xd8a020]));
+  ape.traverse(o => { if (o.isMesh && !o.isInstancedMesh) { o.castShadow = true; o.receiveShadow = true; } });
 
   ape.position.set(-0.15, 0.25, 0);
   const pc = cestella.position;
@@ -350,16 +442,24 @@ const VISTE = {
 export function avvia(contenitore, { onSeleziona } = {}) {
   const ridotto = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, matchMedia('(pointer: coarse)').matches ? 1.75 : 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.0;
+  const leggero = matchMedia('(pointer: coarse)').matches || Math.min(screen.width, screen.height) < 600;
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFShadowMap;
   contenitore.prepend(renderer.domElement);
 
   const scena = new THREE.Scene();
   const cam = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
   cam.position.set(3.4, 1.7, 5.6);
-  scena.add(new THREE.HemisphereLight(0xfff3dc, 0x5a4a35, 1.1));
-  const sole = new THREE.DirectionalLight(0xffe2b0, 2.6); sole.position.set(4, 6, 5); scena.add(sole);
+  // ambiente da studio fotografico: riflessi morbidi su occhi, cuticola e ali
+  const pm = new THREE.PMREMGenerator(renderer);
+  scena.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scena.environmentIntensity = 0.55;
+  scena.add(new THREE.HemisphereLight(0xfff3dc, 0x5a4a35, 0.55));
+  const sole = new THREE.DirectionalLight(0xfff0d8, 2.4); sole.position.set(3, 7, 4); scena.add(sole);
+  sole.castShadow = true; sole.shadow.mapSize.set(leggero ? 1024 : 2048, leggero ? 1024 : 2048);
+  Object.assign(sole.shadow.camera, { left: -2.6, right: 2.6, top: 2.6, bottom: -2.6, near: 1, far: 16 });
+  sole.shadow.bias = -0.0004; sole.shadow.normalBias = 0.02; sole.shadow.radius = 6;
   const contro = new THREE.DirectionalLight(0xbfd4ff, 1.1); contro.position.set(-5, 2, -4); scena.add(contro);
   const basso = new THREE.DirectionalLight(0xffd9a0, 0.5); basso.position.set(0, -5, 3); scena.add(basso);
 
@@ -370,6 +470,8 @@ export function avvia(contenitore, { onSeleziona } = {}) {
   cx.fillStyle = gr; cx.fillRect(0, 0, 128, 128);
   const ombra = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 2.6), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(cv), transparent: true, depthWrite: false }));
   ombra.rotation.x = -Math.PI / 2; ombra.position.set(0, -0.68, 0.1); scena.add(ombra);
+  const pav = new THREE.Mesh(new THREE.PlaneGeometry(8, 8), new THREE.ShadowMaterial({ opacity: 0.16 }));
+  pav.rotation.x = -Math.PI / 2; pav.position.y = -0.675; pav.receiveShadow = true; scena.add(pav);
 
   const ctr = new OrbitControls(cam, renderer.domElement);
   ctr.target.set(0, -0.1, 0); ctr.enableDamping = true; ctr.dampingFactor = 0.08; ctr.enablePan = false;
