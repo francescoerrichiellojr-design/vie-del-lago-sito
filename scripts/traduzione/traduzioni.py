@@ -1223,4 +1223,7 @@ T = {
 'Dicci quale confezione, quante e il messaggio dei biglietti. Ti rispondiamo entro 24 ore nei giorni feriali con il totale e il giorno del ritiro.': 'Tell us which set, how many and the message for the cards. We reply within 24 hours on weekdays with the total and the collection day.',
 'Ciao Vie del Lago, vorrei prenotare un regalo di Natale:': "Hello Vie del Lago, I'd like to book a Christmas gift:",
 'Da regalare a Natale: prenota e ritira in azienda →': 'Give it for Christmas: book and collect at our farm →',
+'Due vasetti di Miele di Sulla con la busta regalo Vie del Lago e un rametto fiorito': 'Two jars of Sulla Honey with the Vie del Lago gift bag and a flowering sprig',
+'Un vasetto di Miele di Sulla accanto alla busta regalo Vie del Lago e un rametto fiorito': 'A jar of Sulla Honey next to the Vie del Lago gift bag and a flowering sprig',
+"La busta regalo Vie del Lago con due vasetti di Miele di Sulla e un terzo vasetto davanti, su un tavolo di legno all'aperto": "The Vie del Lago gift bag holding two jars of Sulla Honey, with a third jar in front, on an outdoor wooden table",
 }
