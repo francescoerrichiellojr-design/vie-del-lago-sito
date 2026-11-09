@@ -111,6 +111,12 @@
     <priority>0.30</priority>
   </url>
 
+  <url>
+    <loc>https://www.viedellagoapicoltura.it/natale.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.80</priority>
+  </url>
+
   <!-- English version -->
   <url>
     <loc>https://www.viedellagoapicoltura.it/en/come-ordinare.html</loc>
@@ -191,5 +197,10 @@
     <loc>https://www.viedellagoapicoltura.it/en/condizioni-vendita.html</loc>
     <lastmod>2026-11-06</lastmod>
     <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://www.viedellagoapicoltura.it/en/natale.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.80</priority>
   </url>
 </urlset>
