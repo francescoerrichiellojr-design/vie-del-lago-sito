@@ -1,10 +1,10 @@
-// Vie del Lago Apicoltura — Service Worker v23
+// Vie del Lago Apicoltura — Service Worker v24
 // Network-first per HTML; stale-while-revalidate per tutto il resto (CSS, JS, immagini, font):
 // la pagina usa subito la copia in cache e intanto scarica la versione nuova, così dopo un
 // aggiornamento del sito i visitatori vedono le modifiche al caricamento successivo anche se
 // la versione della cache qui sotto non viene cambiata.
 
-const CACHE = 'vdl-v23';
+const CACHE = 'vdl-v24';
 const STATIC = [
   '/',
   '/index.html',
