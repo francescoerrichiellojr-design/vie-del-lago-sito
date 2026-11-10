@@ -1,6 +1,6 @@
 // Ape operaia in 3D: giro a 360° fatto di fotogrammi renderizzati in Blender.
 // Si trascina per ruotarla; i punti numerati seguono le parti fotogramma per fotogramma.
-const NF = 72, CARTELLA = '/img/ape3d/giro/';
+const CARTELLA = '/img/ape3d/giro/';
 
 export function avvia(contenitore, { onSeleziona } = {}) {
   const ridotto = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -10,26 +10,25 @@ export function avvia(contenitore, { onSeleziona } = {}) {
   cnv.style.touchAction = 'pan-y';          // in verticale la pagina scorre, in orizzontale l'ape gira
   contenitore.prepend(cnv);
   const ctx = cnv.getContext('2d');
-  const foto = new Array(NF).fill(null);
+  let NF = 0, foto = [];
   // sui telefoni basta la serie da 640 px (circa 1,6 MB), sugli schermi grandi quella da 960 (circa 2,7 MB)
   const piccola = contenitore.clientWidth * Math.min(devicePixelRatio || 1, 2) <= 700;
-  const nome = i => `${CARTELLA}${piccola ? 's/' : ''}giro-${String(i).padStart(2, '0')}.webp`;
-  let punti = null, ang = 0, vel = ridotto ? 0 : 3.2, auto = !ridotto, toccata = false, volo = null;
+  const nome = i => `${CARTELLA}${piccola ? 's/' : ''}giro-${String(i).padStart(3, '0')}.webp`;
+  let punti = null, ang = 0, vel = 0, auto = !ridotto, toccata = false, volo = null;
 
-  // caricamento progressivo: prima un fotogramma ogni 6, poi ogni 2, poi tutti
-  const ordine = [];
-  for (const passo of [6, 2, 1]) for (let i = 0; i < NF; i += passo) if (!ordine.includes(i)) ordine.push(i);
-  let prossimo = 0;
-  function carica() {
-    if (prossimo >= ordine.length) return;
-    const i = ordine[prossimo++], im = new Image();
-    im.decoding = 'async';
-    im.onload = () => { foto[i] = im; if (i === 0) pronta(); carica(); };
-    im.onerror = carica;
-    im.src = nome(i);
-  }
-  for (let k = 0; k < 3; k++) carica();
-  fetch(CARTELLA + 'punti.json').then(r => r.json()).then(d => { punti = d; }).catch(() => {});
+  // si parte solo quando tutti i fotogrammi sono scaricati e già decodificati: così il giro
+  // non salta (prima mancavano fotogrammi) e non si blocca a decodificarli mentre gira
+  fetch(CARTELLA + 'punti.json').then(r => r.json()).then(d => {
+    punti = d; NF = d.length; foto = new Array(NF).fill(null);
+    let prossimo = 0, pronti = 0;
+    const carica = () => {
+      if (prossimo >= NF) return;
+      const i = prossimo++, im = new Image();
+      im.src = nome(i);
+      im.decode().then(() => { foto[i] = im; }, () => {}).finally(() => { if (++pronti === NF) pronta(); carica(); });
+    };
+    for (let k = 0; k < 6; k++) carica();
+  }).catch(() => {});
 
   const vicino = (i, dir) => {       // il fotogramma caricato più vicino in quella direzione
     for (let k = 0; k < NF; k++) { const j = ((i + dir * k) % NF + NF) % NF; if (foto[j]) return j; }
@@ -50,7 +49,7 @@ export function avvia(contenitore, { onSeleziona } = {}) {
 
   const bottoni = [...contenitore.querySelectorAll('[data-parte]')];
   function disegna() {
-    if (!W) return;
+    if (!W || !NF) return;
     const f = ((ang % NF) + NF) % NF, i0 = Math.floor(f), t = f - i0, i1 = (i0 + 1) % NF;
     const a = foto[i0] ? i0 : vicino(i0, t < 0.5 ? -1 : 1);
     ctx.clearRect(0, 0, W, H);
@@ -109,7 +108,7 @@ export function avvia(contenitore, { onSeleziona } = {}) {
     if (volo) {
       volo.t = Math.min(1, volo.t + dt * 1.6); const k = volo.t * volo.t * (3 - 2 * volo.t);
       ang = volo.da + (volo.a - volo.da) * k; mosso = true; if (volo.t >= 1) volo = null;
-    } else if (!giu && auto) { ang += 3.2 * dt; mosso = true; }
+    } else if (!giu && auto) { ang += NF / 24 * dt; mosso = true; }   // un giro ogni 24 secondi
     else if (!giu && Math.abs(vel) > 0.05) { ang += vel * dt; vel *= Math.pow(0.04, dt); mosso = true; }
     if (mosso) disegna();
     if (visibile) requestAnimationFrame(loop); else gira = false;
