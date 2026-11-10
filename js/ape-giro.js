@@ -61,9 +61,9 @@ export function avvia(contenitore, { onSeleziona } = {}) {
     for (const b of bottoni) {
       const p0 = punti[i0][b.dataset.parte], p1 = punti[i1][b.dataset.parte];
       const p = p0 && p1 ? [p0[0] + (p1[0] - p0[0]) * t, p0[1] + (p1[1] - p0[1]) * t] : (t < 0.5 ? p0 : p1);
-      if (p) { b._p = p; b.classList.remove('nascosto'); } else b.classList.add('nascosto');
-      if (b._p) b.style.transform = `translate(${R.x + b._p[0] * R.w}px, ${R.y + b._p[1] * R.h}px) translate(-50%,-50%)`;
-      b.style.visibility = b._p ? '' : 'hidden';
+      // se la parte è nascosta dietro il corpo il punto sparisce, invece di restare dove non c'è più
+      if (p) b.style.transform = `translate(${R.x + p[0] * R.w}px, ${R.y + p[1] * R.h}px) translate(-50%,-50%)`;
+      b.style.visibility = p ? '' : 'hidden';
     }
   }
 
