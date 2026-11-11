@@ -131,3 +131,29 @@
   window.addEventListener('resize', aggiorna);
   aggiorna();
 })();
+
+// Link a una sezione (per esempio /api.html#esplora, quello in bio su Instagram): il browser ci salta
+// subito, ma poi i caratteri e le righe dei titoli finiscono di caricarsi e la pagina sopra cambia
+// altezza, così la sezione scivola via. Per qualche secondo la riallineo a ogni cambio di altezza,
+// e smetto appena chi visita scorre o tocca lo schermo.
+(function () {
+  var id = decodeURIComponent(location.hash.slice(1));
+  var t = id && document.getElementById(id);
+  if (!t) return;
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  var attivo = true;
+  var allinea = function () {
+    if (!attivo) return;
+    var y = t.getBoundingClientRect().top + window.scrollY;
+    if (Math.abs(t.getBoundingClientRect().top) < 2) return;
+    if (window.vdlLenis) window.vdlLenis.scrollTo(y, { immediate: true, force: true });
+    else window.scrollTo(0, y);
+  };
+  var basta = function () { attivo = false; if (ro) ro.disconnect(); };
+  ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (e) { window.addEventListener(e, basta, { once: true, passive: true }); });
+  var ro = 'ResizeObserver' in window ? new ResizeObserver(allinea) : null;
+  if (ro) ro.observe(document.body);
+  allinea();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(allinea);
+  window.addEventListener('load', function () { allinea(); setTimeout(allinea, 600); setTimeout(basta, 5000); });
+})();
