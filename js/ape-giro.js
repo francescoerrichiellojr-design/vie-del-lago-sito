@@ -119,21 +119,25 @@ export function avvia(contenitore, { onSeleziona } = {}) {
     e.preventDefault();
   });
 
-  // scegliendo una parte l'ape gira, per la via più breve, fino a un punto in cui la parte si vede bene
+  // scegliendo una parte (dal numero o dall'elenco) l'ape gira, per la via più breve, fino alla vista
+  // in cui quella parte si vede meglio. Viste scelte a mano sul giro di 288 fotogrammi
+  // (0 = tre quarti davanti, 36 = di fronte, 108 = di lato, 180 = da dietro, 252 = l'altro lato)
+  const VISTE = {
+    occhi: [18, 54], antenne: [36], ligula: [36], peli: [90, 270], ali: [126, 234],
+    cestella: [108, 252], addome: [144, 216], pungiglione: [162, 198],
+  };
   function seleziona(parte) {
     bottoni.forEach(b => b.setAttribute('aria-pressed', b.dataset.parte === parte ? 'true' : 'false'));
     if (punti) {
       ferma();
       const cur = richiesto ?? fotogramma();
       let meta = null, dmin = Infinity;
-      punti.forEach((fr, i) => {
-        const p = fr[parte]; if (!p || p[0] < 0.22 || p[0] > 0.78) return;
-        let d = i - cur; d -= Math.round(d / NF) * NF;
-        if (Math.abs(d) < dmin) { dmin = Math.abs(d); meta = cur + d; }
-      });
+      const prova = i => { let d = i - cur; d -= Math.round(d / NF) * NF; if (Math.abs(d) < dmin) { dmin = Math.abs(d); meta = cur + d; } };
+      if (VISTE[parte]) VISTE[parte].forEach(i => prova(Math.round(i * NF / 288)));
+      else punti.forEach((fr, i) => { const p = fr[parte]; if (p && p[0] >= 0.22 && p[0] <= 0.78) prova(i); });
       if (meta !== null && dmin >= 1) {
         if (ridotto) vai(meta);
-        else volo = { da: cur, a: meta, t: 0, durata: 0.35 + 0.9 * dmin / (NF / 2) };
+        else volo = { da: cur, a: meta, t: 0, durata: 0.45 + 1.1 * dmin / (NF / 2) };
       }
     }
     onSeleziona && onSeleziona(parte);
