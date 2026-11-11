@@ -229,7 +229,7 @@
     new IntersectionObserver((voci, oss) => {
       if (!voci[0].isIntersecting) return;
       oss.disconnect();
-      import('/js/ape-giro.js').then(m => { ape = m.avvia(box.querySelector('.ape3d__scena'), { onSeleziona: mostra }); }).catch(() => {});
+      import('/js/ape-giro.js?v=20261111b').then(m => { ape = m.avvia(box.querySelector('.ape3d__scena'), { onSeleziona: mostra }); }).catch(() => {});
     }, { rootMargin: '300px' }).observe(box);
   </script>
 
