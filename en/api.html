@@ -199,7 +199,7 @@
       </div>
       <div class="ape3d" data-ape3d>
         <div class="ape3d__scena">
-          <img class="ape3d__statica" src="/img/ape3d/ape-statica.webp" alt="A worker bee rebuilt in 3D, seen in three-quarter view" width="1200" height="900" loading="lazy">
+          <img class="ape3d__statica" src="/img/ape3d/ape-statica.webp" alt="A worker bee rebuilt in 3D, seen in three-quarter view" width="960" height="720" loading="lazy">
           <button type="button" class="ape3d__punto" data-parte="occhi" aria-label="Compound eyes">1</button>
           <button type="button" class="ape3d__punto" data-parte="antenne" aria-label="Antennae">2</button>
           <button type="button" class="ape3d__punto" data-parte="ligula" aria-label="Tongue (ligula)">3</button>
@@ -208,7 +208,7 @@
           <button type="button" class="ape3d__punto" data-parte="cestella" aria-label="Pollen basket">6</button>
           <button type="button" class="ape3d__punto" data-parte="addome" aria-label="Abdomen">7</button>
           <button type="button" class="ape3d__punto" data-parte="pungiglione" aria-label="Sting">8</button>
-          <p class="ape3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Tap the bee to rotate it</span><span class="ape3d__aiuto-mouse">Drag to rotate · scroll to zoom</span></p>
+          <p class="ape3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Drag the bee to rotate it</span><span class="ape3d__aiuto-mouse">Drag to rotate it</span></p>
         </div>
         <div class="ape3d__pannello">
           <ol class="ape3d__elenco">
@@ -225,7 +225,7 @@
             <p class="ape3d__invito" data-scheda="">Choose a part of the body to find out what it does.</p>
             <article class="ape3d__testo" data-scheda="occhi" hidden><h3>Compound eyes</h3><p>Each eye is made of thousands of tiny lenses called ommatidia. Bees see ultraviolet but not red: many flowers carry ultraviolet patterns, invisible to us, that show them where the nectar is. On its forehead the bee also has three simple eyes, the ocelli, which measure light.</p></article>
             <article class="ape3d__testo" data-scheda="antenne" hidden><h3>Antennae</h3><p>They are its nose and its fingers. With thousands of sensors it recognises the scent of flowers, its hive mates and the queen's chemical messages. The elbow lets it point them in any direction.</p></article>
-            <article class="ape3d__testo" data-scheda="ligula" hidden><h3>Tongue (ligula)</h3><p>A hairy tongue, about 6 millimetres long, that stays folded under the head at rest. It stretches out to suck nectar from deep inside flowers: watch it come out.</p></article>
+            <article class="ape3d__testo" data-scheda="ligula" hidden><h3>Tongue (ligula)</h3><p>A hairy tongue, about 6 millimetres long, that stays folded under the head at rest. It stretches out to suck nectar from deep inside flowers.</p></article>
             <article class="ape3d__testo" data-scheda="peli" hidden><h3>Hairs</h3><p>The body is covered in branched hairs, like tiny feathers. In flight the bee builds up static electricity and pollen sticks to it: moving from flower to flower, it carries the pollen and pollinates them.</p></article>
             <article class="ape3d__testo" data-scheda="ali" hidden><h3>Wings</h3><p>There are four: in flight they hook together in pairs with a row of tiny hooks and beat more than 200 times a second. That beat is what makes the buzz. Inside the hive, bees fan their wings to evaporate water from the nectar.</p></article>
             <article class="ape3d__testo" data-scheda="cestella" hidden><h3>Pollen basket</h3><p>On the hind legs there is a small hollow ringed with stiff hairs. The bee brushes pollen off its body, kneads it with a little nectar and carries it home in two pellets. Their colour changes with the flower.</p></article>
@@ -234,7 +234,7 @@
           </div>
         </div>
       </div>
-      <p class="ape3d__nota">An illustrative model of an Italian (ligustica) worker bee, built by us: proportions are simplified.</p>
+      <p class="ape3d__nota">An Italian (ligustica) worker bee that we rebuilt in 3D from macro photographs.</p>
     </div>
   </section>
   <script type="module">
@@ -246,11 +246,10 @@
       scelte.forEach(b => b.setAttribute('aria-pressed', b.dataset.scegli === parte ? 'true' : 'false'));
     };
     scelte.forEach(b => b.addEventListener('click', () => { mostra(b.dataset.scegli); if (ape) ape.seleziona(b.dataset.scegli); }));
-    const gl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
-    if (gl) new IntersectionObserver((voci, oss) => {
+    new IntersectionObserver((voci, oss) => {
       if (!voci[0].isIntersecting) return;
       oss.disconnect();
-      import('/js/ape3d.js').then(m => { ape = m.avvia(box.querySelector('.ape3d__scena'), { onSeleziona: mostra }); }).catch(() => {});
+      import('/js/ape-giro.js').then(m => { ape = m.avvia(box.querySelector('.ape3d__scena'), { onSeleziona: mostra }); }).catch(() => {});
     }, { rootMargin: '300px' }).observe(box);
   </script>
 

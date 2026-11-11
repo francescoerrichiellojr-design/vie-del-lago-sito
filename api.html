@@ -179,7 +179,7 @@
       </div>
       <div class="ape3d" data-ape3d>
         <div class="ape3d__scena">
-          <img class="ape3d__statica" src="img/ape3d/ape-statica.webp" alt="Un'ape operaia ricostruita in 3D, vista di tre quarti" width="1200" height="900" loading="lazy">
+          <img class="ape3d__statica" src="img/ape3d/ape-statica.webp" alt="Un'ape operaia ricostruita in 3D, vista di tre quarti" width="960" height="720" loading="lazy">
           <button type="button" class="ape3d__punto" data-parte="occhi" aria-label="Occhi composti">1</button>
           <button type="button" class="ape3d__punto" data-parte="antenne" aria-label="Antenne">2</button>
           <button type="button" class="ape3d__punto" data-parte="ligula" aria-label="Ligula">3</button>
@@ -188,7 +188,7 @@
           <button type="button" class="ape3d__punto" data-parte="cestella" aria-label="Cestella del polline">6</button>
           <button type="button" class="ape3d__punto" data-parte="addome" aria-label="Addome">7</button>
           <button type="button" class="ape3d__punto" data-parte="pungiglione" aria-label="Pungiglione">8</button>
-          <p class="ape3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Tocca l'ape per ruotarla</span><span class="ape3d__aiuto-mouse">Trascina per ruotare · rotella per ingrandire</span></p>
+          <p class="ape3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Trascina l'ape per ruotarla</span><span class="ape3d__aiuto-mouse">Trascina per ruotarla</span></p>
         </div>
         <div class="ape3d__pannello">
           <ol class="ape3d__elenco">
@@ -205,7 +205,7 @@
             <p class="ape3d__invito" data-scheda="">Scegli una parte del corpo per scoprire a cosa serve.</p>
             <article class="ape3d__testo" data-scheda="occhi" hidden><h3>Occhi composti</h3><p>Ogni occhio è formato da migliaia di piccole lenti, gli ommatidi. L'ape vede l'ultravioletto ma non il rosso: molti fiori hanno disegni ultravioletti, invisibili per noi, che le indicano dove si trova il nettare. Sulla fronte ha anche tre occhi semplici, gli ocelli, che misurano la luce.</p></article>
             <article class="ape3d__testo" data-scheda="antenne" hidden><h3>Antenne</h3><p>Sono il suo naso e le sue dita. Con migliaia di sensori riconosce il profumo dei fiori, le compagne dell'alveare e i messaggi chimici della regina. Il gomito le permette di orientarle in ogni direzione.</p></article>
-            <article class="ape3d__testo" data-scheda="ligula" hidden><h3>Ligula</h3><p>Una lingua pelosa, lunga circa 6 millimetri, che a riposo resta ripiegata sotto la testa. Si distende per succhiare il nettare dal fondo dei fiori: guardala uscire.</p></article>
+            <article class="ape3d__testo" data-scheda="ligula" hidden><h3>Ligula</h3><p>Una lingua pelosa, lunga circa 6 millimetri, che a riposo resta ripiegata sotto la testa. Si distende per succhiare il nettare dal fondo dei fiori.</p></article>
             <article class="ape3d__testo" data-scheda="peli" hidden><h3>Peli</h3><p>Il corpo è coperto di peli ramificati, come piccole piume. In volo l'ape si carica di elettricità statica e il polline le resta attaccato addosso: passando da un fiore all'altro, lo trasporta e li impollina.</p></article>
             <article class="ape3d__testo" data-scheda="ali" hidden><h3>Ali</h3><p>Sono quattro: in volo si agganciano a coppie grazie a una fila di minuscoli uncini e battono oltre 200 volte al secondo. È quel battito a produrre il ronzio. Nell'arnia le api ventilano con le ali per far evaporare l'acqua dal nettare.</p></article>
             <article class="ape3d__testo" data-scheda="cestella" hidden><h3>Cestella del polline</h3><p>Sulle zampe posteriori c'è una piccola conca circondata da peli rigidi. L'ape spazzola il polline dal corpo, lo impasta con un po' di nettare e lo porta a casa in due palline. Il colore cambia a seconda del fiore.</p></article>
@@ -214,7 +214,7 @@
           </div>
         </div>
       </div>
-      <p class="ape3d__nota">Modello illustrativo di un'operaia di ape ligustica, costruito da noi: proporzioni semplificate.</p>
+      <p class="ape3d__nota">Un'operaia di ape ligustica ricostruita da noi in 3D, a partire da foto macro.</p>
     </div>
   </section>
   <script type="module">
@@ -226,11 +226,10 @@
       scelte.forEach(b => b.setAttribute('aria-pressed', b.dataset.scegli === parte ? 'true' : 'false'));
     };
     scelte.forEach(b => b.addEventListener('click', () => { mostra(b.dataset.scegli); if (ape) ape.seleziona(b.dataset.scegli); }));
-    const gl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
-    if (gl) new IntersectionObserver((voci, oss) => {
+    new IntersectionObserver((voci, oss) => {
       if (!voci[0].isIntersecting) return;
       oss.disconnect();
-      import('/js/ape3d.js').then(m => { ape = m.avvia(box.querySelector('.ape3d__scena'), { onSeleziona: mostra }); }).catch(() => {});
+      import('/js/ape-giro.js').then(m => { ape = m.avvia(box.querySelector('.ape3d__scena'), { onSeleziona: mostra }); }).catch(() => {});
     }, { rootMargin: '300px' }).observe(box);
   </script>
 

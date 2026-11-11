@@ -1,10 +1,10 @@
-// Vie del Lago Apicoltura — Service Worker v23
+// Vie del Lago Apicoltura — Service Worker v25
 // Network-first per HTML; stale-while-revalidate per tutto il resto (CSS, JS, immagini, font):
 // la pagina usa subito la copia in cache e intanto scarica la versione nuova, così dopo un
 // aggiornamento del sito i visitatori vedono le modifiche al caricamento successivo anche se
 // la versione della cache qui sotto non viene cambiata.
 
-const CACHE = 'vdl-v23';
+const CACHE = 'vdl-v25';
 const STATIC = [
   '/',
   '/index.html',
@@ -44,6 +44,10 @@ self.addEventListener('fetch', e => {
 
   // Solo richieste same-origin
   if (url.origin !== location.origin) return;
+
+  // Video e richieste a pezzi (Range): direttamente dalla rete. Safari riproduce un video solo
+  // se riceve i pezzi che ha chiesto, e una copia intera presa dalla cache lo bloccherebbe.
+  if (request.destination === 'video' || request.headers.has('range')) return;
 
   // HTML: network-first (sempre freschi)
   if (request.destination === 'document') {
