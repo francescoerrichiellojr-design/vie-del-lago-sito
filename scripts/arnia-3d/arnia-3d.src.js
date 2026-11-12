@@ -13,24 +13,25 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
 
 // per ogni scelta: quanto si sollevano (y) e si spostano indietro (z) i pezzi, e da dove si guarda.
 // Le misure sono in metri: l'arnia chiusa è alta 0,745 m.
-const VIA = { tetto: [0.62, -0.55], coprifavo: [0.46, -0.5], melario: [0.30, -0.5], nido: [0.30, -0.5] };
+const VIA = { tetto: [0.62, -0.55], coprifavo: [0.46, -0.5], melario: [0.30, -0.5], escludiregina: [0.17, -0.5], nido: [0.30, -0.5] };
 // per i telaini i pezzi sopra si tolgono del tutto, così il favo si vede da solo
-const LONTANO = { tetto: [1.4, -1.6], coprifavo: [1.2, -1.6], melario: [1.0, -1.6] };
+const LONTANO = { tetto: [1.4, -1.6], coprifavo: [1.2, -1.6], melario: [1.0, -1.6], escludiregina: [0.85, -1.6] };
 const STATI = {
   chiusa: { pezzi: {}, cam: [1.15, 0.95, 1.75], mira: [0, 0.36, 0] },
   tetto: { pezzi: { tetto: [0.16, 0] }, cam: [0.9, 1.25, 1.35], mira: [0, 0.78, 0] },
   coprifavo: { pezzi: { tetto: VIA.tetto }, cam: [0.75, 1.25, 1.05], mira: [0, 0.6, 0] },
   melario: { pezzi: { tetto: VIA.tetto, coprifavo: VIA.coprifavo }, cam: [1.05, 1.3, 1.45], mira: [0, 0.48, -0.1], favo: ['m'] },
   'telaino-melario': { pezzi: { tetto: LONTANO.tetto, coprifavo: LONTANO.coprifavo, 'telaino-m5': [0.24, 0] }, cam: [0.45, 0.85, 0.95], mira: [0, 0.72, 0.02], favo: ['m'] },
-  nido: { pezzi: { tetto: VIA.tetto, coprifavo: VIA.coprifavo, melario: VIA.melario }, cam: [1.0, 1.15, 1.4], mira: [0, 0.4, -0.12], favo: ['n'] },
-  'telaino-nido': { pezzi: { tetto: LONTANO.tetto, coprifavo: LONTANO.coprifavo, melario: LONTANO.melario, 'telaino-n5': [0.36, 0] }, cam: [0.42, 0.62, 1.02], mira: [0, 0.6, 0.02], favo: ['n'] },
+  escludiregina: { pezzi: { tetto: VIA.tetto, coprifavo: VIA.coprifavo, melario: VIA.melario }, cam: [0.8, 1.15, 1.15], mira: [0, 0.38, -0.08] },
+  nido: { pezzi: { tetto: VIA.tetto, coprifavo: VIA.coprifavo, melario: VIA.melario, escludiregina: VIA.escludiregina }, cam: [1.0, 1.15, 1.4], mira: [0, 0.4, -0.12], favo: ['n'] },
+  'telaino-nido': { pezzi: { tetto: LONTANO.tetto, coprifavo: LONTANO.coprifavo, melario: LONTANO.melario, escludiregina: LONTANO.escludiregina, 'telaino-n5': [0.36, 0] }, cam: [0.42, 0.62, 1.02], mira: [0, 0.6, 0.02], favo: ['n'] },
   porticina: { pezzi: {}, cam: [0.32, 0.2, 0.78], mira: [0.05, 0.06, 0.2] },
-  fondo: { pezzi: { tetto: VIA.tetto, coprifavo: VIA.coprifavo, melario: VIA.melario, nido: [0.34, -0.5] }, cam: [0.7, 0.75, 0.85], mira: [0, 0.05, 0] },
+  fondo: { pezzi: { tetto: VIA.tetto, coprifavo: VIA.coprifavo, melario: VIA.melario, escludiregina: VIA.escludiregina, nido: [0.34, -0.5] }, cam: [0.7, 0.75, 0.85], mira: [0, 0.05, 0] },
   cassettino: { pezzi: { cassettino: [0, -0.26] }, cam: [-0.75, 0.42, -0.95], mira: [0, 0.05, -0.3] },
 };
-const MOBILI = ['tetto', 'coprifavo', 'melario', 'nido', 'fondo', 'telaino-n5', 'telaino-m5', 'cassettino'];
+const MOBILI = ['tetto', 'coprifavo', 'melario', 'escludiregina', 'nido', 'fondo', 'telaino-n5', 'telaino-m5', 'cassettino'];
 // toccando un pezzo nella scena si sceglie la voce corrispondente
-const DA_NODO = { 'g-tetto': 'tetto', 'g-coprifavo': 'coprifavo', 'g-melario': 'melario', 'g-nido': 'nido', 'g-fondo': 'fondo',
+const DA_NODO = { 'g-tetto': 'tetto', 'g-coprifavo': 'coprifavo', 'g-melario': 'melario', 'g-escludiregina': 'escludiregina', 'g-nido': 'nido', 'g-fondo': 'fondo',
   'telaino-n5': 'telaino-nido', 'telaino-m5': 'telaino-melario', porticina: 'porticina', cassettino: 'cassettino' };
 
 export function avvia(contenitore, { modello, onSeleziona, onPronta, onAvanzamento } = {}) {
@@ -62,9 +63,11 @@ export function avvia(contenitore, { modello, onSeleziona, onPronta, onAvanzamen
   ctl.target.set(...STATI.chiusa.mira);
   Object.assign(ctl, { enableDamping: true, dampingFactor: 0.09, enablePan: false, minDistance: 0.25, maxDistance: 3.4,
     maxPolarAngle: Math.PI * 0.53, rotateSpeed: 0.8, zoomSpeed: 0.9 });
+  ctl.enableZoom = false;
   ctl.update();
 
   let nodi = {}, base = {}, pronto = false, attuale = 'chiusa';
+  const scuri = {};
   const corrente = {}, obiettivo = {};     // spostamenti [y, z] dei pezzi
   let volo = null;                         // animazione della camera
   let serve = true;
@@ -86,11 +89,16 @@ export function avvia(contenitore, { modello, onSeleziona, onPronta, onAvanzamen
       if (!o.isMesh) return;
       const m = o.material;
       o.castShadow = !o.name.includes('-favo'); o.receiveShadow = true;
-      if (m.name === 'rete') { m.transparent = false; m.alphaTest = 0.5; m.side = DoubleSide; }
+      if (m.name === 'rete' || m.name === 'escludi') { m.transparent = false; m.alphaTest = 0.5; m.side = DoubleSide; }
+      if (m.name === 'sporco') { m.transparent = true; m.depthWrite = false; m.polygonOffset = true; m.polygonOffsetFactor = -2; o.castShadow = false; }
+      // i telaini del nido hanno qualche anno: legno più scuro, passato per le zampe di migliaia di api
+      if (m.name.startsWith('abete') && [o.name, o.parent && o.parent.name].some((n) => /^telaino-n\d$/.test(n || ''))) {
+        o.material = scuri[m.name] || (scuri[m.name] = m.clone()); o.material.color.setRGB(0.78, 0.64, 0.48);
+      }
       if (m.name === 'miele') { m.roughness = 0.12; m.clearcoat = 1; m.clearcoatRoughness = 0.05; }
       if (m.name === 'larva') { m.roughness = 0.3; }
     });
-    for (const n of ['tetto', 'coprifavo', 'melario', 'nido', 'fondo']) nodi[n] = nodi['g-' + n];
+    for (const n of ['tetto', 'coprifavo', 'melario', 'escludiregina', 'nido', 'fondo']) nodi[n] = nodi['g-' + n];
     for (const k of MOBILI) if (nodi[k]) base[k] = nodi[k].position.clone();
     scena.add(radice);
     favi();
@@ -124,7 +132,7 @@ export function avvia(contenitore, { modello, onSeleziona, onPronta, onAvanzamen
 
   // toccare un pezzo lo sceglie (un tocco, non un trascinamento)
   const ray = new Raycaster(), pt = new Vector2(); let giu = null;
-  tela.addEventListener('pointerdown', (e) => { giu = [e.clientX, e.clientY]; });
+  tela.addEventListener('pointerdown', (e) => { giu = [e.clientX, e.clientY]; ctl.enableZoom = true; }, { capture: true });
   tela.addEventListener('pointerup', (e) => {
     if (!pronto || !giu || Math.hypot(e.clientX - giu[0], e.clientY - giu[1]) > 6) return;
     const r = tela.getBoundingClientRect();
@@ -141,7 +149,7 @@ export function avvia(contenitore, { modello, onSeleziona, onPronta, onAvanzamen
 
   const liscia = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
   let visibile = true;
-  new IntersectionObserver((v) => { visibile = v[0].isIntersecting; }).observe(contenitore);
+  new IntersectionObserver((v) => { visibile = v[0].isIntersecting; if (!visibile) ctl.enableZoom = false; }).observe(contenitore);
 
   let prima = 0;
   function ciclo(t) {
