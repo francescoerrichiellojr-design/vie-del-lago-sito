@@ -93,7 +93,7 @@
   <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/vendor/lenis-1.3.27.css">
-  <link rel="stylesheet" href="/racconto.css?v=20261111">
+  <link rel="stylesheet" href="/racconto.css?v=20261112a">
   <script>document.documentElement.classList.add('js-menu')</script>
   <script>try{if(!localStorage.getItem('vdl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro')}catch(e){}</script>
   <meta name="format-detection" content="telephone=no">
@@ -251,6 +251,88 @@
       oss.disconnect();
       import('/js/ape-giro.js?v=20261112').then(m => { ape = m.avvia(box.querySelector('.ape3d__scena'), { onSeleziona: mostra }); }).catch(() => {});
     }, { rootMargin: '300px' }).observe(box);
+  </script>
+
+  <section class="capitolo" id="arnia" aria-labelledby="titolo-arnia">
+    <div class="contenitore">
+      <div class="capitolo__testa">
+        <p class="etichetta" data-rivela>Where the bees live</p>
+        <h2 class="titolo titolo--medio" id="titolo-arnia" data-rivela><span class="riga" style="--i:0"><span>Open</span></span><span class="riga" style="--i:1"><span>the hive</span></span></h2>
+        <p class="racconto" data-rivela style="--i:2">A ten-frame Dadant-Blatt hive, the model we use in our apiary, rebuilt to its real measurements. You can turn it, zoom in and take it apart one piece at a time, down to the brood comb.</p>
+      </div>
+      <div class="ape3d arnia3d" data-arnia3d>
+        <div class="arnia3d__scena" data-etichetta="Dadant-Blatt hive in 3D">
+          <img class="arnia3d__statica" src="/img/arnia3d/arnia.webp" alt="Dadant-Blatt hive in fir wood, with a galvanised steel roof and a metal entrance reducer" width="1200" height="900" loading="lazy">
+          <button type="button" class="btn btn--pieno arnia3d__avvia" data-avvia>Open in 3D <span class="arnia3d__peso">7 MB</span></button>
+          <p class="arnia3d__carica" aria-hidden="true"><span></span></p>
+          <p class="arnia3d__errore" role="status">Your browser can't show the 3D model.</p>
+          <p class="ape3d__aiuto arnia3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Drag to turn it, pinch to zoom</span><span class="ape3d__aiuto-mouse">Drag to turn it, scroll to zoom</span></p>
+        </div>
+        <div class="ape3d__pannello">
+          <ol class="ape3d__elenco">
+            <li><button type="button" data-scegli="tetto" aria-pressed="false"><span class="ape3d__n">1</span>Roof</button></li>
+            <li><button type="button" data-scegli="coprifavo" aria-pressed="false"><span class="ape3d__n">2</span>Inner cover</button></li>
+            <li><button type="button" data-scegli="melario" aria-pressed="false"><span class="ape3d__n">3</span>Honey super</button></li>
+            <li><button type="button" data-scegli="telaino-melario" aria-pressed="false"><span class="ape3d__n">4</span>Super comb</button></li>
+            <li><button type="button" data-scegli="nido" aria-pressed="false"><span class="ape3d__n">5</span>Brood box</button></li>
+            <li><button type="button" data-scegli="telaino-nido" aria-pressed="false"><span class="ape3d__n">6</span>Brood comb</button></li>
+            <li><button type="button" data-scegli="porticina" aria-pressed="false"><span class="ape3d__n">7</span>Entrance reducer</button></li>
+            <li><button type="button" data-scegli="fondo" aria-pressed="false"><span class="ape3d__n">8</span>Varroa floor</button></li>
+            <li><button type="button" data-scegli="cassettino" aria-pressed="false"><span class="ape3d__n">9</span>Inspection tray</button></li>
+          </ol>
+          <div class="ape3d__scheda" aria-live="polite">
+            <p class="ape3d__invito" data-scheda="">Choose a piece, or tap it on the hive, to take it apart and see what it does.</p>
+            <article class="ape3d__testo" data-scheda="tetto" hidden><h3>Roof</h3><p>A wooden box covered in galvanised steel. It overhangs each side by two and a half centimetres, so rain drips well clear of the walls. Under the metal, the wood insulates against summer heat and winter cold.</p></article>
+            <article class="ape3d__testo" data-scheda="coprifavo" hidden><h3>Inner cover</h3><p>It closes the hive under the roof and leaves the bees the right gap above the frames. The hole in the middle takes a feeder: in autumn, if stores are low, that is where we give syrup or fondant.</p></article>
+            <article class="ape3d__testo" data-scheda="melario" hidden><h3>Honey super</h3><p>The honey floor. It is 175 millimetres tall and holds nine frames, spaced wider than in the brood box, so the bees draw the cells out longer and fill them with honey. We add it in spring, when the colony is strong, and take it off at harvest.</p></article>
+            <article class="ape3d__testo" data-scheda="telaino-melario" hidden><h3>Super comb</h3><p>Once the honey is ripe, at roughly 18% water or less, the bees seal every cell with a wax lid called a capping. At harvest we lift the cappings with an uncapping fork and spin the honey out in an extractor.</p></article>
+            <article class="ape3d__testo" data-scheda="nido" hidden><h3>Brood box</h3><p>The queen and the brood live here. We never take honey from these ten frames: the stores left here carry the colony through the winter.</p></article>
+            <article class="ape3d__testo" data-scheda="telaino-nido" hidden><h3>Brood comb</h3><p>Capped brood sits in the middle: future bees sealed in their cells. Around it are larvae and, further out, freshly laid eggs. Then a ring of pollen in many colours, and an arc of honey along the top. In spring the queen lays up to about two thousand eggs a day.</p></article>
+            <article class="ape3d__testo" data-scheda="porticina" hidden><h3>Entrance reducer</h3><p>The way in. The teeth let bees through but keep out mice, which look for a warm place in winter. Narrowing it helps a weak colony fight off bees that come to steal honey.</p></article>
+            <article class="ape3d__testo" data-scheda="fondo" hidden><h3>Varroa floor</h3><p>The floor is a steel mesh. Varroa, a mite that lives on bees, sometimes drops off: it falls through the mesh and can't climb back. The mesh also lets air in, which helps in summer.</p></article>
+            <article class="ape3d__testo" data-scheda="cassettino" hidden><h3>Inspection tray</h3><p>It slides out from the back without opening the hive. After a few days we count the mites that have fallen and see how heavily the colony is infested, and whether it is time to treat.</p></article>
+          </div>
+          <p class="arnia3d__azioni"><button type="button" class="arnia3d__richiudi" data-richiudi hidden>Close the hive</button><a class="arnia3d__ar" data-ar hidden href="/img/arnia3d/arnia.usdz" rel="ar"><img src="/img/arnia3d/arnia-ar.webp" alt="Put it on your table" width="72" height="54"></a><button type="button" class="arnia3d__ar-testo" data-ar-testo hidden>Put it on your table</button></p>
+        </div>
+      </div>
+      <p class="ape3d__nota">We rebuilt it in 3D from the measurements of a real hive. The brood comb and the super comb are made cell by cell.</p>
+    </div>
+  </section>
+  <script type="module">
+    const box = document.querySelector('[data-arnia3d]'), scena = box.querySelector('.arnia3d__scena');
+    const schede = [...box.querySelectorAll('[data-scheda]')], scelte = [...box.querySelectorAll('[data-scegli]')];
+    const richiudi = box.querySelector('[data-richiudi]'), barra = box.querySelector('.arnia3d__carica span');
+    let arnia = null, attesa = null, avviata = false;
+    const mostra = (parte) => {
+      schede.forEach(s => { s.hidden = s.dataset.scheda !== (parte || ''); });
+      scelte.forEach(b => b.setAttribute('aria-pressed', b.dataset.scegli === parte ? 'true' : 'false'));
+      richiudi.hidden = !parte;
+    };
+    const avvia = () => {
+      if (avviata) return; avviata = true;
+      box.classList.add('arnia3d--carica');
+      import('/js/arnia-3d.js?v=20261112a').then(m => {
+        arnia = m.avvia(scena, { modello: '/img/arnia3d/arnia.glb?v=20261112a', onSeleziona: mostra,
+          onAvanzamento: f => { barra.style.transform = `scaleX(${f})`; },
+          onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); if (attesa) arnia.seleziona(attesa); } });
+      }).catch(() => box.classList.add('arnia3d--errore'));
+    };
+    box.querySelector('[data-avvia]').addEventListener('click', avvia);
+    scelte.forEach(b => b.addEventListener('click', () => {
+      mostra(b.dataset.scegli);
+      if (arnia && box.classList.contains('arnia3d--pronta')) arnia.seleziona(b.dataset.scegli); else { attesa = b.dataset.scegli; avvia(); }
+    }));
+    richiudi.addEventListener('click', () => { mostra(null); arnia && arnia.seleziona('chiusa'); });
+    // realtà aumentata: Quick Look su iPhone e iPad, Scene Viewer su Android
+    const ar = box.querySelector('[data-ar]'), arTesto = box.querySelector('[data-ar-testo]');
+    arTesto.addEventListener('click', () => ar.click());
+    if (ar.relList.supports && ar.relList.supports('ar')) ar.hidden = arTesto.hidden = false;
+    else if (/Android/i.test(navigator.userAgent)) {
+      const glb = location.origin + '/img/arnia3d/arnia-ar.glb';
+      ar.removeAttribute('rel');
+      ar.href = `intent://arvr.google.com/scene-viewer/1.2?file=${encodeURIComponent(glb)}&mode=ar_preferred&resizable=false#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(location.href)};end;`;
+      ar.hidden = arTesto.hidden = false;
+    }
   </script>
 
   <section class="capitolo" aria-labelledby="titolo-ciclo">

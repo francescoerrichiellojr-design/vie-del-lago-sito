@@ -48,6 +48,8 @@ self.addEventListener('fetch', e => {
   // Video e richieste a pezzi (Range): direttamente dalla rete. Safari riproduce un video solo
   // se riceve i pezzi che ha chiesto, e una copia intera presa dalla cache lo bloccherebbe.
   if (request.destination === 'video' || request.headers.has('range')) return;
+  // Modelli 3D: pesano diversi MB, li tiene la cache del browser e non questa
+  if (/\.(glb|usdz)$/.test(url.pathname)) return;
 
   // HTML: network-first (sempre freschi)
   if (request.destination === 'document') {
