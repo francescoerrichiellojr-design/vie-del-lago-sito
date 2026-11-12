@@ -34,6 +34,8 @@ const MOBILI = ['tetto', 'coprifavo', 'melario', 'escludiregina', 'nido', 'fondo
 const DA_NODO = { 'g-tetto': 'tetto', 'g-coprifavo': 'coprifavo', 'g-melario': 'melario', 'g-escludiregina': 'escludiregina', 'g-nido': 'nido', 'g-fondo': 'fondo',
   'telaino-n5': 'telaino-nido', 'telaino-m5': 'telaino-melario', porticina: 'porticina', cassettino: 'cassettino' };
 
+const antenato = (o, re) => { for (let p = o; p; p = p.parent) if (re.test(p.name || '')) return true; return false; };
+
 export function avvia(contenitore, { modello, onSeleziona, onPronta, onAvanzamento } = {}) {
   const ridotto = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const renderer = new WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
@@ -92,7 +94,7 @@ export function avvia(contenitore, { modello, onSeleziona, onPronta, onAvanzamen
       if (m.name === 'rete' || m.name === 'escludi') { m.transparent = false; m.alphaTest = 0.5; m.side = DoubleSide; }
       if (m.name === 'sporco') { m.transparent = true; m.depthWrite = false; m.polygonOffset = true; m.polygonOffsetFactor = -2; o.castShadow = false; }
       // i telaini del nido hanno qualche anno: legno più scuro, passato per le zampe di migliaia di api
-      if (m.name.startsWith('abete') && [o.name, o.parent && o.parent.name].some((n) => /^telaino-n\d$/.test(n || ''))) {
+      if (m.name.startsWith('abete') && antenato(o, /^telaino-n\d$/)) {
         o.material = scuri[m.name] || (scuri[m.name] = m.clone()); o.material.color.setRGB(0.78, 0.64, 0.48);
       }
       if (m.name === 'miele') { m.roughness = 0.12; m.clearcoat = 1; m.clearcoatRoughness = 0.05; }
