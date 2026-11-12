@@ -15,7 +15,7 @@
     'dono-doppio': { it: 'Il dono doppio di Natale', en: 'The double Christmas gift', formato: { it: '2 vasetti di Sulla in busta regalo', en: '2 jars of Sulla in a gift bag' }, prezzo: 42, disponibile: true, natale: true },
   };
   const T = EN ? {
-    carrello: 'Your order', vuoto: 'Your order is empty. Add a honey from its page.', aggiungi: 'Add to order', aggiunto: 'Added',
+    carrello: 'Your order', vuoto: 'Your order is empty. Add a honey from its page.', vuotoQui: 'Nothing here yet: add a honey from the list.', aggiungi: 'Add to order', aggiunto: 'Added',
     apri: (n, tot) => `Your order · ${n} ${n === 1 ? 'item' : 'items'} · ${tot}`, chiudi: 'Close', togli: 'Remove', meno: 'One less', piu: 'One more',
     totale: 'Total', ricevi: 'How would you like it?', ritiro: 'Collect at our farm', ritiroDett: 'Contrada Pescara 74, Conza della Campania (AV)',
     consegna: 'Delivery in Campania', consegnaDett: 'We bring it to you: day and cost to be agreed', comune: 'Town for delivery',
@@ -28,7 +28,7 @@
     msg: 'Hello Vie del Lago, I would like to order:', msgTot: 'Total', msgRitiro: 'Collection at your farm', msgConsegna: 'Delivery to', msgNome: 'Name', msgNote: 'Notes',
     oggetto: 'Order from the website',
   } : {
-    carrello: 'Il tuo ordine', vuoto: 'Il tuo ordine è vuoto. Aggiungi un miele dalla sua pagina.', aggiungi: "Aggiungi all'ordine", aggiunto: 'Aggiunto',
+    carrello: 'Il tuo ordine', vuoto: 'Il tuo ordine è vuoto. Aggiungi un miele dalla sua pagina.', vuotoQui: "Ancora niente: aggiungi un miele dall'elenco.", aggiungi: "Aggiungi all'ordine", aggiunto: 'Aggiunto',
     apri: (n, tot) => `Il tuo ordine · ${n} ${n === 1 ? 'pezzo' : 'pezzi'} · ${tot}`, chiudi: 'Chiudi', togli: 'Togli', meno: 'Uno in meno', piu: 'Uno in più',
     totale: 'Totale', ricevi: 'Come lo vuoi ricevere?', ritiro: 'Ritiro in azienda', ritiroDett: 'Contrada Pescara 74, Conza della Campania (AV)',
     consegna: 'Consegna in Campania', consegnaDett: 'Te lo portiamo noi: giorno e costo da concordare', comune: 'Comune di consegna',
@@ -61,11 +61,13 @@
     for (const f of figli) if (f) e.append(f);
     return e;
   };
+  // nella pagina Ordina il carrello sta dentro la pagina; altrove è un pannello che si apre dal pulsante in basso
+  const qui = document.querySelector('[data-carrello-qui]');
   const apri = el('button', { type: 'button', class: 'carrello-apri', 'aria-haspopup': 'dialog', hidden: true });
-  const pannello = el('dialog', { class: 'carrello', 'aria-labelledby': 'carrello-titolo' });
+  const pannello = qui ? el('div', { class: 'carrello carrello--pagina', role: 'region', 'aria-labelledby': 'carrello-titolo' }) : el('dialog', { class: 'carrello', 'aria-labelledby': 'carrello-titolo' });
   pannello.innerHTML = `
-    <div class="carrello__testa"><h2 id="carrello-titolo">${T.carrello}</h2><button type="button" class="carrello__chiudi" aria-label="${T.chiudi}">×</button></div>
-    <p class="carrello__vuoto">${T.vuoto}</p>
+    <div class="carrello__testa"><h2 id="carrello-titolo">${T.carrello}</h2>${qui ? '' : `<button type="button" class="carrello__chiudi" aria-label="${T.chiudi}">×</button>`}</div>
+    <p class="carrello__vuoto">${qui ? T.vuotoQui : T.vuoto}</p>
     <ul class="carrello__righe"></ul>
     <p class="carrello__totale"><span>${T.totale}</span><strong></strong></p>
     <form class="carrello__modulo" novalidate>
@@ -88,7 +90,7 @@
 
   function disegna() {
     const n = pezzi(), tot = totale();
-    apri.hidden = n === 0;
+    apri.hidden = n === 0 || !!qui;
     apri.textContent = T.apri(n, euro(tot));
     pannello.classList.toggle('carrello--vuoto', n === 0);
     const ul = $('.carrello__righe'); ul.textContent = '';
@@ -148,12 +150,13 @@
   apri.addEventListener('click', mostra);
   function mostra() {
     disegna();
+    if (qui) { pannello.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     if (typeof pannello.showModal === 'function') pannello.showModal(); else pannello.setAttribute('open', '');
     document.documentElement.classList.add('carrello-aperto');
   }
   const chiudi = () => { if (pannello.open) pannello.close(); };
   pannello.addEventListener('close', () => document.documentElement.classList.remove('carrello-aperto'));
-  $('.carrello__chiudi').addEventListener('click', chiudi);
+  if (!qui) $('.carrello__chiudi').addEventListener('click', chiudi);
   pannello.addEventListener('click', (e) => { if (e.target === pannello) chiudi(); });   // tocco fuori dal pannello
   pannello.addEventListener('click', (e) => {
     const m = e.target.closest('[data-meno]'), p = e.target.closest('[data-piu]'), t = e.target.closest('[data-togli]');
@@ -185,7 +188,7 @@
   }
   const monta = () => {
     modulo.nome.value = stato.nome; modulo.comune.value = stato.comune; modulo.note.value = stato.note;
-    document.body.append(apri, pannello); disegna();
+    document.body.append(apri); (qui || document.body).append(pannello); disegna();
     const bn = document.getElementById('cookie-banner');
     if (bn) {
       new MutationObserver(sopraBanner).observe(bn, { attributes: true, attributeFilter: ['style', 'class', 'hidden'] });
