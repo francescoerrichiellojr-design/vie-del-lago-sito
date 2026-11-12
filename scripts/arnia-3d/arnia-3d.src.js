@@ -22,7 +22,7 @@ const STATI = {
   coprifavo: { pezzi: { tetto: VIA.tetto }, cam: [0.75, 1.25, 1.05], mira: [0, 0.6, 0] },
   melario: { pezzi: { tetto: VIA.tetto, coprifavo: VIA.coprifavo }, cam: [1.05, 1.3, 1.45], mira: [0, 0.48, -0.1], favo: ['m'] },
   'telaino-melario': { pezzi: { tetto: LONTANO.tetto, coprifavo: LONTANO.coprifavo, 'telaino-m5': [0.24, 0] }, cam: [0.45, 0.85, 0.95], mira: [0, 0.72, 0.02], favo: ['m'] },
-  escludiregina: { pezzi: { tetto: VIA.tetto, coprifavo: VIA.coprifavo, melario: VIA.melario }, cam: [0.8, 1.15, 1.15], mira: [0, 0.38, -0.08] },
+  escludiregina: { pezzi: { tetto: VIA.tetto, coprifavo: VIA.coprifavo, melario: VIA.melario, escludiregina: [0.07, 0] }, cam: [0.8, 1.15, 1.15], mira: [0, 0.38, -0.08] },
   nido: { pezzi: { tetto: VIA.tetto, coprifavo: VIA.coprifavo, melario: VIA.melario, escludiregina: VIA.escludiregina }, cam: [1.0, 1.15, 1.4], mira: [0, 0.4, -0.12], favo: ['n'] },
   'telaino-nido': { pezzi: { tetto: LONTANO.tetto, coprifavo: LONTANO.coprifavo, melario: LONTANO.melario, escludiregina: LONTANO.escludiregina, 'telaino-n5': [0.36, 0] }, cam: [0.42, 0.62, 1.02], mira: [0, 0.6, 0.02], favo: ['n'] },
   porticina: { pezzi: {}, cam: [0.32, 0.2, 0.78], mira: [0.05, 0.06, 0.2] },
@@ -91,7 +91,8 @@ export function avvia(contenitore, { modello, onSeleziona, onPronta, onAvanzamen
       if (!o.isMesh) return;
       const m = o.material;
       o.castShadow = !o.name.includes('-favo'); o.receiveShadow = true;
-      if (m.name === 'rete' || m.name === 'escludi') { m.transparent = false; m.alphaTest = 0.5; m.side = DoubleSide; }
+      if (m.name === 'rete') { m.transparent = false; m.depthWrite = true; m.alphaTest = 0.5; m.side = DoubleSide; }
+      if (m.name === 'escludi') { m.transparent = false; m.depthWrite = true; m.alphaTest = 0; m.side = DoubleSide; }
       if (m.name === 'sporco') { m.transparent = true; m.depthWrite = false; m.polygonOffset = true; m.polygonOffsetFactor = -2; o.castShadow = false; }
       // i telaini del nido hanno qualche anno: legno più scuro, passato per le zampe di migliaia di api
       if (m.name.startsWith('abete') && antenato(o, /^telaino-n\d$/)) {
