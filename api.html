@@ -73,7 +73,7 @@
   <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/vendor/lenis-1.3.27.css">
-  <link rel="stylesheet" href="/racconto.css?v=20261111">
+  <link rel="stylesheet" href="/racconto.css?v=20261112a">
   <script>document.documentElement.classList.add('js-menu')</script>
   <script>try{if(!localStorage.getItem('vdl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro')}catch(e){}</script>
   <meta name="format-detection" content="telephone=no">
@@ -231,6 +231,88 @@
       oss.disconnect();
       import('/js/ape-giro.js?v=20261112').then(m => { ape = m.avvia(box.querySelector('.ape3d__scena'), { onSeleziona: mostra }); }).catch(() => {});
     }, { rootMargin: '300px' }).observe(box);
+  </script>
+
+  <section class="capitolo" id="arnia" aria-labelledby="titolo-arnia">
+    <div class="contenitore">
+      <div class="capitolo__testa">
+        <p class="etichetta" data-rivela>La casa delle api</p>
+        <h2 class="titolo titolo--medio" id="titolo-arnia" data-rivela><span class="riga" style="--i:0"><span>Apri</span></span><span class="riga" style="--i:1"><span>l'arnia</span></span></h2>
+        <p class="racconto" data-rivela style="--i:2">Un'arnia Dadant-Blatt da dieci telaini, il modello che usiamo in apiario, ricostruita alle misure vere. Si gira, si avvicina e si smonta un pezzo alla volta, fino al favo con la covata.</p>
+      </div>
+      <div class="ape3d arnia3d" data-arnia3d>
+        <div class="arnia3d__scena" data-etichetta="Arnia Dadant-Blatt in 3D">
+          <img class="arnia3d__statica" src="img/arnia3d/arnia.webp" alt="Arnia Dadant-Blatt in legno di abete, con il tetto in lamiera zincata e la porticina in metallo" width="1200" height="900" loading="lazy">
+          <button type="button" class="btn btn--pieno arnia3d__avvia" data-avvia>Apri in 3D <span class="arnia3d__peso">7 MB</span></button>
+          <p class="arnia3d__carica" aria-hidden="true"><span></span></p>
+          <p class="arnia3d__errore" role="status">Il tuo browser non riesce a mostrare il modello 3D.</p>
+          <p class="ape3d__aiuto arnia3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Trascina per girarla, pizzica per avvicinarti</span><span class="ape3d__aiuto-mouse">Trascina per girarla, rotellina per avvicinarti</span></p>
+        </div>
+        <div class="ape3d__pannello">
+          <ol class="ape3d__elenco">
+            <li><button type="button" data-scegli="tetto" aria-pressed="false"><span class="ape3d__n">1</span>Tetto</button></li>
+            <li><button type="button" data-scegli="coprifavo" aria-pressed="false"><span class="ape3d__n">2</span>Coprifavo</button></li>
+            <li><button type="button" data-scegli="melario" aria-pressed="false"><span class="ape3d__n">3</span>Melario</button></li>
+            <li><button type="button" data-scegli="telaino-melario" aria-pressed="false"><span class="ape3d__n">4</span>Favo da melario</button></li>
+            <li><button type="button" data-scegli="nido" aria-pressed="false"><span class="ape3d__n">5</span>Nido</button></li>
+            <li><button type="button" data-scegli="telaino-nido" aria-pressed="false"><span class="ape3d__n">6</span>Favo di covata</button></li>
+            <li><button type="button" data-scegli="porticina" aria-pressed="false"><span class="ape3d__n">7</span>Porticina</button></li>
+            <li><button type="button" data-scegli="fondo" aria-pressed="false"><span class="ape3d__n">8</span>Fondo antivarroa</button></li>
+            <li><button type="button" data-scegli="cassettino" aria-pressed="false"><span class="ape3d__n">9</span>Cassettino</button></li>
+          </ol>
+          <div class="ape3d__scheda" aria-live="polite">
+            <p class="ape3d__invito" data-scheda="">Scegli un pezzo, o toccalo nell'arnia, per smontarla e vedere a cosa serve.</p>
+            <article class="ape3d__testo" data-scheda="tetto" hidden><h3>Tetto</h3><p>Una cassa di legno rivestita di lamiera zincata. Sporge di due centimetri e mezzo per lato, così la pioggia cade lontano dalle pareti. Sotto la lamiera il legno fa da isolante, contro il caldo d'estate e il freddo d'inverno.</p></article>
+            <article class="ape3d__testo" data-scheda="coprifavo" hidden><h3>Coprifavo</h3><p>Chiude l'arnia sotto il tetto e lascia alle api lo spazio giusto sopra i telaini. Il foro al centro serve per il nutritore: in autunno, se le scorte sono scarse, da lì diamo sciroppo o candito.</p></article>
+            <article class="ape3d__testo" data-scheda="melario" hidden><h3>Melario</h3><p>Il piano del miele. È alto 175 millimetri e ha nove telaini, più distanziati di quelli del nido, così le api allungano le celle e le riempiono di miele. Lo mettiamo in primavera, quando la famiglia è forte, e lo togliamo per smielare.</p></article>
+            <article class="ape3d__testo" data-scheda="telaino-melario" hidden><h3>Favo da melario</h3><p>Quando il miele è maturo, con meno del 18% circa di acqua, le api chiudono ogni cella con un tappo di cera, l'opercolo. Per smielare lo togliamo con una forchetta apposita e il miele esce in centrifuga.</p></article>
+            <article class="ape3d__testo" data-scheda="nido" hidden><h3>Nido</h3><p>Qui vivono la regina e la covata. I dieci telaini del nido non si toccano per il miele: le scorte che restano qui servono alla famiglia per passare l'inverno.</p></article>
+            <article class="ape3d__testo" data-scheda="telaino-nido" hidden><h3>Favo di covata</h3><p>Al centro la covata opercolata: le future api, chiuse nelle celle. Intorno le larve e, più fuori, le uova appena deposte. Poi una corona di polline di tanti colori e in alto un arco di miele. In primavera la regina depone fino a circa duemila uova al giorno.</p></article>
+            <article class="ape3d__testo" data-scheda="porticina" hidden><h3>Porticina</h3><p>L'entrata dell'arnia. I denti lasciano passare le api ma non i topi, che d'inverno cercano un posto caldo. Stringerla aiuta una famiglia debole a difendersi dalle api che vengono a rubare il miele.</p></article>
+            <article class="ape3d__testo" data-scheda="fondo" hidden><h3>Fondo antivarroa</h3><p>Il pavimento è una rete d'acciaio. La varroa, un acaro che vive sulle api, a volte si stacca: cade tra le maglie e non riesce più a risalire. La rete fa anche entrare aria, utile d'estate.</p></article>
+            <article class="ape3d__testo" data-scheda="cassettino" hidden><h3>Cassettino</h3><p>Si sfila dal retro senza aprire l'arnia. Dopo qualche giorno contiamo le varroe cadute e capiamo quanto è infestata la famiglia, e se è il momento di trattare.</p></article>
+          </div>
+          <p class="arnia3d__azioni"><button type="button" class="arnia3d__richiudi" data-richiudi hidden>Richiudi l'arnia</button><a class="arnia3d__ar" data-ar hidden href="/img/arnia3d/arnia.usdz" rel="ar"><img src="/img/arnia3d/arnia-ar.webp" alt="Mettila sul tuo tavolo" width="72" height="54"></a><button type="button" class="arnia3d__ar-testo" data-ar-testo hidden>Mettila sul tuo tavolo</button></p>
+        </div>
+      </div>
+      <p class="ape3d__nota">Ricostruita da noi in 3D sulle misure di un'arnia vera. Il favo di covata e quello da melario sono fatti cella per cella.</p>
+    </div>
+  </section>
+  <script type="module">
+    const box = document.querySelector('[data-arnia3d]'), scena = box.querySelector('.arnia3d__scena');
+    const schede = [...box.querySelectorAll('[data-scheda]')], scelte = [...box.querySelectorAll('[data-scegli]')];
+    const richiudi = box.querySelector('[data-richiudi]'), barra = box.querySelector('.arnia3d__carica span');
+    let arnia = null, attesa = null, avviata = false;
+    const mostra = (parte) => {
+      schede.forEach(s => { s.hidden = s.dataset.scheda !== (parte || ''); });
+      scelte.forEach(b => b.setAttribute('aria-pressed', b.dataset.scegli === parte ? 'true' : 'false'));
+      richiudi.hidden = !parte;
+    };
+    const avvia = () => {
+      if (avviata) return; avviata = true;
+      box.classList.add('arnia3d--carica');
+      import('/js/arnia-3d.js?v=20261112a').then(m => {
+        arnia = m.avvia(scena, { modello: '/img/arnia3d/arnia.glb?v=20261112a', onSeleziona: mostra,
+          onAvanzamento: f => { barra.style.transform = `scaleX(${f})`; },
+          onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); if (attesa) arnia.seleziona(attesa); } });
+      }).catch(() => box.classList.add('arnia3d--errore'));
+    };
+    box.querySelector('[data-avvia]').addEventListener('click', avvia);
+    scelte.forEach(b => b.addEventListener('click', () => {
+      mostra(b.dataset.scegli);
+      if (arnia && box.classList.contains('arnia3d--pronta')) arnia.seleziona(b.dataset.scegli); else { attesa = b.dataset.scegli; avvia(); }
+    }));
+    richiudi.addEventListener('click', () => { mostra(null); arnia && arnia.seleziona('chiusa'); });
+    // realtà aumentata: Quick Look su iPhone e iPad, Scene Viewer su Android
+    const ar = box.querySelector('[data-ar]'), arTesto = box.querySelector('[data-ar-testo]');
+    arTesto.addEventListener('click', () => ar.click());
+    if (ar.relList.supports && ar.relList.supports('ar')) ar.hidden = arTesto.hidden = false;
+    else if (/Android/i.test(navigator.userAgent)) {
+      const glb = location.origin + '/img/arnia3d/arnia-ar.glb';
+      ar.removeAttribute('rel');
+      ar.href = `intent://arvr.google.com/scene-viewer/1.2?file=${encodeURIComponent(glb)}&mode=ar_preferred&resizable=false#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(location.href)};end;`;
+      ar.hidden = arTesto.hidden = false;
+    }
   </script>
 
   <section class="capitolo" aria-labelledby="titolo-ciclo">
