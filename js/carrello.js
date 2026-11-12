@@ -91,6 +91,7 @@
   function disegna() {
     const n = pezzi(), tot = totale();
     apri.hidden = n === 0 || !!qui;
+    document.documentElement.classList.toggle('ha-ordine', n > 0);
     apri.textContent = T.apri(n, euro(tot));
     pannello.classList.toggle('carrello--vuoto', n === 0);
     const ul = $('.carrello__righe'); ul.textContent = '';
