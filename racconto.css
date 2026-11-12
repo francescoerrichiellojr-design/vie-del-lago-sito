@@ -685,6 +685,7 @@ button.btn.btn--pieno{background:var(--terra);color:var(--carta)}
 .carrello__modo legend{margin-bottom:10px;font-weight:600}
 .carrello__modo label{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid rgba(30,26,18,.2);border-radius:6px;cursor:pointer}
 .carrello__modo label:has(input:checked){border-color:var(--terra);background:#EFEDE3}
+.carrello__modo--no{opacity:.45;cursor:not-allowed}
 .carrello__modo input{margin-top:5px;accent-color:var(--terra)}
 .carrello__modo b{display:block;font-weight:600}
 .carrello__modo small{display:block;color:var(--grigio);font-size:14px;line-height:1.4}

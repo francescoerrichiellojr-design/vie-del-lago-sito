@@ -21,7 +21,7 @@
     consegna: 'Delivery in Campania', consegnaDett: 'We bring it to you: day and cost to be agreed', comune: 'Town for delivery',
     nome: 'Your name', note: 'Notes (optional)', notePh: 'E.g. a day that suits you, a gift message…',
     paga: 'You pay on collection or delivery: bank transfer, Satispay or cash. Nothing is paid online.',
-    natale: 'Christmas gifts are collected at our farm by 23 December.',
+    natale: 'Christmas gifts are collected by hand at our farm, by 23 December. With a gift in the order, the whole order is collected.',
     invia: 'Send the order on WhatsApp', email: 'Or send it by email', svuota: 'Empty the order',
     dopo: 'We reply on WhatsApp to confirm availability and agree on the day.',
     mancaNome: 'Add your name, so we know who the order is from.', mancaComune: 'Tell us the town for delivery.',
@@ -34,7 +34,7 @@
     consegna: 'Consegna in Campania', consegnaDett: 'Te lo portiamo noi: giorno e costo da concordare', comune: 'Comune di consegna',
     nome: 'Il tuo nome', note: 'Note (facoltative)', notePh: 'Per esempio un giorno che ti va bene, un biglietto per il regalo…',
     paga: 'Paghi al ritiro o alla consegna: bonifico, Satispay o contanti. Online non si paga nulla.',
-    natale: 'I regali di Natale si ritirano in azienda entro il 23 dicembre.',
+    natale: "I regali di Natale si ritirano a mano in azienda, entro il 23 dicembre. Se nell'ordine c'è un regalo, si ritira tutto insieme.",
     invia: "Invia l'ordine su WhatsApp", email: 'Oppure mandalo via email', svuota: "Svuota l'ordine",
     dopo: 'Ti rispondiamo su WhatsApp per confermare la disponibilità e fissare il giorno.',
     mancaNome: "Scrivi il tuo nome, così sappiamo di chi è l'ordine.", mancaComune: 'Scrivi il comune dove consegnare.',
@@ -107,9 +107,14 @@
         el('button', { type: 'button', class: 'carrello__togli', 'data-togli': id, testo: T.togli })));
     }
     $('.carrello__totale strong').textContent = euro(tot);
+    // con un regalo di Natale nell'ordine si può solo ritirare
+    const natale = Object.keys(stato.righe).some((id) => CATALOGO[id].natale);
+    const consegna = modulo.querySelector('input[value="consegna"]');
+    consegna.disabled = natale; consegna.closest('label').classList.toggle('carrello__modo--no', natale);
+    if (natale) stato.modo = 'ritiro';
     modulo.modo.value = stato.modo;
     $('.carrello__comune').hidden = stato.modo !== 'consegna';
-    $('.carrello__natale').hidden = !Object.keys(stato.righe).some((id) => CATALOGO[id].natale);
+    $('.carrello__natale').hidden = !natale;
     $('.carrello__email').href = 'mailto:info@viedellagoapicoltura.it?subject=' + encodeURIComponent(T.oggetto) + '&body=' + encodeURIComponent(messaggio());
   }
 
