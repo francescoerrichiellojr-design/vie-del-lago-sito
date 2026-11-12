@@ -3,6 +3,7 @@
 // schermo (per questo è fluido); trascinando, si salta al fotogramma sotto il dito.
 // I punti numerati seguono le parti fotogramma per fotogramma (posizioni in punti.json).
 const CARTELLA = '/img/ape3d/giro/';
+const VER = '?v=20261112';   // cambia a ogni nuovo render: video e punti devono arrivare insieme
 
 export function avvia(contenitore, { onSeleziona } = {}) {
   const ridotto = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -20,7 +21,7 @@ export function avvia(contenitore, { onSeleziona } = {}) {
   v.setAttribute('aria-label', contenitore.querySelector('.ape3d__statica')?.alt || '');
   v.tabIndex = 0;
   for (const [est, tipo] of [['mp4', 'video/mp4; codecs="avc1.64001f"'], ['webm', 'video/webm; codecs="vp9"']]) {
-    const s = document.createElement('source'); s.src = `${base}.${est}`; s.type = tipo; v.append(s);
+    const s = document.createElement('source'); s.src = `${base}.${est}${VER}`; s.type = tipo; v.append(s);
   }
   contenitore.prepend(v);
 
@@ -169,7 +170,7 @@ export function avvia(contenitore, { onSeleziona } = {}) {
     if (!(auto && visibile) && !v.paused) v.pause();     // fuori schermo aspetta; riparte quando torna visibile
     gira();
   });
-  fetch(CARTELLA + 'punti.json').then(r => r.json()).then(d => {
+  fetch(CARTELLA + 'punti.json' + VER).then(r => r.json()).then(d => {
     punti = d.punti; FPS = d.fps; NF = punti.length; disegnato = -1;
     // l'avvio fa anche partire lo scaricamento sui telefoni, che non precaricano i video
     if (auto) { const p = v.play(); if (p) p.catch(() => {}); } else v.load();
