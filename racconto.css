@@ -600,11 +600,22 @@ a{color:inherit}
 .arnia3d--toccata .arnia3d__aiuto{opacity:0}
 .arnia3d .ape3d__elenco{grid-template-columns:1fr 1fr}
 .arnia3d__azioni{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:18px 0 0}
-.arnia3d__richiudi,.arnia3d__ar-testo{padding:0;border:0;background:none;color:var(--miele);font:inherit;font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
-.arnia3d__richiudi[hidden],.arnia3d__ar[hidden],.arnia3d__ar-testo[hidden]{display:none}
-.arnia3d__ar{display:inline-block;line-height:0;border-radius:4px;background:var(--salvia)}
-.arnia3d__ar img{width:48px;height:36px}
-.arnia3d__richiudi:focus-visible,.arnia3d__ar-testo:focus-visible,.arnia3d__avvia:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+.arnia3d__richiudi{padding:0;border:0;background:none;color:var(--miele);font:inherit;font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.arnia3d__richiudi[hidden],.arnia3d__ar-pulsante[hidden]{display:none}
+/* realtà aumentata: un'unica pillola scura. Il link resta con la sola immagine dentro, come vuole Quick Look */
+.arnia3d__ar-pulsante{display:inline-flex;align-items:center;gap:4px;max-width:100%;padding:6px 26px 6px 6px;border-radius:999px;background:var(--terra);color:var(--carta);box-shadow:0 10px 24px -14px rgba(30,26,18,.8);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
+.arnia3d__ar-pulsante:hover{transform:translateY(-2px);box-shadow:0 16px 30px -16px rgba(30,26,18,.9)}
+.arnia3d__ar-pulsante:active{transform:scale(.98)}
+.arnia3d__ar{display:block;flex:none;line-height:0;border-radius:999px;background:var(--carta);overflow:hidden}
+.arnia3d__ar img{display:block;width:52px;height:52px;object-fit:contain;padding:5px}
+.arnia3d__ar-testo{display:inline-flex;align-items:center;gap:12px;padding:6px 0 6px 10px;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.arnia3d__ar-icona{flex:none;color:var(--chiaro)}
+.arnia3d__ar-testo strong{display:block;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;line-height:1.25}
+.arnia3d__ar-testo small{display:block;margin-top:3px;font-size:13px;color:var(--chiaro);opacity:.8;line-height:1.3}
+.arnia3d__richiudi:focus-visible,.arnia3d__avvia:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+.arnia3d__ar:focus-visible,.arnia3d__ar-testo:focus-visible{outline:2px solid var(--miele);outline-offset:3px;border-radius:999px}
+@media (max-width:480px){.arnia3d__ar-icona{display:none}.arnia3d__ar-testo{padding-left:8px}.arnia3d__ar-testo strong{letter-spacing:.08em}.arnia3d__ar-pulsante{padding-right:22px}}
+@media (prefers-reduced-motion:reduce){.arnia3d__ar-pulsante{transition:none}.arnia3d__ar-pulsante:hover{transform:none}}
 @media (max-width:860px){.arnia3d__scena{aspect-ratio:1/1}}
 
 .punti--chiaro .punto{border-top-color:rgba(30,26,18,.22)}
