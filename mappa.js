@@ -24,7 +24,7 @@ var EN = document.documentElement.lang === 'en';
       var EN = document.documentElement.lang === 'en';
       var punti = [
         [40.87128953038465, 15.300502782432183, 'puntino--apiario', EN ? 'Priscilla apiary' : 'Apiario Priscilla', EN ? "Our stationary apiary: home to the <em>Apis mellifera ligustica</em> colonies that make all our honey." : "Il nostro apiario stanziale: qui vivono le famiglie di <em>Apis mellifera ligustica</em> che producono tutti i nostri mieli."],
-        [40.889290, 15.296503, 'puntino--oasi', EN ? 'WWF Oasis of Conza' : 'Oasi WWF di Conza', EN ? "A protected area of about 3,700 hectares, a wetland of European importance." : "Area protetta di circa 3.700 ettari, zona umida di importanza europea."],
+        [40.889290, 15.296503, 'puntino--oasi', EN ? 'WWF Oasis of Conza' : 'Oasi WWF di Conza', EN ? "A protected area of about 800 hectares, the largest wetland in Campania." : "Area protetta di circa 800 ettari, la zona umida più estesa della Campania."],
         [40.89628953038465, 15.312502782432183, 'puntino--oasi', EN ? 'Lake Conza' : 'Lago di Conza', EN ? "The reservoir on the river Ofanto: the body of water shapes the microclimate of the blooms." : "Il bacino sul fiume Ofanto: la massa d'acqua regola il microclima delle fioriture."],
         [40.881290, 15.286503, 'puntino--fiori', EN ? 'Sulla meadows' : 'Praterie della sulla', EN ? "The clay meadows where sulla flowers in May." : "Le praterie argillose dove la sulla fiorisce a maggio."],
         [40.865290, 15.290503, 'puntino--fiori', EN ? "Acacia valleys" : "Valloni dell'acacia", EN ? "The damp valley floors where black locust grows, in flower for 8–12 days a year." : "I fondovalle umidi dove cresce la robinia, in fiore per 8–12 giorni l'anno."],
