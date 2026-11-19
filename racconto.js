@@ -108,12 +108,14 @@
     voci.forEach(function (v) {
       if (v.isIntersecting) { v.target.classList.add('visibile'); io.unobserve(v.target); }
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('[data-rivela], .svela').forEach(function (el) { io.observe(el); });
-  // l'apertura è già sullo schermo: parte subito
-  requestAnimationFrame(function () {
-    document.querySelectorAll('.apertura [data-rivela]').forEach(function (el) { el.classList.add('visibile'); });
+  }, { threshold: 0, rootMargin: '0px 0px 10% 0px' });
+  // quello che è già sullo schermo all'apertura parte subito, su ogni pagina
+  var altezza = window.innerHeight, subito = [];
+  document.querySelectorAll('[data-rivela], .svela').forEach(function (el) {
+    if (el.getBoundingClientRect().top < altezza) subito.push(el);
+    else io.observe(el);
   });
+  requestAnimationFrame(function () { subito.forEach(function (el) { el.classList.add('visibile'); }); });
 
   // 3. Profondità: elementi che scorrono a velocità diversa
   var strati = Array.prototype.slice.call(document.querySelectorAll('[data-profondita]'));

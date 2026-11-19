@@ -15,7 +15,7 @@
     'dono-doppio': { it: 'Il dono doppio di Natale', en: 'The double Christmas gift', formato: { it: '2 vasetti di Sulla in busta regalo', en: '2 jars of Sulla in a gift bag' }, prezzo: 42, disponibile: true, natale: true },
   };
   const T = EN ? {
-    carrello: 'Your order', vuoto: 'Your order is empty. Add a honey from its page.', vuotoQui: 'Nothing here yet: add a honey from the list.', aggiungi: 'Add to order', aggiunto: 'Added',
+    carrello: 'Your order', vuoto: 'Your order is empty. Add a honey to get started.', vuotoQui: 'Nothing here yet: add a honey from the list.', aggiungi: 'Add to order', aggiunto: 'Added',
     apri: (n, tot) => `Your order · ${n} ${n === 1 ? 'item' : 'items'} · ${tot}`, chiudi: 'Close', togli: 'Remove', meno: 'One less', piu: 'One more',
     totale: 'Total', ricevi: 'How would you like it?', ritiro: 'Collect at our farm', ritiroDett: 'Contrada Pescara 74, Conza della Campania (AV)',
     consegna: 'Delivery in Campania', consegnaDett: 'We bring it to you: day and cost to be agreed', comune: 'Town for delivery',
@@ -28,7 +28,7 @@
     msg: 'Hello Vie del Lago, I would like to order:', msgTot: 'Total', msgRitiro: 'Collection at your farm', msgConsegna: 'Delivery to', msgNome: 'Name', msgNote: 'Notes',
     oggetto: 'Order from the website',
   } : {
-    carrello: 'Il tuo ordine', vuoto: 'Il tuo ordine è vuoto. Aggiungi un miele dalla sua pagina.', vuotoQui: "Ancora niente: aggiungi un miele dall'elenco.", aggiungi: "Aggiungi all'ordine", aggiunto: 'Aggiunto',
+    carrello: 'Il tuo ordine', vuoto: 'Il tuo ordine è vuoto. Aggiungi un miele per cominciare.', vuotoQui: "Ancora niente: aggiungi un miele dall'elenco.", aggiungi: "Aggiungi all'ordine", aggiunto: 'Aggiunto',
     apri: (n, tot) => `Il tuo ordine · ${n} ${n === 1 ? 'pezzo' : 'pezzi'} · ${tot}`, chiudi: 'Chiudi', togli: 'Togli', meno: 'Uno in meno', piu: 'Uno in più',
     totale: 'Totale', ricevi: 'Come lo vuoi ricevere?', ritiro: 'Ritiro in azienda', ritiroDett: 'Contrada Pescara 74, Conza della Campania (AV)',
     consegna: 'Consegna in Campania', consegnaDett: 'Te lo portiamo noi: giorno e costo da concordare', comune: 'Comune di consegna',

@@ -64,7 +64,7 @@
   <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/vendor/lenis-1.3.27.css">
-  <link rel="stylesheet" href="/racconto.css?v=20261113a">
+  <link rel="stylesheet" href="/racconto.css?v=20261119a">
   <script>document.documentElement.classList.add('js-menu')</script>
   <script>try{if(!localStorage.getItem('vdl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro')}catch(e){}</script>
   <meta name="format-detection" content="telephone=no">
@@ -104,17 +104,33 @@
       <h1 class="titolo" data-rivela><span class="riga" style="--i:0"><span>I nostri mieli</span></span></h1>
       <p class="racconto intro__lead" data-rivela style="--i:2">Tre mieli cru dallo stesso terreno argilloso intorno al Lago di Conza. Tutti non pastorizzati, tutti raccolti in piccoli lotti.</p>
       <ul class="fatti" data-rivela style="--i:3">
-        <li>Non pastorizzato</li><li>Apicoltura stanziale</li><li>Api senza antibiotici</li><li>Vasetto da 500 g</li><li>Ritiro o consegna in Campania</li>
+        <li>Non pastorizzato</li><li>Apicoltura stanziale</li><li>Varroa trattata solo con acido ossalico</li><li>Vasetto da 500 g</li><li>Ritiro o consegna in Campania</li>
       </ul>
     </div>
   </section>
 
   <section class="capitolo capitolo--salvia" aria-label="I tre mieli">
     <div class="contenitore">
-      <article class="miele" id="millefiori" data-miele="millefiori" aria-labelledby="m-millefiori">
-        <a class="miele__vaso svela" href="millefiori.html" tabindex="-1" aria-hidden="true"><img src="img/millefiori-vaso.webp" alt="" width="697" height="1007" loading="lazy" data-profondita="0.06"></a>
+      <article class="miele" id="sulla" data-miele="sulla" aria-labelledby="m-sulla">
+        <a class="miele__vaso svela" href="sulla.html" tabindex="-1" aria-hidden="true"><img src="img/sulla-vaso.webp" alt="" width="689" height="960" loading="lazy" data-profondita="0.06"></a>
         <div class="miele__testo">
           <p class="contatore" data-rivela>01 / 03</p>
+          <p class="etichetta" data-rivela style="--i:1">Cru delle Argille · Monoflora</p>
+          <h2 class="titolo" id="m-sulla" data-rivela><span class="riga" style="--i:0"><span>Sulla</span></span></h2>
+          <p class="motto" data-rivela style="--i:1">La mineralità dell'argilla</p>
+          <p class="miele__note" data-rivela style="--i:2">La fioritura rossa delle praterie argillose irpine, raccolta a maggio. Tenue ma riconoscibile: paglia fresca, erbe aromatiche e un leggero sentore agrumato.</p>
+          <p class="secondario" data-rivela style="--i:3;margin:0">Caprino fresco alle erbe, yogurt greco, tisane che vuoi addolcire senza coprirne il profumo.</p>
+          <div class="miele__dati" data-rivela style="--i:4">
+            <span class="miele__prezzo">€20 <span class="secondario" style="font-weight:400;font-size:16px">· 500 g</span></span>
+            <span class="stato stato--si">Disponibile</span>
+          </div>
+          <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><button type="button" class="btn btn--pieno" data-carrello-aggiungi="sulla">Aggiungi all'ordine <span class="freccia" aria-hidden="true">+</span></button><a class="btn" href="sulla.html">Scheda completa <span class="freccia" aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+      <article class="miele miele--invertito" id="millefiori" data-miele="millefiori" aria-labelledby="m-millefiori">
+        <a class="miele__vaso svela" href="millefiori.html" tabindex="-1" aria-hidden="true"><img src="img/millefiori-vaso.webp" alt="" width="697" height="1007" loading="lazy" data-profondita="0.06"></a>
+        <div class="miele__testo">
+          <p class="contatore" data-rivela>02 / 03</p>
           <p class="etichetta" data-rivela style="--i:1">Cuvée delle Colline · Polifiora</p>
           <h2 class="titolo" id="m-millefiori" data-rivela><span class="riga" style="--i:0"><span>Millefiori</span></span></h2>
           <p class="motto" data-rivela style="--i:1">Complessa polifonia botanica</p>
@@ -127,10 +143,10 @@
           <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20essere%20avvisato%20quando%20torna%20il%20Miele%20Millefiori.">Avvisami <span class="freccia" aria-hidden="true">→</span></a><a class="btn" href="millefiori.html">Scheda completa <span class="freccia" aria-hidden="true">→</span></a></div>
         </div>
       </article>
-      <article class="miele miele--invertito" id="acacia" data-miele="acacia" aria-labelledby="m-acacia">
+      <article class="miele" id="acacia" data-miele="acacia" aria-labelledby="m-acacia">
         <a class="miele__vaso svela" href="acacia.html" tabindex="-1" aria-hidden="true"><img src="img/acacia-vaso.webp" alt="" width="571" height="795" loading="lazy" data-profondita="0.06"></a>
         <div class="miele__testo">
-          <p class="contatore" data-rivela>02 / 03</p>
+          <p class="contatore" data-rivela>03 / 03</p>
           <p class="etichetta" data-rivela style="--i:1">Cru dei Valloni · Monoflora</p>
           <h2 class="titolo" id="m-acacia" data-rivela><span class="riga" style="--i:0"><span>Acacia</span></span></h2>
           <p class="motto" data-rivela style="--i:1">Eleganza monoflora cristallina</p>
@@ -141,22 +157,6 @@
             <span class="stato">Esaurito · annata 2026</span>
           </div>
           <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20essere%20avvisato%20quando%20torna%20il%20Miele%20di%20Acacia.">Avvisami <span class="freccia" aria-hidden="true">→</span></a><a class="btn" href="acacia.html">Scheda completa <span class="freccia" aria-hidden="true">→</span></a></div>
-        </div>
-      </article>
-      <article class="miele" id="sulla" data-miele="sulla" aria-labelledby="m-sulla">
-        <a class="miele__vaso svela" href="sulla.html" tabindex="-1" aria-hidden="true"><img src="img/sulla-vaso.webp" alt="" width="689" height="960" loading="lazy" data-profondita="0.06"></a>
-        <div class="miele__testo">
-          <p class="contatore" data-rivela>03 / 03</p>
-          <p class="etichetta" data-rivela style="--i:1">Cru delle Argille · Monoflora</p>
-          <h2 class="titolo" id="m-sulla" data-rivela><span class="riga" style="--i:0"><span>Sulla</span></span></h2>
-          <p class="motto" data-rivela style="--i:1">La mineralità dell'argilla</p>
-          <p class="miele__note" data-rivela style="--i:2">La fioritura rossa delle praterie argillose irpine, raccolta a maggio. Tenue ma riconoscibile: paglia fresca, erbe aromatiche e un leggero sentore agrumato.</p>
-          <p class="secondario" data-rivela style="--i:3;margin:0">Caprino fresco alle erbe, yogurt greco, tisane che vuoi addolcire senza coprirne il profumo.</p>
-          <div class="miele__dati" data-rivela style="--i:4">
-            <span class="miele__prezzo">€20 <span class="secondario" style="font-weight:400;font-size:16px">· 500 g</span></span>
-            <span class="stato stato--si">Disponibile</span>
-          </div>
-          <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><button type="button" class="btn btn--pieno" data-carrello-aggiungi="sulla">Aggiungi all'ordine <span class="freccia" aria-hidden="true">+</span></button><a class="btn" href="sulla.html">Scheda completa <span class="freccia" aria-hidden="true">→</span></a></div>
         </div>
       </article>
     </div>
@@ -249,7 +249,7 @@
 
 <script src="script.js"></script>
 <script src="/vendor/lenis-1.3.27.min.js"></script>
-<script src="/racconto.js?v=20261111"></script>
-<script src="/js/carrello.js?v=20261112d" defer></script>
+<script src="/racconto.js?v=20261119a"></script>
+<script src="/js/carrello.js?v=20261119a" defer></script>
 </body>
 </html>
