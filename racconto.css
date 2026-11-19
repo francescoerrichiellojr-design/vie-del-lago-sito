@@ -19,6 +19,7 @@
   --chiaro-2:#A9A792;   /* testo secondario su terra: 7,1:1 */
   --gutter:clamp(20px,5vw,72px);
   --lento:1.1s cubic-bezier(.2,.7,.2,1);
+  --rivela:.6s cubic-bezier(.2,.7,.2,1);
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -40,9 +41,9 @@ a{color:inherit}
 
 /* Rivelazione riga per riga */
 .riga{display:block;overflow:hidden;padding-bottom:.06em}
-.riga>span{display:block;transform:translateY(105%);transition:transform var(--lento);transition-delay:calc(var(--i,0) * 110ms)}
+.riga>span{display:block;transform:translateY(105%);transition:transform var(--rivela);transition-delay:calc(var(--i,0) * 70ms)}
 .visibile .riga>span,.riga.visibile>span{transform:none}
-[data-rivela]:not(.titolo){opacity:0;transform:translateY(28px);transition:opacity var(--lento),transform var(--lento);transition-delay:calc(var(--i,0) * 110ms)}
+[data-rivela]:not(.titolo){opacity:0;transform:translateY(14px);transition:opacity var(--rivela),transform var(--rivela);transition-delay:calc(var(--i,0) * 70ms)}
 [data-rivela].visibile:not(.titolo){opacity:1;transform:none}
 
 /* Immagini che si svelano */
