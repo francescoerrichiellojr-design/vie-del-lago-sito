@@ -240,10 +240,17 @@
     function tocco(p) {
       ferma();
       if (!p || !mappa) { chiudiScheda(); return; }
-      const w = mappa.canvas.width, h = mappa.canvas.height;
-      const d = mappa.getImageData(Math.min(w - 1, Math.floor(p.u * w)), Math.min(h - 1, Math.floor(p.v * h)), 1, 1).data;
+      // valore massimo in un intorno di circa 20 m: il dito non è mai preciso al pixel
+      const w = mappa.canvas.width, h = mappa.canvas.height, R = 3;
+      const cx = Math.min(w - 1, Math.floor(p.u * w)), cy = Math.min(h - 1, Math.floor(p.v * h));
+      const x0 = Math.max(0, cx - R), y0 = Math.max(0, cy - R), x1 = Math.min(w - 1, cx + R), y1 = Math.min(h - 1, cy + R);
+      const d = mappa.getImageData(x0, y0, x1 - x0 + 1, y1 - y0 + 1).data;
+      let mS = 0, mA = 0, mM = 0;
+      for (let j = 0; j < d.length; j += 4) { mS = Math.max(mS, d[j]); mA = Math.max(mA, d[j + 1]); mM = Math.max(mM, d[j + 2]); }
       const pesi = PESI[+cursore.value];
-      const val = { sulla: d[0] / 255 * pesi[0], acacia: d[1] / 255 * pesi[1], mille: d[2] / 255 * pesi[2] * 0.8 };
+      // su una chioma conta solo l'albero toccato: acacia se è un'acacia, altrimenti niente sulla
+      if (p.albero) { mA = p.acacia * 255; mS = 0; }
+      const val = { sulla: mS / 255 * pesi[0], acacia: mA / 255 * pesi[1] * 1.6, mille: mM / 255 * pesi[2] * 0.6 };
       const k = Object.keys(val).sort((a, b) => val[b] - val[a])[0];
       const tit = scheda.querySelector('[data-scheda-titolo]'), tes = scheda.querySelector('[data-scheda-testo]'), az = scheda.querySelector('[data-scheda-azioni]');
       az.innerHTML = '';
@@ -274,7 +281,7 @@
     const avvia = () => {
       if (avviato) return; avviato = true;
       box.classList.add('arnia3d--carica');
-      import('/js/lago-3d.js?v=20261120e').then(m => { lago = m.avvia(scena, { modello: '/img/lago3d/lago.glb?v=20261120a', istanze: '/img/lago3d/lago-istanze.bin?v=20261120a', fioriture: '/img/lago3d/fioriture.webp?v=20261120c',
+      import('/js/lago-3d.js?v=20261120f').then(m => { lago = m.avvia(scena, { modello: '/img/lago3d/lago.glb?v=20261120a', istanze: '/img/lago3d/lago-istanze.bin?v=20261120a', fioriture: '/img/lago3d/fioriture.webp?v=20261120c',
         onAvanzamento: f => { barra.style.transform = `scaleX(${f})`; },
         onTocco: tocco, onInterazione: ferma,
         onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); mostraMese(); parti(); } }); })
