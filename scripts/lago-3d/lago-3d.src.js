@@ -71,10 +71,14 @@ float hfi(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); 
   float n = hfi(cel), m = hfi(cel + 17.3);
   float punti = smoothstep(0.45, 0.95, n);
   // da lontano conta il colore d'insieme, da vicino i singoli fiori
-  vec3 cS = vec3(0.62, 0.0, 0.16), cA = vec3(1.0, 0.98, 0.86), cM0 = vec3(0.86, 0.70, 0.22);
-  vec3 cM = m < 0.4 ? vec3(0.95, 0.80, 0.15) : (m < 0.7 ? vec3(0.92, 0.92, 0.90) : vec3(0.55, 0.30, 0.70));
-  diffuseColor.rgb = mix(diffuseColor.rgb, cM0, f.b * uPeso.z * 0.32);
-  diffuseColor.rgb = mix(diffuseColor.rgb, cM, f.b * uPeso.z * punti * 0.6);
+  vec3 cS = vec3(0.62, 0.0, 0.16), cA = vec3(1.0, 0.98, 0.86), cM0 = vec3(0.30, 0.52, 0.10);
+  // millefiori: il prato torna verde e si riempie di fiori gialli, bianchi e viola, più grandi per vederli da lontano
+  vec2 cel2 = floor(vMapUv * 1400.0);
+  float n2 = hfi(cel2 + 3.1), m2 = hfi(cel2 + 41.7);
+  vec3 cM = m2 < 0.5 ? vec3(1.0, 0.82, 0.05) : (m2 < 0.78 ? vec3(1.0, 1.0, 0.95) : vec3(0.60, 0.25, 0.85));
+  float punti2 = step(0.62, n2);
+  diffuseColor.rgb = mix(diffuseColor.rgb, cM0, f.b * uPeso.z * 0.7);
+  diffuseColor.rgb = mix(diffuseColor.rgb, cM, f.b * uPeso.z * punti2 * 0.9);
   diffuseColor.rgb = mix(diffuseColor.rgb, cA, f.g * uPeso.y * (0.7 + 0.3 * punti));
   diffuseColor.rgb = mix(diffuseColor.rgb, cS, f.r * uPeso.x * (0.55 + 0.35 * punti));
 }`);
