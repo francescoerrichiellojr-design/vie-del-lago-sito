@@ -196,6 +196,14 @@
           background: rgba(246,242,233,.92); font-size: 14px; font-weight: 600; }
         .lago3d--pieno .lago3d__mese { display: block; }
         html.lago3d--blocca, html.lago3d--blocca body { overflow: hidden; }
+        .lago3d__gira { position: absolute; left: 50%; top: 14px; transform: translate(-50%, -6px); z-index: 4; display: flex; align-items: center; gap: 8px;
+          padding: 8px 14px; border-radius: 99px; background: rgba(30,24,18,.78); color: #fff; font-size: 14px; white-space: nowrap;
+          opacity: 0; pointer-events: none; transition: opacity .5s, transform .5s; }
+        .lago3d__gira.si { opacity: 1; transform: translate(-50%, 0); }
+        .lago3d__gira svg { animation: lago3d-gira 1.6s ease-in-out infinite; }
+        @keyframes lago3d-gira { 0%, 25% { transform: rotate(0); } 55%, 100% { transform: rotate(-90deg); } }
+        @media (prefers-reduced-motion: reduce) { .lago3d__gira svg { animation: none; } }
+        .lago3d--pieno .lago3d__gira { display: none; }
       </style>
       <div class="arnia3d" data-lago3d>
         <div class="arnia3d__scena" style="aspect-ratio:16/10" data-etichetta="3D model of Lake Conza">
@@ -203,6 +211,7 @@
           <button type="button" class="btn btn--pieno arnia3d__avvia" data-avvia>Open in 3D <span class="arnia3d__peso">2 MB</span></button>
           <p class="arnia3d__carica" aria-hidden="true"><span></span></p>
           <p class="arnia3d__errore" role="status">Your browser can't display the 3D model.</p>
+          <p class="lago3d__gira" data-gira aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>Turn your phone to see it full screen</p>
           <button type="button" class="lago3d__esci" data-esci aria-label="Exit full screen">×</button>
           <p class="lago3d__mese" data-mese-pieno aria-hidden="true"></p>
           <div class="fiore-scheda" data-scheda hidden role="dialog" aria-live="polite" style="position:absolute;left:12px;right:12px;bottom:12px;max-width:340px;background:var(--crema, #f6f2e9);color:var(--terra, #2a2018);border-radius:14px;padding:16px 18px 18px;box-shadow:0 10px 30px rgba(0,0,0,.18);z-index:3">
@@ -298,6 +307,16 @@
     const controlla = () => { if (oriz.matches) { if (vistaPrima || visibile()) metti(true); } else metti(false); };
     oriz.addEventListener('change', () => setTimeout(controlla, 150));
     scena.querySelector('[data-esci]').addEventListener('click', () => { vistaPrima = false; metti(false); });
+    // telefono in verticale: un piccolo avviso, una volta per visita, quando il plastico entra nello schermo
+    const vert = matchMedia('(orientation: portrait) and (pointer: coarse) and (max-width: 560px)');
+    const gira = scena.querySelector('[data-gira]');
+    let giaVisto = false; try { giaVisto = sessionStorage.getItem('lago3d-gira') === '1'; } catch (e) {}
+    const avvisa = () => {
+      if (giaVisto || !vert.matches || !box.classList.contains('arnia3d--pronta')) return;
+      giaVisto = true; try { sessionStorage.setItem('lago3d-gira', '1'); } catch (e) {}
+      gira.classList.add('si'); setTimeout(() => gira.classList.remove('si'), 4000);
+    };
+    new IntersectionObserver((v) => { if (v[0].isIntersecting) setTimeout(avvisa, 600); }, { threshold: 0.6 }).observe(scena);
     let avviato = false;
     const avvia = () => {
       if (avviato) return; avviato = true;
@@ -305,7 +324,7 @@
       import('/js/lago-3d.js?v=20261120f').then(m => { lago = m.avvia(scena, { modello: '/img/lago3d/lago.glb?v=20261120a', istanze: '/img/lago3d/lago-istanze.bin?v=20261120a', fioriture: '/img/lago3d/fioriture.webp?v=20261120c',
         onAvanzamento: f => { barra.style.transform = `scaleX(${f})`; },
         onTocco: tocco, onInterazione: ferma,
-        onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); mostraMese(); parti(); } }); })
+        onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); mostraMese(); parti(); if (visibile()) setTimeout(avvisa, 600); } }); })
         .catch(() => box.classList.add('arnia3d--errore'));
     };
     box.querySelector('[data-avvia]').addEventListener('click', avvia);
