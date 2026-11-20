@@ -7,9 +7,9 @@
 <title>Registro arnie · Vie del Lago</title>
 <script>
   // Pagina di rimando per i tag NFC e i QR delle arnie: /a/#A01 apre la scheda A01 del registro.
-  // Il rimando parte da qui dentro Safari, così iOS non apre l'app Claude al posto della pagina.
+  // Così le etichette restano valide anche se l'app cambia indirizzo: basta aggiornare questa pagina.
   (function () {
-    var base = "https://claude.ai/artifact/DovV7YDmNM2gTyPiPjWkTo";
+    var base = "https://registro-regine.pages.dev/";
     var code = (location.hash || "").slice(1);
     if (!code) { try { code = new URLSearchParams(location.search).get("a") || ""; } catch (e) {} }
     code = code.replace(/[^A-Za-z0-9-]/g, "").slice(0, 20);
@@ -24,7 +24,7 @@
 </head>
 <body>
 <p>Apro il registro delle arnie…</p>
-<p><a id="vai" href="https://claude.ai/artifact/DovV7YDmNM2gTyPiPjWkTo">Se non si apre, tocca qui</a></p>
+<p><a id="vai" href="https://registro-regine.pages.dev/">Se non si apre, tocca qui</a></p>
 <script>
   if (window.__dest) document.getElementById("vai").href = window.__dest;
 </script>
