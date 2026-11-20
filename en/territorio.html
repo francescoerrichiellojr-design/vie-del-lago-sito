@@ -193,18 +193,36 @@
           <p class="ape3d__aiuto arnia3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Drag to turn it, pinch to zoom in</span><span class="ape3d__aiuto-mouse">Drag to turn it, scroll to zoom in</span></p>
         </div>
       </div>
-      <p class="ape3d__nota" style="max-width:none;font-size:15px;text-align:justify;hyphens:auto">This is a 3D model built from real data: terrain heights measured by satellite, the shape of the lake and the dam from OpenStreetMap, woods and fields from the ESA WorldCover map.</p>
+
+      <div class="fioriture" data-fioriture hidden style="margin-top:22px">
+        <p class="etichetta" style="margin:0 0 10px">The blooms</p>
+        <input type="range" min="0" max="5" step="1" value="1" aria-label="Bloom month" aria-valuetext="May" data-mese style="width:100%;accent-color:var(--miele);cursor:pointer">
+        <ol aria-hidden="true" style="list-style:none;margin:4px 0 0;padding:0;display:flex;justify-content:space-between;font-size:13px;color:var(--grigio)"><li data-m="0">Apr</li><li data-m="1">May</li><li data-m="2">Jun</li><li data-m="3">Jul</li><li data-m="4">Aug</li><li data-m="5">Sep</li></ol>
+        <p class="racconto" aria-live="polite" data-mese-testo style="margin:16px 0 0;max-width:none;font-size:19px;min-height:2.6em"></p>
+        <ul class="legenda" style="margin-top:12px"><li><span class="puntino" style="background:#9E1F4F"></span>Sulla</li><li><span class="puntino" style="background:#E9E4C6;outline:1px solid #b9b39a"></span>Acacia</li><li><span class="puntino" style="background:conic-gradient(#E8C22A 0 40%,#e8e8e4 0 70%,#8C55B0 0)"></span>Wildflower</li></ul>
+      </div>
+      <p class="ape3d__nota" style="max-width:none;font-size:15px;text-align:justify;hyphens:auto">This is a 3D model built from real data: terrain heights measured by satellite, the shape of the lake and the dam from OpenStreetMap, woods and fields from the ESA WorldCover map. We marked the sulla and acacia areas on the map ourselves; wildflowers grow on every meadow and field. The months are a guide: they shift every year with the weather.</p>
     </div>
   </section>
   <script type="module">
     const box = document.querySelector('[data-lago3d]'), scena = box.querySelector('.arnia3d__scena'), barra = box.querySelector('.arnia3d__carica span');
+    let lago = null;
+    const fio = box.parentElement.querySelector('[data-fioriture]'), cursore = fio.querySelector('[data-mese]'), testo = fio.querySelector('[data-mese-testo]');
+    const PESI = [[0,0.4,0.25],[1,1,0.55],[0.55,0,0.9],[0,0,0.85],[0,0,0.35],[0,0,0.1]], TESTI = ["In April the first acacias open along the ditches and at the edges of the woods.","May is the peak: sulla colours the clay fields north of the lake and towards Gaveto, and acacia flowers in the woods towards Sanzano and along the Circumlacuale road.","In June the sulla ends. Wildflower honey starts in the meadows and fallow fields.","July belongs to wildflower honey: clover, bramble and meadow herbs around the Oasis.","In August the heat dries the meadows and the blooms thin out.","In September the season closes. What stays in the combs is the bees' store for the winter."], MESI = ["April","May","June","July","August","September"];
+    const mostraMese = () => {
+      const i = +cursore.value; fio.hidden = false;
+      testo.textContent = TESTI[i]; cursore.setAttribute('aria-valuetext', MESI[i]);
+      fio.querySelectorAll('[data-m]').forEach(li => { li.style.fontWeight = +li.dataset.m === i ? '600' : '400'; li.style.color = +li.dataset.m === i ? 'var(--terra)' : ''; });
+      if (lago) lago.mese(PESI[i]);
+    };
+    cursore.addEventListener('input', mostraMese);
     let avviato = false;
     const avvia = () => {
       if (avviato) return; avviato = true;
       box.classList.add('arnia3d--carica');
-      import('/js/lago-3d.js?v=20261120a').then(m => m.avvia(scena, { modello: '/img/lago3d/lago.glb?v=20261120a', istanze: '/img/lago3d/lago-istanze.bin?v=20261120a',
+      import('/js/lago-3d.js?v=20261120c').then(m => { lago = m.avvia(scena, { modello: '/img/lago3d/lago.glb?v=20261120a', istanze: '/img/lago3d/lago-istanze.bin?v=20261120a', fioriture: '/img/lago3d/fioriture.webp?v=20261120c',
         onAvanzamento: f => { barra.style.transform = `scaleX(${f})`; },
-        onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); } }))
+        onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); mostraMese(); } }); })
         .catch(() => box.classList.add('arnia3d--errore'));
     };
     box.querySelector('[data-avvia]').addEventListener('click', avvia);
