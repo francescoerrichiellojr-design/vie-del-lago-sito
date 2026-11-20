@@ -190,7 +190,13 @@
           <button type="button" class="btn btn--pieno arnia3d__avvia" data-avvia>Open in 3D <span class="arnia3d__peso">2 MB</span></button>
           <p class="arnia3d__carica" aria-hidden="true"><span></span></p>
           <p class="arnia3d__errore" role="status">Your browser can't display the 3D model.</p>
-          <p class="ape3d__aiuto arnia3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Drag to turn it, pinch to zoom in</span><span class="ape3d__aiuto-mouse">Drag to turn it, scroll to zoom in</span></p>
+          <div class="fiore-scheda" data-scheda hidden role="dialog" aria-live="polite" style="position:absolute;left:12px;right:12px;bottom:12px;max-width:340px;background:var(--crema, #f6f2e9);color:var(--terra, #2a2018);border-radius:14px;padding:16px 18px 18px;box-shadow:0 10px 30px rgba(0,0,0,.18);z-index:3">
+            <button type="button" data-scheda-chiudi aria-label="Close" style="position:absolute;top:6px;right:8px;border:0;background:none;font-size:22px;line-height:1;cursor:pointer;color:inherit;padding:6px">×</button>
+            <p data-scheda-titolo style="margin:0 28px 4px 0;font-family:var(--serif, Georgia, serif);font-size:21px;line-height:1.2"></p>
+            <p data-scheda-testo style="margin:0;font-size:15px;line-height:1.45"></p>
+            <div data-scheda-azioni style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px"></div>
+          </div>
+          <p class="ape3d__aiuto arnia3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Drag to turn it, tap an area in bloom</span><span class="ape3d__aiuto-mouse">Drag to turn it, click an area in bloom</span></p>
         </div>
       </div>
 
@@ -215,14 +221,54 @@
       fio.querySelectorAll('[data-m]').forEach(li => { li.style.fontWeight = +li.dataset.m === i ? '600' : '400'; li.style.color = +li.dataset.m === i ? 'var(--terra)' : ''; });
       if (lago) lago.mese(PESI[i]);
     };
-    cursore.addEventListener('input', mostraMese);
+    cursore.addEventListener('input', () => { ferma(); mostraMese(); });
+    // la stagione scorre da sola finché nessuno tocca il plastico o il cursore
+    let giro = null;
+    const ferma = () => { clearInterval(giro); giro = null; };
+    const parti = () => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      let inVista = false;
+      new IntersectionObserver((v) => { inVista = v[0].isIntersecting; }, { threshold: 0.5 }).observe(scena);
+      giro = setInterval(() => { if (!inVista || document.hidden) return; cursore.value = (+cursore.value + 1) % 6; mostraMese(); }, 3500);
+    };
+    fio.addEventListener('pointerdown', ferma);
+    // scheda: toccando una zona in fiore si legge la mappa delle fioriture in quel punto
+    const S = { sulla: ['Sulla honey', 'Harvested here in May, on the clay fields around the lake.', 'sulla.html'], acacia: ['Acacia honey', 'Harvested here between April and May, in the stands of black locust.', 'acacia.html'], mille: ['Wildflower honey', 'Harvested here between May and July, on the meadows and fallow fields.', 'millefiori.html'] };
+    const DISP = { sulla: true, acacia: false, mille: false }; // come in js/carrello.js: aggiornare insieme
+    const ID = { sulla: 'sulla', acacia: 'acacia', mille: 'millefiori' };
+    const scheda = scena.querySelector('[data-scheda]');
+    let mappa = null;
+    const img = new Image(); img.src = '/img/lago3d/fioriture.webp?v=20261120c';
+    img.onload = () => { const c = document.createElement('canvas'); c.width = img.width; c.height = img.height; const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(img, 0, 0); mappa = x; };
+    const chiudiScheda = () => { scheda.hidden = true; };
+    scheda.querySelector('[data-scheda-chiudi]').addEventListener('click', chiudiScheda);
+    function tocco(p) {
+      ferma();
+      if (!p || !mappa) { chiudiScheda(); return; }
+      const w = mappa.canvas.width, h = mappa.canvas.height;
+      const d = mappa.getImageData(Math.min(w - 1, Math.floor(p.u * w)), Math.min(h - 1, Math.floor(p.v * h)), 1, 1).data;
+      const pesi = PESI[+cursore.value];
+      const val = { sulla: d[0] / 255 * pesi[0], acacia: d[1] / 255 * pesi[1], mille: d[2] / 255 * pesi[2] * 0.8 };
+      const k = Object.keys(val).sort((a, b) => val[b] - val[a])[0];
+      const tit = scheda.querySelector('[data-scheda-titolo]'), tes = scheda.querySelector('[data-scheda-testo]'), az = scheda.querySelector('[data-scheda-azioni]');
+      az.innerHTML = '';
+      if (val[k] < 0.15) { tit.textContent = MESI[+cursore.value]; tes.textContent = 'Nothing the bees care about flowers here this month. Try another month or another spot.'; }
+      else {
+        tit.textContent = S[k][0]; tes.textContent = S[k][1];
+        const a = document.createElement('a'); a.href = S[k][2]; a.className = 'link'; a.textContent = 'Discover the honey' + ' →';
+        if (DISP[k]) { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn--pieno'; b.dataset.carrelloAggiungi = ID[k]; b.innerHTML = 'Add to order' + ' <span class="freccia" aria-hidden="true">+</span>'; az.append(b, a); }
+        else { const n = document.createElement('p'); n.style.cssText = 'margin:0;font-size:14px;opacity:.8;flex-basis:100%'; n.textContent = 'The 2026 harvest is sold out: back next season.'; az.append(n, a); }
+      }
+      scheda.hidden = false;
+    }
     let avviato = false;
     const avvia = () => {
       if (avviato) return; avviato = true;
       box.classList.add('arnia3d--carica');
-      import('/js/lago-3d.js?v=20261120c').then(m => { lago = m.avvia(scena, { modello: '/img/lago3d/lago.glb?v=20261120a', istanze: '/img/lago3d/lago-istanze.bin?v=20261120a', fioriture: '/img/lago3d/fioriture.webp?v=20261120c',
+      import('/js/lago-3d.js?v=20261120d').then(m => { lago = m.avvia(scena, { modello: '/img/lago3d/lago.glb?v=20261120a', istanze: '/img/lago3d/lago-istanze.bin?v=20261120a', fioriture: '/img/lago3d/fioriture.webp?v=20261120c',
         onAvanzamento: f => { barra.style.transform = `scaleX(${f})`; },
-        onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); mostraMese(); } }); })
+        onTocco: tocco, onInterazione: ferma,
+        onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); mostraMese(); parti(); } }); })
         .catch(() => box.classList.add('arnia3d--errore'));
     };
     box.querySelector('[data-avvia]').addEventListener('click', avvia);
