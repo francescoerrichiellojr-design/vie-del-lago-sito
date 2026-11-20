@@ -163,12 +163,27 @@
         <p class="etichetta" data-rivela>Dall'alto</p>
         <h2 class="titolo titolo--medio" id="titolo-dallalto" data-rivela><span class="riga" style="--i:0"><span>La conca del lago</span></span><span class="riga" style="--i:1"><span>da girare</span></span></h2>
       </div>
+      <style>
+        /* telefono in orizzontale: il plastico va a tutto schermo */
+        .lago3d--pieno { position: fixed !important; inset: 0 !important; z-index: 2147483000; aspect-ratio: auto !important;
+          width: 100vw !important; height: 100vh !important; height: 100dvh !important; margin: 0 !important; border-radius: 0 !important; background: #d3d1bd; }
+        .lago3d--pieno .ape3d__aiuto { display: none; }
+        .lago3d__esci { display: none; position: absolute; top: 10px; right: 10px; z-index: 4; width: 44px; height: 44px; border: 0; border-radius: 50%;
+          background: rgba(30,24,18,.72); color: #fff; font-size: 24px; line-height: 44px; cursor: pointer; }
+        .lago3d--pieno .lago3d__esci { display: block; }
+        .lago3d__mese { display: none; position: absolute; left: 12px; top: 12px; z-index: 4; padding: 6px 12px; border-radius: 99px;
+          background: rgba(246,242,233,.92); font-size: 14px; font-weight: 600; }
+        .lago3d--pieno .lago3d__mese { display: block; }
+        html.lago3d--blocca, html.lago3d--blocca body { overflow: hidden; }
+      </style>
       <div class="arnia3d" data-lago3d>
         <div class="arnia3d__scena" style="aspect-ratio:16/10" data-etichetta="Plastico 3D del Lago di Conza">
           <img class="arnia3d__statica" src="/img/lago3d/lago-3d.webp" alt="Plastico 3D del Lago di Conza con le colline, i boschi, la diga e i paesi intorno" width="1280" height="720" loading="lazy">
           <button type="button" class="btn btn--pieno arnia3d__avvia" data-avvia>Apri in 3D <span class="arnia3d__peso">2 MB</span></button>
           <p class="arnia3d__carica" aria-hidden="true"><span></span></p>
           <p class="arnia3d__errore" role="status">Il tuo browser non riesce a mostrare il modello 3D.</p>
+          <button type="button" class="lago3d__esci" data-esci aria-label="Esci dallo schermo intero">×</button>
+          <p class="lago3d__mese" data-mese-pieno aria-hidden="true"></p>
           <div class="fiore-scheda" data-scheda hidden role="dialog" aria-live="polite" style="position:absolute;left:12px;right:12px;bottom:12px;max-width:340px;background:var(--crema, #f6f2e9);color:var(--terra, #2a2018);border-radius:14px;padding:16px 18px 18px;box-shadow:0 10px 30px rgba(0,0,0,.18);z-index:3">
             <button type="button" data-scheda-chiudi aria-label="Chiudi" style="position:absolute;top:6px;right:8px;border:0;background:none;font-size:22px;line-height:1;cursor:pointer;color:inherit;padding:6px">×</button>
             <p data-scheda-titolo style="margin:0 28px 4px 0;font-family:var(--serif, Georgia, serif);font-size:21px;line-height:1.2"></p>
@@ -197,6 +212,7 @@
     const mostraMese = () => {
       const i = +cursore.value; fio.hidden = false;
       testo.textContent = TESTI[i]; cursore.setAttribute('aria-valuetext', MESI[i]);
+      scena.querySelector('[data-mese-pieno]').textContent = MESI[i];
       fio.querySelectorAll('[data-m]').forEach(li => { li.style.fontWeight = +li.dataset.m === i ? '600' : '400'; li.style.color = +li.dataset.m === i ? 'var(--terra)' : ''; });
       if (lago) lago.mese(PESI[i]);
     };
@@ -240,11 +256,25 @@
       }
       scheda.hidden = false;
     }
+    // telefono girato in orizzontale con il plastico sullo schermo: tutto schermo
+    const oriz = matchMedia('(orientation: landscape) and (max-height: 560px) and (pointer: coarse)');
+    let pieno = false;
+    const metti = (si) => {
+      if (si === pieno) return; pieno = si;
+      scena.classList.toggle('lago3d--pieno', si); document.documentElement.classList.toggle('lago3d--blocca', si);
+      if (!si) setTimeout(() => box.scrollIntoView({ block: 'center' }), 60);
+    };
+    const visibile = () => { const r = scena.getBoundingClientRect(); return r.bottom > innerHeight * 0.25 && r.top < innerHeight * 0.75; };
+    let vistaPrima = false;
+    addEventListener('scroll', () => { if (!pieno) vistaPrima = visibile(); }, { passive: true });
+    const controlla = () => { if (oriz.matches) { if (vistaPrima || visibile()) metti(true); } else metti(false); };
+    oriz.addEventListener('change', () => setTimeout(controlla, 150));
+    scena.querySelector('[data-esci]').addEventListener('click', () => { vistaPrima = false; metti(false); });
     let avviato = false;
     const avvia = () => {
       if (avviato) return; avviato = true;
       box.classList.add('arnia3d--carica');
-      import('/js/lago-3d.js?v=20261120d').then(m => { lago = m.avvia(scena, { modello: '/img/lago3d/lago.glb?v=20261120a', istanze: '/img/lago3d/lago-istanze.bin?v=20261120a', fioriture: '/img/lago3d/fioriture.webp?v=20261120c',
+      import('/js/lago-3d.js?v=20261120e').then(m => { lago = m.avvia(scena, { modello: '/img/lago3d/lago.glb?v=20261120a', istanze: '/img/lago3d/lago-istanze.bin?v=20261120a', fioriture: '/img/lago3d/fioriture.webp?v=20261120c',
         onAvanzamento: f => { barra.style.transform = `scaleX(${f})`; },
         onTocco: tocco, onInterazione: ferma,
         onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); mostraMese(); parti(); } }); })
