@@ -155,10 +155,22 @@
           </div>
           <div data-rivela style="--i:4"><a class="btn btn--pieno" href="/en/contatti.html" data-wa="?text=Hello%20Vie%20del%20Lago%2C%20I%27d%20like%20to%20be%20told%20when%20the%20Millefiori%20honey%20is%20back.">Let me know about the next vintage <span class="freccia" aria-hidden="true">→</span></a></div>
         </div>
-        <div class="miele__vaso svela"><span class="tripletta" aria-hidden="true">The Terroir · The Cru Honey · The Ethical Method</span><img src="/img/millefiori-vaso.webp" alt="Jar of Vie del Lago Millefiori honey" width="697" height="1007" fetchpriority="high" data-profondita="0.06"></div>
+        <div class="miele__vaso svela"><span class="tripletta" aria-hidden="true">The Terroir · The Cru Honey · The Ethical Method</span><img src="/img/millefiori-vaso.webp" alt="Jar of Vie del Lago Millefiori honey" width="697" height="1007" fetchpriority="high" data-profondita="0.06"><div data-vasetto3d data-etichetta="3D jar of Wildflower honey, drag to turn it" style="position:absolute;inset:0"></div></div>
       </div>
     </div>
   </section>
+  <script type="module">
+    // vasetto 3D: parte a pagina caricata; con il risparmio dati resta la foto
+    const box = document.querySelector('[data-vasetto3d]'), foto = box.parentElement.querySelector('img');
+    const conn = navigator.connection;
+    if (!(conn && conn.saveData)) {
+      const parti = () => import('/js/vasetto-3d.js?v=20261120b').then(x => x.avvia(box, { modello: '/img/vasetto3d/vasetto.glb?v=20261120b',
+        etichetta: '/img/etichetta-millefiori-flat.webp', fascetta: '/img/vasetto3d/fascetta.webp?v=20261120b', esagoni: '/img/vasetto3d/esagoni-n.webp?v=20261120b', miele: 'millefiori',
+        onPronta: () => { foto.style.transition = 'opacity .6s'; foto.style.opacity = '0'; } })).catch(() => {});
+      if (document.readyState === 'complete') setTimeout(parti, 300); else addEventListener('load', () => setTimeout(parti, 300), { once: true });
+    }
+  </script>
+
 
   <section class="capitolo" style="padding-top:0" aria-labelledby="titolo-carattere">
     <div class="contenitore due" style="align-items:start">

@@ -132,10 +132,22 @@
           </div>
           <div data-rivela style="--i:4"><button type="button" class="btn btn--pieno" data-carrello-aggiungi="sulla">Aggiungi all'ordine <span class="freccia" aria-hidden="true">+</span></button><p class="regali__nota" style="margin-top:16px"><a href="natale.html">Da regalare a Natale: prenota e ritira in azienda →</a></p></div>
         </div>
-        <div class="miele__vaso svela"><span class="tripletta" aria-hidden="true">Il Terroir · Il Miele Cru · Il Metodo Etico</span><img src="img/sulla-vaso.webp" alt="Vasetto di Miele di Sulla Vie del Lago" width="689" height="960" fetchpriority="high" data-profondita="0.06"></div>
+        <div class="miele__vaso svela"><span class="tripletta" aria-hidden="true">Il Terroir · Il Miele Cru · Il Metodo Etico</span><img src="img/sulla-vaso.webp" alt="Vasetto di Miele di Sulla Vie del Lago" width="689" height="960" fetchpriority="high" data-profondita="0.06"><div data-vasetto3d data-etichetta="Vasetto di miele di sulla in 3D, da girare" style="position:absolute;inset:0"></div></div>
       </div>
     </div>
   </section>
+  <script type="module">
+    // vasetto 3D: parte a pagina caricata; con il risparmio dati resta la foto
+    const box = document.querySelector('[data-vasetto3d]'), foto = box.parentElement.querySelector('img');
+    const conn = navigator.connection;
+    if (!(conn && conn.saveData)) {
+      const parti = () => import('/js/vasetto-3d.js?v=20261120b').then(x => x.avvia(box, { modello: '/img/vasetto3d/vasetto.glb?v=20261120b',
+        etichetta: '/img/etichetta-sulla-flat.webp', fascetta: '/img/vasetto3d/fascetta.webp?v=20261120b', esagoni: '/img/vasetto3d/esagoni-n.webp?v=20261120b', miele: 'sulla',
+        onPronta: () => { foto.style.transition = 'opacity .6s'; foto.style.opacity = '0'; } })).catch(() => {});
+      if (document.readyState === 'complete') setTimeout(parti, 300); else addEventListener('load', () => setTimeout(parti, 300), { once: true });
+    }
+  </script>
+
 
   <section class="capitolo" style="padding-top:0" aria-labelledby="titolo-carattere">
     <div class="contenitore due" style="align-items:start">
