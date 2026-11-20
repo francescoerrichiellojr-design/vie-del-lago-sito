@@ -109,6 +109,7 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
   ctl.update();
 
   let serve = true, caricati = 0, terreno = null, alberiDaColorare = null, mappaFiori = null;
+  const alberiMesh = [];
   // legge la mappa delle fioriture (canale verde = acacia) sotto ogni albero
   const XM = 3366.885, YM = 2874.924;
   function coloraAcacie() {
@@ -189,7 +190,7 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
         for (let i = 0; i < n; i++) { pos[i * 2] = x[i] * 0.25; pos[i * 2 + 1] = y[i] * 0.25; }
         const a = new InstancedBufferAttribute(new Float32Array(n), 1);
         forme[nome] = forme[nome].clone(); im.geometry = forme[nome]; im.geometry.setAttribute('aAcacia', a);
-        alberiDaColorare.push({ a, pos, n });
+        alberiDaColorare.push({ a, pos, n }); alberiMesh.push(im); im.userData.acacia = a; im.userData.pos = pos;
       }
       for (let i = 0; i < n; i++) {
         // da Blender (z in alto) a three.js (y in alto): x, z, -y
@@ -234,8 +235,14 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
     const r = tela.getBoundingClientRect();
     ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
     ray.setFromCamera(ndc, cam);
-    const hit = ray.intersectObject(terreno, false)[0];
-    onTocco(hit && hit.uv ? { u: hit.uv.x, v: hit.uv.y, x: e.clientX - r.left, y: e.clientY - r.top } : null);
+    // prima gli alberi: se il dito è su una chioma conta quell'albero (le acacie fioriscono sulle chiome)
+    const hit = ray.intersectObjects([terreno, ...alberiMesh], false)[0];
+    if (!hit) { onTocco(null); return; }
+    const pos = { x: e.clientX - r.left, y: e.clientY - r.top };
+    if (hit.object.isInstancedMesh) {
+      const id = hit.instanceId, P = hit.object.userData.pos;
+      onTocco({ u: (P[id * 2] + XM) / (2 * XM), v: (YM - P[id * 2 + 1]) / (2 * YM), albero: true, acacia: hit.object.userData.acacia.array[id], ...pos });
+    } else onTocco(hit.uv ? { u: hit.uv.x, v: hit.uv.y, albero: false, ...pos } : null);
   });
 
   // pesi delle fioriture: [sulla, acacia, millefiori] da 0 a 1
