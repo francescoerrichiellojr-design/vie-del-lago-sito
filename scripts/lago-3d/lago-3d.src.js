@@ -7,7 +7,7 @@ import {
   WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight, HemisphereLight, Color, Group,
   InstancedMesh, MeshLambertMaterial, Matrix4, Quaternion, Vector3, Euler, IcosahedronGeometry,
   CylinderGeometry, BoxGeometry, BufferGeometry, Float32BufferAttribute, AgXToneMapping, SRGBColorSpace,
-  TextureLoader, NoColorSpace,
+  TextureLoader, NoColorSpace, Raycaster, Vector2,
 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -82,7 +82,7 @@ float hfi(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); 
   mat.needsUpdate = true;
 }
 
-export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAvanzamento } = {}) {
+export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAvanzamento, onTocco, onInterazione } = {}) {
   const renderer = new WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
   renderer.outputColorSpace = SRGBColorSpace;
@@ -108,7 +108,7 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
   ctl.enableZoom = false;
   ctl.update();
 
-  let serve = true, caricati = 0;
+  let serve = true, caricati = 0, terreno = null;
   const uPeso = { value: new Vector3(0, 0, 0) }, pesoMeta = new Vector3(0, 0, 0);
   const fatto = () => { if (++caricati === 2) { serve = true; onPronta && onPronta(); } };
 
@@ -128,6 +128,7 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
   loader.load(modello, (g) => {
     g.scene.traverse((o) => {
       if (!o.isMesh || !o.material.map) return;
+      terreno = o;
       o.material.map.anisotropy = renderer.capabilities.getMaxAnisotropy();
       if (fioriture) {
         const t = new TextureLoader().load(fioriture, () => { serve = true; });
@@ -165,7 +166,7 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
   }).catch(errore);
 
   ctl.addEventListener('change', () => { serve = true; });
-  ctl.addEventListener('start', () => contenitore.classList.add('arnia3d--toccata'));
+  ctl.addEventListener('start', () => { contenitore.classList.add('arnia3d--toccata'); onInterazione && onInterazione(); });
   tela.addEventListener('pointerdown', () => { ctl.enableZoom = true; }, { capture: true });
 
   let visibile = true;
@@ -183,6 +184,21 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
     if (damp || serve) { renderer.render(scena, cam); serve = false; }
   }
   requestAnimationFrame(ciclo);
+  // tocco (non trascinamento) sul terreno: restituisce le coordinate UV del punto, per leggere la mappa delle fioriture
+  const ray = new Raycaster(), ndc = new Vector2();
+  let giu = null;
+  tela.addEventListener('pointerdown', (e) => { giu = { x: e.clientX, y: e.clientY, t: performance.now() }; });
+  tela.addEventListener('pointerup', (e) => {
+    if (!giu || !terreno || !onTocco) return;
+    const mosso = Math.hypot(e.clientX - giu.x, e.clientY - giu.y), lungo = performance.now() - giu.t; giu = null;
+    if (mosso > 8 || lungo > 500) return;
+    const r = tela.getBoundingClientRect();
+    ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+    ray.setFromCamera(ndc, cam);
+    const hit = ray.intersectObject(terreno, false)[0];
+    onTocco(hit && hit.uv ? { u: hit.uv.x, v: hit.uv.y, x: e.clientX - r.left, y: e.clientY - r.top } : null);
+  });
+
   // pesi delle fioriture: [sulla, acacia, millefiori] da 0 a 1
   const mese = (p) => { pesoMeta.set(p[0], p[1], p[2]); serve = true; };
   return { mese, _scena: scena, _cam: cam };
