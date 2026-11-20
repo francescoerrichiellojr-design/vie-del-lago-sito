@@ -157,6 +157,35 @@
     </div>
   </section>
 
+  <section class="capitolo" aria-labelledby="titolo-dallalto">
+    <div class="contenitore">
+      <div class="capitolo__testa">
+        <p class="etichetta" data-rivela>Dall'alto</p>
+        <h2 class="titolo titolo--medio" id="titolo-dallalto" data-rivela><span class="riga" style="--i:0"><span>La conca del lago</span></span><span class="riga" style="--i:1"><span>da girare</span></span></h2>
+      </div>
+      <div class="arnia3d" data-lago3d>
+        <div class="arnia3d__scena" style="aspect-ratio:16/10" data-etichetta="Plastico 3D del Lago di Conza">
+          <img class="arnia3d__statica" src="/img/lago3d/lago-3d.webp" alt="Plastico 3D del Lago di Conza con le colline, i boschi, la diga e i paesi intorno" width="1280" height="720" loading="lazy">
+          <button type="button" class="btn btn--pieno arnia3d__avvia" data-avvia>Apri in 3D <span class="arnia3d__peso">2 MB</span></button>
+          <p class="arnia3d__carica" aria-hidden="true"><span></span></p>
+          <p class="arnia3d__errore" role="status">Il tuo browser non riesce a mostrare il modello 3D.</p>
+          <p class="ape3d__aiuto arnia3d__aiuto" aria-hidden="true"><span class="ape3d__aiuto-tocco">Trascina per girarlo, pizzica per avvicinarti</span><span class="ape3d__aiuto-mouse">Trascina per girarlo, rotellina per avvicinarti</span></p>
+        </div>
+      </div>
+      <p class="ape3d__nota" style="max-width:62ch;font-size:15px">È una ricostruzione in 3D fatta con dati veri: il rilievo misurato dai satelliti, la forma del lago e della diga da OpenStreetMap, boschi e campi dalla mappa ESA WorldCover. Le colline sono un po' più alte del reale, come nei plastici, così si legge meglio la forma della valle.</p>
+    </div>
+  </section>
+  <script type="module">
+    const box = document.querySelector('[data-lago3d]'), scena = box.querySelector('.arnia3d__scena'), barra = box.querySelector('.arnia3d__carica span');
+    box.querySelector('[data-avvia]').addEventListener('click', () => {
+      box.classList.add('arnia3d--carica');
+      import('/js/lago-3d.js?v=20261120a').then(m => m.avvia(scena, { modello: '/img/lago3d/lago.glb?v=20261120a', istanze: '/img/lago3d/lago-istanze.bin?v=20261120a',
+        onAvanzamento: f => { barra.style.transform = `scaleX(${f})`; },
+        onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); } }))
+        .catch(() => box.classList.add('arnia3d--errore'));
+    }, { once: true });
+  </script>
+
   <section class="capitolo" aria-labelledby="titolo-mappa">
     <div class="contenitore">
       <div class="capitolo__testa">
