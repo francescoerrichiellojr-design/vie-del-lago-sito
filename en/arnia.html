@@ -194,6 +194,12 @@
       }).catch(() => box.classList.add('arnia3d--errore'));
     };
     box.querySelector('[data-avvia]').addEventListener('click', avvia);
+    // si carica da solo quando la sezione si avvicina allo schermo; con il risparmio dati resta il pulsante
+    const conn = navigator.connection;
+    if (!(conn && conn.saveData) && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((v) => { if (v[0].isIntersecting) { io.disconnect(); avvia(); } }, { rootMargin: '600px 0px' });
+      io.observe(box);
+    }
     scelte.forEach(b => b.addEventListener('click', () => {
       mostra(b.dataset.scegli);
       if (arnia && box.classList.contains('arnia3d--pronta')) arnia.seleziona(b.dataset.scegli); else { attesa = b.dataset.scegli; avvia(); }
