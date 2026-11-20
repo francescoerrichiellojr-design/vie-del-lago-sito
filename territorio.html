@@ -177,13 +177,22 @@
   </section>
   <script type="module">
     const box = document.querySelector('[data-lago3d]'), scena = box.querySelector('.arnia3d__scena'), barra = box.querySelector('.arnia3d__carica span');
-    box.querySelector('[data-avvia]').addEventListener('click', () => {
+    let avviato = false;
+    const avvia = () => {
+      if (avviato) return; avviato = true;
       box.classList.add('arnia3d--carica');
       import('/js/lago-3d.js?v=20261120a').then(m => m.avvia(scena, { modello: '/img/lago3d/lago.glb?v=20261120a', istanze: '/img/lago3d/lago-istanze.bin?v=20261120a',
         onAvanzamento: f => { barra.style.transform = `scaleX(${f})`; },
         onPronta: () => { box.classList.remove('arnia3d--carica'); box.classList.add('arnia3d--pronta'); } }))
         .catch(() => box.classList.add('arnia3d--errore'));
-    }, { once: true });
+    };
+    box.querySelector('[data-avvia]').addEventListener('click', avvia);
+    // si carica da solo quando la sezione si avvicina allo schermo; con il risparmio dati resta il pulsante
+    const conn = navigator.connection;
+    if (!(conn && conn.saveData) && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((v) => { if (v[0].isIntersecting) { io.disconnect(); avvia(); } }, { rootMargin: '600px 0px' });
+      io.observe(box);
+    }
   </script>
 
   <section class="capitolo" aria-labelledby="titolo-mappa">
