@@ -7,6 +7,7 @@ import {
   WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight, HemisphereLight, Color, Group,
   InstancedMesh, MeshLambertMaterial, Matrix4, Quaternion, Vector3, Euler, IcosahedronGeometry,
   CylinderGeometry, BoxGeometry, BufferGeometry, Float32BufferAttribute, AgXToneMapping, SRGBColorSpace,
+  TextureLoader, NoColorSpace,
 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -54,7 +55,34 @@ function capannone() {
   return tinta(g, lin(0.45, 0.45, 0.44));
 }
 
-export function avvia(contenitore, { modello, istanze, onPronta, onAvanzamento } = {}) {
+// Fioriture: img/lago3d/fioriture.webp ha la stessa UV del terreno. R = sulla, G = acacia, B = millefiori.
+// Le zone di sulla e acacia sono quelle segnate da noi sulla mappa, incrociate con la copertura del suolo (ESA WorldCover).
+function fiori(mat, tex, peso) {
+  mat.onBeforeCompile = (sh) => {
+    sh.uniforms.uFior = { value: tex }; sh.uniforms.uPeso = peso;
+    sh.fragmentShader = sh.fragmentShader
+      .replace('#include <common>', `#include <common>
+uniform sampler2D uFior; uniform vec3 uPeso;
+float hfi(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }`)
+      .replace('#include <map_fragment>', `#include <map_fragment>
+{
+  vec3 f = texture2D(uFior, vMapUv).rgb;
+  vec2 cel = floor(vMapUv * 3072.0);
+  float n = hfi(cel), m = hfi(cel + 17.3);
+  float punti = smoothstep(0.45, 0.95, n);
+  // da lontano conta il colore d'insieme, da vicino i singoli fiori
+  vec3 cS = vec3(0.62, 0.0, 0.16), cA = vec3(1.0, 0.98, 0.86), cM0 = vec3(0.86, 0.70, 0.22);
+  vec3 cM = m < 0.4 ? vec3(0.95, 0.80, 0.15) : (m < 0.7 ? vec3(0.92, 0.92, 0.90) : vec3(0.55, 0.30, 0.70));
+  diffuseColor.rgb = mix(diffuseColor.rgb, cM0, f.b * uPeso.z * 0.32);
+  diffuseColor.rgb = mix(diffuseColor.rgb, cM, f.b * uPeso.z * punti * 0.6);
+  diffuseColor.rgb = mix(diffuseColor.rgb, cA, f.g * uPeso.y * (0.7 + 0.3 * punti));
+  diffuseColor.rgb = mix(diffuseColor.rgb, cS, f.r * uPeso.x * (0.55 + 0.35 * punti));
+}`);
+  };
+  mat.needsUpdate = true;
+}
+
+export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAvanzamento } = {}) {
   const renderer = new WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
   renderer.outputColorSpace = SRGBColorSpace;
@@ -81,6 +109,7 @@ export function avvia(contenitore, { modello, istanze, onPronta, onAvanzamento }
   ctl.update();
 
   let serve = true, caricati = 0;
+  const uPeso = { value: new Vector3(0, 0, 0) }, pesoMeta = new Vector3(0, 0, 0);
   const fatto = () => { if (++caricati === 2) { serve = true; onPronta && onPronta(); } };
 
   const misura = () => {
@@ -97,7 +126,15 @@ export function avvia(contenitore, { modello, istanze, onPronta, onAvanzamento }
 
   const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder);
   loader.load(modello, (g) => {
-    g.scene.traverse((o) => { if (o.isMesh && o.material.map) o.material.map.anisotropy = renderer.capabilities.getMaxAnisotropy(); });
+    g.scene.traverse((o) => {
+      if (!o.isMesh || !o.material.map) return;
+      o.material.map.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      if (fioriture) {
+        const t = new TextureLoader().load(fioriture, () => { serve = true; });
+        t.flipY = false; t.colorSpace = NoColorSpace;
+        fiori(o.material, t, uPeso);
+      }
+    });
     mondo.add(g.scene); fatto();
   }, (e) => { if (e.total) { pesi[0] = e.loaded / e.total; avanza(); } }, errore);
 
@@ -134,12 +171,19 @@ export function avvia(contenitore, { modello, istanze, onPronta, onAvanzamento }
   let visibile = true;
   new IntersectionObserver((v) => { visibile = v[0].isIntersecting; if (!visibile) ctl.enableZoom = false; }).observe(contenitore);
 
-  function ciclo() {
+  let prima = 0;
+  function ciclo(t) {
     requestAnimationFrame(ciclo);
+    const dt = Math.min(0.5, ((t || 0) - (prima || t || 0)) / 1000); prima = t;
     if (!visibile) return;
     const damp = ctl.update();
+    // passaggio morbido tra un mese e l'altro
+    const d = pesoMeta.clone().sub(uPeso.value);
+    if (d.lengthSq() > 1e-5) { uPeso.value.addScaledVector(d, 1 - Math.exp(-dt * 5)); serve = true; } else uPeso.value.copy(pesoMeta);
     if (damp || serve) { renderer.render(scena, cam); serve = false; }
   }
   requestAnimationFrame(ciclo);
-  return { _scena: scena, _cam: cam };
+  // pesi delle fioriture: [sulla, acacia, millefiori] da 0 a 1
+  const mese = (p) => { pesoMeta.set(p[0], p[1], p[2]); serve = true; };
+  return { mese, _scena: scena, _cam: cam };
 }
