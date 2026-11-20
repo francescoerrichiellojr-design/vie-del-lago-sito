@@ -7,7 +7,7 @@ import {
   WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight, HemisphereLight, Color, Group,
   InstancedMesh, MeshLambertMaterial, Matrix4, Quaternion, Vector3, Euler, IcosahedronGeometry,
   CylinderGeometry, BoxGeometry, BufferGeometry, Float32BufferAttribute, AgXToneMapping, SRGBColorSpace,
-  TextureLoader, NoColorSpace, Raycaster, Vector2,
+  TextureLoader, NoColorSpace, Raycaster, Vector2, InstancedBufferAttribute,
 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -108,7 +108,22 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
   ctl.enableZoom = false;
   ctl.update();
 
-  let serve = true, caricati = 0, terreno = null;
+  let serve = true, caricati = 0, terreno = null, alberiDaColorare = null, mappaFiori = null;
+  // legge la mappa delle fioriture (canale verde = acacia) sotto ogni albero
+  const XM = 3366.885, YM = 2874.924;
+  function coloraAcacie() {
+    if (!alberiDaColorare || !mappaFiori) return;
+    const { data, width: w, height: h } = mappaFiori;
+    for (const { a, pos, n } of alberiDaColorare) {
+      for (let i = 0; i < n; i++) {
+        const u = (pos[i * 2] + XM) / (2 * XM), v = (YM - pos[i * 2 + 1]) / (2 * YM);
+        const px = Math.min(w - 1, Math.max(0, Math.floor(u * w))), py = Math.min(h - 1, Math.max(0, Math.floor(v * h)));
+        a.array[i] = data[(py * w + px) * 4 + 1] / 255;
+      }
+      a.needsUpdate = true;
+    }
+    serve = true;
+  }
   const uPeso = { value: new Vector3(0, 0, 0) }, pesoMeta = new Vector3(0, 0, 0);
   const fatto = () => { if (++caricati === 2) { serve = true; onPronta && onPronta(); } };
 
@@ -131,7 +146,11 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
       terreno = o;
       o.material.map.anisotropy = renderer.capabilities.getMaxAnisotropy();
       if (fioriture) {
-        const t = new TextureLoader().load(fioriture, () => { serve = true; });
+        const t = new TextureLoader().load(fioriture, (tx) => {
+          const c = document.createElement('canvas'); c.width = tx.image.width; c.height = tx.image.height;
+          const g2 = c.getContext('2d'); g2.drawImage(tx.image, 0, 0); mappaFiori = g2.getImageData(0, 0, c.width, c.height);
+          coloraAcacie(); serve = true;
+        });
         t.flipY = false; t.colorSpace = NoColorSpace;
         fiori(o.material, t, uPeso);
       }
@@ -142,6 +161,18 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
   fetch(istanze).then((r) => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); }).then((buf) => {
     const forme = { quercia: albero(7, 10, 6, lin(0.10, 0.20, 0.06)), pioppo: albero(3.2, 16, 4, lin(0.22, 0.33, 0.10)), casa: casa(), capannone: capannone() };
     const mat = new MeshLambertMaterial({ vertexColors: true, flatShading: true });
+    // le acacie sono alberi: il colore va sulle chiome, non sul terreno che sta sotto
+    const matAlberi = new MeshLambertMaterial({ vertexColors: true, flatShading: true });
+    matAlberi.onBeforeCompile = (sh) => {
+      sh.uniforms.uPeso = uPeso;
+      sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nattribute float aAcacia;\nvarying float vAcacia;')
+        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvAcacia = aAcacia;');
+      sh.fragmentShader = sh.fragmentShader.replace('#include <common>', '#include <common>\nuniform vec3 uPeso;\nvarying float vAcacia;')
+        .replace('#include <color_fragment>', `#include <color_fragment>
+  float chioma = step(diffuseColor.r + 0.04, diffuseColor.g);
+  diffuseColor.rgb = mix(diffuseColor.rgb, vec3(1.0, 0.99, 0.90), chioma * vAcacia * uPeso.y * 0.85);`);
+    };
+    alberiDaColorare = [];
     const m4 = new Matrix4(), q = new Quaternion(), e = new Euler(), p = new Vector3(), s = new Vector3();
     let off = 0;
     GRUPPI.forEach((nome, gi) => {
@@ -151,7 +182,15 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
       const z = new Int16Array(buf, off, n); off += n * 2;
       const r = new Uint8Array(buf, off, n); off += n;
       const k = new Uint8Array(buf, off, n); off += n;
-      const im = new InstancedMesh(forme[nome], mat, n);
+      const albero = nome === 'quercia' || nome === 'pioppo';
+      const im = new InstancedMesh(forme[nome], albero ? matAlberi : mat, n);
+      if (albero) {
+        const pos = new Float32Array(n * 2);
+        for (let i = 0; i < n; i++) { pos[i * 2] = x[i] * 0.25; pos[i * 2 + 1] = y[i] * 0.25; }
+        const a = new InstancedBufferAttribute(new Float32Array(n), 1);
+        forme[nome] = forme[nome].clone(); im.geometry = forme[nome]; im.geometry.setAttribute('aAcacia', a);
+        alberiDaColorare.push({ a, pos, n });
+      }
       for (let i = 0; i < n; i++) {
         // da Blender (z in alto) a three.js (y in alto): x, z, -y
         p.set(x[i] * 0.25, z[i] / 25 + 250, -y[i] * 0.25);
@@ -162,7 +201,7 @@ export function avvia(contenitore, { modello, istanze, fioriture, onPronta, onAv
       im.instanceMatrix.needsUpdate = true; im.computeBoundingSphere();
       mondo.add(im);
     });
-    pesi[1] = 1; avanza(); fatto();
+    pesi[1] = 1; avanza(); coloraAcacie(); fatto();
   }).catch(errore);
 
   ctl.addEventListener('change', () => { serve = true; });
