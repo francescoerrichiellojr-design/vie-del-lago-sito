@@ -14,7 +14,23 @@
     if (!code) { try { code = new URLSearchParams(location.search).get("a") || ""; } catch (e) {} }
     code = code.replace(/[^A-Za-z0-9-]/g, "").slice(0, 20);
     window.__dest = base + (code ? "#" + code : "");
-    location.replace(window.__dest);
+    var vai = function () { location.replace(window.__dest); };
+    // La prima volta registro una copia di questa pagina sul telefono (sw.js), così QR e NFC
+    // funzionano anche in apiario senza rete. Dalla volta dopo il rimando è immediato.
+    if ("serviceWorker" in navigator && navigator.onLine !== false) {
+      var fatto = false, via = function () { if (!fatto) { fatto = true; vai(); } };
+      setTimeout(via, 2500);
+      navigator.serviceWorker.getRegistration("./").then(function (reg) {
+        if (reg && reg.active && /\/a\/$/.test(reg.scope)) { via(); return; }   // copia già presente
+        return navigator.serviceWorker.register("sw.js", { scope: "./" }).then(function (r) {
+          var w = r.installing || r.waiting || r.active;
+          if (!w || w.state === "activated") { via(); return; }
+          w.addEventListener("statechange", function () { if (w.state === "activated" || w.state === "redundant") via(); });
+        });
+      }).catch(via);
+    } else {
+      vai();
+    }
   })();
 </script>
 <style>
