@@ -108,7 +108,7 @@
     .immersione__terra img { animation: vdl-terra-entra linear both; animation-timeline: --immersione; animation-range: entry 0% entry 100%; }
   }
 }
-@keyframes vdl-vaso-entra { from { transform: translateY(55svh); opacity: 0; } 40% { opacity: 1; } to { transform: none; opacity: 1; } }
+@keyframes vdl-vaso-entra { from { transform: translateY(55svh); opacity: 0; } 65% { opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes vdl-terra-entra { from { transform: scale(1.25); } to { transform: none; } }
 
 /* Le tappe: 0–20 il luogo, 20–55 il fiore (la tappa più lunga), 55–83 il gusto (il testo entra quando il fondo è già chiaro), 83–100 il vasetto.
@@ -241,7 +241,7 @@ main[data-miele] .scheda dd { font-size: clamp(17px, 1.3vw, 20px); }
 /* 9. "Il prossimo capitolo": in fondo alle pagine del racconto, prima di "Scrivici",
    un invito a proseguire verso la pagina successiva. */
 .prossimo { padding: clamp(40px, 6vw, 80px) 0; background: var(--carta); }
-.prossimo__link { display: grid; grid-template-columns: minmax(110px, 34%) 1fr; gap: clamp(18px, 3vw, 40px); align-items: center; text-decoration: none; color: inherit; border-top: 1px solid rgba(30,26,18,.18); border-bottom: 1px solid rgba(30,26,18,.18); padding: clamp(20px, 3vw, 32px) 0; }
+.prossimo__link { display: block; gap: clamp(18px, 3vw, 40px); align-items: center; text-decoration: none; color: inherit; border-top: 1px solid rgba(30,26,18,.18); border-bottom: 1px solid rgba(30,26,18,.18); padding: clamp(20px, 3vw, 32px) 0; }
 .prossimo__foto { aspect-ratio: 4 / 3; overflow: hidden; background: var(--salvia); }
 .prossimo__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
 .prossimo__foto--vaso img { object-fit: contain; padding: 8%; }
@@ -282,3 +282,7 @@ main[data-miele] .scheda dd { font-size: clamp(17px, 1.3vw, 20px); }
 .dall-apiario__testo { margin: 10px 0 12px; font-size: clamp(17px, 1.4vw, 21px); line-height: 1.5; }
 .dall-apiario__link { font-size: 14px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--miele); text-decoration: none; }
 .dall-apiario__link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* 13. Pulizia di novembre: link di testo per "Scheda completa", capitolo secondo della home senza foto */
+.link-scheda { align-self: center; font-size: 15px; text-decoration: underline; text-underline-offset: 4px; color: inherit; }
+#mieli .miele { grid-template-columns: 1fr; max-width: 760px; }
