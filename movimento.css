@@ -221,3 +221,58 @@ main[data-miele] .scheda dd { font-size: clamp(17px, 1.3vw, 20px); }
   main[data-miele] .scheda { grid-template-columns: 1fr 1fr; }
   main[data-miele] .scheda dt { font-size: 11px; }
 }
+
+/* 8. "Quale fa per te" su telefono: niente scorrimento di lato.
+   Una riga in alto con i tre nomi, poi per ogni voce l'etichetta a tutta larghezza
+   e sotto i tre valori in colonna, allineati ai nomi. */
+@media (max-width: 700px) {
+  .confronto { min-width: 0; display: block; font-size: 14px; }
+  .confronto thead, .confronto tbody { display: block; }
+  .confronto tr { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 10px; }
+  .confronto thead tr > td { display: none; }
+  .tabella-box { overflow: visible; }
+  .confronto thead th { padding: 12px 0 10px; }
+  .confronto thead .nome { font-size: 17px; white-space: normal; }
+  .confronto thead .cru { font-size: 10px; letter-spacing: .08em; }
+  .confronto tbody th { grid-column: 1 / -1; width: auto; padding: 14px 0 4px; font-size: 11px; border-top: 1px solid rgba(30,26,18,.18); }
+  .confronto tbody td { padding: 2px 0 12px; border-top: 0; line-height: 1.4; }
+}
+
+/* 9. "Il prossimo capitolo": in fondo alle pagine del racconto, prima di "Scrivici",
+   un invito a proseguire verso la pagina successiva. */
+.prossimo { padding: clamp(40px, 6vw, 80px) 0; background: var(--carta); }
+.prossimo__link { display: grid; grid-template-columns: minmax(110px, 34%) 1fr; gap: clamp(18px, 3vw, 40px); align-items: center; text-decoration: none; color: inherit; border-top: 1px solid rgba(30,26,18,.18); border-bottom: 1px solid rgba(30,26,18,.18); padding: clamp(20px, 3vw, 32px) 0; }
+.prossimo__foto { aspect-ratio: 4 / 3; overflow: hidden; background: var(--salvia); }
+.prossimo__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.prossimo__foto--vaso img { object-fit: contain; padding: 8%; }
+.prossimo__link:hover .prossimo__foto img { transform: scale(1.04); }
+.prossimo__titolo { margin: 8px 0 8px; font-size: clamp(26px, 3vw, 44px); line-height: 1.08; letter-spacing: -.02em; font-weight: 500; }
+.prossimo__frase { margin: 0; color: var(--grigio); max-width: 46ch; }
+.prossimo__freccia { display: inline-block; margin-top: 14px; font-weight: 600; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--miele); }
+.prossimo__link:hover .prossimo__freccia { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 600px) {
+  .prossimo__link { grid-template-columns: 1fr; }
+  .prossimo__foto { aspect-ratio: 16 / 9; }
+  .prossimo__frase { font-size: 16px; }
+}
+
+/* 10. Parole difficili spiegate al tocco: la parola è un pulsante con una sottolineatura
+   leggera; al tocco si apre in basso una breve spiegazione, che si chiude toccando fuori.
+   Dove il browser non conosce "popover" resta semplicemente la parola. */
+.glossa { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: help; text-decoration: underline dotted; text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+.glossa:hover { text-decoration-style: solid; }
+.glossa__nota { position: fixed; inset: auto 16px max(16px, env(safe-area-inset-bottom)) 16px; margin: 0 auto; max-width: 460px; padding: 20px 22px 16px; border: 0; border-radius: 16px; background: var(--terra); color: var(--chiaro); font-size: 16px; line-height: 1.55; box-shadow: 0 18px 50px rgba(30,26,18,.35); text-align: left; }
+.glossa__nota strong { display: block; margin-bottom: 6px; color: var(--miele-luce); font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.glossa__nota::backdrop { background: rgba(30,26,18,.12); }
+.glossa__chiudi { display: block; margin: 12px 0 0 auto; font: inherit; font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--chiaro-2); background: none; border: 0; padding: 4px 0; cursor: pointer; }
+@media (prefers-reduced-motion: no-preference) {
+  .glossa__nota:popover-open { animation: vdl-glossa .22s cubic-bezier(.2,.7,.2,1); }
+}
+@keyframes vdl-glossa { from { opacity: 0; transform: translateY(12px); } }
+
+/* 11. Ordina: i quattro passi, da "scegli" a "ricevi" */
+.passi-ordine { list-style: none; margin: clamp(32px, 4vw, 48px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 0 28px; }
+.passi-ordine li { display: grid; grid-template-columns: 36px 1fr; column-gap: 12px; padding: 16px 0; border-top: 1px solid rgba(30,26,18,.18); }
+.passi-ordine__num { grid-row: span 2; width: 28px; height: 28px; border-radius: 50%; background: var(--terra); color: var(--carta); font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+.passi-ordine strong { font-weight: 600; }
+.passi-ordine li > span:last-child { color: var(--grigio); font-size: 16px; line-height: 1.5; }

@@ -73,7 +73,7 @@
   <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/racconto.css?v=20261119a">
-  <link rel="stylesheet" href="/movimento.css?v=20261124j">
+  <link rel="stylesheet" href="/movimento.css?v=20261124k">
   <script>addEventListener('pagereveal',function(e){if(e.viewTransition)document.documentElement.classList.add('vt-arrivo')})</script>
   <script>document.documentElement.classList.add('js-menu')</script>
   <script>try{if(!localStorage.getItem('vdl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro')}catch(e){}</script>
@@ -125,7 +125,7 @@
         <a class="miele__vaso svela" href="/en/sulla.html" tabindex="-1" aria-hidden="true"><img src="/img/sulla-vaso.webp" alt="" width="689" height="960" loading="lazy" data-profondita="0.06"></a>
         <div class="miele__testo">
           <p class="contatore" data-rivela>01 / 03</p>
-          <p class="etichetta" data-rivela style="--i:1">Cru delle Argille · Monofloral</p>
+          <p class="etichetta" data-rivela style="--i:1">Cru delle Argille · <button type="button" class="glossa" popovertarget="g-4">Monofloral</button><span id="g-4" popover class="glossa__nota"><strong>Monofloral</strong> A honey where the nectar of a single flower prevails. Pollen analysis confirms it.<button type="button" class="glossa__chiudi" popovertarget="g-4" popovertargetaction="hide">Close</button></span></p>
           <h2 class="titolo" id="m-sulla" data-rivela><span class="riga" style="--i:0"><span>Sulla</span></span></h2>
           <p class="motto" data-rivela style="--i:1">The minerality of clay</p>
           <p class="miele__note" data-rivela style="--i:2">The red bloom of the Irpinian clay meadows, harvested in May. Subtle but distinctive: fresh straw, aromatic herbs and a light hint of citrus.</p>
@@ -198,6 +198,20 @@
     </div>
   </section>
 
+  <section class="prossimo" aria-label="Next chapter">
+    <div class="contenitore">
+      <a class="prossimo__link" href="/en/come-ordinare.html">
+        <span class="prossimo__foto prossimo__foto--vaso"><img src="/img/acacia-vaso.webp" alt="" width="571" height="795" loading="lazy" decoding="async"></span>
+        <span>
+          <span class="etichetta">Next chapter</span>
+          <span class="prossimo__titolo" style="display:block">How to order</span>
+          <span class="prossimo__frase" style="display:block">Made your choice? Here's how it reaches you: one message, a reply within a day, and the jar in your hands.</span>
+          <span class="prossimo__freccia">See how to order →</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
   <section class="capitolo capitolo--scuro ordina" id="ordina" aria-labelledby="titolo-ordina">
     <div class="contenitore">
       <div class="capitolo__testa">
@@ -208,7 +222,7 @@
           <image href="/img/marchio-crema.png" x="72" y="72" width="56" height="56" />
         </svg>
         <p class="etichetta" data-rivela>To order</p>
-        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Write to us,</span></span><span class="riga" style="--i:1"><span>we'll get back to you</span></span></h2>
+        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Write to us,</span></span> <span class="riga" style="--i:1"><span>we'll get back to you</span></span></h2>
         <p data-rivela style="--i:2;margin:0;max-width:48ch;color:var(--chiaro-2)">Add jars to your order or write to us directly. Collect them at our farm in Conza, or we bring them to you anywhere in Campania: we agree the day and the cost together.</p>
         <div class="ordina__azioni" data-rivela style="--i:3">
           <a class="btn btn--pieno" href="/en/contatti.html" data-wa="?text=Hello%20Vie%20del%20Lago%2C%20I%27d%20like%20to%20order%3A%20%20">WhatsApp <span class="freccia" aria-hidden="true">→</span></a>
@@ -258,6 +272,6 @@
 
 <script src="/script.js"></script>
 <script src="/racconto.js?v=20261124a"></script>
-<script src="/js/carrello.js?v=20261119a" defer></script>
+<script src="/js/carrello.js?v=20261124a" defer></script>
 </body>
 </html>
