@@ -41,7 +41,7 @@
 .immersione { background: var(--fine-luce); }
 .immersione__palco { position: relative; padding: clamp(72px,9vw,130px) var(--gutter); max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px 56px; align-items: center; }
 .immersione__fondo, .immersione__barra, .immersione__fine { display: none; }
-.immersione__vaso { display: flex; justify-content: center; }
+.immersione__vaso { display: none; }
 .immersione__vaso img { height: min(56vh, 520px); width: auto; }
 .immersione__passi { display: grid; gap: 36px; }
 .immersione__passo p { margin: 0; }
@@ -240,21 +240,13 @@ main[data-miele] .scheda dd { font-size: clamp(17px, 1.3vw, 20px); }
 
 /* 9. "Il prossimo capitolo": in fondo alle pagine del racconto, prima di "Scrivici",
    un invito a proseguire verso la pagina successiva. */
-.prossimo { padding: clamp(40px, 6vw, 80px) 0; background: var(--carta); }
-.prossimo__link { display: block; gap: clamp(18px, 3vw, 40px); align-items: center; text-decoration: none; color: inherit; border-top: 1px solid rgba(30,26,18,.18); border-bottom: 1px solid rgba(30,26,18,.18); padding: clamp(20px, 3vw, 32px) 0; }
-.prossimo__foto { aspect-ratio: 4 / 3; overflow: hidden; background: var(--salvia); }
-.prossimo__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
-.prossimo__foto--vaso img { object-fit: contain; padding: 8%; }
-.prossimo__link:hover .prossimo__foto img { transform: scale(1.04); }
+.prossimo { padding: clamp(12px, 2vw, 24px) 0 clamp(40px, 6vw, 80px); background: var(--carta); }
+.capitolo:has(+ .prossimo) { padding-bottom: clamp(48px, 6vw, 80px); }
+.prossimo__link { display: block; gap: clamp(18px, 3vw, 40px); align-items: center; text-decoration: none; color: inherit; border-bottom: 1px solid rgba(30,26,18,.18); padding: 0 0 clamp(20px, 3vw, 32px); }
 .prossimo__titolo { margin: 8px 0 8px; font-size: clamp(26px, 3vw, 44px); line-height: 1.08; letter-spacing: -.02em; font-weight: 500; }
 .prossimo__frase { margin: 0; color: var(--grigio); max-width: 46ch; }
 .prossimo__freccia { display: inline-block; margin-top: 14px; font-weight: 600; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--miele); }
 .prossimo__link:hover .prossimo__freccia { text-decoration: underline; text-underline-offset: 4px; }
-@media (max-width: 600px) {
-  .prossimo__link { grid-template-columns: 1fr; }
-  .prossimo__foto { aspect-ratio: 16 / 9; }
-  .prossimo__frase { font-size: 16px; }
-}
 
 /* 10. Parole difficili spiegate al tocco: la parola è un pulsante con una sottolineatura
    leggera; al tocco si apre in basso una breve spiegazione, che si chiude toccando fuori.
@@ -280,9 +272,12 @@ main[data-miele] .scheda dd { font-size: clamp(17px, 1.3vw, 20px); }
 /* 12. Home: "Dall'apiario", una riga al mese con i dati del sensore dell'arnia Priscilla */
 .dall-apiario { margin-top: clamp(40px, 5vw, 64px); padding: clamp(20px, 3vw, 28px) clamp(20px, 3vw, 32px); background: var(--salvia); border-left: 3px solid var(--miele); max-width: 760px; }
 .dall-apiario__testo { margin: 10px 0 12px; font-size: clamp(17px, 1.4vw, 21px); line-height: 1.5; }
-.dall-apiario__link { font-size: 14px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--miele); text-decoration: none; }
-.dall-apiario__link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
 /* 13. Pulizia di novembre: link di testo per "Scheda completa", capitolo secondo della home senza foto */
 .link-scheda { align-self: center; font-size: 15px; text-decoration: underline; text-underline-offset: 4px; color: inherit; }
 #mieli .miele { grid-template-columns: 1fr; max-width: 760px; }
+@media (min-width: 1000px) {
+  #mieli .contenitore { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 clamp(32px, 4vw, 64px); align-items: start; }
+  #mieli .capitolo__testa { grid-column: 1 / -1; }
+  #mieli .miele { max-width: none; border-top: 1px solid rgba(30,26,18,.18); padding: 32px 0 0; }
+}
