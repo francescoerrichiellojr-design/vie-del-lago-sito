@@ -1,0 +1,191 @@
+/* ─────────────────────────────────────────────────────────────
+   Vie del Lago, movimento nativo (prova, novembre 2026)
+
+   1. Passaggio tra pagine: il vasetto toccato nella lista diventa il
+      vasetto della scheda. Lo fa il browser (View Transitions), senza
+      librerie. Dove non è supportato la pagina si apre normalmente.
+   2. "Dentro il vasetto" (scheda Sulla): animazione legata allo
+      scorrimento, calcolata dal browser fuori dal thread principale.
+      Si muovono solo posizione, scala e opacità.
+      Senza supporto, o con "riduci movimento", resta una sezione ferma.
+   ───────────────────────────────────────────────────────────── */
+
+/* 1. Passaggio tra pagine */
+@view-transition { navigation: auto; }
+
+.miele__vaso img[src$="sulla-vaso.webp"],     .correlato img[src$="sulla-vaso.webp"]     { view-transition-name: vaso-sulla; }
+.miele__vaso img[src$="millefiori-vaso.webp"],.correlato img[src$="millefiori-vaso.webp"]{ view-transition-name: vaso-millefiori; }
+.miele__vaso img[src$="acacia-vaso.webp"],    .correlato img[src$="acacia-vaso.webp"]    { view-transition-name: vaso-acacia; }
+
+::view-transition-group(*) { animation-duration: .42s; animation-timing-function: cubic-bezier(.2,.7,.2,1); }
+::view-transition-old(root) { animation: .22s ease both vdl-esce; }
+::view-transition-new(root) { animation: .32s ease .06s both vdl-entra; }
+@keyframes vdl-esce { to { opacity: 0; } }
+@keyframes vdl-entra { from { opacity: 0; } }
+
+/* All'arrivo con il passaggio, il vasetto della scheda è già al suo posto:
+   niente effetto di svelamento che lo farebbe saltare. */
+.vt-arrivo .prodotto .svela img { transform: none !important; transition: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+
+/* 2. Dentro il vasetto: colore dell'ultima tappa per ogni miele
+   (sulla crema bianca, acacia paglierino limpido, millefiori ambra) */
+.immersione { --fine-luce: #FBF8EF; --fine-ombra: #EAE2CF; }
+[data-miele="acacia"] .immersione { --fine-luce: #FBF6DF; --fine-ombra: #EEE2B4; }
+[data-miele="millefiori"] .immersione { --fine-luce: #F8EBD3; --fine-ombra: #E9CC9F; }
+
+/* Versione ferma (base per tutti) */
+.immersione { background: var(--fine-luce); }
+.immersione__palco { position: relative; padding: clamp(72px,9vw,130px) var(--gutter); max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px 56px; align-items: center; }
+.immersione__fondo, .immersione__barra, .immersione__fine { display: none; }
+.immersione__vaso { display: flex; justify-content: center; }
+.immersione__vaso img { height: min(56vh, 520px); width: auto; }
+.immersione__passi { display: grid; gap: 36px; }
+.immersione__passo p { margin: 0; }
+.immersione__passo .immersione__frase { font-size: clamp(26px, 2.6vw, 40px); line-height: 1.15; letter-spacing: -.015em; font-weight: 500; margin: 10px 0 8px; }
+.immersione__passo .immersione__dettaglio { color: var(--grigio); max-width: 38ch; }
+
+/* 2b. Versione animata: solo dove il browser sa legare l'animazione allo scorrimento */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .immersione { height: 420svh; view-timeline: --immersione block; background: var(--terra); }
+    .immersione__palco { position: sticky; top: 0; height: 100svh; max-width: none; padding: 0; display: block; overflow: hidden; }
+
+    .immersione__fondo { display: block; position: absolute; inset: 0; }
+    .immersione__fondo img { width: 100%; height: 100%; object-fit: cover; }
+    .immersione__terra { animation: vdl-terra linear both; }
+    .immersione__terra::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,26,18,.15), rgba(30,26,18,.55)); }
+    .immersione__fiore { background: color-mix(in srgb, var(--accento) 80%, #1E1A12); opacity: 0; animation: vdl-fiore linear both; }
+    .immersione__fiore::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,26,18,0) 30%, rgba(30,26,18,.35) 60%, color-mix(in srgb, var(--accento) 30%, rgba(30,26,18,.85)) 100%); }
+    .immersione__crema { background: radial-gradient(110% 90% at 50% 45%, var(--fine-luce), var(--fine-ombra)); opacity: 0; animation: vdl-crema linear both; }
+
+    .immersione__vaso { position: absolute; left: 50%; top: 50%; width: 0; height: 0; display: block; }
+    .immersione__vaso img { position: absolute; height: min(58svh, 560px); left: 0; top: 0; width: auto; max-width: none; translate: -50% -50%; filter: drop-shadow(0 30px 40px rgba(30,26,18,.35)); animation: vdl-vaso linear both; will-change: transform; }
+
+    .immersione__passi { display: block; }
+    .immersione__passo { position: absolute; left: var(--gutter); bottom: clamp(48px, 12svh, 120px); max-width: min(34ch, 36vw); opacity: 0; animation: linear both; }
+    .immersione__passo .immersione__dettaglio { color: inherit; opacity: .85; }
+    .immersione__passo:nth-child(1) { color: #F7F3E8; animation-name: vdl-passo-1; text-shadow: 0 1px 18px rgba(30,26,18,.5); }
+    .immersione__passo:nth-child(2) { color: #FBF6F9; animation-name: vdl-passo-2; text-shadow: 0 1px 18px rgba(30,26,18,.55); }
+    .immersione__passo:nth-child(3) { color: var(--terra); animation-name: vdl-passo-3; left: auto; right: var(--gutter); }
+    .immersione__passo:nth-child(4) { color: var(--terra); animation-name: vdl-passo-4; }
+    .immersione__passo:nth-child(1) .etichetta, .immersione__passo:nth-child(2) .etichetta { color: inherit; opacity: .9; }
+
+    .immersione__fine { display: flex; position: absolute; right: var(--gutter); bottom: clamp(48px, 12svh, 120px); flex-direction: column; align-items: flex-end; gap: 14px; opacity: 0; animation: vdl-fine linear both; }
+    .immersione__prezzo { margin: 0; font-size: 20px; font-weight: 600; color: var(--terra); }
+
+    .immersione__barra { display: block; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--accento-testo); transform-origin: 0 50%; animation: vdl-barra linear both; }
+
+    .immersione__terra, .immersione__fiore, .immersione__crema, .immersione__vaso img,
+    .immersione__passo, .immersione__fine, .immersione__barra {
+      animation-timeline: --immersione;
+      animation-range: contain 0% contain 100%;
+    }
+
+    /* Telefono: il vasetto sta nella metà alta, i testi nella metà bassa.
+       Misure in svh, così tengono anche su schermi corti con le barre di Safari aperte. */
+    @media (max-width: 760px) {
+      .immersione__vaso { top: 30%; }
+      .immersione__vaso img { height: 34svh; animation-name: vdl-vaso-tel; }
+      .immersione__passo, .immersione__passo:nth-child(3) { left: var(--gutter); right: calc(var(--gutter) + 44px); max-width: none; bottom: max(5svh, 24px); }
+      .immersione__passo:nth-child(4) { top: 45svh; bottom: auto; right: var(--gutter); }
+      .immersione__passo .immersione__frase { font-size: 24px; }
+      .immersione__passo .immersione__dettaglio { font-size: 15px; line-height: 1.5; }
+      .immersione__fine { left: var(--gutter); right: calc(var(--gutter) + 52px); align-items: flex-start; bottom: max(4svh, 20px); }
+      .immersione__fine .btn { padding: 16px 24px; }
+    }
+  }
+}
+
+/* Le tappe: 0–20 il luogo, 20–55 il fiore (la tappa più lunga), 55–83 il gusto (il testo entra quando il fondo è già chiaro), 83–100 il vasetto.
+   Il passaggio dal fiore al fondo chiaro dura 16 punti, per non strappare. */
+@keyframes vdl-terra { 0% { transform: scale(1.18); opacity: 1; } 20% { transform: scale(1); opacity: 1; } 32%, 100% { transform: scale(1); opacity: 0; } }
+@keyframes vdl-fiore { 0%, 18% { opacity: 0; transform: scale(1.14); } 30% { opacity: 1; } 54% { opacity: 1; } 70%, 100% { opacity: 0; transform: scale(1); } }
+@keyframes vdl-crema { 0%, 56% { opacity: 0; } 72%, 100% { opacity: 1; } }
+@keyframes vdl-vaso {
+  0%   { transform: translateY(42svh) scale(.6) rotate(-6deg); }
+  22%  { transform: translateY(0) scale(.92) rotate(0deg); }
+  50%  { transform: translateY(-2svh) scale(1.28); }
+  76%  { transform: translateX(6vw) scale(1.05); }
+  100% { transform: translateX(-4vw) scale(.9); }
+}
+@keyframes vdl-vaso-tel {
+  0%   { transform: translateY(50svh) scale(.6) rotate(-6deg); }
+  4%   { transform: translateY(14svh) scale(.75) rotate(-3deg); }
+  10%  { transform: translateY(0) scale(.9) rotate(0deg); }
+  22%  { transform: translateY(0) scale(.95); }
+  50%  { transform: translateY(0) scale(1.15); }
+  76%  { transform: translateX(4vw) scale(1); }
+  100% { transform: translateY(-4svh) scale(.8); }
+}
+@keyframes vdl-passo-1 { 0% { opacity: 0; transform: translateY(30px); } 5%, 16% { opacity: 1; transform: none; } 21%, 100% { opacity: 0; transform: translateY(-30px); } }
+@keyframes vdl-passo-2 { 0%, 24% { opacity: 0; transform: translateY(30px); } 31%, 50% { opacity: 1; transform: none; } 55%, 100% { opacity: 0; transform: translateY(-30px); } }
+@keyframes vdl-passo-3 { 0%, 65% { opacity: 0; transform: translateY(30px); } 71%, 79% { opacity: 1; transform: none; } 83%, 100% { opacity: 0; transform: translateY(-30px); } }
+@keyframes vdl-passo-4 { 0%, 84% { opacity: 0; transform: translateY(30px); } 89%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-fine { 0%, 88% { opacity: 0; transform: translateY(20px); pointer-events: none; } 93%, 100% { opacity: 1; transform: none; pointer-events: auto; } }
+@keyframes vdl-barra { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+
+/* 3. Home: i tre vasetti che salgono subito dopo l'apertura.
+   Versione ferma: tre vasetti in fila con nome e stato.
+   Versione animata: salgono uno dopo l'altro mentre si scorre, in poco più di uno schermo. */
+.vasetti { background: var(--carta); }
+.vasetti__palco { padding: clamp(64px, 9vw, 120px) var(--gutter); max-width: 1360px; margin: 0 auto; text-align: center; }
+.vasetti__testa { margin-bottom: clamp(32px, 5vw, 64px); }
+.vasetti__testa .titolo--medio { margin-top: 12px; }
+.vasetti__aiuto { margin: 14px 0 0; color: var(--grigio); font-size: 16px; }
+.vasetti__fila { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 3vw, 48px); align-items: end; max-width: 960px; margin: 0 auto; }
+.vasetti__vaso { display: flex; flex-direction: column; align-items: center; gap: 14px; text-decoration: none; color: inherit; }
+.vasetti__vaso img { height: clamp(150px, 34vh, 360px); width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 22px 26px rgba(30,26,18,.22)); transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+.vasetti__vaso:hover img { transform: translateY(-8px); }
+.vasetti__didascalia { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.vasetti__nome { font-size: clamp(20px, 2vw, 28px); font-weight: 500; letter-spacing: -.01em; color: var(--accento-testo); }
+.vasetti__stato { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--grigio); }
+.vasetti__vaso[data-miele="sulla"] .vasetti__stato { color: var(--accento-testo); }
+@media (max-width: 600px) {
+  .vasetti__vaso img { height: 24svh; }
+  .vasetti__didascalia { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.vasetti__nome { font-size: 18px; }
+  .vasetti__stato { font-size: 11px; letter-spacing: .1em; }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .vasetti { height: 280svh; view-timeline: --vasetti block; }
+    .vasetti__palco { position: sticky; top: 0; height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 14svh; padding-bottom: 0; }
+    .vasetti__testa, .vasetti__vaso img { animation-timeline: --vasetti; animation-range: cover 18% contain 100%; animation-fill-mode: both; animation-timing-function: linear; }
+    .vasetti__testa { animation-name: vdl-vasetti-testa; }
+    .vasetti__vaso img { animation-name: vdl-vasetto-sale; will-change: transform; }
+    .vasetti__vaso:nth-child(2) img { animation-name: vdl-vasetto-sale-2; }
+    .vasetti__vaso:nth-child(3) img { animation-name: vdl-vasetto-sale-3; }
+    .vasetti__nome, .vasetti__stato { animation: vdl-vasetti-nomi linear both; animation-timeline: --vasetti; animation-range: cover 18% contain 100%; }
+  }
+}
+@keyframes vdl-vasetti-testa { 0% { opacity: 0; transform: translateY(40px); } 14%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-vasetto-sale   { 0%, 8%  { opacity: 0; transform: translateY(45svh) rotate(-5deg); } 40%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-vasetto-sale-2 { 0%, 20% { opacity: 0; transform: translateY(45svh); } 52%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-vasetto-sale-3 { 0%, 32% { opacity: 0; transform: translateY(45svh) rotate(5deg); } 64%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-vasetti-nomi { 0%, 64% { opacity: 0; transform: translateY(12px); } 78%, 100% { opacity: 1; transform: none; } }
+
+/* Dopo i vasetti il capitolo successivo parte più vicino */
+.vasetti + .capitolo { padding-top: clamp(24px, 3vw, 48px); }
+
+/* Correzione: la foto d'apertura della home scorre in parallasse e in fondo
+   lasciava scoperta una fascia grigia. La allungo anche verso il basso. */
+.apertura__foto { inset: -6% 0 -16% 0; }
+
+/* 5. Profondità (vasetti e foto d'apertura che scorrono a velocità diversa).
+   Prima la calcolava racconto.js a ogni scorrimento; dove il browser lo sa fare
+   la fa lui. Uso "translate" e non "transform", così resta lo svelamento delle foto. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :has(> [data-profondita]) { view-timeline: --profondita block; }
+    [data-profondita] { animation: vdl-profondita linear both; animation-timeline: --profondita; animation-range: cover 0% cover 100%; }
+    [data-profondita="0.06"] { --k: .06; }
+    [data-profondita="-0.12"] { --k: -.12; }
+  }
+}
+@keyframes vdl-profondita { from { translate: 0 calc(var(--k, .06) * -100vh); } to { translate: 0 calc(var(--k, .06) * 100vh); } }
