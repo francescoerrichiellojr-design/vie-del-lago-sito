@@ -58,9 +58,6 @@
     .immersione__fondo img { width: 100%; height: 100%; object-fit: cover; }
     .immersione__terra { animation: vdl-terra linear both; }
     .immersione__terra::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,26,18,.15), rgba(30,26,18,.55)); }
-    /* Sulla: si parte dal lago visto da lontano e si scende fino all'argilla */
-    .immersione__lago { animation: vdl-lago linear both; }
-    .immersione__lago::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,26,18,.1), rgba(30,26,18,.5)); }
     .immersione__fiore { background: color-mix(in srgb, var(--accento) 80%, #1E1A12); opacity: 0; animation: vdl-fiore linear both; }
     .immersione__fiore::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,26,18,0) 30%, rgba(30,26,18,.35) 60%, color-mix(in srgb, var(--accento) 30%, rgba(30,26,18,.85)) 100%); }
     .immersione__crema { background: radial-gradient(110% 90% at 50% 45%, var(--fine-luce), var(--fine-ombra)); opacity: 0; animation: vdl-crema linear both; }
@@ -82,7 +79,7 @@
 
     .immersione__barra { display: block; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--accento-testo); transform-origin: 0 50%; animation: vdl-barra linear both; }
 
-    .immersione__terra, .immersione__lago, .immersione__fiore, .immersione__crema, .immersione__vaso img,
+    .immersione__terra, .immersione__fiore, .immersione__crema, .immersione__vaso img,
     .immersione__passo, .immersione__fine, .immersione__barra {
       animation-timeline: --immersione;
       animation-range: contain 0% contain 100%;
@@ -98,23 +95,23 @@
   }
 }
 
-/* Le tappe: 0–25 il suolo, 25–50 il fiore, 50–75 il gusto, 75–100 il vasetto */
-@keyframes vdl-terra { 0% { transform: scale(1.18); opacity: 1; } 28% { transform: scale(1); opacity: 1; } 40% { opacity: 0; } 100% { transform: scale(1); opacity: 0; } }
-@keyframes vdl-lago { 0%, 6% { opacity: 1; transform: scale(1); } 18%, 100% { opacity: 0; transform: scale(1.35); } }
-@keyframes vdl-fiore { 0%, 24% { opacity: 0; transform: scale(1.12); } 38% { opacity: 1; } 52% { opacity: 1; } 62%, 100% { opacity: 0; transform: scale(1); } }
-@keyframes vdl-crema { 0%, 50% { opacity: 0; } 60%, 100% { opacity: 1; } }
+/* Le tappe: 0–20 il luogo, 20–55 il fiore (la tappa più lunga), 55–83 il gusto (il testo entra quando il fondo è già chiaro), 83–100 il vasetto.
+   Il passaggio dal fiore al fondo chiaro dura 16 punti, per non strappare. */
+@keyframes vdl-terra { 0% { transform: scale(1.18); opacity: 1; } 20% { transform: scale(1); opacity: 1; } 32%, 100% { transform: scale(1); opacity: 0; } }
+@keyframes vdl-fiore { 0%, 18% { opacity: 0; transform: scale(1.14); } 30% { opacity: 1; } 54% { opacity: 1; } 70%, 100% { opacity: 0; transform: scale(1); } }
+@keyframes vdl-crema { 0%, 56% { opacity: 0; } 72%, 100% { opacity: 1; } }
 @keyframes vdl-vaso {
   0%   { transform: translateY(42svh) scale(.6) rotate(-6deg); }
-  24%  { transform: translateY(0) scale(.92) rotate(0deg); }
-  52%  { transform: translateY(-2svh) scale(1.28); }
-  74%  { transform: translateX(6vw) scale(1.05); }
+  22%  { transform: translateY(0) scale(.92) rotate(0deg); }
+  50%  { transform: translateY(-2svh) scale(1.28); }
+  76%  { transform: translateX(6vw) scale(1.05); }
   100% { transform: translateX(-4vw) scale(.9); }
 }
-@keyframes vdl-passo-1 { 0% { opacity: 0; transform: translateY(30px); } 6%, 19% { opacity: 1; transform: none; } 25%, 100% { opacity: 0; transform: translateY(-30px); } }
-@keyframes vdl-passo-2 { 0%, 27% { opacity: 0; transform: translateY(30px); } 33%, 46% { opacity: 1; transform: none; } 51%, 100% { opacity: 0; transform: translateY(-30px); } }
-@keyframes vdl-passo-3 { 0%, 53% { opacity: 0; transform: translateY(30px); } 59%, 71% { opacity: 1; transform: none; } 76%, 100% { opacity: 0; transform: translateY(-30px); } }
-@keyframes vdl-passo-4 { 0%, 78% { opacity: 0; transform: translateY(30px); } 84%, 100% { opacity: 1; transform: none; } }
-@keyframes vdl-fine { 0%, 84% { opacity: 0; transform: translateY(20px); pointer-events: none; } 90%, 100% { opacity: 1; transform: none; pointer-events: auto; } }
+@keyframes vdl-passo-1 { 0% { opacity: 0; transform: translateY(30px); } 5%, 16% { opacity: 1; transform: none; } 21%, 100% { opacity: 0; transform: translateY(-30px); } }
+@keyframes vdl-passo-2 { 0%, 24% { opacity: 0; transform: translateY(30px); } 31%, 50% { opacity: 1; transform: none; } 55%, 100% { opacity: 0; transform: translateY(-30px); } }
+@keyframes vdl-passo-3 { 0%, 65% { opacity: 0; transform: translateY(30px); } 71%, 79% { opacity: 1; transform: none; } 83%, 100% { opacity: 0; transform: translateY(-30px); } }
+@keyframes vdl-passo-4 { 0%, 84% { opacity: 0; transform: translateY(30px); } 89%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-fine { 0%, 88% { opacity: 0; transform: translateY(20px); pointer-events: none; } 93%, 100% { opacity: 1; transform: none; pointer-events: auto; } }
 @keyframes vdl-barra { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
 /* Su telefono la frase finale e il pulsante non si sovrappongono */
