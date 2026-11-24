@@ -1,6 +1,6 @@
 /* Vie del Lago — movimento della home "Racconto".
-   Scorrimento morbido (Lenis, ospitato in /vendor), testi che compaiono riga per riga,
-   immagini che si svelano e leggero effetto di profondità.
+   Testi che compaiono riga per riga, immagini che si svelano e leggero effetto di profondità.
+   Lo scorrimento è quello nativo del telefono (Lenis tolto a novembre 2026).
    Con "riduci movimento" attivo nel sistema, o senza JavaScript, tutto resta fermo e leggibile. */
 /* Video nel testo: si caricano e partono solo quando entrano sullo schermo, si fermano quando escono.
    Con "riduci movimento" o risparmio dati resta l'immagine fissa. */
@@ -118,7 +118,9 @@
   requestAnimationFrame(function () { subito.forEach(function (el) { el.classList.add('visibile'); }); });
 
   // 3. Profondità: elementi che scorrono a velocità diversa
-  var strati = Array.prototype.slice.call(document.querySelectorAll('[data-profondita]'));
+  // dove il browser sa legare le animazioni allo scorrimento, la profondità la fa movimento.css
+  var nativo = window.CSS && CSS.supports && CSS.supports('animation-timeline', 'view()');
+  var strati = nativo ? [] : Array.prototype.slice.call(document.querySelectorAll('[data-profondita]'));
   function aggiorna() {
     var h = window.innerHeight;
     strati.forEach(function (el) {
@@ -129,9 +131,11 @@
       el.style.transform = 'translate3d(0,' + (-centro * k).toFixed(1) + 'px,0)';
     });
   }
-  if (lenis) lenis.on('scroll', aggiorna); else window.addEventListener('scroll', aggiorna, { passive: true });
-  window.addEventListener('resize', aggiorna);
-  aggiorna();
+  if (strati.length) {
+    if (lenis) lenis.on('scroll', aggiorna); else window.addEventListener('scroll', aggiorna, { passive: true });
+    window.addEventListener('resize', aggiorna);
+    aggiorna();
+  }
 })();
 
 // Link a una sezione (per esempio /api.html#esplora, quello in bio su Instagram): il browser ci salta

@@ -168,3 +168,16 @@
 /* Correzione: la foto d'apertura della home scorre in parallasse e in fondo
    lasciava scoperta una fascia grigia. La allungo anche verso il basso. */
 .apertura__foto { inset: -6% 0 -16% 0; }
+
+/* 5. Profondità (vasetti e foto d'apertura che scorrono a velocità diversa).
+   Prima la calcolava racconto.js a ogni scorrimento; dove il browser lo sa fare
+   la fa lui. Uso "translate" e non "transform", così resta lo svelamento delle foto. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :has(> [data-profondita]) { view-timeline: --profondita block; }
+    [data-profondita] { animation: vdl-profondita linear both; animation-timeline: --profondita; animation-range: cover 0% cover 100%; }
+    [data-profondita="0.06"] { --k: .06; }
+    [data-profondita="-0.12"] { --k: -.12; }
+  }
+}
+@keyframes vdl-profondita { from { translate: 0 calc(var(--k, .06) * -100vh); } to { translate: 0 calc(var(--k, .06) * 100vh); } }
