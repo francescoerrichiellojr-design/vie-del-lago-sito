@@ -100,21 +100,32 @@
   }
 }
 
+/* Ingresso: mentre la sezione sale da sotto, prima che si fermi, il vasetto comincia già
+   a salire e la foto ad allontanarsi, così non c'è un tratto in cui tutto sembra fermo. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .immersione__vaso { animation: vdl-vaso-entra linear both; animation-timeline: --immersione; animation-range: entry 0% entry 100%; }
+    .immersione__terra img { animation: vdl-terra-entra linear both; animation-timeline: --immersione; animation-range: entry 0% entry 100%; }
+  }
+}
+@keyframes vdl-vaso-entra { from { transform: translateY(55svh); opacity: 0; } 40% { opacity: 1; } to { transform: none; opacity: 1; } }
+@keyframes vdl-terra-entra { from { transform: scale(1.25); } to { transform: none; } }
+
 /* Le tappe: 0–20 il luogo, 20–55 il fiore (la tappa più lunga), 55–83 il gusto (il testo entra quando il fondo è già chiaro), 83–100 il vasetto.
    Il passaggio dal fiore al fondo chiaro dura 16 punti, per non strappare. */
 @keyframes vdl-terra { 0% { transform: scale(1.18); opacity: 1; } 20% { transform: scale(1); opacity: 1; } 32%, 100% { transform: scale(1); opacity: 0; } }
 @keyframes vdl-fiore { 0%, 18% { opacity: 0; transform: scale(1.14); } 30% { opacity: 1; } 54% { opacity: 1; } 70%, 100% { opacity: 0; transform: scale(1); } }
 @keyframes vdl-crema { 0%, 56% { opacity: 0; } 72%, 100% { opacity: 1; } }
 @keyframes vdl-vaso {
-  0%   { transform: translateY(42svh) scale(.6) rotate(-6deg); }
+  0%   { transform: translateY(16svh) scale(.72) rotate(-4deg); }
   22%  { transform: translateY(0) scale(.92) rotate(0deg); }
   50%  { transform: translateY(-2svh) scale(1.28); }
   76%  { transform: translateX(6vw) scale(1.05); }
   100% { transform: translateX(-4vw) scale(.9); }
 }
 @keyframes vdl-vaso-tel {
-  0%   { transform: translateY(50svh) scale(.6) rotate(-6deg); }
-  4%   { transform: translateY(14svh) scale(.75) rotate(-3deg); }
+  0%   { transform: translateY(12svh) scale(.74) rotate(-4deg); }
+  4%   { transform: translateY(6svh) scale(.8) rotate(-2deg); }
   10%  { transform: translateY(0) scale(.9) rotate(0deg); }
   22%  { transform: translateY(0) scale(.95); }
   50%  { transform: translateY(0) scale(1.15); }
@@ -189,3 +200,24 @@
   }
 }
 @keyframes vdl-profondita { from { translate: 0 calc(var(--k, .06) * -100vh); } to { translate: 0 calc(var(--k, .06) * 100vh); } }
+
+/* 6. Schede miele: dopo "Dentro il vasetto" il capitolo successivo ha il suo respiro
+   (la pagina gli dava padding-top:0 in linea, pensato per stare sotto l'apertura). */
+.immersione + .capitolo { padding-top: clamp(64px, 9vw, 120px) !important; }
+
+/* 7. Scheda di degustazione più compatta: niente numeri, voce e descrizione sulla stessa riga,
+   dati del vasetto in due colonne su telefono. */
+main[data-miele] .punti { margin-top: clamp(28px, 4vw, 48px); gap: 0 clamp(24px, 3vw, 40px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+main[data-miele] .punto { gap: 6px; padding: 18px 0 20px; }
+main[data-miele] .punto__num { display: none; }
+main[data-miele] .punto h3 { font-size: clamp(18px, 1.4vw, 21px); font-weight: 600; }
+main[data-miele] .punto p { font-size: clamp(16px, 1.1vw, 18px); line-height: 1.55; }
+main[data-miele] .scheda { margin-top: clamp(20px, 3vw, 36px); padding-top: 20px; gap: 16px 24px; }
+main[data-miele] .scheda dd { font-size: clamp(17px, 1.3vw, 20px); }
+@media (max-width: 600px) {
+  main[data-miele] .punto { display: grid; grid-template-columns: 40% 1fr; gap: 14px; padding: 14px 0; }
+  main[data-miele] .punto h3 { font-size: 16px; line-height: 1.5; }
+  main[data-miele] .punto p { font-size: 15px; }
+  main[data-miele] .scheda { grid-template-columns: 1fr 1fr; }
+  main[data-miele] .scheda dt { font-size: 11px; }
+}
