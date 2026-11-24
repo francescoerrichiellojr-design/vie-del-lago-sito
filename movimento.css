@@ -1,0 +1,114 @@
+/* ─────────────────────────────────────────────────────────────
+   Vie del Lago, movimento nativo (prova, novembre 2026)
+
+   1. Passaggio tra pagine: il vasetto toccato nella lista diventa il
+      vasetto della scheda. Lo fa il browser (View Transitions), senza
+      librerie. Dove non è supportato la pagina si apre normalmente.
+   2. "Dentro il vasetto" (scheda Sulla): animazione legata allo
+      scorrimento, calcolata dal browser fuori dal thread principale.
+      Si muovono solo posizione, scala e opacità.
+      Senza supporto, o con "riduci movimento", resta una sezione ferma.
+   ───────────────────────────────────────────────────────────── */
+
+/* 1. Passaggio tra pagine */
+@view-transition { navigation: auto; }
+
+.miele__vaso img[src$="sulla-vaso.webp"],     .correlato img[src$="sulla-vaso.webp"]     { view-transition-name: vaso-sulla; }
+.miele__vaso img[src$="millefiori-vaso.webp"],.correlato img[src$="millefiori-vaso.webp"]{ view-transition-name: vaso-millefiori; }
+.miele__vaso img[src$="acacia-vaso.webp"],    .correlato img[src$="acacia-vaso.webp"]    { view-transition-name: vaso-acacia; }
+
+::view-transition-group(*) { animation-duration: .42s; animation-timing-function: cubic-bezier(.2,.7,.2,1); }
+::view-transition-old(root) { animation: .22s ease both vdl-esce; }
+::view-transition-new(root) { animation: .32s ease .06s both vdl-entra; }
+@keyframes vdl-esce { to { opacity: 0; } }
+@keyframes vdl-entra { from { opacity: 0; } }
+
+/* All'arrivo con il passaggio, il vasetto della scheda è già al suo posto:
+   niente effetto di svelamento che lo farebbe saltare. */
+.vt-arrivo .prodotto .svela img { transform: none !important; transition: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+
+/* 2. Dentro il vasetto: versione ferma (base per tutti) */
+.immersione { background: #F3EEE2; }
+.immersione__palco { position: relative; padding: clamp(72px,9vw,130px) var(--gutter); max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px 56px; align-items: center; }
+.immersione__fondo, .immersione__barra, .immersione__fine { display: none; }
+.immersione__vaso { display: flex; justify-content: center; }
+.immersione__vaso img { height: min(56vh, 520px); width: auto; }
+.immersione__passi { display: grid; gap: 36px; }
+.immersione__passo p { margin: 0; }
+.immersione__passo .immersione__frase { font-size: clamp(26px, 2.6vw, 40px); line-height: 1.15; letter-spacing: -.015em; font-weight: 500; margin: 10px 0 8px; }
+.immersione__passo .immersione__dettaglio { color: var(--grigio); max-width: 38ch; }
+
+/* 2b. Versione animata: solo dove il browser sa legare l'animazione allo scorrimento */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .immersione { height: 420svh; view-timeline: --immersione block; background: var(--terra); }
+    .immersione__palco { position: sticky; top: 0; height: 100svh; max-width: none; padding: 0; display: block; overflow: hidden; }
+
+    .immersione__fondo { display: block; position: absolute; inset: 0; }
+    .immersione__fondo img { width: 100%; height: 100%; object-fit: cover; }
+    .immersione__terra { animation: vdl-terra linear both; }
+    .immersione__terra::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,26,18,.15), rgba(30,26,18,.55)); }
+    .immersione__fiore { background: radial-gradient(120% 90% at 50% 45%, color-mix(in srgb, var(--accento) 70%, #F3EEE2), color-mix(in srgb, var(--accento) 92%, #3A1630)); opacity: 0; animation: vdl-fiore linear both; }
+    .immersione__crema { background: radial-gradient(110% 90% at 50% 45%, #FBF8EF, #EAE2CF); opacity: 0; animation: vdl-crema linear both; }
+
+    .immersione__vaso { position: absolute; left: 50%; top: 50%; width: 0; height: 0; display: block; }
+    .immersione__vaso img { position: absolute; height: min(58svh, 560px); left: 0; top: 0; width: auto; max-width: none; translate: -50% -50%; filter: drop-shadow(0 30px 40px rgba(30,26,18,.35)); animation: vdl-vaso linear both; will-change: transform; }
+
+    .immersione__passi { display: block; }
+    .immersione__passo { position: absolute; left: var(--gutter); bottom: clamp(48px, 12svh, 120px); max-width: min(34ch, 36vw); opacity: 0; animation: linear both; }
+    .immersione__passo .immersione__dettaglio { color: inherit; opacity: .85; }
+    .immersione__passo:nth-child(1) { color: #F7F3E8; animation-name: vdl-passo-1; text-shadow: 0 1px 18px rgba(30,26,18,.5); }
+    .immersione__passo:nth-child(2) { color: #FBF6F9; animation-name: vdl-passo-2; }
+    .immersione__passo:nth-child(3) { color: var(--terra); animation-name: vdl-passo-3; left: auto; right: var(--gutter); }
+    .immersione__passo:nth-child(4) { color: var(--terra); animation-name: vdl-passo-4; }
+    .immersione__passo:nth-child(1) .etichetta, .immersione__passo:nth-child(2) .etichetta { color: inherit; opacity: .9; }
+
+    .immersione__fine { display: flex; position: absolute; right: var(--gutter); bottom: clamp(48px, 12svh, 120px); flex-direction: column; align-items: flex-end; gap: 14px; opacity: 0; animation: vdl-fine linear both; }
+    .immersione__prezzo { margin: 0; font-size: 20px; font-weight: 600; color: var(--terra); }
+
+    .immersione__barra { display: block; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--accento-testo); transform-origin: 0 50%; animation: vdl-barra linear both; }
+
+    .immersione__terra, .immersione__fiore, .immersione__crema, .immersione__vaso img,
+    .immersione__passo, .immersione__fine, .immersione__barra {
+      animation-timeline: --immersione;
+      animation-range: contain 0% contain 100%;
+    }
+
+    @media (max-width: 760px) {
+      .immersione__vaso { top: 34%; }
+      .immersione__vaso img { height: 40svh; }
+      .immersione__passo, .immersione__passo:nth-child(3) { left: var(--gutter); right: var(--gutter); max-width: none; bottom: 88px; }
+      .immersione__passo .immersione__dettaglio { font-size: 16px; }
+      .immersione__fine { left: var(--gutter); right: var(--gutter); align-items: flex-start; bottom: 88px; }
+    }
+  }
+}
+
+/* Le tappe: 0–25 il suolo, 25–50 il fiore, 50–75 il gusto, 75–100 il vasetto */
+@keyframes vdl-terra { 0% { transform: scale(1.18); opacity: 1; } 28% { transform: scale(1); opacity: 1; } 40% { opacity: 0; } 100% { transform: scale(1); opacity: 0; } }
+@keyframes vdl-fiore { 0%, 24% { opacity: 0; } 38% { opacity: 1; } 52% { opacity: 1; } 62%, 100% { opacity: 0; } }
+@keyframes vdl-crema { 0%, 50% { opacity: 0; } 60%, 100% { opacity: 1; } }
+@keyframes vdl-vaso {
+  0%   { transform: translateY(42svh) scale(.6) rotate(-6deg); }
+  24%  { transform: translateY(0) scale(.92) rotate(0deg); }
+  52%  { transform: translateY(-2svh) scale(1.28); }
+  74%  { transform: translateX(6vw) scale(1.05); }
+  100% { transform: translateX(-4vw) scale(.9); }
+}
+@keyframes vdl-passo-1 { 0% { opacity: 0; transform: translateY(30px); } 6%, 19% { opacity: 1; transform: none; } 25%, 100% { opacity: 0; transform: translateY(-30px); } }
+@keyframes vdl-passo-2 { 0%, 27% { opacity: 0; transform: translateY(30px); } 33%, 46% { opacity: 1; transform: none; } 51%, 100% { opacity: 0; transform: translateY(-30px); } }
+@keyframes vdl-passo-3 { 0%, 53% { opacity: 0; transform: translateY(30px); } 59%, 71% { opacity: 1; transform: none; } 76%, 100% { opacity: 0; transform: translateY(-30px); } }
+@keyframes vdl-passo-4 { 0%, 78% { opacity: 0; transform: translateY(30px); } 84%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-fine { 0%, 84% { opacity: 0; transform: translateY(20px); pointer-events: none; } 90%, 100% { opacity: 1; transform: none; pointer-events: auto; } }
+@keyframes vdl-barra { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* Su telefono la frase finale e il pulsante non si sovrappongono */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) and (max-width: 760px) {
+    .immersione__passo:nth-child(4) { bottom: 196px; }
+  }
+}
