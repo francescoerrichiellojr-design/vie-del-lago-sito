@@ -31,8 +31,14 @@
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
 
-/* 2. Dentro il vasetto: versione ferma (base per tutti) */
-.immersione { background: #F3EEE2; }
+/* 2. Dentro il vasetto: colore dell'ultima tappa per ogni miele
+   (sulla crema bianca, acacia paglierino limpido, millefiori ambra) */
+.immersione { --fine-luce: #FBF8EF; --fine-ombra: #EAE2CF; }
+[data-miele="acacia"] .immersione { --fine-luce: #FBF6DF; --fine-ombra: #EEE2B4; }
+[data-miele="millefiori"] .immersione { --fine-luce: #F8EBD3; --fine-ombra: #E9CC9F; }
+
+/* Versione ferma (base per tutti) */
+.immersione { background: var(--fine-luce); }
 .immersione__palco { position: relative; padding: clamp(72px,9vw,130px) var(--gutter); max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px 56px; align-items: center; }
 .immersione__fondo, .immersione__barra, .immersione__fine { display: none; }
 .immersione__vaso { display: flex; justify-content: center; }
@@ -53,7 +59,7 @@
     .immersione__terra { animation: vdl-terra linear both; }
     .immersione__terra::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,26,18,.15), rgba(30,26,18,.55)); }
     .immersione__fiore { background: radial-gradient(120% 90% at 50% 45%, color-mix(in srgb, var(--accento) 70%, #F3EEE2), color-mix(in srgb, var(--accento) 92%, #3A1630)); opacity: 0; animation: vdl-fiore linear both; }
-    .immersione__crema { background: radial-gradient(110% 90% at 50% 45%, #FBF8EF, #EAE2CF); opacity: 0; animation: vdl-crema linear both; }
+    .immersione__crema { background: radial-gradient(110% 90% at 50% 45%, var(--fine-luce), var(--fine-ombra)); opacity: 0; animation: vdl-crema linear both; }
 
     .immersione__vaso { position: absolute; left: 50%; top: 50%; width: 0; height: 0; display: block; }
     .immersione__vaso img { position: absolute; height: min(58svh, 560px); left: 0; top: 0; width: auto; max-width: none; translate: -50% -50%; filter: drop-shadow(0 30px 40px rgba(30,26,18,.35)); animation: vdl-vaso linear both; will-change: transform; }
@@ -109,6 +115,6 @@
 /* Su telefono la frase finale e il pulsante non si sovrappongono */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) and (max-width: 760px) {
-    .immersione__passo:nth-child(4) { bottom: 196px; }
+    .immersione__passo:nth-child(4) { bottom: 252px; }
   }
 }
