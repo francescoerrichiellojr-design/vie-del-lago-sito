@@ -89,7 +89,7 @@
   <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/racconto.css?v=20261119a">
-  <link rel="stylesheet" href="/movimento.css?v=20261124j">
+  <link rel="stylesheet" href="/movimento.css?v=20261124k">
   <script>addEventListener('pagereveal',function(e){if(e.viewTransition)document.documentElement.classList.add('vt-arrivo')})</script>
   <script>document.documentElement.classList.add('js-menu')</script>
   <script>try{if(!localStorage.getItem('vdl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro')}catch(e){}</script>
@@ -127,7 +127,7 @@
     <div class="contenitore">
       <nav class="briciole" aria-label="Percorso"><ol><li><a href="/">Home</a></li><li aria-current="page">Chi siamo</li></ol></nav>
       <p class="etichetta" data-rivela>Apicoltori · Conza della Campania</p>
-      <h1 class="titolo" data-rivela><span class="riga" style="--i:0"><span>Francesco</span></span><span class="riga" style="--i:1"><span>e Rosanna</span></span></h1>
+      <h1 class="titolo" data-rivela><span class="riga" style="--i:0"><span>Francesco</span></span> <span class="riga" style="--i:1"><span>e Rosanna</span></span></h1>
       <p class="racconto intro__lead" data-rivela style="--i:2">Una scelta di vita, un territorio, un miele.</p>
       <ul class="fatti" data-rivela style="--i:3"><li>Apicoltura stanziale</li><li>Oasi WWF di Conza</li><li>A conduzione familiare</li></ul>
     </div>
@@ -138,7 +138,7 @@
       <figure style="margin:0"><div class="foto-alta svela"><img src="img/chi-siamo-foto.webp" alt="Francesco e Rosanna" width="1200" height="1600" loading="lazy"></div></figure>
       <div class="testo-lungo">
         <p class="etichetta" data-rivela>La nostra storia</p>
-        <h2 class="titolo titolo--medio" id="titolo-storia" data-rivela><span class="riga" style="--i:0"><span>Siamo venuti</span></span><span class="riga" style="--i:1"><span>qui per scelta</span></span></h2>
+        <h2 class="titolo titolo--medio" id="titolo-storia" data-rivela><span class="riga" style="--i:0"><span>Siamo venuti</span></span> <span class="riga" style="--i:1"><span>qui per scelta</span></span></h2>
         <p data-rivela style="--i:2">Non siamo originari dell'Irpinia. Ci siamo trasferiti per amore della natura, attratti dalla Valle dell'Ofanto, dal Lago di Conza e da un ecosistema che pochi conoscono e ancora meno sanno proteggere.</p>
         <p class="secondario" data-rivela style="--i:3">Francesco si è avvicinato alle api durante il lavoro in dipartimento, dove la ricerca sulla biodiversità lo ha portato a capire il ruolo degli impollinatori nella catena del cibo e nella cura del paesaggio. Da lì è nata Vie del Lago.</p>
         <p class="secondario" data-rivela style="--i:4">Rosanna lo ha seguito per amore e non ha mai smesso di sostenerlo. Vie del Lago è un progetto a due: nelle decisioni, nel lavoro di ogni giorno, nella filosofia.</p>
@@ -160,13 +160,13 @@
     <div class="contenitore">
       <div class="capitolo__testa">
         <p class="etichetta" data-rivela>Cosa ci guida</p>
-        <h2 class="titolo" id="titolo-valori" data-rivela><span class="riga" style="--i:0"><span>Sei regole</span></span><span class="riga" style="--i:1"><span>che non cambiamo</span></span></h2>
+        <h2 class="titolo" id="titolo-valori" data-rivela><span class="riga" style="--i:0"><span>Sei regole</span></span> <span class="riga" style="--i:1"><span>che non cambiamo</span></span></h2>
       </div>
       <div class="punti">
         <div class="punto" data-rivela style="--i:0"><span class="punto__num">01</span><h3>Stanzialità</h3><p>Le nostre api non si spostano: l'apiario Priscilla è fisso nell'Oasi di Conza. Ogni miele racconta un solo luogo, ed è questo che ci permette di parlare di cru.</p></div>
         <div class="punto" data-rivela style="--i:1"><span class="punto__num">02</span><h3>Niente pastorizzazione</h3><p>Non riscaldiamo il miele, lo filtriamo solo quanto serve e non aggiungiamo nulla. Così restano enzimi, profumi e complessità.</p></div>
-        <div class="punto" data-rivela style="--i:2"><span class="punto__num">03</span><h3>Trasparenza</h3><p>Pubblichiamo i dati dell'alveare: temperatura, umidità, peso delle famiglie. Ogni produzione ha la sua analisi melissopalinologica.</p></div>
-        <div class="punto" data-rivela style="--i:0"><span class="punto__num">04</span><h3>Rispetto dell'ecosistema</h3><p>Nell'Oasi WWF conviviamo con decine di specie protette. Contro la varroa usiamo solo acido ossalico.</p></div>
+        <div class="punto" data-rivela style="--i:2"><span class="punto__num">03</span><h3>Trasparenza</h3><p>Pubblichiamo i dati dell'alveare: temperatura, umidità, peso delle famiglie. Ogni produzione ha la sua analisi <button type="button" class="glossa" popovertarget="g-2">melissopalinologica</button><span id="g-2" popover class="glossa__nota"><strong>Analisi melissopalinologica</strong> Al microscopio si contano i granuli di polline nel miele. Dicono da quali fiori viene e se un monoflora è davvero tale.<button type="button" class="glossa__chiudi" popovertarget="g-2" popovertargetaction="hide">Chiudi</button></span>.</p></div>
+        <div class="punto" data-rivela style="--i:0"><span class="punto__num">04</span><h3>Rispetto dell'ecosistema</h3><p>Nell'Oasi WWF conviviamo con decine di specie protette. Contro la <button type="button" class="glossa" popovertarget="g-5">varroa</button><span id="g-5" popover class="glossa__nota"><strong>Varroa</strong> Un piccolo acaro che vive sulle api e le indebolisce. È il problema principale di ogni apicoltore.<button type="button" class="glossa__chiudi" popovertarget="g-5" popovertargetaction="hide">Chiudi</button></span> usiamo solo acido ossalico.</p></div>
         <div class="punto" data-rivela style="--i:1"><span class="punto__num">05</span><h3>Piccoli lotti</h3><p>I lotti hanno il limite che danno il territorio e la stagione. Quando finiscono, finiscono: l'anno dopo sarà un miele diverso.</p></div>
         <div class="punto" data-rivela style="--i:2"><span class="punto__num">06</span><h3>Rapporto diretto</h3><p>Chi compra il nostro miele scrive a Francesco o a Rosanna. Ogni ordine è una conversazione, e molti clienti li conosciamo per nome.</p></div>
       </div>
@@ -177,7 +177,7 @@
     <div class="contenitore">
       <div class="capitolo__testa">
         <p class="etichetta" data-rivela>Come è iniziata</p>
-        <h2 class="titolo titolo--medio" id="titolo-tappe" data-rivela><span class="riga" style="--i:0"><span>La storia</span></span><span class="riga" style="--i:1"><span>di Vie del Lago</span></span></h2>
+        <h2 class="titolo titolo--medio" id="titolo-tappe" data-rivela><span class="riga" style="--i:0"><span>La storia</span></span> <span class="riga" style="--i:1"><span>di Vie del Lago</span></span></h2>
       </div>
       <ol class="passi">
         <li class="passo" data-rivela>
@@ -200,6 +200,20 @@
     </div>
   </section>
 
+  <section class="prossimo" aria-label="Il prossimo capitolo">
+    <div class="contenitore">
+      <a class="prossimo__link" href="territorio.html">
+        <span class="prossimo__foto"><img src="/img/lago-alba.webp" alt="" width="1376" height="768" loading="lazy" decoding="async"></span>
+        <span>
+          <span class="etichetta">Il prossimo capitolo</span>
+          <span class="prossimo__titolo" style="display:block">Il lago</span>
+          <span class="prossimo__frase" style="display:block">Ti raccontiamo il posto che abbiamo scelto: il lago di Conza e le colline dove stanno le arnie.</span>
+          <span class="prossimo__freccia">Vieni al lago →</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
   <section class="capitolo capitolo--scuro ordina" id="ordina" aria-labelledby="titolo-ordina">
     <div class="contenitore">
       <div class="capitolo__testa">
@@ -210,7 +224,7 @@
           <image href="img/marchio-crema.png" x="72" y="72" width="56" height="56"/>
         </svg>
         <p class="etichetta" data-rivela>Per ordinare</p>
-        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Scrivici</span></span><span class="riga" style="--i:1"><span>direttamente</span></span></h2>
+        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Scrivici</span></span> <span class="riga" style="--i:1"><span>direttamente</span></span></h2>
         <p data-rivela style="--i:2;margin:0;max-width:48ch;color:var(--chiaro-2)">Ogni messaggio arriva a Francesco o a Rosanna. Per domande sul miele, sull'apiario o per prenotare la prossima annata, siamo qui.</p>
         <div class="ordina__azioni" data-rivela style="--i:3">
           <a class="btn btn--pieno" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20ordinare%3A%20">WhatsApp <span class="freccia" aria-hidden="true">→</span></a>
@@ -261,6 +275,6 @@
 
 <script src="script.js"></script>
 <script src="/racconto.js?v=20261124a"></script>
-<script src="/js/carrello.js?v=20261119a" defer></script>
+<script src="/js/carrello.js?v=20261124a" defer></script>
 </body>
 </html>

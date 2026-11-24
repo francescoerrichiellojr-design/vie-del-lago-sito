@@ -64,7 +64,7 @@
   <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/racconto.css?v=20261119a">
-  <link rel="stylesheet" href="/movimento.css?v=20261124j">
+  <link rel="stylesheet" href="/movimento.css?v=20261124k">
   <script>addEventListener('pagereveal',function(e){if(e.viewTransition)document.documentElement.classList.add('vt-arrivo')})</script>
   <script>document.documentElement.classList.add('js-menu')</script>
   <script>try{if(!localStorage.getItem('vdl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro')}catch(e){}</script>
@@ -116,7 +116,7 @@
         <a class="miele__vaso svela" href="sulla.html" tabindex="-1" aria-hidden="true"><img src="img/sulla-vaso.webp" alt="" width="689" height="960" loading="lazy" data-profondita="0.06"></a>
         <div class="miele__testo">
           <p class="contatore" data-rivela>01 / 03</p>
-          <p class="etichetta" data-rivela style="--i:1">Cru delle Argille · Monoflora</p>
+          <p class="etichetta" data-rivela style="--i:1">Cru delle Argille · <button type="button" class="glossa" popovertarget="g-4">Monoflora</button><span id="g-4" popover class="glossa__nota"><strong>Monoflora</strong> Un miele in cui prevale il nettare di un solo fiore. Lo conferma l'analisi dei pollini.<button type="button" class="glossa__chiudi" popovertarget="g-4" popovertargetaction="hide">Chiudi</button></span></p>
           <h2 class="titolo" id="m-sulla" data-rivela><span class="riga" style="--i:0"><span>Sulla</span></span></h2>
           <p class="motto" data-rivela style="--i:1">La mineralità dell'argilla</p>
           <p class="miele__note" data-rivela style="--i:2">La fioritura rossa delle praterie argillose irpine, raccolta a maggio. Tenue ma riconoscibile: paglia fresca, erbe aromatiche e un leggero sentore agrumato.</p>
@@ -189,6 +189,20 @@
     </div>
   </section>
 
+  <section class="prossimo" aria-label="Il prossimo capitolo">
+    <div class="contenitore">
+      <a class="prossimo__link" href="come-ordinare.html">
+        <span class="prossimo__foto prossimo__foto--vaso"><img src="/img/acacia-vaso.webp" alt="" width="571" height="795" loading="lazy" decoding="async"></span>
+        <span>
+          <span class="etichetta">Il prossimo capitolo</span>
+          <span class="prossimo__titolo" style="display:block">Come ordinare</span>
+          <span class="prossimo__frase" style="display:block">Hai scelto? Ti spieghiamo come arriva da te: un messaggio, una risposta entro un giorno, e il vasetto in mano.</span>
+          <span class="prossimo__freccia">Vedi come si ordina →</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
   <section class="capitolo capitolo--scuro ordina" id="ordina" aria-labelledby="titolo-ordina">
     <div class="contenitore">
       <div class="capitolo__testa">
@@ -199,7 +213,7 @@
           <image href="img/marchio-crema.png" x="72" y="72" width="56" height="56"/>
         </svg>
         <p class="etichetta" data-rivela>Per ordinare</p>
-        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Scrivici,</span></span><span class="riga" style="--i:1"><span>ti rispondiamo noi</span></span></h2>
+        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Scrivici,</span></span> <span class="riga" style="--i:1"><span>ti rispondiamo noi</span></span></h2>
         <p data-rivela style="--i:2;margin:0;max-width:48ch;color:var(--chiaro-2)">Aggiungi i vasetti al tuo ordine o scrivici direttamente. Puoi ritirarli in azienda a Conza oppure te li portiamo noi, ovunque in Campania: giorno e costo li decidiamo insieme.</p>
         <div class="ordina__azioni" data-rivela style="--i:3">
           <a class="btn btn--pieno" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20ordinare%3A%20">WhatsApp <span class="freccia" aria-hidden="true">→</span></a>
@@ -250,6 +264,6 @@
 
 <script src="script.js"></script>
 <script src="/racconto.js?v=20261124a"></script>
-<script src="/js/carrello.js?v=20261119a" defer></script>
+<script src="/js/carrello.js?v=20261124a" defer></script>
 </body>
 </html>

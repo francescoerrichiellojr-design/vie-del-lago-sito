@@ -93,7 +93,7 @@
   <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/racconto.css?v=20261119a">
-  <link rel="stylesheet" href="/movimento.css?v=20261124j">
+  <link rel="stylesheet" href="/movimento.css?v=20261124k">
   <script>addEventListener('pagereveal',function(e){if(e.viewTransition)document.documentElement.classList.add('vt-arrivo')})</script>
   <script>document.documentElement.classList.add('js-menu')</script>
   <script>try{if(!localStorage.getItem('vdl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro')}catch(e){}</script>
@@ -149,9 +149,9 @@
     <div class="apertura__foto" data-profondita="-0.12"><img src="img/lago-pomeriggio.webp" alt="" width="1376" height="768" fetchpriority="high" style="object-position:center 60%"></div>
     <div class="contenitore">
       <p class="etichetta" data-rivela style="color:#E7C77A">Conza della Campania · Irpinia</p>
-      <h1 class="titolo" id="titolo-apertura" data-rivela><span class="riga" style="--i:0"><span>Il miele</span></span><span class="riga" style="--i:1"><span>del Lago di Conza</span></span></h1>
+      <h1 class="titolo" id="titolo-apertura" data-rivela><span class="riga" style="--i:0"><span>Il miele</span></span> <span class="riga" style="--i:1"><span>del Lago di Conza</span></span></h1>
       <div class="apertura__sotto">
-        <p data-rivela style="--i:2">Un apiario stanziale nell'Oasi WWF, tre mieli cru e un'annata alla volta.</p>
+        <p data-rivela style="--i:2">Un apiario <button type="button" class="glossa" popovertarget="g-7">stanziale</button><span id="g-7" popover class="glossa__nota"><strong>Stanziale</strong> Le arnie restano sempre nello stesso posto e non si spostano per seguire le fioriture. Così il miele racconta un luogo solo.<button type="button" class="glossa__chiudi" popovertarget="g-7" popovertargetaction="hide">Chiudi</button></span> nell'Oasi WWF, tre mieli cru e un'annata alla volta.</p>
         <a class="apertura__avviso" href="natale.html" data-rivela style="--i:3"><span>Natale 2026</span>Il Miele di Sulla da regalare <span class="freccia" aria-hidden="true">→</span></a>
         <span class="scorri" aria-hidden="true">Scorri</span>
       </div>
@@ -177,7 +177,7 @@
     <div class="contenitore">
       <div class="capitolo__testa">
         <p class="etichetta" data-rivela>Capitolo primo · Il lago</p>
-        <h2 class="titolo" id="titolo-territorio" data-rivela><span class="riga" style="--i:0"><span>Le api restano qui</span></span><span class="riga" style="--i:1"><span>tutto l'anno</span></span></h2>
+        <h2 class="titolo" id="titolo-territorio" data-rivela><span class="riga" style="--i:0"><span>Le api restano qui</span></span> <span class="riga" style="--i:1"><span>tutto l'anno</span></span></h2>
       </div>
       <div class="due">
         <p class="racconto" data-rivela>Intorno al lago ci sono argille, valloni umidi e colline lasciate alle fioriture spontanee. Le nostre arnie non si spostano: ogni vasetto racconta questo paesaggio e nessun altro.</p>
@@ -192,13 +192,13 @@
     <div class="contenitore">
       <div class="capitolo__testa">
         <p class="etichetta" data-rivela>Capitolo secondo · Annata 2026</p>
-        <h2 class="titolo" id="titolo-mieli" data-rivela><span class="riga" style="--i:0"><span>Tre fioriture,</span></span><span class="riga" style="--i:1"><span>tre mieli</span></span></h2>
+        <h2 class="titolo" id="titolo-mieli" data-rivela><span class="riga" style="--i:0"><span>Tre fioriture,</span></span> <span class="riga" style="--i:1"><span>tre mieli</span></span></h2>
       </div>
       <article class="miele" data-miele="sulla" aria-labelledby="m-sulla">
         <div class="miele__vaso svela"><img src="img/sulla-vaso.webp" alt="Vasetto di Miele di Sulla Vie del Lago" width="689" height="960" loading="lazy" data-profondita="0.06"></div>
         <div class="miele__testo">
           <p class="contatore" data-rivela>01 / 03</p>
-          <p class="etichetta" data-rivela style="--i:1">Cru delle Argille · Monoflora</p>
+          <p class="etichetta" data-rivela style="--i:1">Cru delle Argille · <button type="button" class="glossa" popovertarget="g-4">Monoflora</button><span id="g-4" popover class="glossa__nota"><strong>Monoflora</strong> Un miele in cui prevale il nettare di un solo fiore. Lo conferma l'analisi dei pollini.<button type="button" class="glossa__chiudi" popovertarget="g-4" popovertargetaction="hide">Chiudi</button></span></p>
           <h3 class="titolo" id="m-sulla" data-rivela><span class="riga" style="--i:0"><span>Sulla</span></span></h3>
           <p class="motto" data-rivela style="--i:1">La mineralità dell'argilla</p>
           <p class="miele__note" data-rivela style="--i:2">La fioritura rossa delle praterie argillose irpine, a maggio. Bianco avorio quando cristallizza, note di paglia fresca, erbe aromatiche e un accenno di agrumi.</p>
@@ -252,14 +252,14 @@
     <div class="contenitore">
       <div class="capitolo__testa">
         <p class="etichetta" data-rivela>Capitolo terzo · Il metodo</p>
-        <h2 class="titolo" id="titolo-metodo" data-rivela><span class="riga" style="--i:0"><span>Lo studiamo come</span></span><span class="riga" style="--i:1"><span>in laboratorio</span></span></h2>
+        <h2 class="titolo" id="titolo-metodo" data-rivela><span class="riga" style="--i:0"><span>Lo studiamo come</span></span> <span class="riga" style="--i:1"><span>in laboratorio</span></span></h2>
         <p class="racconto" data-rivela style="--i:2;color:var(--chiaro-2)">Veniamo dalla ricerca. Ogni scelta in apiario ha un dato dietro, e i dati li pubblichiamo.</p>
       </div>
       <div class="punti">
         <div class="punto" data-rivela><span class="punto__num">01</span><h3>Apicoltura stanziale</h3><p>Gli alveari restano nello stesso luogo per tutta la stagione: un solo territorio per ogni miele.</p></div>
-        <div class="punto" data-rivela style="--i:1"><span class="punto__num">02</span><h3>Smielatura a freddo</h3><p>Solo favi opercolati, a temperatura ambiente. Filtraggio leggero, nessun riscaldamento, nessuna pastorizzazione.</p></div>
+        <div class="punto" data-rivela style="--i:1"><span class="punto__num">02</span><h3>Smielatura a freddo</h3><p>Solo favi <button type="button" class="glossa" popovertarget="g-0">opercolati</button><span id="g-0" popover class="glossa__nota"><strong>Opercolato</strong> Quando il miele è maturo, le api chiudono ogni cella con un tappo di cera. Solo allora lo raccogliamo.<button type="button" class="glossa__chiudi" popovertarget="g-0" popovertargetaction="hide">Chiudi</button></span>, a temperatura ambiente. Filtraggio leggero, nessun riscaldamento, nessuna pastorizzazione.</p></div>
         <div class="punto" data-rivela style="--i:2"><span class="punto__num">03</span><h3>Alveari monitorati</h3><p>Peso, temperatura e umidità registrati ogni giorno e pubblicati. Raccogliamo solo quando le scorte delle api sono al sicuro.</p></div>
-        <div class="punto" data-rivela style="--i:3"><span class="punto__num">04</span><h3>Analisi di ogni lotto</h3><p>Un'analisi melissopalinologica documenta l'origine botanica di ciascun miele.</p></div>
+        <div class="punto" data-rivela style="--i:3"><span class="punto__num">04</span><h3>Analisi di ogni lotto</h3><p>Un'analisi <button type="button" class="glossa" popovertarget="g-2">melissopalinologica</button><span id="g-2" popover class="glossa__nota"><strong>Analisi melissopalinologica</strong> Al microscopio si contano i granuli di polline nel miele. Dicono da quali fiori viene e se un monoflora è davvero tale.<button type="button" class="glossa__chiudi" popovertarget="g-2" popovertargetaction="hide">Chiudi</button></span> documenta l'origine botanica di ciascun miele.</p></div>
       </div>
       <div data-rivela style="margin-top:56px"><a class="btn" href="educazione.html">I dati dell'alveare <span class="freccia" aria-hidden="true">→</span></a></div>
     </div>
@@ -272,7 +272,7 @@
       </figure>
       <div class="testo-lungo">
         <p class="etichetta" data-rivela>Capitolo quarto · Chi siamo</p>
-        <h2 class="titolo titolo--medio" id="titolo-noi" data-rivela><span class="riga" style="--i:0"><span>Francesco</span></span><span class="riga" style="--i:1"><span>e Rosanna</span></span></h2>
+        <h2 class="titolo titolo--medio" id="titolo-noi" data-rivela><span class="riga" style="--i:0"><span>Francesco</span></span> <span class="riga" style="--i:1"><span>e Rosanna</span></span></h2>
         <p data-rivela style="--i:2">Siamo arrivati in Irpinia per scelta, attratti dalla Valle dell'Ofanto e da un ecosistema che pochi conoscono.</p>
         <p data-rivela style="--i:3" class="secondario">Abbiamo portato con noi la scienza, un dottorato in Food Science e anni di ricerca su biodiversità e sostenibilità, e ci siamo stabiliti dove oggi sono gli apiari.</p>
         <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="chi-siamo.html">La nostra storia <span class="freccia" aria-hidden="true">→</span></a></div>
@@ -324,7 +324,7 @@
           <image href="img/marchio-crema.png" x="72" y="72" width="56" height="56"/>
         </svg>
         <p class="etichetta" data-rivela>Per ordinare</p>
-        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Scrivici,</span></span><span class="riga" style="--i:1"><span>ti rispondiamo noi</span></span></h2>
+        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Scrivici,</span></span> <span class="riga" style="--i:1"><span>ti rispondiamo noi</span></span></h2>
         <p data-rivela style="--i:2;margin:0;max-width:48ch;color:var(--chiaro-2)">Aggiungi i vasetti al tuo ordine o scrivici direttamente. Puoi ritirarli in azienda a Conza oppure te li portiamo noi, ovunque in Campania: giorno e costo li decidiamo insieme.</p>
         <div class="ordina__azioni" data-rivela style="--i:3">
           <a class="btn btn--pieno" href="contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20ordinare%3A%20">WhatsApp <span class="freccia" aria-hidden="true">→</span></a>
@@ -375,7 +375,7 @@
 
 <script src="script.js"></script>
 <script src="/racconto.js?v=20261124a"></script>
-<script src="/js/carrello.js?v=20261119a" defer></script>
+<script src="/js/carrello.js?v=20261124a" defer></script>
 <script>
 /* Il vasetto toccato nella fila in alto è quello che si trasforma nella scheda:
    gli do il nome del passaggio e lo tolgo al vasetto uguale più in basso. */

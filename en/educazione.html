@@ -93,7 +93,7 @@
   <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/racconto.css?v=20261119a">
-  <link rel="stylesheet" href="/movimento.css?v=20261124j">
+  <link rel="stylesheet" href="/movimento.css?v=20261124k">
   <script>addEventListener('pagereveal',function(e){if(e.viewTransition)document.documentElement.classList.add('vt-arrivo')})</script>
   <script>document.documentElement.classList.add('js-menu')</script>
   <script>try{if(!localStorage.getItem('vdl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro')}catch(e){}</script>
@@ -131,7 +131,7 @@
     <div class="contenitore">
       <nav class="briciole" aria-label="Breadcrumb"><ol><li><a href="/en/">Home</a></li><li aria-current="page">Our method</li></ol></nav>
       <p class="etichetta" data-rivela>Our method · Priscilla apiary</p>
-      <h1 class="titolo" data-rivela><span class="riga" style="--i:0"><span>Data decides,</span></span><span class="riga" style="--i:1"><span>not habit</span></span></h1>
+      <h1 class="titolo" data-rivela><span class="riga" style="--i:0"><span>Data decides,</span></span> <span class="riga" style="--i:1"><span>not habit</span></span></h1>
       <p class="racconto intro__lead" data-rivela style="--i:2">We publish the numbers from our hive: that is how trust is built, season after season.</p>
       <ul class="fatti" data-rivela style="--i:3"><li>Sensor data from the hive</li><li>Pollen analysis for every batch</li><li>Unpasteurised</li><li>Varroa treated with oxalic acid only</li></ul>
     </div>
@@ -141,7 +141,7 @@
     <div class="contenitore due" style="align-items:start">
       <div class="capitolo__testa">
         <p class="etichetta" data-rivela>Transparency</p>
-        <h2 class="titolo titolo--medio" id="titolo-impegno" data-rivela><span class="riga" style="--i:0"><span>A commitment</span></span><span class="riga" style="--i:1"><span>you can</span></span><span class="riga" style="--i:2"><span>check</span></span></h2>
+        <h2 class="titolo titolo--medio" id="titolo-impegno" data-rivela><span class="riga" style="--i:0"><span>A commitment</span></span> <span class="riga" style="--i:1"><span>you can</span></span> <span class="riga" style="--i:2"><span>check</span></span></h2>
       </div>
       <div class="testo-lungo">
         <p class="racconto" data-rivela style="max-width:none">For us, transparency is a way of working. We share the hive data so that whoever buys our honey can understand how it is made and choose with full knowledge.</p>
@@ -162,7 +162,7 @@
     <div class="contenitore">
       <div class="capitolo__testa">
         <p class="etichetta" data-rivela>Priscilla hive · 3Bee sensor</p>
-        <h2 class="titolo" id="titolo-dati" data-rivela><span class="riga" style="--i:0"><span>A year</span></span><span class="riga" style="--i:1"><span>inside the hive</span></span></h2>
+        <h2 class="titolo" id="titolo-dati" data-rivela><span class="riga" style="--i:0"><span>A year</span></span> <span class="riga" style="--i:1"><span>inside the hive</span></span></h2>
         <p class="racconto" data-rivela style="--i:2;color:var(--chiaro-2)">From November 2025 to November 2026, measured by the sensor installed in the hive. Every peak and every dip matches something that really happened.</p>
       </div>
       <dl class="numeri" data-rivela style="border-top-color:rgba(216,214,196,.3)">
@@ -206,7 +206,7 @@
     <div class="contenitore">
       <div class="capitolo__testa">
         <p class="etichetta" data-rivela>The process</p>
-        <h2 class="titolo titolo--medio" id="titolo-processo" data-rivela><span class="riga" style="--i:0"><span>From nectar</span></span><span class="riga" style="--i:1"><span>to jar</span></span></h2>
+        <h2 class="titolo titolo--medio" id="titolo-processo" data-rivela><span class="riga" style="--i:0"><span>From nectar</span></span> <span class="riga" style="--i:1"><span>to jar</span></span></h2>
       </div>
       <ol class="passi">
         <li class="passo" data-rivela>
@@ -219,7 +219,7 @@
         </li>
         <li class="passo" data-rivela>
           <span class="passo__num" aria-hidden="true">3</span>
-          <div><h3>Cold extraction</h3><p>We extract only capped combs, at room temperature. We filter lightly and never heat: the honey is not pasteurised.</p></div>
+          <div><h3>Cold extraction</h3><p>We extract only <button type="button" class="glossa" popovertarget="g-0">capped</button><span id="g-0" popover class="glossa__nota"><strong>Capped</strong> When the honey is ripe, the bees seal each cell with a wax cap. Only then do we harvest it.<button type="button" class="glossa__chiudi" popovertarget="g-0" popovertargetaction="hide">Close</button></span> combs, at room temperature. We filter lightly and never heat: the honey is not pasteurised.</p></div>
         </li>
         <li class="passo" data-rivela>
           <span class="passo__num" aria-hidden="true">4</span>
@@ -233,13 +233,13 @@
     <div class="contenitore">
       <div class="capitolo__testa">
         <p class="etichetta" data-rivela>The apiary calendar</p>
-        <h2 class="titolo titolo--medio" id="titolo-calendario" data-rivela><span class="riga" style="--i:0"><span>We step in</span></span><span class="riga" style="--i:1"><span>only when needed</span></span></h2>
+        <h2 class="titolo titolo--medio" id="titolo-calendario" data-rivela><span class="riga" style="--i:0"><span>We step in</span></span> <span class="riga" style="--i:1"><span>only when needed</span></span></h2>
       </div>
       <div class="stagioni">
         <div class="stagione" data-rivela style="--i:0"><h3>Spring</h3><p class="mesi">Growth</p><p>The weight climbs fast: the acacia flowers, then the sulla. We step in to prevent swarming and give the queen space.</p></div>
         <div class="stagione" data-rivela style="--i:1"><h3>Summer</h3><p class="mesi">Harvest</p><p>The brood nest stays around 35 °C, the right temperature for the brood. It's wildflower season; we remove the supers only above the reserve threshold.</p></div>
         <div class="stagione" data-rivela style="--i:2"><h3>Autumn</h3><p class="mesi">Preparation</p><p>Flights decrease. Using the data we assess the winter stores and top them up a little, only if needed. Driving out the drones closes the season.</p></div>
-        <div class="stagione" data-rivela style="--i:3"><h3>Winter</h3><p class="mesi">Rest</p><p>The bees huddle in their winter cluster and the graphs flatten. We don't open the hives: if something is wrong, the sensor tells us.</p></div>
+        <div class="stagione" data-rivela style="--i:3"><h3>Winter</h3><p class="mesi">Rest</p><p>The bees huddle in their <button type="button" class="glossa" popovertarget="g-3">winter cluster</button><span id="g-3" popover class="glossa__nota"><strong>Winter cluster</strong> In winter the bees huddle in a ball around the queen and keep each other warm by shivering their flight muscles.<button type="button" class="glossa__chiudi" popovertarget="g-3" popovertargetaction="hide">Close</button></span> and the graphs flatten. We don't open the hives: if something is wrong, the sensor tells us.</p></div>
       </div>
     </div>
   </section>
@@ -248,7 +248,7 @@
     <div class="contenitore due" style="align-items:start">
       <div class="capitolo__testa">
         <p class="etichetta" data-rivela>The training behind the honey</p>
-        <h2 class="titolo titolo--medio" id="titolo-formazione" data-rivela><span class="riga" style="--i:0"><span>Why a PhD</span></span><span class="riga" style="--i:1"><span>shows</span></span><span class="riga" style="--i:2"><span>in the jar</span></span></h2>
+        <h2 class="titolo titolo--medio" id="titolo-formazione" data-rivela><span class="riga" style="--i:0"><span>Why a PhD</span></span> <span class="riga" style="--i:1"><span>shows</span></span> <span class="riga" style="--i:2"><span>in the jar</span></span></h2>
       </div>
       <div class="testo-lungo">
         <p class="racconto" data-rivela style="max-width:none">Francesco came to bees from university research, studying the biodiversity of agricultural ecosystems and the sustainability of food production.</p>
@@ -260,12 +260,26 @@
   <section class="capitolo capitolo--scuro" aria-label="Our choices and the reasons for them" style="padding-top:clamp(48px,6vw,80px)">
     <div class="contenitore">
       <div class="punti">
-        <div class="punto" data-rivela style="--i:0"><span class="punto__num">01</span><h3>Unpasteurised</h3><p>Heat degrades the enzymes, phenols and aromas that define a monofloral honey. The scientific literature agrees on this.</p></div>
+        <div class="punto" data-rivela style="--i:0"><span class="punto__num">01</span><h3>Unpasteurised</h3><p>Heat degrades the enzymes, phenols and aromas that define a <button type="button" class="glossa" popovertarget="g-4">monofloral</button><span id="g-4" popover class="glossa__nota"><strong>Monofloral</strong> A honey where the nectar of a single flower prevails. Pollen analysis confirms it.<button type="button" class="glossa__chiudi" popovertarget="g-4" popovertargetaction="hide">Close</button></span> honey. The scientific literature agrees on this.</p></div>
         <div class="punto" data-rivela style="--i:1"><span class="punto__num">02</span><h3>Stationary beekeeping</h3><p>Transport stresses the colony and changes the nectar it gathers. Our hives stay on a single terroir all season.</p></div>
         <div class="punto" data-rivela style="--i:2"><span class="punto__num">03</span><h3>Pollen analysis</h3><p>The purity of a monofloral honey is measured under the microscope, as the percentage of pollen species by species.</p></div>
         <div class="punto" data-rivela style="--i:0"><span class="punto__num">04</span><h3>Monitoring</h3><p>Hive weight, temperature and humidity, measured by the 3Bee sensor. Harvest decisions start here.</p></div>
       </div>
       <p data-rivela style="margin:clamp(56px,7vw,96px) 0 0;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="/en/api.html">Our bees <span class="freccia" aria-hidden="true">→</span></a><a class="btn" href="/en/prodotti.html">Our honey <span class="freccia" aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
+  <section class="prossimo" aria-label="Next chapter">
+    <div class="contenitore">
+      <a class="prossimo__link" href="/en/prodotti.html">
+        <span class="prossimo__foto prossimo__foto--vaso"><img src="/img/sulla-vaso.webp" alt="" width="689" height="960" loading="lazy" decoding="async"></span>
+        <span>
+          <span class="etichetta">Next chapter</span>
+          <span class="prossimo__titolo" style="display:block">Our honey</span>
+          <span class="prossimo__frase" style="display:block">All of this ends up in three jars. Here's how each one tastes, and which suits you.</span>
+          <span class="prossimo__freccia">Choose your honey →</span>
+        </span>
+      </a>
     </div>
   </section>
 
@@ -279,7 +293,7 @@
           <image href="/img/marchio-crema.png" x="72" y="72" width="56" height="56" />
         </svg>
         <p class="etichetta" data-rivela>To order</p>
-        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Stay in touch</span></span><span class="riga" style="--i:1"><span>with the apiary</span></span></h2>
+        <h2 class="titolo" id="titolo-ordina" data-rivela><span class="riga" style="--i:0"><span>Stay in touch</span></span> <span class="riga" style="--i:1"><span>with the apiary</span></span></h2>
         <p data-rivela style="--i:2;margin:0;max-width:48ch;color:var(--chiaro-2)">Want to know when the next vintage is ready, or follow the blooms and harvests? Write to us and we'll let you know. No spam: just the apiary.</p>
         <div class="ordina__azioni" data-rivela style="--i:3">
           <a class="btn btn--pieno" href="/en/contatti.html" data-wa="?text=Hello%20Vie%20del%20Lago%2C%20I%27d%20like%20to%20hear%20about%20the%20next%20vintage.">WhatsApp <span class="freccia" aria-hidden="true">→</span></a>
@@ -329,6 +343,6 @@
 
 <script src="/script.js"></script>
 <script src="/racconto.js?v=20261124a"></script>
-<script src="/js/carrello.js?v=20261119a" defer></script>
+<script src="/js/carrello.js?v=20261124a" defer></script>
 </body>
 </html>
