@@ -85,12 +85,17 @@
       animation-range: contain 0% contain 100%;
     }
 
+    /* Telefono: il vasetto sta nella metà alta, i testi nella metà bassa.
+       Misure in svh, così tengono anche su schermi corti con le barre di Safari aperte. */
     @media (max-width: 760px) {
-      .immersione__vaso { top: 34%; }
-      .immersione__vaso img { height: 40svh; }
-      .immersione__passo, .immersione__passo:nth-child(3) { left: var(--gutter); right: var(--gutter); max-width: none; bottom: 88px; }
-      .immersione__passo .immersione__dettaglio { font-size: 16px; }
-      .immersione__fine { left: var(--gutter); right: var(--gutter); align-items: flex-start; bottom: 88px; }
+      .immersione__vaso { top: 30%; }
+      .immersione__vaso img { height: 34svh; animation-name: vdl-vaso-tel; }
+      .immersione__passo, .immersione__passo:nth-child(3) { left: var(--gutter); right: calc(var(--gutter) + 44px); max-width: none; bottom: max(5svh, 24px); }
+      .immersione__passo:nth-child(4) { top: 45svh; bottom: auto; right: var(--gutter); }
+      .immersione__passo .immersione__frase { font-size: 24px; }
+      .immersione__passo .immersione__dettaglio { font-size: 15px; line-height: 1.5; }
+      .immersione__fine { left: var(--gutter); right: calc(var(--gutter) + 52px); align-items: flex-start; bottom: max(4svh, 20px); }
+      .immersione__fine .btn { padding: 16px 24px; }
     }
   }
 }
@@ -107,6 +112,15 @@
   76%  { transform: translateX(6vw) scale(1.05); }
   100% { transform: translateX(-4vw) scale(.9); }
 }
+@keyframes vdl-vaso-tel {
+  0%   { transform: translateY(50svh) scale(.6) rotate(-6deg); }
+  4%   { transform: translateY(14svh) scale(.75) rotate(-3deg); }
+  10%  { transform: translateY(0) scale(.9) rotate(0deg); }
+  22%  { transform: translateY(0) scale(.95); }
+  50%  { transform: translateY(0) scale(1.15); }
+  76%  { transform: translateX(4vw) scale(1); }
+  100% { transform: translateY(-4svh) scale(.8); }
+}
 @keyframes vdl-passo-1 { 0% { opacity: 0; transform: translateY(30px); } 5%, 16% { opacity: 1; transform: none; } 21%, 100% { opacity: 0; transform: translateY(-30px); } }
 @keyframes vdl-passo-2 { 0%, 24% { opacity: 0; transform: translateY(30px); } 31%, 50% { opacity: 1; transform: none; } 55%, 100% { opacity: 0; transform: translateY(-30px); } }
 @keyframes vdl-passo-3 { 0%, 65% { opacity: 0; transform: translateY(30px); } 71%, 79% { opacity: 1; transform: none; } 83%, 100% { opacity: 0; transform: translateY(-30px); } }
@@ -114,12 +128,6 @@
 @keyframes vdl-fine { 0%, 88% { opacity: 0; transform: translateY(20px); pointer-events: none; } 93%, 100% { opacity: 1; transform: none; pointer-events: auto; } }
 @keyframes vdl-barra { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
-/* Su telefono la frase finale e il pulsante non si sovrappongono */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) and (max-width: 760px) {
-    .immersione__passo:nth-child(4) { bottom: 252px; }
-  }
-}
 
 /* 3. Home: i tre vasetti che salgono subito dopo l'apertura.
    Versione ferma: tre vasetti in fila con nome e stato.
