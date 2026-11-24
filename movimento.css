@@ -146,8 +146,8 @@
 
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .vasetti { height: 210svh; view-timeline: --vasetti block; }
-    .vasetti__palco { position: sticky; top: 0; height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 0; padding-bottom: 0; }
+    .vasetti { height: 280svh; view-timeline: --vasetti block; }
+    .vasetti__palco { position: sticky; top: 0; height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 14svh; padding-bottom: 0; }
     .vasetti__testa, .vasetti__vaso img { animation-timeline: --vasetti; animation-range: cover 18% contain 100%; animation-fill-mode: both; animation-timing-function: linear; }
     .vasetti__testa { animation-name: vdl-vasetti-testa; }
     .vasetti__vaso img { animation-name: vdl-vasetto-sale; will-change: transform; }
@@ -156,11 +156,14 @@
     .vasetti__nome, .vasetti__stato { animation: vdl-vasetti-nomi linear both; animation-timeline: --vasetti; animation-range: cover 18% contain 100%; }
   }
 }
-@keyframes vdl-vasetti-testa { 0% { opacity: 0; transform: translateY(40px); } 16%, 100% { opacity: 1; transform: none; } }
-@keyframes vdl-vasetto-sale   { 0%, 6%  { opacity: 0; transform: translateY(45svh) rotate(-5deg); } 38%, 100% { opacity: 1; transform: none; } }
-@keyframes vdl-vasetto-sale-2 { 0%, 14% { opacity: 0; transform: translateY(45svh); } 46%, 100% { opacity: 1; transform: none; } }
-@keyframes vdl-vasetto-sale-3 { 0%, 22% { opacity: 0; transform: translateY(45svh) rotate(5deg); } 54%, 100% { opacity: 1; transform: none; } }
-@keyframes vdl-vasetti-nomi { 0%, 50% { opacity: 0; transform: translateY(12px); } 66%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-vasetti-testa { 0% { opacity: 0; transform: translateY(40px); } 14%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-vasetto-sale   { 0%, 8%  { opacity: 0; transform: translateY(45svh) rotate(-5deg); } 40%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-vasetto-sale-2 { 0%, 20% { opacity: 0; transform: translateY(45svh); } 52%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-vasetto-sale-3 { 0%, 32% { opacity: 0; transform: translateY(45svh) rotate(5deg); } 64%, 100% { opacity: 1; transform: none; } }
+@keyframes vdl-vasetti-nomi { 0%, 64% { opacity: 0; transform: translateY(12px); } 78%, 100% { opacity: 1; transform: none; } }
+
+/* Dopo i vasetti il capitolo successivo parte più vicino */
+.vasetti + .capitolo { padding-top: clamp(24px, 3vw, 48px); }
 
 /* Correzione: la foto d'apertura della home scorre in parallasse e in fondo
    lasciava scoperta una fascia grigia. La allungo anche verso il basso. */
