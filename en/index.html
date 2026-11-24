@@ -95,7 +95,7 @@
   <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/racconto.css?v=20261119a">
-  <link rel="stylesheet" href="/movimento.css?v=20261124l">
+  <link rel="stylesheet" href="/movimento.css?v=20261124m">
   <script>addEventListener('pagereveal',function(e){if(e.viewTransition)document.documentElement.classList.add('vt-arrivo')})</script>
   <script>document.documentElement.classList.add('js-menu')</script>
   <script>try{if(!localStorage.getItem('vdl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro')}catch(e){}</script>
@@ -191,7 +191,6 @@
       <aside class="dall-apiario" data-rivela>
         <p class="etichetta">From the apiary · November 2026</p>
         <p class="dall-apiario__testo">The bees are huddled in their winter cluster, keeping warm by eating their stores: in a month the Priscilla hive has gone from 36.5 to 34.6 kg. Inside the nest it's around 20 °C, outside below 10 at night.</p>
-        <a class="dall-apiario__link" href="/en/educazione.html">The hive data →</a>
       </aside>
     </div>
   </section>
@@ -203,7 +202,6 @@
         <h2 class="titolo" id="titolo-mieli" data-rivela><span class="riga" style="--i:0"><span>Three blooms,</span></span> <span class="riga" style="--i:1"><span>three honeys</span></span></h2>
       </div>
       <article class="miele" data-miele="sulla" aria-labelledby="m-sulla">
-        <div class="miele__vaso svela"><img src="/img/sulla-vaso.webp" alt="Jar of Vie del Lago Sulla honey" width="689" height="960" loading="lazy" data-profondita="0.06"></div>
         <div class="miele__testo">
           <p class="contatore" data-rivela>01 / 03</p>
           <p class="etichetta" data-rivela style="--i:1">Cru delle Argille · <button type="button" class="glossa" popovertarget="g-4">Monofloral</button><span id="g-4" popover class="glossa__nota"><strong>Monofloral</strong> A honey where the nectar of a single flower prevails. Pollen analysis confirms it.<button type="button" class="glossa__chiudi" popovertarget="g-4" popovertargetaction="hide">Close</button></span></p>
@@ -220,7 +218,6 @@
         </div>
       </article>
       <article class="miele miele--invertito" data-miele="millefiori" aria-labelledby="m-millefiori">
-        <div class="miele__vaso svela"><img src="/img/millefiori-vaso.webp" alt="Jar of Vie del Lago Millefiori honey" width="697" height="1007" loading="lazy" data-profondita="0.06"></div>
         <div class="miele__testo">
           <p class="contatore" data-rivela>02 / 03</p>
           <p class="etichetta" data-rivela style="--i:1">Cuvée delle Colline · Multifloral</p>
@@ -237,7 +234,6 @@
         </div>
       </article>
       <article class="miele" data-miele="acacia" aria-labelledby="m-acacia">
-        <div class="miele__vaso svela"><img src="/img/acacia-vaso.webp" alt="Jar of Vie del Lago Acacia honey" width="571" height="795" loading="lazy" data-profondita="0.06"></div>
         <div class="miele__testo">
           <p class="contatore" data-rivela>03 / 03</p>
           <p class="etichetta" data-rivela style="--i:1">Cru dei Valloni · Monofloral</p>
@@ -292,7 +288,7 @@
     <div class="contenitore">
       <div class="capitolo__testa ig__testa">
         <div style="display:flex;flex-direction:column;gap:20px">
-          <p class="etichetta" data-rivela>From the apiary, every week</p>
+          <p class="etichetta" data-rivela>On Instagram, every week</p>
           <h2 class="titolo titolo--medio titolo--handle" id="titolo-ig" data-rivela><span class="riga" style="--i:0"><span>@viedellagoapicoltura</span></span></h2>
         </div>
         <a class="btn" href="https://www.instagram.com/viedellagoapicoltura/" target="_blank" rel="noopener" data-rivela>Follow us <span class="freccia" aria-hidden="true">→</span></a>
@@ -384,14 +380,9 @@
 <script src="/racconto.js?v=20261124a"></script>
 <script src="/js/carrello.js?v=20261124a" defer></script>
 <script>
-/* Il vasetto toccato nella fila in alto è quello che si trasforma nella scheda:
-   gli do il nome del passaggio e lo tolgo al vasetto uguale più in basso. */
+/* Il vasetto toccato nella fila in alto si trasforma nel vasetto della scheda */
 document.querySelectorAll('.vasetti__vaso').forEach(function (a) {
-  a.addEventListener('click', function () {
-    var m = a.getAttribute('data-miele');
-    document.querySelectorAll('.miele__vaso img[src$="' + m + '-vaso.webp"]').forEach(function (i) { i.style.viewTransitionName = 'none'; });
-    a.querySelector('img').style.viewTransitionName = 'vaso-' + m;
-  });
+  a.addEventListener('click', function () { a.querySelector('img').style.viewTransitionName = 'vaso-' + a.getAttribute('data-miele'); });
 });
 </script>
 </body>

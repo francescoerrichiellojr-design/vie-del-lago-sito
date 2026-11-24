@@ -73,7 +73,7 @@
   <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/racconto.css?v=20261119a">
-  <link rel="stylesheet" href="/movimento.css?v=20261124l">
+  <link rel="stylesheet" href="/movimento.css?v=20261124m">
   <script>addEventListener('pagereveal',function(e){if(e.viewTransition)document.documentElement.classList.add('vt-arrivo')})</script>
   <script>document.documentElement.classList.add('js-menu')</script>
   <script>try{if(!localStorage.getItem('vdl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro')}catch(e){}</script>
@@ -134,7 +134,7 @@
             <span class="miele__prezzo">€20 <span class="secondario" style="font-weight:400;font-size:16px">· 500 g</span></span>
             <span class="stato stato--si">Available</span>
           </div>
-          <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><button type="button" class="btn btn--pieno" data-carrello-aggiungi="sulla">Add to order <span class="freccia" aria-hidden="true">+</span></button><a class="btn" href="/en/sulla.html">Full details <span class="freccia" aria-hidden="true">→</span></a></div>
+          <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><button type="button" class="btn btn--pieno" data-carrello-aggiungi="sulla">Add to order <span class="freccia" aria-hidden="true">+</span></button><a class="link-scheda" href="/en/sulla.html">Full details <span aria-hidden="true">→</span></a></div>
         </div>
       </article>
       <article class="miele miele--invertito" id="millefiori" data-miele="millefiori" aria-labelledby="m-millefiori">
@@ -150,7 +150,7 @@
             <span class="miele__prezzo">€16 <span class="secondario" style="font-weight:400;font-size:16px">· 500 g</span></span>
             <span class="stato">Sold out · 2026 vintage</span>
           </div>
-          <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="/en/contatti.html" data-wa="?text=Hello%20Vie%20del%20Lago%2C%20I%27d%20like%20to%20be%20told%20when%20the%20Millefiori%20honey%20is%20back.">Notify me <span class="freccia" aria-hidden="true">→</span></a><a class="btn" href="/en/millefiori.html">Full details <span class="freccia" aria-hidden="true">→</span></a></div>
+          <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="/en/contatti.html" data-wa="?text=Hello%20Vie%20del%20Lago%2C%20I%27d%20like%20to%20be%20told%20when%20the%20Millefiori%20honey%20is%20back.">Notify me <span class="freccia" aria-hidden="true">→</span></a><a class="link-scheda" href="/en/millefiori.html">Full details <span aria-hidden="true">→</span></a></div>
         </div>
       </article>
       <article class="miele" id="acacia" data-miele="acacia" aria-labelledby="m-acacia">
@@ -166,7 +166,7 @@
             <span class="miele__prezzo">€22 <span class="secondario" style="font-weight:400;font-size:16px">· 500 g</span></span>
             <span class="stato">Sold out · 2026 vintage</span>
           </div>
-          <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="/en/contatti.html" data-wa="?text=Hello%20Vie%20del%20Lago%2C%20I%27d%20like%20to%20be%20told%20when%20the%20Acacia%20honey%20is%20back.">Notify me <span class="freccia" aria-hidden="true">→</span></a><a class="btn" href="/en/acacia.html">Full details <span class="freccia" aria-hidden="true">→</span></a></div>
+          <div data-rivela style="--i:5;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="/en/contatti.html" data-wa="?text=Hello%20Vie%20del%20Lago%2C%20I%27d%20like%20to%20be%20told%20when%20the%20Acacia%20honey%20is%20back.">Notify me <span class="freccia" aria-hidden="true">→</span></a><a class="link-scheda" href="/en/acacia.html">Full details <span aria-hidden="true">→</span></a></div>
         </div>
       </article>
     </div>
@@ -181,34 +181,20 @@
       <div class="tabella-box" data-rivela>
         <table class="confronto">
           <caption class="sr-only">Comparison of Millefiori, Acacia and Sulla</caption>
-          <thead><tr><td></td><th scope="col" data-miele="millefiori"><a href="/en/millefiori.html" style="text-decoration:none"><span class="nome">Millefiori</span><span class="cru">Cuvée delle Colline</span></a></th><th scope="col" data-miele="acacia"><a href="/en/acacia.html" style="text-decoration:none"><span class="nome">Acacia</span><span class="cru">Cru dei Valloni</span></a></th><th scope="col" data-miele="sulla"><a href="/en/sulla.html" style="text-decoration:none"><span class="nome">Sulla</span><span class="cru">Cru delle Argille</span></a></th></tr></thead>
+          <thead><tr><td></td><th scope="col" data-miele="sulla"><a href="/en/sulla.html" style="text-decoration:none"><span class="nome">Sulla</span><span class="cru">Cru delle Argille</span></a></th><th scope="col" data-miele="millefiori"><a href="/en/millefiori.html" style="text-decoration:none"><span class="nome">Millefiori</span><span class="cru">Cuvée delle Colline</span></a></th><th scope="col" data-miele="acacia"><a href="/en/acacia.html" style="text-decoration:none"><span class="nome">Acacia</span><span class="cru">Cru dei Valloni</span></a></th></tr></thead>
           <tbody>
-          <tr><th scope="row">Type</th><td>Multifloral</td><td>Monofloral</td><td>Rare monofloral</td></tr>
-          <tr><th scope="row">Colour</th><td>Deep amber</td><td>Straw yellow</td><td>Almost colourless, then ivory</td></tr>
-          <tr><th scope="row">Sweetness</th><td>High and structured</td><td>Delicate, velvety</td><td>Medium, balanced</td></tr>
-          <tr><th scope="row">Crystallisation</th><td>Natural, irregular</td><td>Very slow</td><td>Fine white paste</td></tr>
-          <tr><th scope="row">Intensity</th><td><span class="intensita" role="img" aria-label="4 out of 5"><i class="pieno"></i><i class="pieno"></i><i class="pieno"></i><i class="pieno"></i><i class=""></i></span></td><td><span class="intensita" role="img" aria-label="2 out of 5"><i class="pieno"></i><i class="pieno"></i><i class=""></i><i class=""></i><i class=""></i></span></td><td><span class="intensita" role="img" aria-label="3 out of 5"><i class="pieno"></i><i class="pieno"></i><i class="pieno"></i><i class=""></i><i class=""></i></span></td></tr>
-          <tr><th scope="row">Who it's for</th><td>Lovers of character and complexity</td><td>Those looking for delicacy</td><td>The curious palate</td></tr>
-          <tr><th scope="row">Price</th><td>€16 · 500 g</td><td>€22 · 500 g</td><td>€20 · 500 g</td></tr>
-          <tr><th scope="row">Availability</th><td>Sold out</td><td>Sold out</td><td>Available</td></tr>
+          <tr><th scope="row">Type</th><td>Rare monofloral</td><td>Multifloral</td><td>Monofloral</td></tr>
+          <tr><th scope="row">Colour</th><td>Almost colourless, then ivory</td><td>Deep amber</td><td>Straw yellow</td></tr>
+          <tr><th scope="row">Sweetness</th><td>Medium, balanced</td><td>High and structured</td><td>Delicate, velvety</td></tr>
+          <tr><th scope="row">Crystallisation</th><td>Fine white paste</td><td>Natural, irregular</td><td>Very slow</td></tr>
+          <tr><th scope="row">Intensity</th><td><span class="intensita" role="img" aria-label="3 out of 5"><i class="pieno"></i><i class="pieno"></i><i class="pieno"></i><i class=""></i><i class=""></i></span></td><td><span class="intensita" role="img" aria-label="4 out of 5"><i class="pieno"></i><i class="pieno"></i><i class="pieno"></i><i class="pieno"></i><i class=""></i></span></td><td><span class="intensita" role="img" aria-label="2 out of 5"><i class="pieno"></i><i class="pieno"></i><i class=""></i><i class=""></i><i class=""></i></span></td></tr>
+          <tr><th scope="row">Who it's for</th><td>The curious palate</td><td>Lovers of character and complexity</td><td>Those looking for delicacy</td></tr>
+          <tr><th scope="row">Price</th><td>€20 · 500 g</td><td>€16 · 500 g</td><td>€22 · 500 g</td></tr>
+          <tr><th scope="row">Availability</th><td>Available</td><td>Sold out</td><td>Sold out</td></tr>
           </tbody>
         </table>
       </div>
       <p class="secondario" data-rivela style="margin:28px 0 0;font-size:15px">Collection at our farm in Conza della Campania or delivery anywhere in Campania, by arrangement · you pay on collection: bank transfer, Satispay or cash.</p>
-    </div>
-  </section>
-
-  <section class="prossimo" aria-label="Next chapter">
-    <div class="contenitore">
-      <a class="prossimo__link" href="/en/come-ordinare.html">
-        <span class="prossimo__foto prossimo__foto--vaso"><img src="/img/acacia-vaso.webp" alt="" width="571" height="795" loading="lazy" decoding="async"></span>
-        <span>
-          <span class="etichetta">Next chapter</span>
-          <span class="prossimo__titolo" style="display:block">How to order</span>
-          <span class="prossimo__frase" style="display:block">Made your choice? Here's how it reaches you: one message, a reply within a day, and the jar in your hands.</span>
-          <span class="prossimo__freccia">See how to order →</span>
-        </span>
-      </a>
     </div>
   </section>
 
