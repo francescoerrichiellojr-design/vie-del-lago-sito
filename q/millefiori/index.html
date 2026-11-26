@@ -26,8 +26,13 @@
     .qr__voci dt{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accento-testo)}
     .qr__voci dd{margin:6px 0 0}
     .qr__nota{margin:30px 0 0;color:var(--grigio)}
-    .qr__miele{margin-top:56px;padding:28px;border-radius:18px;background:color-mix(in srgb,var(--accento) 10%,#EFEDE3)}
-    .qr__miele p{margin:0 0 20px}
+    .qr__blocchi{margin-top:56px;display:grid;gap:16px}
+    .qr__blocco{padding:26px 28px;border-radius:18px;background:color-mix(in srgb,var(--accento) 10%,#EFEDE3)}
+    .qr__blocco h2{margin:0 0 8px;font-family:var(--display);font-weight:400;font-size:clamp(24px,5.5vw,30px);line-height:1.15}
+    .qr__blocco p{margin:0 0 18px}
+    .qr__blocco p:last-child{margin-bottom:0}
+    .qr__blocco .btn{padding:15px 22px;letter-spacing:.08em}
+    .qr__blocco--chiaro{background:transparent;border:1px solid color-mix(in srgb,var(--accento) 35%,transparent)}
     .qr__piede{padding:22px 0 30px;font-size:14px;color:var(--grigio)}
   </style>
 </head>
@@ -46,12 +51,30 @@
       <div><dt>Etichetta</dt><dd>Carta (PAP 22). Se si stacca facilmente va nella carta, altrimenti lasciala sul vasetto.</dd></div>
     </dl>
     <p class="qr__nota">Prima di buttarli svuota e sciacqua il vasetto e svita il tappo. Le regole della raccolta cambiano da comune a comune: verifica quelle del tuo.</p>
-    <div class="qr__miele">
-      <p>Grazie per aver scelto il nostro miele. Nasce dalle fioriture selvatiche dei pendii intorno al Lago di Conza e cambia da un anno all'altro, come una cuvée d'annata.</p>
-      <a class="btn btn--pieno" href="/millefiori.html">Scopri il miele <span class="freccia" aria-hidden="true">→</span></a>
+
+    <div class="qr__blocchi">
+      <section class="qr__blocco">
+        <h2>Ne vuoi un altro?</h2>
+        <p>Scrivici su WhatsApp: ritiri in azienda a Conza o te lo portiamo noi, ovunque in Campania.</p>
+        <a class="btn btn--pieno" href="/contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20ordinare%20un%20altro%20vasetto%20di%20Miele%20Millefiori.">Ordina su WhatsApp <span class="freccia" aria-hidden="true">→</span></a>
+      </section>
+      <section class="qr__blocco qr__blocco--chiaro">
+        <h2>Ti è piaciuto?</h2>
+        <p>Raccontalo in una recensione su Google. Per un piccolo apicoltore è il modo migliore per farsi trovare.</p>
+        <a class="btn" href="https://g.page/r/Cf0N8iQXoy34EBM/review" target="_blank" rel="noopener">Lascia una recensione <span class="freccia" aria-hidden="true">→</span></a>
+      </section>
+      <section class="qr__blocco qr__blocco--chiaro">
+        <h2>Si è cristallizzato?</h2>
+        <p>È normale: il millefiori cristallizza nel giro di qualche mese. Non è un difetto e il miele resta buono com'era. Se lo preferisci liquido, metti il vasetto aperto a bagnomaria in acqua tiepida, senza superare i 40&nbsp;°C, e mescola ogni tanto. Evita il microonde.</p>
+      </section>
+      <section class="qr__blocco">
+        <p>Grazie per aver scelto il nostro miele. Nasce dalle fioriture selvatiche dei pendii intorno al Lago di Conza e cambia da un anno all'altro, come una cuvée d'annata.</p>
+        <a class="btn btn--pieno" href="/millefiori.html">Scopri il miele <span class="freccia" aria-hidden="true">→</span></a>
+      </section>
     </div>
   </div>
 </main>
 <footer class="qr__piede"><div class="contenitore" style="max-width:640px">Vie del Lago Apicoltura · Conza della Campania (AV)</div></footer>
+<script src="/script.js"></script>
 </body>
 </html>
