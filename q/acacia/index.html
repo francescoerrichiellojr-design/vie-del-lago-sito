@@ -1,80 +1,18 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Pagina aperta dal QR dell'etichetta. Non va linkata dal sito e non va mai spostata o tolta:
-       l'indirizzo è stampato sui vasetti. -->
-  <meta name="robots" content="noindex, nofollow">
-  <title>Come smaltire la confezione · Miele di Acacia · Vie del Lago</title>
-  <meta name="theme-color" content="#E6E4D8">
-  <meta name="format-detection" content="telephone=no">
-  <link rel="preload" href="/fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/racconto.css?v=20261119a">
-  <style>
-    body{min-height:100vh;display:flex;flex-direction:column}
-    .qr{flex:1;padding:28px 0 56px}
-    .qr .contenitore{max-width:640px}
-    .qr__testa{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:48px}
-    .qr__logo img{width:150px;height:auto;display:block}
-    .qr__lingua{font-size:14px;font-weight:600;letter-spacing:.12em;color:var(--terra);text-decoration:none;border:1px solid currentColor;border-radius:999px;padding:6px 14px}
-    .qr h1{margin:14px 0 32px;font-size:clamp(34px,8vw,52px)}
-    .qr__voci{margin:0;display:grid;gap:22px}
-    .qr__voci div{padding-top:18px;border-top:1px solid color-mix(in srgb,var(--accento) 40%,transparent)}
-    .qr__voci dt{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accento-testo)}
-    .qr__voci dd{margin:6px 0 0}
-    .qr__nota{margin:30px 0 0;color:var(--grigio)}
-    .qr__blocchi{margin-top:56px;display:grid;gap:16px}
-    .qr__blocco{padding:26px 28px;border-radius:18px;background:color-mix(in srgb,var(--accento) 10%,#EFEDE3)}
-    .qr__blocco h2{margin:0 0 8px;font-family:var(--display);font-weight:400;font-size:clamp(24px,5.5vw,30px);line-height:1.15}
-    .qr__blocco p{margin:0 0 18px}
-    .qr__blocco p:last-child{margin-bottom:0}
-    .qr__blocco .btn{padding:15px 22px;letter-spacing:.08em}
-    .qr__blocco--chiaro{background:transparent;border:1px solid color-mix(in srgb,var(--accento) 35%,transparent)}
-    .qr__piede{padding:22px 0 30px;font-size:14px;color:var(--grigio)}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Vecchio indirizzo del QR: rimanda al nuovo /q/a/. Lasciare così. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.viedellagoapicoltura.it/q/a/">
+<meta http-equiv="refresh" content="0; url=/q/a/">
+<title>Vie del Lago</title>
+<script>location.replace("/q/a/" + location.hash);</script>
+<style>body{font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#E6E4D8;color:#1E1A12;margin:0;padding:40px 24px;text-align:center}a{color:#7E5410;font-weight:600}</style>
 </head>
 <body>
-<main class="qr" data-miele="acacia">
-  <div class="contenitore">
-    <div class="qr__testa">
-      <a class="qr__logo" href="/" aria-label="Vie del Lago Apicoltura"><img src="/img/logo-firma-terra.webp" alt="Vie del Lago Apicoltura" width="871" height="261"></a>
-      <a class="qr__lingua" href="/en/q/acacia/" hreflang="en" lang="en" aria-label="English version">EN</a>
-    </div>
-    <p class="etichetta">Miele di Acacia · 500 g</p>
-    <h1 class="titolo">Come smaltire la confezione</h1>
-    <dl class="qr__voci">
-      <div><dt>Tappo</dt><dd>Acciaio (FE 40). Va nella raccolta dei metalli, che in molti comuni si fa insieme alla plastica o al vetro.</dd></div>
-      <div><dt>Vasetto</dt><dd>Vetro (GL 70). Va nella raccolta del vetro.</dd></div>
-      <div><dt>Etichetta</dt><dd>Carta (PAP 22). Se si stacca facilmente va nella carta, altrimenti lasciala sul vasetto.</dd></div>
-    </dl>
-    <p class="qr__nota">Prima di buttarli svuota e sciacqua il vasetto e svita il tappo. Le regole della raccolta cambiano da comune a comune: verifica quelle del tuo.</p>
-
-    <div class="qr__blocchi">
-      <section class="qr__blocco">
-        <h2>Ne vuoi un altro?</h2>
-        <p>Scrivici su WhatsApp: ritiri in azienda a Conza o te lo portiamo noi, ovunque in Campania.</p>
-        <a class="btn btn--pieno" href="/contatti.html" data-wa="?text=Ciao%20Vie%20del%20Lago%2C%20vorrei%20ordinare%20un%20altro%20vasetto%20di%20Miele%20di%20Acacia.">Ordina su WhatsApp <span class="freccia" aria-hidden="true">→</span></a>
-      </section>
-      <section class="qr__blocco qr__blocco--chiaro">
-        <h2>Ti è piaciuto?</h2>
-        <p>Raccontalo in una recensione su Google. Per un piccolo apicoltore è il modo migliore per farsi trovare.</p>
-        <a class="btn" href="https://g.page/r/Cf0N8iQXoy34EBM/review" target="_blank" rel="noopener">Lascia una recensione <span class="freccia" aria-hidden="true">→</span></a>
-      </section>
-      <section class="qr__blocco qr__blocco--chiaro">
-        <h2>Si è cristallizzato?</h2>
-        <p>Succede di rado, perché l'acacia resta liquida a lungo, ma col freddo può capitare. Non è un difetto e il miele resta buono com'era. Se lo preferisci liquido, metti il vasetto aperto a bagnomaria in acqua tiepida, senza superare i 40&nbsp;°C, e mescola ogni tanto. Evita il microonde.</p>
-      </section>
-      <section class="qr__blocco">
-        <p>Grazie per aver scelto il nostro miele. Viene dalle robinie dei valloni umidi intorno al Lago di Conza. È chiaro, delicato e resta liquido a lungo.</p>
-        <a class="btn btn--pieno" href="/acacia.html">Scopri il miele <span class="freccia" aria-hidden="true">→</span></a>
-      </section>
-    </div>
-  </div>
-</main>
-<footer class="qr__piede"><div class="contenitore" style="max-width:640px">Vie del Lago Apicoltura · Conza della Campania (AV)</div></footer>
-<script src="/script.js"></script>
+<p>Apro la pagina…</p>
+<p><a href="/q/a/">Se non si apre, tocca qui</a></p>
 </body>
 </html>
