@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Pagina aperta dal QR dell'etichetta. Non va linkata dal sito e non va mai spostata o tolta:
+       l'indirizzo è stampato sui vasetti. -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Come smaltire la confezione · Miele di Sulla · Vie del Lago</title>
+  <meta name="theme-color" content="#E6E4D8">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="preload" href="/fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/racconto.css?v=20261119a">
+  <style>
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .qr{flex:1;padding:28px 0 56px}
+    .qr .contenitore{max-width:640px}
+    .qr__testa{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:48px}
+    .qr__logo img{width:150px;height:auto;display:block}
+    .qr__lingua{font-size:14px;font-weight:600;letter-spacing:.12em;color:var(--terra);text-decoration:none;border:1px solid currentColor;border-radius:999px;padding:6px 14px}
+    .qr h1{margin:14px 0 32px;font-size:clamp(34px,8vw,52px)}
+    .qr__voci{margin:0;display:grid;gap:22px}
+    .qr__voci div{padding-top:18px;border-top:1px solid color-mix(in srgb,var(--accento) 40%,transparent)}
+    .qr__voci dt{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accento-testo)}
+    .qr__voci dd{margin:6px 0 0}
+    .qr__nota{margin:30px 0 0;color:var(--grigio)}
+    .qr__miele{margin-top:56px;padding:28px;border-radius:18px;background:color-mix(in srgb,var(--accento) 10%,#EFEDE3)}
+    .qr__miele p{margin:0 0 20px}
+    .qr__piede{padding:22px 0 30px;font-size:14px;color:var(--grigio)}
+  </style>
+</head>
+<body>
+<main class="qr" data-miele="sulla">
+  <div class="contenitore">
+    <div class="qr__testa">
+      <a class="qr__logo" href="/" aria-label="Vie del Lago Apicoltura"><img src="/img/logo-firma-terra.webp" alt="Vie del Lago Apicoltura" width="871" height="261"></a>
+      <a class="qr__lingua" href="/en/q/sulla/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    </div>
+    <p class="etichetta">Miele di Sulla · 500 g</p>
+    <h1 class="titolo">Come smaltire la confezione</h1>
+    <dl class="qr__voci">
+      <div><dt>Tappo</dt><dd>Acciaio (FE 40). Va nella raccolta dei metalli, che in molti comuni si fa insieme alla plastica o al vetro.</dd></div>
+      <div><dt>Vasetto</dt><dd>Vetro (GL 70). Va nella raccolta del vetro.</dd></div>
+      <div><dt>Etichetta</dt><dd>Carta (PAP 22). Se si stacca facilmente va nella carta, altrimenti lasciala sul vasetto.</dd></div>
+    </dl>
+    <p class="qr__nota">Prima di buttarli svuota e sciacqua il vasetto e svita il tappo. Le regole della raccolta cambiano da comune a comune: verifica quelle del tuo.</p>
+    <div class="qr__miele">
+      <p>Grazie per aver scelto il nostro miele. La sulla fiorisce di rosso per poche settimane sui terreni argillosi intorno al Lago di Conza. Il miele di questo vasetto viene da quei prati.</p>
+      <a class="btn btn--pieno" href="/sulla.html">Scopri il miele <span class="freccia" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</main>
+<footer class="qr__piede"><div class="contenitore" style="max-width:640px">Vie del Lago Apicoltura · Conza della Campania (AV)</div></footer>
+</body>
+</html>
